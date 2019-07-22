@@ -1,0 +1,33 @@
+footer {
+    background-color: #e74c3c !important;
+    padding-bottom: 60px;
+    padding-top: 30px;
+}
+.contact {
+    list-style-type:none;
+}
+ul li {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 35px;
+}
+.social  li{
+    display: inline-block;
+    background-color: #d8d8d8;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 0 3px 0 3px;
+}
+
+p {
+    font-family: 'Roboto-Light';
+    font-size: 16px;
+    color: #ecf0f1; 
+}
+p > span {
+    font-family: 'Roboto-Medium';
+    font-size: 16px;
+    color: #ecf0f1;
+}

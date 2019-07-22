@@ -1,3 +1,35 @@
+.navbar {
+    background-color:#ececec
+}
 .navbar-brand {
     margin-left: 6rem;
+}
+
+img {
+    width: auto;
+    height: auto;
+}
+
+.form-control {
+    width: 600px;
+    border: 1px;
+}
+.search {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.search > img {
+    width: 20px;
+}
+.cart :first-child{
+    padding-right: 10px;
+}
+.cart :nth-child(1) > img {
+    width: 36px;
+}
+
+.cart :nth-child(2) > img{
+    width: 32px;
 }
