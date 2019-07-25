@@ -11,5 +11,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  goTo() {
+    console.log("shokryaaat")
+  }
 }
