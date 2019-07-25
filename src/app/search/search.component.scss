@@ -1,0 +1,24 @@
+.container-fluid {
+    background-color: #f5f5f5;
+}
+.first {
+    background-color: #fff;
+}
+.sort > p {
+    float: left;
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: bold;
+    color: #4b5858;
+}
+.sort > select {
+    float: right;
+    background-color: #fff;
+    padding: 10px;
+    border: unset;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: #3498db;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
