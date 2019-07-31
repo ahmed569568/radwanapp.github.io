@@ -11,5 +11,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
   }
+  mm(data) {
+    console.log(data);
+  }
 
 }

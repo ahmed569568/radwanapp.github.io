@@ -14,10 +14,10 @@
                 </select>
                 
             </div>
-            <div class="categories first">
+            <div class="search first">
                 <p>Categories</p>
-                <i class="fa fa-minus-square" ></i>
-                <div class="checks">
+                <img src="assets/icons/close.png" alt="">
+                <div class="categories">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
@@ -41,9 +41,51 @@
                         <label class="form-check-label" for="defaultCheck1">
                                 Category 1
                         </label>
+                    </div>   
+                </div>
+                <hr>
+                <p>Brand</p>
+                <img src="assets/icons/close.png" alt="">
+                <div class="brands">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Category 1
+                        </label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Category 1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                                Category 1
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                                Category 1
+                        </label>
+                    </div>   
+                </div>
+                <hr>
+                <p>Price</p>
+                <img src="assets/icons/close.png" alt="">
+                <div class="slider">
+                    <p class="from">From</p>
+                    <p class="to">To</p>
+                    <input type="range"  (change)="mm($event)">
+                </div>
+                <div class="values">
+                    <p>2,150.00 <span>EGP</span></p>
+                    <p>17,500.00 <span>EGP</span></p>
                 </div>
             </div>
+       
            
         </div>
         <div class="col-lg-9 products">
