@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+
+declare var $:any;
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -12,4 +15,13 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  buy(){
+    console.log("sfsdfsdfa");
+  }
+  next() {
+    console.log("next");
+  }
+  previous(){
+    console.log("previous");
+  }
 }
