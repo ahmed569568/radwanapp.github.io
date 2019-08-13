@@ -5,13 +5,14 @@ import { SearchComponent } from './search/search.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
-
+import { AboutUsComponent } from './about-us/about-us.component'
 const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent},
       { path: 'search', component: SearchComponent },
       { path: 'productDetails', component: ProductDetailsComponent},
-      { path: 'contact-us', component: ContactUsComponent }
+      { path: 'contact-us', component: ContactUsComponent },
+      { path: 'about-us', component: AboutUsComponent}
 ];
 
 @NgModule({

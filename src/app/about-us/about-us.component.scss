@@ -1,0 +1,74 @@
+.upper {
+    background-image: url('../../assets/images/about.jpg');
+    height: 440px;
+    background-size: 100% 100%;
+  }
+
+  .lower {
+    background-color: #f5f5f5;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+  }
+  .store {
+    font-family: 'Roboto';
+    font-size: 32px;
+    font-weight: bold;
+    color: rgba(75, 88, 88, 1);
+  }
+  .by {
+    font-family: 'Roboto-Medium';
+    font-size: 24px;
+    color: rgba(75, 88, 88, 1);
+    text-align: left;
+  }
+  .by span {
+    font-family: 'Roboto-Light';
+    font-size: 24px;
+    color: rgba(52, 152, 219, 1);
+  }
+  .paragraph {
+    font-family: 'Roboto-Medium';
+    font-size: 16px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+  }
+  .contact-detail {
+    font-family: 'Roboto-Medium';
+    font-size: 24px;
+    color: rgba(75, 88, 88, 1);
+    margin-top: 6%;
+    font-weight: bold;
+  }
+  .fax {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+  }
+  .tel {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+  }
+  .phone {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+  }
+  .store-address {
+    font-family: 'Roboto-Medium';
+    font-size: 24px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+    margin-top: 6%;
+  }
+  .address {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: rgba(75, 88, 88, 1);
+    font-weight: bold;
+    margin-bottom: 10%;
+  }
