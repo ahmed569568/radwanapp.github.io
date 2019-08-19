@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent implements OnInit {
   menue: boolean;
   menueList: Array<boolean> ;
-  constructor() { 
+  constructor( private route: Router ) { 
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
   }
-  ngOnInit() {
+  ngOnInit( ) {
   }
   goTo() {
-    console.log("shokryaaat")
+    this.route.navigate(['./search']);
   }
   showHeader(index) {
     console.log("HEADer")
