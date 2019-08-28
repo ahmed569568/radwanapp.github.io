@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-light ">
+<nav class="navbar navbar-light " >
     <a class="navbar-brand" href="#">
         <img src="assets/logo/logo@1x.png"  alt="">
     </a>
@@ -30,16 +30,16 @@
       <div class="container">
           <div class="row">
               <ul >
-                <li><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()" >Mobile & Tablets</a></li>
-                <li><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  >Mobile Accessories</a></li>
-                <li><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()" >TVs & Smart TVs</a></li>
-                <li><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()">Speakers & Headphones</a></li>
-                <li><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()">Gaming Solutions</a></li>
+                <li><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()" (focus)="showMenue()" (blur)="hideMenue()">Mobile & Tablets</a></li>
+                <li><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >Mobile Accessories</a></li>
+                <li><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >TVs & Smart TVs</a></li>
+                <li><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()" (focus)="showMenue()" (blur)="hideMenue()" >Speakers & Headphones</a></li>
+                <li><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()" (focus)="showMenue()" (blur)="hideMenue()">Gaming Solutions</a></li>
               </ul>
           </div>
       </div>
   </header>
-  <div class="header-list" *ngIf="menue">
+  <div class="header-list" *ngIf="menue" (mouseover)="overHeaderList()" (mouseout)="outHeaderList()" (click)="showData()" (focus)="showData()" (blur)="showData()"> 
       <div class="container">
           <div class="row">
               <div class="col-lg-2">
