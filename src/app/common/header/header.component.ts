@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
     this.lastLink = index;
     this.menueList.fill(false);
     this.menueList[index]= true;
-    
   }
  
   hideHeader() {
@@ -37,15 +36,12 @@ export class HeaderComponent implements OnInit {
   }
 
   showMenue() {
-    console.log("this.lastLink", this.lastLink);
     let i = this.lastLink;
     this.menue =true;
     this.menueList[i] = true;
-    console.log("this.lastLink", this.menueList[i]);
   }
 
   hideMenue() {
-    console.log("now hide list");
     if (!this.headerList) {
       this.menue = false;
       this.menueList.fill(false);
@@ -56,23 +52,18 @@ export class HeaderComponent implements OnInit {
   overHeaderList() {
     this.headerList = true;
     this.menueList[this.lastLink] = true;
-    console.log("this.lastLink", this.menueList[this.lastLink]);
-    console.log("mouseOverHeader", this.headerList);
   }
 
   outHeaderList() {
     this.headerList =  false;
-    console.log("mouseOutHeader", this.headerList);
   }
 
-
   hideMenueHL() {
-    
-    console.log("hideMenueHL()");
     this.menue = false;
     this.menueList.fill(false);
   }
-  showData() {
+
+  insideHeaderList() {
     this.menue= false;
     this.menueList.fill(false);
   }

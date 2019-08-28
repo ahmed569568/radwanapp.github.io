@@ -11,6 +11,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AgmCoreModule } from '@agm/core';
+
+import { NgxGalleryModule } from 'ngx-gallery';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxGalleryModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
     })
