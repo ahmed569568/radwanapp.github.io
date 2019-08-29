@@ -8,3 +8,34 @@
     font-family: Montserrat !important;
     
 }
+figure {
+    margin-bottom: 3% !important;
+    
+}
+#current-image {
+    border-radius: 5px !important;
+}
+.dots-container > .dot.active {
+    cursor: pointer;
+    opacity: .9;
+    background: red !important;
+}
+.previews-container > .preview-inner-container {
+    padding-left: 8% !important;
+    padding-right: 8% !important;
+}
+
+.previews-container > .preview-inner-container > .preview-image {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 25% !important;
+    height: 100px !important;
+    border-radius: 5px !important;
+    background: red !important;
+    opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+} 
+.previews-container > .preview-inner-container > .preview-image:hover {
+    opacity: .5;
+}

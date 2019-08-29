@@ -9,6 +9,7 @@ h1 {
 .second {
     padding-right: 10%;
     padding-top: 5%;
+    margin-bottom: 5%
 }
 .first {
     padding-left: 10%;
@@ -263,4 +264,18 @@ h1 {
     float: right;
     margin-top: 30%;
     margin-bottom: 30%;
+}
+figure {
+    margin-bottom: 3% !important;
+}
+#carousel-container {
+    margin-bottom: 3% !important;
+}
+.current-figure {
+    margin-bottom: 3% !important;
+}
+.current-image {
+    min-height: 430px;
+    max-height: 430px;
+    
 }
