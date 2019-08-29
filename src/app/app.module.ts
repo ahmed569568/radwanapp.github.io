@@ -11,8 +11,16 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AgmCoreModule } from '@agm/core';
-
+import 'hammerjs'; 
+import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { NgxGalleryModule } from 'ngx-gallery';
+// import { library, dom } from '@fortawesome/fontawesome-svg-core';
+// import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
+// library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
+
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
+library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +38,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     NgxGalleryModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
-    })
+    }),
+    GalleryModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
