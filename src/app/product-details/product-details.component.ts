@@ -20,19 +20,18 @@ export class ProductDetailsComponent implements OnInit {
  
 
   imagesRect: Image[] = [
-    new Image(0, { img: 'assets/Tv.jpg', description: ''},
-      { img: 'assets/Tv.jpg', title: '',alt: '',ariaLabel: '' }),
-    new Image(1, { img: 'assets/Tv.jpg' }),
+    new Image(0, { img: 'assets/Tv.jpg', description: ''},{ img: 'assets/Tv.jpg', title: '',alt: '',ariaLabel: '' }),
+    new Image(1, { img: 'assets/Tv.jpg' }, { img: 'assets/Tv.jpg' }),
     
     new Image(2, { img: 'assets/Tv.jpg', description: '', title: '', alt: '', ariaLabel: '' },
       { img: 'assets/Tv.jpg', description: ''}),
     new Image(3,
       { img: 'assets/Tv.jpg', description: '', title: '', alt: '', ariaLabel: ''},
       { img: 'assets/Tv.jpg', title: '',alt: '',ariaLabel: '' }),
-    new Image(4, { img: 'assets/Tv.jpg' }),
+    new Image(4, { img: 'assets/Tv.jpg', description: ''} ,{ img: 'assets/Tv.jpg' }),
     new Image(5, { img: 'assets/Tv.jpg', description: ''},
       { img: 'assets/Tv.jpg' }),
-    new Image(6, { img: 'assets/Tv.jpg' })
+    new Image(6, { img: 'assets/Tv.jpg' },{ img: 'assets/Tv.jpg', description: ''})
   ];
 
   accessibilityConfig: AccessibilityConfig = {

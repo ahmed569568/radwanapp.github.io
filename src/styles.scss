@@ -28,14 +28,39 @@ figure {
 .previews-container > .preview-inner-container > .preview-image {
     margin-left: 5px;
     margin-right: 5px;
-    width: 25% !important;
-    height: 100px !important;
     border-radius: 5px !important;
-    background: red !important;
-    opacity: 1;
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+    width: 85px !important;
+    height: 75px !important;
+ 
 } 
-.previews-container > .preview-inner-container > .preview-image:hover {
-    opacity: .5;
+.dots-container {
+ 
+    margin-bottom: 8px !important;
+}
+.dots-container > .dot {
+    background: rgba(149, 165, 166, 1) !important;
+    border-radius: 5px;
+    height: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 10px;
+    opacity: unset !important;
+    cursor: pointer;
+    
+}
+img.inside.preview-image.active:focus {
+    border:unset !important;
+}
+img.inside.preview-image.active {
+    
+    border: 1px solid rgba(231, 76, 60, 1) !important;
+    
+}
+#carousel-container > .current-figure > #current-image, #carousel-container > .current-figure> #current-image-legacy {
+    width: 85% !important;
+    display: block;
+    height: 500px !important;
+    margin: auto !important;
+    max-width: 100%;
+    max-height: unset !important;
 }
