@@ -20,6 +20,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
+import {  HttpClientModule } from '@angular/common/http';
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     BrowserModule,
     AppRoutingModule,
     NgxGalleryModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
     }),

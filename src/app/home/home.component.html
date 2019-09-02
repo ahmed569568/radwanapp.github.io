@@ -28,15 +28,32 @@
   <div class="container-fluid mid">
       <div class="row rowMid">
         <div class="col-lg-3 cat">
-            <img src="assets/categories/3.jpg" class="cat1" alt="Responsive image">
-            <img src="assets/categories/6.jpg" class="cat1" alt="Responsive image">
+            <div>
+                <img src="assets/categories/3.jpg" class="cat1" alt="Responsive image">
+                <!-- <div class="title">Mobile <br> & Tablets</div> -->
+            </div>
+           <div>
+                <img src="assets/categories/7.png" class="cat1" alt="Responsive image">
+                <!-- <div  class="title">Mobile <br> Accessories</div> -->
+           </div>
          </div>
          <div class="col-lg-3 cat">
-            <img src="assets/categories/4.jpg" class="cat1" alt="Responsive image">          
-            <img src="assets/categories/6.jpg" class="cat1" alt="Responsive image">
+            <div>
+                <img src="assets/categories/4.jpg" class="cat1" alt="Responsive image"> 
+                <!-- <div  class="title">TVs <br>&Smart TVs</div> -->
+            </div>
+            <div>
+                <img src="assets/categories/6.jpg" class="cat1" alt="Responsive image">
+                <!-- <div  class="title">Speakers <br>& Headphones</div> -->
+            </div>        
+            
          </div>
          <div class="col-lg-6 cat">
-            <img src="assets/categories/5.jpg" class="" alt="Responsive image">
+             <div>
+                 <img src="assets/categories/5.jpg" class="" alt="Responsive image">
+                 <!-- <div class="title"> Gaming Solutions</div> -->
+             </div>
+            
          </div>
       </div>
   </div>
@@ -48,24 +65,24 @@
     <div class="row">
        
             <div class="card-deck">
-                <div class="card">
+                <div class="card" *ngFor="let product of products">
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">
                         <div class="middle">
                             <div class="text">learn More</div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text"  (click)="navSearch()">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
+                     <div class="card-body">
+                        <p class="card-text"  (click)="navSearch()">{{ product.name }}</p>
                         <p class="card-text"  (click)="navSearch()"><small class="text-muted">UnionAir, Televisions</small></p>
                         <div class="card-price-like">
-                            <h5 class="price">2,150.00<small>EGP</small></h5>
+                            <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
                             <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
                             <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
                         </div>
                     </div>
                 </div>
-                <div class="card">
+               <!-- <div class="card">
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">
                         <div class="middle">
@@ -115,10 +132,10 @@
                             <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
                         </div>
                         </div>
-                    </div>
+                    </div> -->
         
         </div>
-        <div class="card-deck">
+        <!-- <div class="card-deck">
                 <div class="card">
                     <div class="my-wrapper"> 
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">                         
@@ -330,6 +347,6 @@
                         </div>
                     </div>
         
-        </div>
+        </div> -->
     </div>
 </div>
