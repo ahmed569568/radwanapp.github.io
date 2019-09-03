@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { AccessibilityConfig, Image, ImageEvent } from '@ks89/angular-modal-gallery';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 
 declare var $:any;
 
@@ -84,5 +85,7 @@ export class ProductDetailsComponent implements OnInit {
     const newImage: Image = new Image(this.imagesRect.length - 1 + 1, imageToCopy.modal, imageToCopy.plain);
     this.imagesRect = [...this.imagesRect, newImage];
   }
-
+  buy() {
+    console.log("sfsdfsaffsd");
+  }
 }

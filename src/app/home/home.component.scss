@@ -1,5 +1,6 @@
 .mid {
-    background-color: #E30B13;
+    background-color: 
+    rgba(245, 245, 245, 1);
 }
 .rowMid {
     margin-left: 10%;
@@ -117,9 +118,36 @@ h5 {
 
   
   .title {
-      background: #e74c3c;
-      color: white;
-      position: absolute;
-      
-
+    background: rgba(227, 11, 19, 1);
+    color: white;
+    position: absolute;
+    top: 110px;
+    font-size: 15px;
+    padding: 3px 22px;
   }
+ 
+
+  .cat-info {
+     position: relative;
+  }
+.title-game {
+    background: rgba(227, 11, 19, 1);
+    color: white;
+    position: absolute;
+    padding: 4px 50px 4px 21px;
+    top: unset;
+    bottom: 40px;
+    font-size: 28px;
+}
+.sale {
+    color: rgba(227, 11, 19, 1);
+    background-color: rgba(241, 196, 15, 1);
+    position: absolute;
+    font-weight: bold;
+    font-size: 28px;
+    padding: 0px 28px;
+    border-radius: 5px;
+    bottom: 84px;
+    left: 45px;
+    z-index: 1;
+}
