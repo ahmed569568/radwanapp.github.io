@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>arrow-down-sign-to-navigate</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0.219028571 13.6504571 0.219028571 13.6504571 8 0 8"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrow-down-sign-to-navigate" transform="translate(4.000000, 7.285714) rotate(-270.000000) translate(-4.000000, -7.285714) translate(-3.000000, 3.285714)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-2"></g>
+            <path d="M6.82491429,8 C6.58034286,8 6.33577143,7.90628571 6.14994286,7.72045714 L0.280457143,1.85097143 C-0.0937142857,1.4768 -0.0937142857,0.871314286 0.280457143,0.498285714 C0.653485714,0.125942857 1.25897143,0.125942857 1.63222857,0.498285714 L6.82491429,5.69188571 L12.0187429,0.4992 C12.392,0.125942857 12.9972571,0.125942857 13.3705143,0.4992 C13.7437714,0.872228571 13.7437714,1.47771429 13.3705143,1.85097143 L7.5008,7.72045714 C7.3152,7.9072 7.06971429,8 6.82491429,8 Z" id="Fill-1" fill="#000000" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

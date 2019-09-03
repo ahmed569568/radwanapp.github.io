@@ -54,6 +54,7 @@ img.inside.preview-image.active:focus {
 img.inside.preview-image.active {
     
     border: 1px solid rgba(231, 76, 60, 1) !important;
+    background-color: rgba(231, 76, 60, 0.2) !important;
     
 }
 #carousel-container > .current-figure > #current-image, #carousel-container > .current-figure> #current-image-legacy {
@@ -63,4 +64,21 @@ img.inside.preview-image.active {
     margin: auto !important;
     max-width: 100%;
     max-height: unset !important;
+}
+
+.left-arrow-preview-image {
+    background-image: url(./assets/icons/arrow-down-sign-to-navigate.svg) !important;
+    background-size: 100% 100% !important;
+ }
+
+ .right-arrow-preview-image {
+    background-image: url(./assets/icons/arrow--sign-to-navigate-right.svg) !important;
+    background-size: 100% 100% !important;
+}
+.previews-container > .nav-left {
+    left: 50px !important;
+}
+.previews-container > .nav-right {
+    
+    right: 50px !important;
 }
