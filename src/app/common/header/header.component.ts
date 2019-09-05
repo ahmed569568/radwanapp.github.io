@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-header',
@@ -12,13 +13,18 @@ export class HeaderComponent implements OnInit {
   menueList: Array<boolean> ;
   headerList: boolean;
   lastLink: any;
-  constructor( private route: Router ) { 
+  categories: any;
+  constructor( private route: Router, private categoriesService: CategoriesService ) { 
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
 
   }
 
   ngOnInit( ) {
+    this.categoriesService.getCategories().subscribe( (data:any) => {
+      console.log("Categories", data);
+      this.categories = data;
+    })
   }
 
   goTo() {

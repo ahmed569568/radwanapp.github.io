@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class GategoriesService {
+export class CategoriesService {
   url:any;
   httpOptions:any;
   constructor( private http: HttpClient) { 

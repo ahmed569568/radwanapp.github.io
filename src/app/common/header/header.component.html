@@ -30,11 +30,11 @@
       <div class="container">
           <div class="row">
               <ul >
-                <li><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">Mobile & Tablets</a></li>
-                <li><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >Mobile Accessories</a></li>
-                <li><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >TVs & Smart TVs</a></li>
-                <li><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >Speakers & Headphones</a></li>
-                <li><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">Gaming Solutions</a></li>
+                <li><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[1].name }}</a></li>
+                <li><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[2].name }}</a></li>
+                <li><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[0].name }}</a></li>
+                <li><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[3].name }}</a></li>
+                <li><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[4].name }}</a></li>
               </ul>
           </div>
       </div>
