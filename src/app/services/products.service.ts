@@ -7,19 +7,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductsService {
 
   url: string;
- 
-  constructor(private http: HttpClient) {
-    this.url = 'http://elogail.bit68.com/api/'
-   }
+  httpOptions:any;
 
-   getProducts() {
-    const httpOptions = {
+  constructor(private http: HttpClient) {
+
+    this.url = 'http://elogail.bit68.com/api/';
+
+    this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Access-Control-Allow-Origin': '*'
-
       })
     };
-     return this.http.get( this.url + 'products/',httpOptions);
+
+   }
+
+    getProducts() {
+      return this.http.get( this.url + 'products',this.httpOptions);
+    }
+
+   getProduct(id:any) {
+    return this.http.get( this.url + 'products/'+ id  ,this.httpOptions);
    }
 }

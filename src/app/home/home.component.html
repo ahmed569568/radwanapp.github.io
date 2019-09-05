@@ -68,14 +68,14 @@
             <div class="card-deck">
                 <div class="card" *ngFor="let product of products">
                     <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">
+                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
                             <div class="text">learn More</div>
                         </div>
                     </div>
                      <div class="card-body">
-                        <p class="card-text"  (click)="navSearch()">{{ product.name }}</p>
-                        <p class="card-text"  (click)="navSearch()"><small class="text-muted">UnionAir, Televisions</small></p>
+                        <p class="card-text"  (click)="navigateProduct(product.id)">{{ product.name }}</p>
+                        <p class="card-text"  (click)="navigateProduct(product.id)"><small class="text-muted">{{ product.brand.name }}</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
                             <a href="#"><img src="assets/logo/love.svg"  alt=""></a>

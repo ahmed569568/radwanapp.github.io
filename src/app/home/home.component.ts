@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class HomeComponent implements OnInit {
   products: any;
-  constructor( private route: Router, private productsService:ProductsService ) { }
+  constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute  ) { }
 
   ngOnInit() {
     this.productsService.getProducts().subscribe( (data:any) => {
@@ -17,8 +17,9 @@ export class HomeComponent implements OnInit {
     }) ;
     
   }
-  navSearch() {
-    this.route.navigate(['./product-details']);
+  navigateProduct(id:any) {
+    this.router.navigate( ['./product-details/', id] , { relativeTo: this.route } );
+     
   }
 
 }

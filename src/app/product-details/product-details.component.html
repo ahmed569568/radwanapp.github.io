@@ -5,12 +5,12 @@
             <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery> -->
             <!-- <ks-modal-gallery [id]="0" [modalImages]="images"></ks-modal-gallery> -->
             <!-- <ks-carousel [id]="100" [images]="images"></ks-carousel> -->
-            <ks-carousel [id]="107" [images]="imagesRect" [playConfig]="{autoPlay: false}" [previewConfig]="{visible: true, number: 5}"></ks-carousel>
+            <ks-carousel *ngIf="showGallary" [id]="107" [images]="imagesRect" [playConfig]="{autoPlay: false}" [previewConfig]="{visible: true, number: 5}"></ks-carousel>
         </div>
         <div class="col-lg-6 second">
-            <h1>UnionAir 32 Inch HD LED TV - M-LD-32UN-PB816-EXD</h1>
-            <p class="by">by <span>UnionAir, Televisions</span></p>
-            <p class="first-price">2,150.00<span>EGP</span></p>
+            <h1>{{ product.name }}</h1>
+            <p class="by">by <span>{{ product.brand.name }}</span></p>
+            <p class="first-price">{{ product.price }}.00<span>EGP</span></p>
             <a  class="btn  btn-lg active buy" role="button"  (click)="buy()">buy now</a>
             <a  class="btn cart btn-lg active" role="button" aria-pressed="true"><img src="assets/icons/Addtocartbtn.png" alt=""></a>
             <div class="wish">
@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-lg-12 ">
             <h2>Description</h2>
-            <p class="paragraph">- Resolution: 1366*768 - Brightness: 220-260±10�/m2 - Viewing angle: 178H/178V - Backlight life: 30000 Hrs - HDMI input (No, x1, x2, x3): x2 - 15-PIN D-SUB INPUT (VGA): x1 - Component video input(YPbPr/YCbCr): x1 - AV input rca ( x1, x2): x1 - Headphone output (No, x1): x1 - USB input (No, x1, x2): x2 - Stereo audio input for component: yes - Power rating: 100-240VAC 50/60 Hz - Full load consumption: 	&lt;65W - Stand-by power - consumption: &gt;0.5W </p>
+            <p class="paragraph">{{ product.short_description }}</p>
         </div>       
         <div class="col-lg-6">
             <p class="prod-spec">Product Specifications</p>
