@@ -128,3 +128,24 @@ img {
     margin-top: -8%!important;
 }
 
+.header {
+    display: block;
+}
+.nav-desktop {
+    display: inline-flexbox;
+}
+// .nav-mobile {
+//     display: none;
+// }
+/* Mobile Style */
+@media (max-width: 576px) { 
+    .header {
+        display: none;
+    }
+    .nav-desktop {
+        display: none;
+    }
+    .nav-mobile {
+        display: flex;
+    }
+ }

@@ -27,7 +27,7 @@
 
   <div class="container-fluid mid">
       <div class="row rowMid">
-        <div class="col-lg-3 cat">
+        <div class="col-lg-3  col-sm-12 cat">
             <div class="cat-info">
                 <img src="{{ categories[1].picture }}" class="cat1" alt="Responsive image">
                 <div class="title"><div>{{ categories[1].name }}</div></div>
@@ -37,7 +37,7 @@
                 <div  class="title">{{ categories[2].name }}</div>
            </div>
          </div>
-         <div class="col-lg-3 cat">
+         <div class="col-lg-3  col-sm-12 cat">
             <div class="cat-info" >
                 <img src="{{ categories[0].picture }}" class="cat1" alt="Responsive image"> 
                 <div  class="title">{{ categories[0].name }}</div>
@@ -48,9 +48,9 @@
             </div>        
             
          </div>
-         <div class="col-lg-6 cat">
+         <div class="col-lg-6 col-sm-12 cat">
              <div class="cat-info">
-                 <img src="{{categories[4].picture}}" class="" alt="Responsive image">
+                 <img src="{{categories[4].picture}}" class="last-categ" alt="Responsive image ">
                  <div class="sale">BIG SALE 50%</div>
                  <div class="title-game"> {{ categories[4].name }}</div>
              </div>
@@ -63,7 +63,7 @@
     <div class="row">
         <h5>Popular products</h5>
     </div>
-    <div class="row">
+    <div class="row ">
        
             <div class="card-deck">
                 <div class="card" *ngFor="let product of products">
