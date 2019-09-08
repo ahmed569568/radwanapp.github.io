@@ -279,3 +279,122 @@ figure {
     max-height: 430px;
     
 }
+.gallary-desktop {
+    display: block;
+}
+.gallary-mobile {
+    display: none;
+}
+
+@media (max-width: 576px) { 
+    .gallary-desktop {
+        display: none;
+    }
+    .gallary-mobile {
+        display: block;
+    }
+    h1 {
+        font-size: 17px;
+    }
+    .second {
+        padding-left: 5%;
+    }
+    .by {
+        font-size: 11px;
+    }
+    .by span {
+        font-size: 9px;
+    }
+    .first-price {
+        font-size: 14px;
+    }
+    .first-price span {
+        font-size: 11px;
+        margin-left: 2px;
+    }
+    .buy {
+        font-size: 12px;
+        padding: 10px 53px;
+    }
+    .cart > img {
+        width: 22px;
+    }
+    .cart {
+        background-color: #ecf0f1;
+        margin-left: 3%;
+        padding-top: 2px;
+    }
+    .wishlist {
+        line-height: 1.2; 
+        padding: 0px 5px 4px 5px;
+    }
+    .wishlist span {
+        margin-left: 5px;
+        font-size: 10px;
+    }
+    .wishlist img {
+        width: 12px;
+        margin-top: 5px;
+    }
+    #first,
+    #second,
+    #third,
+    #fourth {
+        height: 19px;
+        width: 19px;
+    }
+    .wish {
+        margin-top: 0;
+        margin-bottom: 10%;
+    }
+    .links :nth-child(1) {
+        margin-right: 4%;
+    }
+    .links :nth-child(2) {
+        margin-right: 4%;
+    }
+    .links :nth-child(3) {
+        margin-right: 4%;
+    }
+    .links a {
+        font-size: 13px;
+    }
+    .description h2 {
+        font-size: 16px;
+    }
+    .description .paragraph{
+        font-size: 10px;
+    }
+    .prod-spec {
+        font-size: 12px;
+    }
+    .spec ul {
+        padding-left: 0px;
+    }
+    .spec ul:last-of-type {
+        margin-left: 0%;
+    }
+    .spec ul li {
+        font-size: 6px;
+    }
+    .spec :nth-child(2) li {
+        line-height: 2.1;
+    }
+    
+    
+    .spec :nth-child(2) {
+        font-size: 6px
+    }
+    .spec :nth-child(1) {
+        font-size: 8px
+    }
+    .first {
+         padding-left: unset; 
+    }
+}
+
+
+// .spec :nth-child(2) {
+    
+//     @include media-breakpoint-down(xs) {  margin-right: -3px; }
+// }

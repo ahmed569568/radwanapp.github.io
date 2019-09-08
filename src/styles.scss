@@ -80,5 +80,18 @@ img.inside.preview-image.active {
 }
 .previews-container > .nav-right {
     
-    right: 50px !important;
+    left:  545px !important;
+}
+@media (max-width: 576px) { 
+    #carousel-container > .current-figure > #current-image, #carousel-container > .current-figure > #current-image-legacy {
+        height: auto !important;
+     
+    }
+    .previews-container > .nav-left {
+    left: 50px !important;
+}
+.previews-container > .nav-right {
+    
+    left:291px !important;
+}
 }
