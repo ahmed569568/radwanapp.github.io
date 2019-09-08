@@ -37,3 +37,46 @@ p > span {
 .contact-us {
  cursor: pointer;
 }
+.social-mobile {
+    display: none;
+}
+.social-mobile {
+    display: none;
+}
+.social-desktop {
+    display: block;
+}
+@media (max-width: 576px) {
+    ul li {
+        font-size: 10px;
+        color: #ffffff;
+        line-height: 19px;
+    }
+    .social-mobile {
+        display: block;
+        margin-top: -13px;
+        margin-left: -5px;
+    }
+    .social-desktop {
+        display: none;
+    }
+    .social li {
+        width: 15px;
+        height: 15px;
+    }  
+    .developed {
+        font-family: "Roboto-Light";
+        font-size: 10px;
+        color: #ecf0f1;
+        text-align: center;
+    } 
+    .developed > span {
+        font-family: "Roboto-Medium";
+        font-size: 12px;
+        color: #ecf0f1;
+    }
+ }
+
+ 
+
+   
