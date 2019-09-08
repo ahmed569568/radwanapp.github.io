@@ -147,5 +147,40 @@ img {
     }
     .nav-mobile {
         display: flex;
+        background-color: rgba(236, 236, 236, 1) !important;
+    }
+    
+ 
+    .navbar-light .navbar-toggler {
+        border-color: unset; 
+        border: 1px;
+    }
+    .navbar-light .navbar-toggler-icon {
+        background-image: url(../../../assets/logo/Group4Copy@2x.svg);
+    }
+    .mobile-logo {
+        width: 25px;
+        margin-left: 10px;
+    }
+    .mobile-love {
+        margin-right: 18px;
+    }
+    .mobile-cart {
+        margin-right: 25px;
+    }
+    .search {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+    .form-control {
+        height: 33px;
+        width: 80%
+    }
+    .form-inline {
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 5px;
     }
  }

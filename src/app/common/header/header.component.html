@@ -27,11 +27,19 @@
 </nav>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav-mobile">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    
   
+    <div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img class="mobile-logo" src="../../../assets/logo/final-logo@2x.svg" alt="">
+    </div>
+    <div>
+        <img class="mobile-cart" src="../../../assets/logo/Cart Active@1x.png" alt="">
+        <img  class="mobile-love" src="../../../assets/logo/love Active@1x.png" alt="">
+    </div>
+   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -60,6 +68,10 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
+    <form class="form-inline">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
+            <button class="btn btn-primary search" type="button" ><img src="assets/logo/Search@1x.png"  alt="" (click)="goTo()"></button>
+        </form>
   </nav>
 
   <header class="header">
