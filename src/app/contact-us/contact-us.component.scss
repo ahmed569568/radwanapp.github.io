@@ -122,3 +122,91 @@
     color: #ffffff;
     width: 90%;
   }
+
+  @media (max-width: 576px) {
+    .upper{
+      height: 160px;
+    }
+    .form{
+      margin-top: 40%;
+      margin-bottom: 11%;
+    }
+    .first-title {
+      font-size: 16px;
+      margin-top: 5%;
+    }
+    .paragraph {
+      font-size: 11px;
+      width: 80%;
+      position: absolute;
+      top: 45px;
+    }
+  
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #95a5a6;
+      font-family: 'Roboto';
+      font-size: 10px;
+      font-weight: 500;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      font-family: 'Roboto';
+      font-size: 10px;
+      font-weight: 500;
+      color: #95a5a6;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: #95a5a6;
+      font-family: 'Roboto';
+      font-size: 10px;
+      font-weight: 500;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: #95a5a6;
+      font-family: 'Roboto';
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .name {
+      float: left;
+      width: 55%;
+      border-radius: unset;
+      height: 35px;
+      border-color: #ecf0f1;
+      margin-bottom: 1%;
+    }
+    .email {
+      float: right;
+      border-radius: unset;
+      height: 35px;
+      border-color: #ecf0f1;
+      margin-bottom: 1%;
+      width: 34%;
+      margin-right: 10%;
+    }
+    .message {
+      height: 150px;
+    }
+    .btn-lg{
+      font-size: 12px;
+    }
+    .second-title {
+      font-size: 16px;
+    } 
+    .phone {
+      font-size: 12px;
+    }
+    .tel {
+      font-size: 12px;
+    }
+    .fax {
+      font-size: 12px;
+    }
+    .third-title {
+      font-size: 16px;
+    }
+    .address {
+      font-size: 12px;
+      margin-bottom: 10%;
+    }
+    
+  }

@@ -83,3 +83,57 @@
     font-weight: bold;
     margin-bottom: 5%;
   }
+  @media (max-width: 576px) {
+  .upper{
+    height: 160px;
+  }
+  .store {
+    font-size: 20px;
+  }
+  .by {
+    font-size: 16px;
+  }
+  .by span {
+    font-size: 15px;
+  }
+  .paragraph {
+    font-size: 11px;
+  }
+  .contact-detail {
+    font-size: 14px;
+    margin-top: 0%;
+  }
+  .phone {
+    font-size: 12px;
+  }
+  .tel {
+    font-size: 12px;
+  }
+  .fax {
+    font-size: 12px;
+  }
+  .store-address{
+    font-size: 14px;
+    margin-top: 0%;
+  }
+  .address {
+
+    font-size: 12px;
+    color: #4b5858;
+    font-weight: bold;
+    margin-bottom: 8%;
+  }
+
+  .location{
+    font-size: 14px;
+    color: #4b5858;
+    font-weight: bold;
+    margin-bottom: 8%;
+  }
+  agm-map {
+    height: 220px;
+  }
+  .map {
+    padding-bottom: 10%;
+  }
+}
