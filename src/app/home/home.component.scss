@@ -270,3 +270,11 @@ h5 {
     
  }
 
+ @media screen and (device-aspect-ratio: 40/71) {
+    .card {
+        // width: 160px;
+        min-width: 45%;
+        width:45%;
+   }
+   
+ }

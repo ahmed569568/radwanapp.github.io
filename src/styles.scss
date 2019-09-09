@@ -95,3 +95,12 @@ img.inside.preview-image.active {
     left:291px !important;
 }
 }
+
+@media screen and (device-aspect-ratio: 40/71) {
+    .previews-container > .nav-right {
+        left: 250px !important;
+    }
+    .previews-container > .nav-left {
+        left: 35px !important;
+    }
+ }

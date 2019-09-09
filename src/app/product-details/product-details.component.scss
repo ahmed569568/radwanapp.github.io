@@ -373,11 +373,11 @@ figure {
     }
     .spec ul:last-of-type {
         margin-left: 0%;
-        margin-right: -3px;
+        margin-right: 0px;
 
     }
     .spec ul li {
-        font-size: 6px;
+        font-size: 7px;
     }
     .spec :nth-child(2) li {
         line-height: 2.1;
@@ -466,3 +466,25 @@ figure {
     
 //     @include media-breakpoint-down(xs) {  margin-right: -3px; }
 // }
+
+@media screen and (device-aspect-ratio: 40/71) {
+    .links a {
+        font-size: 11px;
+    }
+    .prod-spec {
+        font-size: 10px;
+    }
+    .spec ul:last-of-type {
+        margin-left: 0%;
+        margin-right: -10px;
+    }
+    .spec ul li {
+        font-size: 6px;
+    }
+    .card {
+        // width: 160px;
+        min-width: 45%;
+        width:45%;
+   }
+
+ }

@@ -79,4 +79,10 @@ p > span {
 
  
 
+ @media screen and (device-aspect-ratio: 40/71) {
+    .social li {
+        width: 13px;
+        height: 13px;
+    }  
    
+ }
