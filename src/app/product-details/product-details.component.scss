@@ -373,6 +373,8 @@ figure {
     }
     .spec ul:last-of-type {
         margin-left: 0%;
+        margin-right: -3px;
+
     }
     .spec ul li {
         font-size: 6px;
@@ -391,6 +393,72 @@ figure {
     .first {
          padding-left: unset; 
     }
+    .recommended {
+        font-size: 16px;
+        margin-top: 15%;
+        margin-bottom: 15%;
+    }
+    .card-deck {
+        flex-direction: row;
+        overflow-x: auto;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        overflow: scroll;
+        width: 100%;
+ 
+     }
+ 
+    .card {
+         // width: 160px;
+         min-width: 42%;
+         width:42%;
+    }
+
+    .card-text {
+        font-size: 8px;
+        margin-top: -14px;
+    }
+ 
+    .card-text :last-child {
+     margin-top: -16px;
+    }
+ 
+    .text-muted {
+         font-size: 7px;
+    }
+ 
+    .price {
+         font-size: 9px !important;
+         margin-top: -4px;
+    }
+ 
+    .card-price-like :nth-child(2) img {
+         height: 12px;
+         width: 14px;
+     }
+ 
+    .card-price-like:nth-child(3) img {
+         height: 12px !important;
+         width: 14px !important;
+     }
+     
+     .card-body {
+         padding: 0.9rem;
+     }
+ 
+     .card-price-like :nth-child(3) {
+         margin-top: -7%;
+     }
+ 
+     .card-price-like :nth-child(2)  {
+         margin-top: -7%;
+     }
+     
+     .text {
+         font-size: 9px;
+         padding: 5px 10px;
+     }
+ 
 }
 
 
