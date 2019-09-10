@@ -1,7 +1,7 @@
 
     
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    
+
     <div class="carousel-inner" >
        <div class="carousel-item active">
         <img src="{{ sliderAct}}" class="d-block w-100" alt="...">
@@ -66,7 +66,7 @@
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
-                            <div class="text">learn More</div>
+                            <div class="text" (click)="navigateProduct(product.id)">learn More</div>
                         </div>
                     </div>
                      <div class="card-body">

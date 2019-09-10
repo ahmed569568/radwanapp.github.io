@@ -16,18 +16,36 @@ export class ProductDetailsComponent implements OnInit {
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;
+  recProducts: any[];
+  popularProducts: any[];
+
   constructor( private productsService: ProductsService,  private route: ActivatedRoute) { 
     this.product = {};
+    this.recProducts = [];
+    this.popularProducts = [];
   }
   
   ngOnInit() {
-    
-    let id = this.route.snapshot.paramMap.get('id')
+   
+    let id = this.route.snapshot.paramMap.get('id');
     this.productsService.getProduct(id).subscribe( (data:any) => {
       this.product = data;
       this.setImagesInGallary(data.productimage);
       
     })
+    this.productsService.getPopularProduct().subscribe( ( data:any ) => {
+      
+      console.log("popular");
+      this.popularProducts = data;
+      
+    })
+
+    this.productsService.getRecommendedProducts().subscribe ( ( data:any) => {
+      console.log("recom", data);
+      this.recProducts = data;
+    })
+   
+    
   }
 
   setImagesInGallary(imgArray:any) {

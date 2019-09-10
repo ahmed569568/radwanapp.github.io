@@ -27,6 +27,14 @@ export class ProductsService {
     }
 
    getProduct(id:any) {
-    return this.http.get( this.url + 'products/'+ id  ,this.httpOptions);
+    return this.http.get( this.url + 'products'+ id  ,this.httpOptions);
+   }
+
+   getPopularProduct() {
+    return this.http.get( this.url + 'popular_products'  ,this.httpOptions);
+   }
+   
+   getRecommendedProducts() {
+    return this.http.get( this.url + 'reccommended_products'  ,this.httpOptions);
    }
 }
