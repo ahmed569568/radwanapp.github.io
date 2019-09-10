@@ -33,29 +33,29 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <img class="mobile-logo" src="../../../assets/logo/final-logo@2x.svg" alt="">
+        <img class="mobile-logo" src="assets/logo/final-logo@2x.svg" alt="">
     </div>
     <div>
-        <img class="mobile-cart" src="../../../assets/logo/Cart Active@1x.png" alt="">
-        <img  class="mobile-love" src="../../../assets/logo/love Active@1x.png" alt="">
+        <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" alt="">
+        <img  class="mobile-love" src="assets/logo/love Active@1x.png" alt="">
     </div>
    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showCate">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#"  (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[1].name }}</a>
+          <a class="nav-link" href="#"  (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[1]?.name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[2].name }}>{{ categories[2].name }}</a>
+          <a class="nav-link" href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[2]?.name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[0].name }}</a>
+          <a class="nav-link" href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[0]?.name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[3].name }}</a>
+          <a class="nav-link" href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[3]?.name }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[4].name }}</a>
+          <a class="nav-link" href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[4]?.name }}</a>
         </li>
       </ul>
      
@@ -70,11 +70,11 @@
       <div class="container">
           <div class="row">
               <ul >
-                <li><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[1].name }}</a></li>
-                <li><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[2].name }}</a></li>
-                <li><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[0].name }}</a></li>
-                <li><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[3].name }}</a></li>
-                <li><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[4].name }}</a></li>
+                <li *ngIf="showCate"><a href="#" (mouseover)="showHeader(0)" [ngClass]="{'down': menueList[0]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[1].name }}</a></li>
+                <li *ngIf="showCate"><a href="#" (mouseover)="showHeader(1)" [ngClass]="{'down': menueList[1]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[2].name }}</a></li>
+                <li *ngIf="showCate"><a href="#" (mouseover)="showHeader(2)" [ngClass]="{'down': menueList[2]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[0].name }}</a></li>
+                <li *ngIf="showCate"><a href="#" (mouseover)="showHeader(3)" [ngClass]="{'down': menueList[3]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()" >{{ categories[3].name }}</a></li>
+                <li *ngIf="showCate"><a href="#" (mouseover)="showHeader(4)" [ngClass]="{'down': menueList[4]}"  (mouseout)="hideHeader()"  (focus)="showMenue()" (blur)="hideMenue()">{{ categories[4].name }}</a></li>
               </ul>
           </div>
       </div>
