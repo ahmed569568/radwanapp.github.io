@@ -22,6 +22,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
 import {  HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './common/slider/slider.component';
+import { SliderItemDirective } from './directives/slider-item.directive';
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     ProductDetailsComponent,
     ContactUsComponent,
     AboutUsComponent,
-    SliderComponent
+    SliderComponent,
+    SliderItemDirective
   ],
   imports: [
     BrowserModule,
