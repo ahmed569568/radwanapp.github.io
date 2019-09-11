@@ -3,7 +3,8 @@
     rgba(245, 245, 245, 1);
 }
 .rowMid {
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .cat {
     margin-top: 5%;
@@ -122,10 +123,13 @@ h5 {
     color: white;
     position: absolute;
     top: 110px;
-    font-size: 15px;
+    font-size: 17px;
     padding: 3px 22px;
   }
- 
+  .title-text {
+    width: 100px;
+  }
+
 
   .cat-info {
      position: relative;

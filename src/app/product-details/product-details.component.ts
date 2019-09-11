@@ -13,17 +13,20 @@ declare var $:any;
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
+
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;
   recProducts: any[];
   popularProducts: any[];
+  detailedDescription: any[];
 
   constructor( private productsService: ProductsService,  private route: ActivatedRoute,
                private router: Router) { 
     this.product = {};
     this.recProducts = [];
     this.popularProducts = [];
+    this.detailedDescription = [];
   }
   
   ngOnInit() {
@@ -31,6 +34,9 @@ export class ProductDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.productsService.getProduct(id).subscribe( (data:any) => {
       this.product = data;
+      this.detailedDescription = data.detaileddescription;
+      console.log("Detail Description", this.detailedDescription);
+      console.log("Product", this.product);
       this.setImagesInGallary(data.productimage);
       
     })

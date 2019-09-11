@@ -38,10 +38,13 @@
             <h2>Description</h2>
             <p class="paragraph">{{ product.short_description }}</p>
         </div>       
-        <div class="col-lg-6 col-6">
-            <p class="prod-spec">Product Specifications</p>
+        <div class="col-lg-6 col-6" *ngFor="let detail of  detailedDescription;">
+            <p class="prod-spec">{{ detail?.title }}</p>
             <div class="spec">
-                <ul>
+                <p>
+                    {{ detail?.text }}
+                </p>
+                <!-- <ul>
                     <li>Specification 1-2-3-5-6-6-6-6</li>
                     <li>Specification 1-2-3-5 - 6 -7 -8</li>
                     <li>Specifications 1-2-3-5</li>
@@ -58,10 +61,10 @@
                     <li>ok</li>
                     <li>yes</li>
                     <li>what !</li>
-                </ul>
+                </ul> -->
             </div>
         </div>
-        <div class="col-lg-6 col-6">
+        <!-- <div class="col-lg-6 col-6">
             <p class="prod-spec">Product Specifications</p>
             <div class="spec">
                 <ul >
@@ -129,7 +132,7 @@
                     <li>what !</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </div>
