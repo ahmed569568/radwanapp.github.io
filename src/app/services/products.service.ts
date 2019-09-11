@@ -27,7 +27,7 @@ export class ProductsService {
     }
 
    getProduct(id:any) {
-    return this.http.get( this.url + 'products'+ id  ,this.httpOptions);
+    return this.http.get( this.url + 'products/'+ id  ,this.httpOptions);
    }
 
    getPopularProduct() {

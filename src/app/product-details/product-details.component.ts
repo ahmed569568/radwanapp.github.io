@@ -3,7 +3,7 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 import { AccessibilityConfig, Image, ImageEvent } from '@ks89/angular-modal-gallery';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { ProductsService } from '../services/products.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var $:any;
 
@@ -19,7 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   recProducts: any[];
   popularProducts: any[];
 
-  constructor( private productsService: ProductsService,  private route: ActivatedRoute) { 
+  constructor( private productsService: ProductsService,  private route: ActivatedRoute,
+               private router: Router) { 
     this.product = {};
     this.recProducts = [];
     this.popularProducts = [];
@@ -62,6 +63,13 @@ export class ProductDetailsComponent implements OnInit {
   buy() {
     console.log("sfsdfsaffsd");
   }
+
+  navigateProduct(id:any) {
+    this.router.navigate( ['./product-details/', id] );
+     
+  }
+
+
 }
 
 
