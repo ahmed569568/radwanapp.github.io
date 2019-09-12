@@ -4,6 +4,7 @@ import { AccessibilityConfig, Image, ImageEvent } from '@ks89/angular-modal-gall
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { ProductsService } from '../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { from } from 'rxjs';
 
 declare var $:any;
 
@@ -13,7 +14,8 @@ declare var $:any;
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+  
+  
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;

@@ -17,6 +17,10 @@ import { NgxGalleryModule } from 'ngx-gallery';
 // import { library, dom } from '@fortawesome/fontawesome-svg-core';
 // import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
 // library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+
+
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -39,6 +43,7 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     AppRoutingModule,
     NgxGalleryModule,
     HttpClientModule,
@@ -50,4 +55,6 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

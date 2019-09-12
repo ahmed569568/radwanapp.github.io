@@ -1,12 +1,15 @@
 import { Component, AfterContentInit, ContentChildren, ViewChild, QueryList, ElementRef } from '@angular/core';
-import { SliderItemDirective } from '../../directives/slider-item.directive'
+import { SliderItemDirective } from '../../directives/slider-item.directive';
+import { faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements AfterContentInit {
-
+  faAngleRight =faAngleRight;
+  faAngleLeft = faAngleLeft;
   @ContentChildren(SliderItemDirective, { read: ElementRef }) items
     : QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('slides',{static:true}) slidesContainer: ElementRef<HTMLDivElement>;
