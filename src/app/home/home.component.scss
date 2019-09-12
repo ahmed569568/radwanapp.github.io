@@ -41,6 +41,11 @@ h5 {
     min-width: 24%;
     margin-bottom: 2%;
 }
+.card:hover {
+    box-shadow: -5px 5px 10px 5px rgba(0, 0, 255, .2);
+    -moz-box-shadow:    -5px 5px 10px 5px rgba(0, 0, 255, .2);
+   -webkit-box-shadow: -5px 5px 10px 5px rgba(0, 0, 255, .2);
+}
 .text-muted {
     font-family: 'Roboto-Light';
     font-size: 10px;
