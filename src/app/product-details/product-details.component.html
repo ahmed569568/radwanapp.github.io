@@ -140,11 +140,11 @@
 <div class="container-fluid rec">
     <div class="row">
         <div class="col-12-lg">
-            <p class="recommended">Recommended for you <i class="fas fa-camera"></i></p>
+            <p class="recommended">Recommended for you </p>
         </div>
         <div class="col-lg-12">
-            <app-slider>
-            <div class="card-deck" appSliderItem>
+            <app-slider class="desktop-slider">
+                <div class="card-deck" appSliderItem>
                     <div class="card" *ngFor="let product of recProducts">
                         <div class="my-wrapper">
                             <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
@@ -163,58 +163,26 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="card" appSliderItem>
-                    <div class="my-wrapper"> 
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">                         
-                        <div class="middle">                             
-                            <div class="text">learn More</div>                         
-                        </div>                    
+            </app-slider>
+            <div class="card-deck mobile-slider">
+                <div class="card" *ngFor="let product of recProducts">
+                    <div class="my-wrapper">
+                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
+                        <div class="middle">
+                            <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+                        </div>
                     </div>
                     <div class="card-body">
-                    <p class="card-text"  (click)="navSearch()">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"  (click)="navSearch()"><small class="text-muted">UnionAir, Televisions</small></p>
+                    <p class="card-text">{{product?.product?.name}}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div> -->
-               <!-- <div class="card" appSliderItem>
-                    <div class="my-wrapper"> 
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">                         
-                        <div class="middle">                             
-                            <div class="text">learn More</div>                         
-                        </div>                    
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text"  (click)="navSearch()">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"  (click)="navSearch()"><small class="text-muted">UnionAir, Televisions</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
+                        <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
                         <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
                         <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
                     </div>
                     </div>
                 </div>
-                <div class="card" appSliderItem>
-                    <div class="my-wrapper"> 
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navSearch()" alt="...">                         
-                        <div class="middle">                             
-                            <div class="text">learn More</div>                         
-                        </div>                    
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text"  (click)="navSearch()">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"  (click)="navSearch()"><small class="text-muted">UnionAir, Televisions</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div> -->
-            </app-slider>
+            </div>
         </div>
     </div>
 </div>
@@ -227,7 +195,28 @@
         </div>
         
         <div class="col-lg-12">
-            <div class="card-deck">
+            <app-slider class="desktop-slider">
+                <div class="card-deck" appSliderItem>
+                    <div class="card" *ngFor="let product of recProducts">
+                        <div class="my-wrapper">
+                            <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
+                            <div class="middle">
+                                <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                        <p class="card-text">{{product?.product?.name}}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="card-price-like">
+                            <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
+                            <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
+                            <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </app-slider>
+            <div class="card-deck mobile-slider">
                 <div class="card" *ngFor="let product of recProducts">
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
@@ -236,17 +225,17 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{product?.product?.name}}</p>
-                        <p class="card-text"><small class="text-muted">UnionAir, Televisions</small></p>
-                        <div class="card-price-like">
-                            <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
-                            <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                        </div>
+                    <p class="card-text">{{product?.product?.name}}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <div class="card-price-like">
+                        <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
+                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
+                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
 </div>
 

@@ -288,8 +288,12 @@ figure {
 .gallary-mobile {
     display: none;
 }
-
-
+.desktop-slider {
+    display: block;
+}
+.mobile-slider {
+    display: none;
+}
 .my-wrapper {
     background: rgba(231, 76, 60, 0.2);
 }
@@ -323,12 +327,19 @@ figure {
     padding-right: 100px;
 
 }
+
 @media (max-width: 576px) { 
     .gallary-desktop {
         display: none;
     }
     .gallary-mobile {
         display: block;
+    }
+    .desktop-slider {
+        display: none;
+    }
+    .mobile-slider {
+        display: flex;
     }
     h1 {
         font-size: 17px;
