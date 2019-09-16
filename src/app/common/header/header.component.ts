@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
+
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   lastLink: any;
   categories: any;
   showCate: boolean;
-  constructor( private route: Router, private categoriesService: CategoriesService ) { 
+  constructor( private router: Router, private categoriesService: CategoriesService , private route: ActivatedRoute) { 
      this.categories =[];
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   goTo() {
-    this.route.navigate(['./search']);
+    this.router.navigate(['./search'], { relativeTo: this.route})
+    
   }
 
   showHeader(index) {

@@ -4,10 +4,10 @@
 
     <div class="carousel-inner" >
        <div class="carousel-item active">
-        <img src="{{ sliderAct}}" class="d-block w-100" alt="...">
+        <img src="{{ sliderAct}}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct('1')">
       </div>
-      <div class="carousel-item" *ngFor="let slider of sliders">
-        <img src="{{ slider.picture }}" class="d-block w-100" alt="...">
+      <div class="carousel-item" *ngFor="let slider of sliders" >
+        <img src="{{ slider.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct('1')">
       </div>
     </div>
 
@@ -24,29 +24,29 @@
   <div class="container-fluid mid">
       <div class="row rowMid" >
         <div class="col-lg-3  col-sm-12 cat">
-            <div class="cat-info" *ngIf="showCate">
-                <img src="{{ categories[1].picture }}" class="cat1" alt="Responsive image">
+            <div class="cat-info" *ngIf="showCate" (click)="navigateCategory()">
+                <img src="{{ categories[1].picture }}" class="cat1 " alt="Responsive image">
                 <div class="title"><div class="title-text">{{ categories[1]?.name }}</div></div>
             </div>
-           <div class="cat-info" *ngIf="showCate">
-                <img src="{{ categories[2].picture }}" class="cat1" alt="Responsive image">
+           <div class="cat-info" *ngIf="showCate"  (click)="navigateCategory()">
+                <img src="{{ categories[2].picture }}" class="cat1 " alt="Responsive image">
                 <div  class="title"><div class="title-text">{{ categories[2]?.name }}</div></div>
            </div>
          </div>
          <div class="col-lg-3  col-sm-12 cat">
-            <div class="cat-info" *ngIf="showCate">
-                <img src="{{ categories[0].picture }}" class="cat1" alt="Responsive image"> 
+            <div class="cat-info" *ngIf="showCate" (click)="navigateCategory()">
+                <img src="{{ categories[0].picture }}" class="cat1 " alt="Responsive image"> 
                 <div  class="title"><div class="title-text">{{ categories[0]?.name }}</div></div>
             </div>
-            <div class="cat-info" *ngIf="showCate">
+            <div class="cat-info" *ngIf="showCate" (click)="navigateCategory()">
                 <img src="{{ categories[3].picture }}" class="cat1" alt="Responsive image">
                 <div  class="title"><div class="title-text">{{ categories[3]?.name }}</div></div>
             </div>        
             
          </div>
          <div class="col-lg-6 col-sm-12 cat">
-             <div class="cat-info" *ngIf="showCate">
-                 <img src="{{categories[4].picture}}" class="last-categ" alt="Responsive image ">
+             <div class="cat-info" *ngIf="showCate" (click)="navigateCategory()">
+                 <img src="{{categories[4].picture}}" class="last-categ " alt="Responsive image ">
                  <div class="sale">BIG SALE 50%</div>
                  <div class="title-game"> {{ categories[4]?.name }}</div>
              </div>

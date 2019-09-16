@@ -474,3 +474,11 @@ and (-webkit-device-pixel-ratio : 3) {
         min-width: 54%;
     }
  }
+
+ @media screen and (device-aspect-ratio: 40/71) {
+    .text {
+        font-size: 6px;
+        padding: 5px 10px;
+    }
+   
+ }

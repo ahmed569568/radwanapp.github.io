@@ -9,12 +9,16 @@
 .cat {
     margin-top: 5%;
     margin-bottom: 5%;
-    flex: 0 0 0%;
+    flex: 0 0 25%;
     padding-right: 0%;
 }
 
 .cat1 {
     margin-bottom: 4%;
+    width: 100%;
+}
+.last-categ {
+    width: 205%;
 }
 h5 {
     color: #4b5858;
@@ -136,11 +140,13 @@ h5 {
   }
   .title-text {
     width: 100px;
+    // width: 116%;
   }
 
 
   .cat-info {
      position: relative;
+     cursor: pointer;
   }
 .title-game {
     background: rgba(227, 11, 19, 1);
@@ -163,6 +169,50 @@ h5 {
     left: 45px;
     z-index: 1;
 }
+
+// .cat1 {
+//     max-width:100%;
+// }
+// .last-categ {
+//     max-width: 100%;
+// }
+
+// @media (max-width:1512px) {
+//     .cat1 {
+//         width:280px;
+//     }
+//     .last-categ {
+//         width: 570px;
+//     }
+// }
+// @media (max-width:1412px) {
+//     .cat1 {
+//         width:260px;
+//     }
+//     .last-categ {
+//         width: 530px;
+//     }
+// }
+.title-game {
+    width: 120%;
+}
+.sale {
+    
+    width: 95%;
+}
+@media (max-width:1316px) {
+    .title {
+        top: 85px;
+    }
+    .title-game {
+        width: 340px;
+    }
+    .sale {
+        bottom: 89px;
+        width: 260px;
+    }
+}
+
 @media (max-width: 576px) { 
 
     .rowMid {
@@ -178,8 +228,12 @@ h5 {
     .title{
         top: 150px;
         font-weight: bold;
+        font-size: 14px;
     }
-
+    
+    .title-text {
+        width: 80px;
+    }
     .cat {
         margin: 5% auto;
     }
@@ -194,10 +248,12 @@ h5 {
         padding: 2px 10px 2px 7px;
         top: unset;
         bottom: 40px;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: bold;
+        width: 220px;
     }
-
+  
+    
     div .cat-info img.last-categ {
         width: 300px !important;
         height: 230px !important;
@@ -205,10 +261,11 @@ h5 {
     }
 
     .sale {
-        font-size: 18px;
+        font-size: 16px;
         padding: 0px 8px;
         bottom: 73px;
         left: 18px;
+        width: 180px;
     }
 
     .products {
@@ -288,5 +345,9 @@ h5 {
         min-width: 45%;
         width:45%;
    }
+   .text {
+    font-size: 6px;
+    padding: 5px 10px;
+  }
    
  }

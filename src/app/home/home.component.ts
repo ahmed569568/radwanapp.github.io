@@ -46,4 +46,11 @@ export class HomeComponent implements OnInit {
      
   }
 
+  navigateSliderProduct(id:any) {
+    console.log("ID", id);
+  }
+
+  navigateCategory() {
+    this.router.navigate(['./search'], { relativeTo: this.route})
+  }
 }
