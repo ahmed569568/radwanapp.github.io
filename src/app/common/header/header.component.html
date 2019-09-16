@@ -80,8 +80,8 @@
               <div class="header-list" *ngIf="menue" (mouseover)="overHeaderList()" (mouseout)="outHeaderList()" (click)="insideHeaderList()" > 
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-2">
-                            <p class="title">New Arrivals</p> 
+                        <div class="col-lg-2" *ngFor="let subCate of subCategories">
+                            <p class="title">{{ subCate.name }}</p> 
                             <ul class="types">
                                 <li><a href="#">Huawei P30 Lite</a></li>
                                 <li><a href="#">Oneplus 6t</a></li>
@@ -89,7 +89,7 @@
                                 <li><a href="#">Honor 10 lite</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-2">
+                        <!-- <div class="col-lg-2">
                             <p class="title">Popular Mobiles</p>
                             <ul class="types">
                                   <li><a href="#">IPhone 8 | X </a></li>
@@ -98,8 +98,8 @@
                                   <li><a href="#">Tecno Camon CX</a></li>
                                   <li><a href="#">Meizu m6</a></li>
                             </ul>
-                        </div>
-                        <div class="col-lg-2">
+                        </div> -->
+                        <!-- <div class="col-lg-2">
                             <p class="title">Tablets</p>
                             <ul class="types">
                               <li><a href="#">7 - 7.9 Inch</a></li>
@@ -107,8 +107,8 @@
                               <li><a href="#">9 - 9.9 Inch</a></li>
                               <li><a href="#">10 Inch & Above</a></li>
                             </ul>
-                          </div>
-                        <div class="col-lg-2">
+                          </div> -->
+                        <!-- <div class="col-lg-2">
                             <p class="title">Brands</p>
                             <ul class="types">
                               <li><a href="#">Lenovo</a></li>
@@ -117,10 +117,10 @@
                               <li><a href="#">Alcatel</a></li>
                               <li><a href="#">All brands</a></li>
                             </ul>
-                          </div>
-                        <div class="col-lg-4"><img src="assets/1.jpg" class="cat1" alt="Responsive image"></div>
+                        </div> -->
+                        <!-- <div class="col-lg-4"><img src="assets/1.jpg" class="cat1" alt="Responsive image"></div> -->
                     </div>
-                    <div class="row second-part">
+                    <!-- <div class="row second-part">
                       <div class="col-lg-2">
                           <p class="title">New Arrivals</p>
                           <ul class="types">
@@ -150,7 +150,7 @@
                           </ul>
                       </div>
                       
-                  </div>
+                  </div> -->
                 </div>
               </div>
           </div>

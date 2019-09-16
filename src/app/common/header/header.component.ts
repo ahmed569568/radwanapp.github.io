@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   headerList: boolean;
   lastLink: any;
   categories: any;
+  subCategories: any;
   showCate: boolean;
   constructor( private router: Router, private categoriesService: CategoriesService , private route: ActivatedRoute) { 
      this.categories =[];
@@ -29,6 +30,10 @@ export class HeaderComponent implements OnInit {
       console.log("Categories", data);
       this.categories = data;
       this.showCate = true;
+    })
+    this.categoriesService.getSubCategories().subscribe( (data:any) => {
+      this.subCategories = data;
+      console.log("this.subCategories", this.subCategories);
     })
   }
 
