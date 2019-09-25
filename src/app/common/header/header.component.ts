@@ -31,10 +31,6 @@ export class HeaderComponent implements OnInit {
       this.categories = data;
       this.showCate = true;
     })
-    this.categoriesService.getSubCategories().subscribe( (data:any) => {
-      this.subCategories = data;
-      console.log("this.subCategories", this.subCategories);
-    })
   }
 
   goTo() {
@@ -42,12 +38,22 @@ export class HeaderComponent implements OnInit {
     
   }
 
-  showHeader(index) {
+  showBorder(index,cateID) {
+    this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
+      this.subCategories = data.subcategory;
+      console.log("this.subCategories", this.subCategories);
+    })
     this.lastLink = index;
     this.menueList.fill(false);
     this.menueList[index]= true;
+
   }
- 
+  showBorderFromList() {
+    this.menueList[this.lastLink]= true;
+  }
+  hideBorderFromList() {
+    this.menueList.fill(false);
+  }
   hideHeader() {
     this.menueList.fill(false);
   }

@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
 
     
     this.sliderService.getSliders().subscribe( (data:any) => {
+      console.log("Sliders", data);
       this.sliderAct = data.pictures[0].picture;
       this.sliders = data.pictures.slice(1);
     })

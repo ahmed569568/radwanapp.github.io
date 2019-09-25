@@ -22,7 +22,7 @@ export class CategoriesService {
     return this.http.get( this.url + 'categories',this.httpOptions);
   }
 
-  getSubCategories() {
-    return this.http.get( this.url + 'subcategories', this.httpOptions);
+  getSubCategories(id:any) {
+    return this.http.get( this.url + 'categories/'+ id, this.httpOptions);
   }
 }
