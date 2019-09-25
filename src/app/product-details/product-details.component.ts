@@ -73,7 +73,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   navigateProduct(id:any) {
-    this.router.navigate( ['./product-details/', id] );
+    this.router.navigate( ['./product-details/', id]);
      
   }
 

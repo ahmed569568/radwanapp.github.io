@@ -14,14 +14,18 @@ export class HeaderComponent implements OnInit {
   menueList: Array<boolean> ;
   headerList: boolean;
   lastLink: any;
+  lastIndexMobile: any;
   categories: any;
   subCategories: any;
+  subCateProducts: any;
   showCate: boolean;
+  lastsubCateProductIndex:any;
   constructor( private router: Router, private categoriesService: CategoriesService , private route: ActivatedRoute) { 
      this.categories =[];
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
      this.showCate = false;
+     this.subCateProducts= [];
 
   }
 
@@ -37,16 +41,22 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
   }
-
+  goHome() {
+    this.router.navigate(['./'])
+  }
   showBorder(index,cateID) {
+    this.subCategories =[]
     this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
       this.subCategories = data.subcategory;
+      this.subCateProducts = [...data.subcategory];
+      this.subCateProducts.fill(false);
+      console.log("this.subCateProducts", this.subCateProducts)
       console.log("this.subCategories", this.subCategories);
     })
     this.lastLink = index;
     this.menueList.fill(false);
     this.menueList[index]= true;
-
+    console.log("From Hover")
   }
   showBorderFromList() {
     this.menueList[this.lastLink]= true;
@@ -90,5 +100,33 @@ export class HeaderComponent implements OnInit {
     this.menue= false;
     this.menueList.fill(false);
   }
-
+  selectSubCate(index){
+    if ( this.lastsubCateProductIndex != index) {
+      this.lastsubCateProductIndex =index;
+      this.subCateProducts.fill(false);
+      this.subCateProducts[index] = true;
+    } else {
+      this.lastsubCateProductIndex =null;
+      this.subCateProducts.fill(false);
+    }
+    
+  }
+  showHideBorderFromMobile(index,cateID) {
+    this.subCategories =[]
+    if (this.lastIndexMobile != index) {
+      this.lastIndexMobile = index;
+      this.menueList.fill(false);
+      this.menueList[index]= true;
+      this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
+        this.subCategories = data.subcategory;
+        this.subCateProducts = [...data.subcategory];
+        this.subCateProducts.fill(false);
+      })
+    } else {
+      this.lastIndexMobile = null;
+      this.menueList.fill(false);
+    }
+    
+   
+  }
 }
