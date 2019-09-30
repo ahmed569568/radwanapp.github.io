@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     
     this.sliderService.getSliders().subscribe( (data:any) => {
       console.log("Sliders", data);
-      this.sliderAct = data.pictures[0].picture;
+      this.sliderAct = data.pictures[0];
       this.sliders = data.pictures.slice(1);
     })
 
@@ -47,11 +47,16 @@ export class HomeComponent implements OnInit {
      
   }
 
-  navigateSliderProduct(id:any) {
-    console.log("ID", id);
+  navigateSliderProduct(url:any) {
+    console.log(
+      "url", url
+    )
+    if (url) 
+    this.router.navigate(['/externalRedirect', { externalUrl: url}], { skipLocationChange: false,});
   }
 
   navigateCategory() {
     this.router.navigate(['./search'], { relativeTo: this.route})
+    
   }
 }

@@ -16,9 +16,13 @@ export class FooterComponent implements OnInit {
 
   navAbout() {
     this.route.navigate(['./about-us']);
+    
+
   }
 
   navContact() {
     this.route.navigate(['./contact-us']);
+    
+
   }
 }

@@ -4,10 +4,10 @@
 
     <div class="carousel-inner" >
        <div class="carousel-item active">
-        <img src="{{ sliderAct}}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct('1')">
+        <img src="{{ sliderAct?.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct(sliderAct?.url)">
       </div>
       <div class="carousel-item" *ngFor="let slider of sliders" >
-        <img src="{{ slider.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct('1')">
+        <img src="{{ slider?.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSliderProduct(slider?.url)">
       </div>
     </div>
 

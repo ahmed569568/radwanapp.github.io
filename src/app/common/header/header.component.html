@@ -60,7 +60,7 @@
           <a class="nav-link"  routerLink="./search" (click)="showHideBorderFromMobile(1,categories[2]?.id)" [ngClass]="{'down': menueList[1]}"    >{{ categories[2]?.name }}</a>
         </li>
         <ul *ngIf="menueList[1]" class="nav-subCate">
-            <li *ngFor="let subCate of subCategories">
+            <li *ngFor="let subCate of subCategories;let i=index">
                 <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
                 <ul class="" *ngIf="menueList[1] && subCateProducts[i]">
                     <li><a href="#">Huawei P30 Lite</a></li>

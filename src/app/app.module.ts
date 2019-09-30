@@ -27,6 +27,7 @@ import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/fre
 import {  HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './common/slider/slider.component';
 import { SliderItemDirective } from './directives/slider-item.directive';
+import { NotfoundComponent } from './common/notfound/notfound.component';
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     ContactUsComponent,
     AboutUsComponent,
     SliderComponent,
-    SliderItemDirective
+    SliderItemDirective,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
