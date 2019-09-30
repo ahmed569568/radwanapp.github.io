@@ -28,6 +28,8 @@ import {  HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './common/slider/slider.component';
 import { SliderItemDirective } from './directives/slider-item.directive';
 import { NotfoundComponent } from './common/notfound/notfound.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     AppRoutingModule,
     NgxGalleryModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
     }),

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
-
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -20,13 +20,15 @@ export class HeaderComponent implements OnInit {
   subCateProducts: any;
   showCate: boolean;
   lastsubCateProductIndex:any;
-  constructor( private router: Router, private categoriesService: CategoriesService , private route: ActivatedRoute) { 
+  keyword = new FormControl('');
+  constructor( private router: Router, private categoriesService: CategoriesService ,
+               private route: ActivatedRoute) { 
      this.categories =[];
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
      this.showCate = false;
      this.subCateProducts= [];
-
+     
   }
 
   ngOnInit( ) {
@@ -41,6 +43,9 @@ export class HeaderComponent implements OnInit {
   goTo() {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
+  }
+  search() {
+    console.log("this.keyword",this.keyword.value)
   }
   goHome() {
     this.router.navigate(['./'])
