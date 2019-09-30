@@ -63,7 +63,7 @@
             <div class="card-deck">
                 <div class="card" *ngFor="let product of products">
                     <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
+                        <img src="{{ product?.productimage[0].image_url }}" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
                             <div class="text" (click)="navigateProduct(product.id)">learn More</div>
                         </div>

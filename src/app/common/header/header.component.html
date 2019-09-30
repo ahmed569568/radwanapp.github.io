@@ -140,11 +140,11 @@
       <div class="container">
           <div class="row header-links">
               <ul class="header-links-main">
-                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(0,categories[1]?.id)" [ngClass]="{'down': menueList[0]}">{{ categories[1].name }}</a></li>
-                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(1,categories[2]?.id)" [ngClass]="{'down': menueList[1]}">{{ categories[2].name }}</a></li>
-                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(2,categories[0]?.id)" [ngClass]="{'down': menueList[2]}">{{ categories[0].name }}</a></li>
-                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(3,categories[3]?.id)" [ngClass]="{'down': menueList[3]}">{{ categories[3].name }}</a></li>
-                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(4,categories[4]?.id)" [ngClass]="{'down': menueList[4]}">{{ categories[4].name }}</a></li>
+                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(0,categories[1]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[0]}">{{ categories[1].name }}</a></li>
+                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(1,categories[2]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[1]}">{{ categories[2].name }}</a></li>
+                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(2,categories[0]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[2]}">{{ categories[0].name }}</a></li>
+                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(3,categories[3]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[3]}">{{ categories[3].name }}</a></li>
+                <li *ngIf="showCate" ><a routerLink="./search" (mouseover)="showBorder(4,categories[4]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[4]}">{{ categories[4].name }}</a></li>
                 <div class="header-list" (mouseenter)="showBorderFromList()" (mouseleave)="hideBorderFromList()"> 
                   <div class="container">
                       <div class="row">

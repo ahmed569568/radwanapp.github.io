@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit( ) {
     this.categoriesService.getCategories().subscribe( (data:any) => {
+  
       console.log("Categories", data);
       this.categories = data;
       this.showCate = true;
@@ -47,7 +48,9 @@ export class HeaderComponent implements OnInit {
   showBorder(index,cateID) {
     this.subCategories =[]
     this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
+      console.log("Sub Categories", data);
       this.subCategories = data.subcategory;
+      
       this.subCateProducts = [...data.subcategory];
       this.subCateProducts.fill(false);
       console.log("this.subCateProducts", this.subCateProducts)
@@ -63,6 +66,7 @@ export class HeaderComponent implements OnInit {
   }
   hideBorderFromList() {
     this.menueList.fill(false);
+    console.log("momo")
   }
   hideHeader() {
     this.menueList.fill(false);
