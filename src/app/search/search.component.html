@@ -90,106 +90,21 @@
         </div>
         <div class="col-lg-9 products">
             <div class="card-deck">
-                <div class="card">
+                <div class="card" *ngFor="let product of result">
                     <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
+                        <img src="{{ product?.productimage[0].image_url }}" class="card-img-top"   (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
+                            <div class="text" (click)="navigateProduct(product.id)">learn More</div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                        <p class="card-text"><small class="text-muted">UnionAir, Televisions</small></p>
+                        <p class="card-text"(click)="navigateProduct(product.id)">{{ product?.name }}</p>
+                        <p class="card-text" (click)="navigateProduct(product.id)"><small class="text-muted">{{ product?.brand?.name }}</small></p>
                         <div class="card-price-like">
-                            <h5 class="price">2,150.00<small>EGP</small></h5>
+                            <h5 class="price">{{ product.price }}.00<small>EGP</small></h5>
                             <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
                             <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
                         </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="my-wrapper">
-                        <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct('1')" alt="...">
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct('1')">learn More</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    <p class="card-text">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    <div class="card-price-like">
-                        <h5 class="price">2,150.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
-                    </div>
                     </div>
                 </div>
             </div>

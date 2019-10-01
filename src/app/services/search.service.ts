@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SearchService {
   url:any;
   httpOptions:any;
-  
+
   constructor(private http: HttpClient) { 
 
     this.url = 'http://elogail.bit68.com/api/';

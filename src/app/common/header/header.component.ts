@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormControl } from '@angular/forms';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -45,8 +46,10 @@ export class HeaderComponent implements OnInit {
     
   }
   search() {
-    console.log("this.keyword",this.keyword.value)
+    this.router.navigate(['./search/'],  { relativeTo: this.route ,queryParams: { search: this.keyword.value } })
+    
   }
+
   goHome() {
     this.router.navigate(['./'])
   }
