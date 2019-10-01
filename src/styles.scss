@@ -3,6 +3,14 @@
     font-family: Montserrat;
     src: url(assets/font/Montserrat-Medium.ttf) format("opentype");
 }
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(assets/font/Montserrat-Light.ttf) format("opentype");
+}
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(assets/font/Montserrat-Bold.ttf) format("opentype");
+}
 
 * {
     font-family: Montserrat !important;

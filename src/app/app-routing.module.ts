@@ -7,6 +7,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotfoundComponent } from './common/notfound/notfound.component';
+import { WhishlistComponent } from './whishlist/whishlist.component';
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'product-details/:id', component: ProductDetailsComponent},
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'about-us', component: AboutUsComponent},
+      { path:'whishlist', component: WhishlistComponent},
       {
         path: 'externalRedirect',
         canActivate: [externalUrlProvider],
