@@ -29,6 +29,7 @@ import { SliderComponent } from './common/slider/slider.component';
 import { SliderItemDirective } from './directives/slider-item.directive';
 import { NotfoundComponent } from './common/notfound/notfound.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WhishlistComponent } from './whishlist/whishlist.component';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -43,7 +44,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     AboutUsComponent,
     SliderComponent,
     SliderItemDirective,
-    NotfoundComponent
+    NotfoundComponent,
+    WhishlistComponent
   ],
   imports: [
     BrowserModule,
