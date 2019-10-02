@@ -19,16 +19,16 @@ export class WhishlistService {
   
 
   get() {
-    return this.http.get( this.url + '/wishlist', this.httpOptions);
+    return this.http.get( this.url + 'wishlist', this.httpOptions);
   }
 
   put(id:any) {
     var data = { 'product_id':id }
-    return this.http.post(this.url + '/wishlist/', data, this.httpOptions);
+    return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
   }
 
   delete(id:any) {
-    return this.delete(this.url + '/wishlist/' + id);
+    return this.delete(this.url + 'wishlist/' + id);
   }
-  
+
 }
