@@ -73,8 +73,9 @@
                         <p class="card-text"  (click)="navigateProduct(product.id)"><small class="text-muted">{{ product?.brand?.name }}</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
-                            <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a ><img src="assets/logo/love.svg"  alt=""></a>
+                            <a (click)="addToCart(product.id)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <!-- assets/logo/Cart Active@1x.png -->
                         </div>
                     </div>
                 </div>

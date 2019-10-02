@@ -59,4 +59,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
   }
+  addToCart(id:any){
+    console.log("SHokry Suleiman")
+  }
 }
