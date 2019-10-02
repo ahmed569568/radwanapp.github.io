@@ -61,7 +61,7 @@
     </div>
     <div class="row ">
             <div class="card-deck">
-                <div class="card" *ngFor="let product of products">
+                <div class="card" *ngFor="let product of products;let i=index">
                     <div class="my-wrapper">
                         <img src="{{ product?.productimage[0].image_url }}" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
@@ -73,9 +73,11 @@
                         <p class="card-text"  (click)="navigateProduct(product.id)"><small class="text-muted">{{ product?.brand?.name }}</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
-                            <a (click)="addToWhishlist(product.id)"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a (click)="addToCart(product.id)"><img src="assets/logo/cart.svg"  alt=""></a>
-                            <!-- assets/logo/Cart Active@1x.png -->
+                            <a *ngIf="!likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                            <a *ngIf="likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                            <a *ngIf="!carts[i]" (click)="addToCart(product.id,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="carts[i]" (click)="addToCart(product.id,i)"><img src="assets/logo/Cart Active@1x.png"  alt=""></a>
+                            <!-- assets/logo/ -->
                         </div>
                     </div>
                 </div>

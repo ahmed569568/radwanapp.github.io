@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   showCate: boolean;
   sliders: any[];
   sliderAct: any;
+  likes:any;
+  carts:any;
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
                private categoriesService: CategoriesService, private sliderService: SliderService) { 
                 this.categories =[];
@@ -30,6 +32,10 @@ export class HomeComponent implements OnInit {
     })
     this.productsService.getProducts().subscribe( (data:any) => {
       this.products = data;
+      this.likes =[...this.products]
+      this.likes.fill(false);
+      this.carts = [...this.likes]
+      console.log("this.likes", this.likes)
       console.log(" this.products",  this.products);
     }) ;
 
@@ -59,10 +65,17 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
   }
-  addToCart(id:any){
-    console.log("SHokry Suleiman");
+  addToCart(id:any,index:any){
+    if(this.carts[index])
+      this.carts[index]=false;
+    else
+      this.carts[index]=true;
+    
   }
-  addToWhishlist(id:any) {
-    console.log("Shokry Suleiman");
+  addToWhishlist(id:any, index:any) {
+    if(this.likes[index])
+      this.likes[index]=false;
+    else
+      this.likes[index]=true;
   } 
 }
