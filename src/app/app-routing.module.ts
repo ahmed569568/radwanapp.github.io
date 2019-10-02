@@ -7,7 +7,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { AboutUsComponent } from './about-us/about-us.component';
 import { NotfoundComponent } from './common/notfound/notfound.component';
-import { WhishlistComponent } from './whishlist/whishlist.component';
+import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
+import { CartComponent } from './whishlist-cart/cart/cart.component';
+import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
+
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 const routes: Routes = [
@@ -17,7 +20,12 @@ const routes: Routes = [
       { path: 'product-details/:id', component: ProductDetailsComponent},
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'about-us', component: AboutUsComponent},
-      { path:'whishlist', component: WhishlistComponent},
+      { path:'whishlist-cart', component: WhishlistCartComponent, children: [
+        { path: '', component: WhishlistComponent},
+        { path: 'whishlist', component: WhishlistComponent},
+        { path:'cart', component: CartComponent }
+      ]   
+      },
       {
         path: 'externalRedirect',
         canActivate: [externalUrlProvider],
@@ -27,7 +35,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
+],
   exports: [RouterModule],
   providers: [ { provide: externalUrlProvider,  useValue: (route: ActivatedRouteSnapshot) => { const externalUrl = route.paramMap.get('externalUrl'); window.open(externalUrl, '_self'); } } ]
 })

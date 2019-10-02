@@ -1,0 +1,45 @@
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 ">
+                <div class="row checkout">
+                    <div class="col-lg-12 checkout-description">
+                        <p class="total">Total</p>
+                        <p class="price">1000,00 <span>EGP</span></p>
+                        <p class="percentage">95% OFF</p>
+                        <button type="button" class="btn btn-primary btn-lg btn-block checkout-now">Checkout Now</button>
+                        <hr>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="promo" placeholder="Add Coupon Code">
+                            </div>
+                            <button type="submit" class="btn btn-primary apply" > Apply</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="row wishlist" #whishlist>
+                    <div class="col-12-lg">
+                        <a routerLink="/whishlist-cart/whishlist"   (click)="whishlist()">
+                            <img src="assets/logo/love.svg" alt="">
+                            <p>Wishlist</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="row cart" #cart>
+                    <div class="col-12-lg">
+                        <a routerLink="/whishlist-cart/cart" (click)="cart()">
+                            <img src="assets/logo/cart.svg" alt="">
+                            <p>Your Cart</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 card-list">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
+

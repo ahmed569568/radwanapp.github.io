@@ -1,0 +1,110 @@
+section{
+    background-color: rgba(236, 240, 241, 1);
+}
+div.row.checkout{
+    background-color: white;
+    margin-top: 80px;
+    padding-bottom: 15px;
+}
+p.total {
+   color:  rgba(22, 45, 54, 1);
+   font-family: 'Montserrat-Light' !important;
+   font-size: 14px;
+}
+p.price {
+    color: rgba(64, 131, 156, 1);
+    font-size: 24px;
+    font-family: 'Montserrat-Bold' !important;
+    margin-top: -15px;
+}
+p.price span {
+    font-size: 12px;
+    font-family: 'Montserrat-Bold' !important;
+}   
+p.percentage {
+   color: rgba(22, 45, 54, 1);
+   margin-top: -15px;
+
+}
+.checkout-now {
+    background: rgba(46, 204, 113, 1);
+    border-color: rgba(46, 204, 113, 1);
+    color: white;
+    border-radius: .1rem;
+    font-size: 14px;
+    padding: .8rem 1rem;
+    
+}
+.checkout-description{
+    margin-top: 20px;
+}
+.form-group{
+    min-width: 67%;
+    max-width: 67%;
+}
+.form-control {
+    width: 100%;
+    font-size: 12px;
+    padding: 20px 10px 20px 25px;
+    border-bottom-right-radius: unset;
+    border-top-right-radius: unset;
+}
+.apply{
+    background: rgba(46, 204, 113, 1);
+    border-color: rgba(46, 204, 113, 1);
+    padding: 15px 10px 15px 25px;
+    font-size: 13px;
+    padding: 11px 20px 10px 20px;
+    border-bottom-left-radius: unset;
+    border-top-left-radius: unset;
+}
+.wishlist {
+    background-color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-top: 15px;
+    cursor: pointer;
+   
+}
+.wishlist img {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+.wishlist p {
+    display: inline-block;
+}
+.cart {
+    background-color:white;
+    padding-top: 15px;
+    margin-bottom: 100px;
+    cursor: pointer;
+
+    
+}
+.cart p {
+    display: inline-block;
+}
+
+.cart img {
+    margin-left: 30px;
+    margin-right: 20px;
+}
+.card-list {
+    margin-top: 80px;
+    margin-bottom: 150px;
+}
+.wishlist a {
+    color: unset !important;
+}
+.cart a {
+    color: unset !important;
+}
+
+div.wishlist a.act{
+    background-color: red !important;
+    color: white;
+}
+div.cart a.act{
+    background-color: red !important;
+    color: white;
+}

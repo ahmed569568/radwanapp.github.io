@@ -29,7 +29,10 @@ import { SliderComponent } from './common/slider/slider.component';
 import { SliderItemDirective } from './directives/slider-item.directive';
 import { NotfoundComponent } from './common/notfound/notfound.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WhishlistComponent } from './whishlist/whishlist.component';
+
+import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
+import { CartComponent } from './whishlist-cart/cart/cart.component';
+import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -45,7 +48,9 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     SliderComponent,
     SliderItemDirective,
     NotfoundComponent,
-    WhishlistComponent
+    WhishlistComponent,
+    CartComponent,
+    WhishlistCartComponent
   ],
   imports: [
     BrowserModule,
