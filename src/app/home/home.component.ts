@@ -60,6 +60,9 @@ export class HomeComponent implements OnInit {
     
   }
   addToCart(id:any){
-    console.log("SHokry Suleiman")
+    console.log("SHokry Suleiman");
   }
+  addToWhishlist(id:any) {
+    console.log("Shokry Suleiman");
+  } 
 }
