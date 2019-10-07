@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 import { CategoriesService } from '../services/categories.service';
 import { SliderService } from '../services/slider.service';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
   likes:any;
   carts:any;
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
-               private categoriesService: CategoriesService, private sliderService: SliderService) { 
+               private categoriesService: CategoriesService, private sliderService: SliderService,
+               private cartService: CartService) { 
                 this.categories =[];
                 this.sliders= [];
                 this.showCate = false;
@@ -68,8 +70,13 @@ export class HomeComponent implements OnInit {
   addToCart(id:any,index:any){
     if(this.carts[index])
       this.carts[index]=false;
-    else
+    else {
       this.carts[index]=true;
+      this.cartService.put(id,1).subscribe((data:any)=> {
+        console.log("data", data);
+        data.cart
+      })
+    }
     
   }
   addToWhishlist(id:any, index:any) {

@@ -33,6 +33,7 @@
     "jquery": "^3.4.1",
     "mousetrap": "^1.6.3",
     "ngx-gallery": "^5.10.0",
+    "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.9.0",

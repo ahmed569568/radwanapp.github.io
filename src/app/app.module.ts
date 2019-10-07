@@ -14,6 +14,8 @@ import { AgmCoreModule } from '@agm/core';
 import 'hammerjs'; 
 import { GalleryModule } from '@ks89/angular-modal-gallery';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { StorageServiceModule } from 'ngx-webstorage-service';
+
 // import { library, dom } from '@fortawesome/fontawesome-svg-core';
 // import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
 // library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
@@ -63,7 +65,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
     }),
-    GalleryModule.forRoot()
+    GalleryModule.forRoot(),
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
