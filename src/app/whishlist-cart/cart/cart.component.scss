@@ -11,16 +11,7 @@ p.total {
    font-family: 'Montserrat-Light' !important;
    font-size: 14px;
 }
-p.price {
-    color: rgba(64, 131, 156, 1);
-    font-size: 24px;
-    font-family: 'Montserrat-Bold' !important;
-    margin-top: -15px;
-}
-p.price span {
-    font-size: 12px;
-    font-family: 'Montserrat-Bold' !important;
-}   
+  
 p.percentage {
    color: rgba(22, 45, 54, 1);
    margin-top: -15px;
@@ -155,4 +146,34 @@ label {
 
 .custom-checkbox .custom-control-label::before {
     // border-radius: unset !important;
+}
+.price {
+    color: rgba(231, 76, 60, 1);
+    font-family: 'Montserrat-Bold' !important;
+    font-size: 14;
+    margin-top: -35px;
+    margin-bottom: 5px;
+
+}
+
+.price span {
+    font-family: 'Montserrat-Bold' !important;
+    font-size: 10px;
+}
+.card-body {
+    padding: 15px;
+    padding-bottom: 0px;
+
+}
+.save-for-later p {
+    font-size: 10px;
+    color: rgba(52, 152, 219, 1);
+    cursor: pointer;
+    font-size: 12px;
+}
+.remove p {
+    font-size: 10px;
+    color: rgba(52, 152, 219, 1);
+    cursor: pointer;
+    font-size: 12px;
 }

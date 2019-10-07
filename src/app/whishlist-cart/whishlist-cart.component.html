@@ -6,7 +6,7 @@
                 <div class="row checkout" *ngIf="checkout">
                     <div class="col-lg-12 checkout-description">
                         <p class="total">Total</p>
-                        <p class="price">1000,00 <span>EGP</span></p>
+                        <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">95% OFF</p>
                         <button type="button" class="btn btn-primary btn-lg btn-block checkout-now">Checkout Now</button>
                         <hr>
@@ -19,18 +19,20 @@
                     </div>
                     
                 </div>
-                <div class="row wishlist" #whishlist>
+                <div class="row wishlist" (click)="activateTab()" #whishlist>
                     <div class="col-12-lg">
-                        <a routerLink="/whishlist-cart/whishlist"   (click)="whishlist()">
-                            <img src="assets/logo/love.svg" alt="">
+                        <a routerLink="/whishlist-cart/whishlist"   >
+                            <img *ngIf="cartAct" src="../../assets/icons/Cartwhite.svg" alt="">
+                            <img *ngIf="!cartAct" src="../../assets/icons/Cartblack@2x.png" alt="">
                             <p>Wishlist</p>
                         </a>
                     </div>
                 </div>
-                <div class="row cart" #cart>
+                <div class="row cart" (click)="activateTab()" #cart>
                     <div class="col-12-lg">
-                        <a routerLink="/whishlist-cart/cart" (click)="cart()">
-                            <img src="assets/logo/cart.svg" alt="">
+                        <a routerLink="/whishlist-cart/cart" >
+                            <img *ngIf="!loveAct" src="../../assets/icons/heartblack.svg" alt="">
+                            <img *ngIf="loveAct" src="../../assets/icons/heartwhite.svg" alt="">
                             <p>Your Cart</p>
                         </a>
                     </div>

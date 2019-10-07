@@ -1,63 +1,3 @@
-section{
-    background-color: rgba(236, 240, 241, 1);
-}
-div.row.checkout{
-    background-color: white;
-    margin-top: 80px;
-    padding-bottom: 15px;
-}
-p.total {
-   color:  rgba(22, 45, 54, 1);
-   font-family: 'Montserrat-Light' !important;
-   font-size: 14px;
-}
-p.price {
-    color: rgba(64, 131, 156, 1);
-    font-size: 24px;
-    font-family: 'Montserrat-Bold' !important;
-    margin-top: -15px;
-}
-p.price span {
-    font-size: 12px;
-    font-family: 'Montserrat-Bold' !important;
-}   
-p.percentage {
-   color: rgba(22, 45, 54, 1);
-   margin-top: -15px;
-
-}
-.checkout-now {
-    background: rgba(46, 204, 113, 1);
-    border-color: rgba(46, 204, 113, 1);
-    color: white;
-    border-radius: .1rem;
-    font-size: 14px;
-    padding: .8rem 1rem;
-    
-}
-.checkout-description{
-    margin-top: 20px;
-}
-.form-group{
-    min-width: 67%;
-    max-width: 67%;
-}
-.form-control {
-    width: 100%;
-    font-size: 12px;
-    padding: 20px 10px 20px 25px;
-    border-bottom-right-radius: unset;
-    border-top-right-radius: unset;
-}
-.apply{
-    background: rgba(46, 204, 113, 1);
-    border-color: rgba(46, 204, 113, 1);
-    padding: 15px 10px 15px 25px;
-    font-size: 13px;
-    padding: 11px 20px 10px 20px;
-    border-bottom-left-radius: unset;
-    border-top-left-radius: unset;
-}
 .wishlist {
     background-color: white;
     margin-top: 8px;
@@ -72,12 +12,6 @@ p.percentage {
 }
 .wishlist p {
     display: inline-block;
-}
-.wishlist a {
-    color: unset !important;
-}
-.cart a {
-    color: unset !important;
 }
 .cart {
     background-color: rgba(249, 59, 47, 1);
@@ -162,7 +96,33 @@ label {
 .custom-checkbox .custom-control-label::before {
     // border-radius: unset !important;
 }
+.price {
+    color: rgba(231, 76, 60, 1);
+    font-family: 'Montserrat-Bold' !important;
+    font-size: 14;
+    margin-top: -35px;
+    margin-bottom: 5px;
 
-.act {
-    color: red
+}
+
+.price span {
+    font-family: 'Montserrat-Bold' !important;
+    font-size: 10px;
+}
+.card-body {
+    padding: 15px;
+    padding-bottom: 0px;
+
+}
+.save-for-later p {
+    font-size: 10px;
+    color: rgba(52, 152, 219, 1);
+    cursor: pointer;
+    font-size: 12px;
+}
+.remove p {
+    font-size: 10px;
+    color: rgba(52, 152, 219, 1);
+    cursor: pointer;
+    font-size: 12px;
 }

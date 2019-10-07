@@ -16,18 +16,22 @@ export class CartService {
       })
     };
   }
-
-  get(){
-    return this.http.get( this.url + 'cart/', this.httpOptions);
+  
+  get(cartID:any){
+    return this.http.get( this.url + 'cart/me/' + cartID, this.httpOptions);
   }
 
   put(id:any,quantity:any) {
     var data = { 'product':id, 'quantity':quantity }
-    return this.http.post(this.url + '/cart/me/', data, this.httpOptions);
+    return this.http.post(this.url + 'cart/me/', data, this.httpOptions);
+  }
+  patch(id:any,quantity:any,cartID:any){
+    var data = { 'product':id, 'quantity':quantity, 'cart': cartID };
+    return this.http.post(this.url + 'cart/me/', data, this.httpOptions);
   }
 
-  delete(id:any){
-    return this.http.delete( this.url + 'cart/me/' + id, this.httpOptions);
+  delete(id:any,cartID:any){
+    return this.http.delete( this.url + 'cart/me/' + cartID  + '/?cart_product=' + id , this.httpOptions);
   }
 }
 

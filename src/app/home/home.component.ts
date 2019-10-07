@@ -4,6 +4,7 @@ import { ProductsService } from '../services/products.service';
 import { CategoriesService } from '../services/categories.service';
 import { SliderService } from '../services/slider.service';
 import { CartService } from '../services/cart.service';
+import { LocalStorageService } from '../services/local-storage.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,9 +18,10 @@ export class HomeComponent implements OnInit {
   sliderAct: any;
   likes:any;
   carts:any;
+  cartItems:any[];
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
                private categoriesService: CategoriesService, private sliderService: SliderService,
-               private cartService: CartService) { 
+               private cartService: CartService, private storage:LocalStorageService) { 
                 this.categories =[];
                 this.sliders= [];
                 this.showCate = false;
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
       this.categories = data;
       this.showCate = true;
     })
+
     this.productsService.getProducts().subscribe( (data:any) => {
       this.products = data;
       this.likes =[...this.products]
@@ -39,6 +42,8 @@ export class HomeComponent implements OnInit {
       this.carts = [...this.likes]
       console.log("this.likes", this.likes)
       console.log(" this.products",  this.products);
+      this.checkCart();
+
     }) ;
 
     
@@ -48,6 +53,7 @@ export class HomeComponent implements OnInit {
       this.sliders = data.pictures.slice(1);
     })
 
+    
     
   }
   navigateProduct(id:any) {
@@ -68,14 +74,29 @@ export class HomeComponent implements OnInit {
     
   }
   addToCart(id:any,index:any){
-    if(this.carts[index])
+    if(this.carts[index]){
       this.carts[index]=false;
-    else {
-      this.carts[index]=true;
-      this.cartService.put(id,1).subscribe((data:any)=> {
-        console.log("data", data);
-        data.cart
+      this.cartItems.forEach(item => {
+        if(item.product.id == id)
+          this.cartService.delete(item.id,this.storage.get('cart')).subscribe((data:any)=> {})
       })
+    } else {
+      this.carts[index]=true;
+      
+        if (this.storage.get('cart')){
+          console.log("cart",this.storage.get('cart'))
+          this.cartService.patch(id,1,this.storage.get('cart')).subscribe((response:any) => {
+          })
+         
+        } else {
+          this.cartService.put(id,1).subscribe((response:any)=> {
+           
+            this.storage.set('cart',response.data.cart)
+          })
+        }
+          
+        
+     
     }
     
   }
@@ -85,4 +106,17 @@ export class HomeComponent implements OnInit {
     else
       this.likes[index]=true;
   } 
+
+  checkCart() {
+    if(this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        this.cartItems = response.data
+        console.log('this.cartItems', this.cartItems)
+        response.data.forEach(element => {
+          this.carts[this.products.map(function(product) { return product.id; }).indexOf(element.product.id)]=true;
+        });
+      })
+    }
+  }
+
 }

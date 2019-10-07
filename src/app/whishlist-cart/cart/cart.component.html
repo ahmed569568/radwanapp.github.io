@@ -1,85 +1,21 @@
-<div class="card mb-3">
+<div class="card mb-3" *ngFor="let item of cartItems">
     <div class="row no-gutters">
       <div class="col-md-2">
-        <img src="assets/Tv.jpg" class="card-img" alt="...">
+        <img src="{{ item.product.productimage[0].image_url }}" class="card-img" alt="...">
       </div>
       <div class="col-md-10">
         <div class="card-body">
-          <h5 class="card-title">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</h5>
+          <h5 class="card-title">{{ item.product.name }}</h5>
           <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
-            <div class="custom-control custom-checkbox save-for-later">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Save for later</label>
+          <p class="price">{{ item.product.price}},00<span>EGP</span></p>
+            <div class="save-for-later">
+              <p (click)="addToWhishlist(item)"><small>Save for later</small></p>
             </div>
-            <div class="custom-control custom-checkbox remove">
-                    <input type="checkbox" class="custom-control-input " id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Remove</label>
+            <div class=" remove">
+              <p (click)="removeFromCart(item.id)"><small>Remove</small></p>
             </div>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="card mb-3">
-    <div class="row no-gutters">
-      <div class="col-md-2">
-        <img src="assets/Tv.jpg" class="card-img" alt="...">
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</h5>
-          <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
-            <div class="custom-control custom-checkbox save-for-later">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Save for later</label>
-            </div>
-            <div class="custom-control custom-checkbox remove">
-                    <input type="checkbox" class="custom-control-input " id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Remove</label>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row no-gutters">
-      <div class="col-md-2">
-        <img src="assets/Tv.jpg" class="card-img" alt="...">
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</h5>
-          <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
-            <div class="custom-control custom-checkbox save-for-later">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Save for later</label>
-            </div>
-            <div class="custom-control custom-checkbox remove">
-                    <input type="checkbox" class="custom-control-input " id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Remove</label>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row no-gutters">
-      <div class="col-md-2">
-        <img src="assets/Tv.jpg" class="card-img" alt="...">
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title">UnionAir 32 Inch HD LED TV - M -LD-32UN-PB816-EXD</h5>
-          <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
-            <div class="custom-control custom-checkbox save-for-later">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Save for later</label>
-            </div>
-            <div class="custom-control custom-checkbox remove">
-                    <input type="checkbox" class="custom-control-input " id="customCheck2">
-                    <label class="custom-control-label" for="customCheck2">Remove</label>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>

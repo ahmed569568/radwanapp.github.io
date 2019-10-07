@@ -23,9 +23,15 @@ export class WhishlistService {
   }
 
   put(id:any) {
-    var data = { 'product_id':id }
+    var data = { 'product':id }
     return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
   }
+
+   patch(id:any,wishlistID:any){
+    var data = { 'product_id':id,  'wishlist': wishlistID };
+    return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
+  }
+  
 
   delete(id:any) {
     return this.delete(this.url + 'wishlist/' + id);

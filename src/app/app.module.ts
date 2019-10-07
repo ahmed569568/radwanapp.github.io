@@ -35,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
 import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
+import { LocalStorageService } from './services/local-storage.service';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -68,7 +69,7 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     GalleryModule.forRoot(),
     StorageServiceModule
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
