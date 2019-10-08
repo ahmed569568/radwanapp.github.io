@@ -6,7 +6,7 @@
       <div class="col-md-10">
         <div class="card-body">
           <h5 class="card-title">{{ item.product.name }}</h5>
-          <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
+          <p class="card-text"><small class="brand">{{ item.product.brand_name }}</small></p>
           <p class="price">{{ item.product.price}},00<span>EGP</span></p>
             <div class="save-for-later">
               <p (click)="addToWhishlist(item)"><small>Save for later</small></p>

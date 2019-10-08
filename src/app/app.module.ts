@@ -36,6 +36,7 @@ import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.componen
 import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { CompareComponent } from './compare/compare.component';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -53,7 +54,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     NotfoundComponent,
     WhishlistComponent,
     CartComponent,
-    WhishlistCartComponent
+    WhishlistCartComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,

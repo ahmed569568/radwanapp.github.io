@@ -1,18 +1,18 @@
-<div class="card mb-3" *ngFor="let item of cartItems">
+<div class="card mb-3" *ngFor="let product of whishlistItems">
   <div class="row no-gutters">
     <div class="col-md-2">
-      <img src="{{ item.product.productimage[0].image_url }}" class="card-img" alt="...">
+      <img src="{{ product.productimage[0].image_url }}" class="card-img" alt="...">
     </div>
     <div class="col-md-10">
       <div class="card-body">
-        <h5 class="card-title">{{ item.product.name }}</h5>
-        <p class="card-text"><small class="brand">UnionAir, Televisions</small></p>
-        <p class="price">{{ item.product.price}},00<span>EGP</span></p>
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text"><small class="brand">{{ product.brand_name }}</small></p>
+        <p class="price">{{ product.price}},00<span>EGP</span></p>
           <div class="save-for-later">
-            <p (click)="addToWhishlist()"><small>Save for later</small></p>
+            <p (click)="addToCart(product.id)"><small>Add To Cart</small></p>
           </div>
           <div class=" remove">
-            <p (click)="removeFromCart(item.id)"><small>Remove</small></p>
+            <p (click)="removeFromWhishlist(product.id)"><small>Remove</small></p>
           </div>
       </div>
     </div>

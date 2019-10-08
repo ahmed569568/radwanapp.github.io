@@ -10,6 +10,7 @@ import { NotfoundComponent } from './common/notfound/notfound.component';
 import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
 import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
+import { CompareComponent } from './compare/compare.component';
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
@@ -27,11 +28,15 @@ const routes: Routes = [
       ]   
       },
       {
+        path:'compare', component: CompareComponent
+      },
+      {
         path: 'externalRedirect',
         canActivate: [externalUrlProvider],
         // We need a component here because we cannot define the route otherwise
         component: NotfoundComponent,
       },
+      
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import { CategoriesService } from '../services/categories.service';
 import { SliderService } from '../services/slider.service';
 import { CartService } from '../services/cart.service';
 import { LocalStorageService } from '../services/local-storage.service';
+import { WhishlistService } from '../services/whishlist.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,12 +20,16 @@ export class HomeComponent implements OnInit {
   likes:any;
   carts:any;
   cartItems:any[];
+  whishlistItems: any[];
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
                private categoriesService: CategoriesService, private sliderService: SliderService,
-               private cartService: CartService, private storage:LocalStorageService) { 
+               private cartService: CartService, private storage:LocalStorageService,
+               private whishlistService: WhishlistService) { 
                 this.categories =[];
                 this.sliders= [];
                 this.showCate = false;
+                this.cartItems = [];
+                this.whishlistItems = [];
               }
 
   ngOnInit() {
@@ -43,6 +48,7 @@ export class HomeComponent implements OnInit {
       console.log("this.likes", this.likes)
       console.log(" this.products",  this.products);
       this.checkCart();
+      this.checkWhishlist();
 
     }) ;
 
@@ -101,10 +107,26 @@ export class HomeComponent implements OnInit {
     
   }
   addToWhishlist(id:any, index:any) {
-    if(this.likes[index])
+    if(this.likes[index]) {
       this.likes[index]=false;
-    else
+
+      // this.whishlistService.
+    } else {
       this.likes[index]=true;
+      if (this.storage.get('whishlist')) {
+        this.whishlistService.patch(id,this.storage.get('whishlist')).subscribe((data:any)=> {
+
+        })
+
+      } else {
+        console.log("id", id)
+        this.whishlistService.put(id).subscribe((data:any)=> {
+          console.log("data", data)
+          this.storage.set('whishlist',data.id);
+        })
+      }
+    }
+      
   } 
 
   checkCart() {
@@ -117,6 +139,17 @@ export class HomeComponent implements OnInit {
         });
       })
     }
+  }
+
+  checkWhishlist() {
+    if (this.storage.get('whishlist')){
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        this.whishlistItems = data.product;
+        data.product.forEach(product => {
+          this.likes[this.products.map(function(product) { return product.id; }).indexOf(product.id)]=true;
+        });
+      })
+    } 
   }
 
 }

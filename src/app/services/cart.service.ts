@@ -33,6 +33,7 @@ export class CartService {
   delete(id:any,cartID:any){
     return this.http.delete( this.url + 'cart/me/' + cartID  + '/?cart_product=' + id , this.httpOptions);
   }
+ 
 }
 
 

@@ -18,12 +18,12 @@ export class WhishlistService {
   }
   
 
-  get() {
-    return this.http.get( this.url + 'wishlist', this.httpOptions);
+  get(id:any) {
+    return this.http.get( this.url + 'wishlist/' + id + '/', this.httpOptions);
   }
 
   put(id:any) {
-    var data = { 'product':id }
+    var data = { 'product_id':id }
     return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
   }
 
@@ -33,8 +33,9 @@ export class WhishlistService {
   }
   
 
-  delete(id:any) {
-    return this.delete(this.url + 'wishlist/' + id);
+  delete(id:any, whislistID:any) {
+    return this.http.delete(this.url + 'wishlist/' + whislistID + '/?product=' + id);
   }
 
+   // http://elogail.bit68.com/api/wishlist/2/?product=4
 }

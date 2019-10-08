@@ -37,4 +37,8 @@ export class ProductsService {
    getRecommendedProducts() {
     return this.http.get( this.url + 'reccommended_products'  ,this.httpOptions);
    }
+   compare() {
+     return this.http.get( this.url + 'products/compare/?product_ids=3,4&brand_id=1,2');
+     
+   }
 }
