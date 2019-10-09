@@ -5,6 +5,9 @@ import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { ProductsService } from '../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { from } from 'rxjs';
+import { LocalStorageService } from '../services/local-storage.service';
+import { CartService } from '../services/cart.service';
+import { WhishlistService } from '../services/whishlist.service';
 
 declare var $:any;
 
@@ -22,9 +25,16 @@ export class ProductDetailsComponent implements OnInit {
   recProducts: any[];
   popularProducts: any[];
   detailedDescription: any[];
+  inCart: boolean;
+  inWhishlist: boolean;
+  popularLikes: any[];
+  recommandedLikes: any[];
+  popularCarts:any[];
+  recommandedCarts: any[];
 
   constructor( private productsService: ProductsService,  private route: ActivatedRoute,
-               private router: Router) { 
+               private router: Router, private storage:LocalStorageService,
+               private cartService: CartService, private whishlistService: WhishlistService) { 
     this.product = {};
     this.recProducts = [];
     this.popularProducts = [];
@@ -36,6 +46,8 @@ export class ProductDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.productsService.getProduct(id).subscribe( (data:any) => {
       this.product = data;
+      this.checkCart();
+      this.checkWhishlist();
       this.detailedDescription = data.detaileddescription;
       console.log("Detail Description", this.detailedDescription);
       console.log("Product", this.product);
@@ -43,17 +55,22 @@ export class ProductDetailsComponent implements OnInit {
       
     })
     this.productsService.getPopularProduct().subscribe( ( data:any ) => {
-      
-      console.log("popular");
       this.popularProducts = data;
+      this.popularCarts = [...this.popularProducts];
+      this.popularCarts.fill(false);
+      this.popularLikes = [...this.popularCarts];
+      this.checkPopularCart();
       
     })
 
     this.productsService.getRecommendedProducts().subscribe ( ( data:any) => {
-      console.log("recom", data);
       this.recProducts = data;
+      this.recommandedCarts = [...this.recProducts];
+      this.recommandedCarts.fill(false);
+      this.recommandedLikes = [...this.recommandedCarts]
+      this.checkPopularWhishlist();
     })
-   
+  
     
   }
 
@@ -76,8 +93,85 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate( ['./product-details/', id]);
      
   }
+  
+  addToCart(id:any){
+ 
+      if (this.storage.get('cart')){
+        this.cartService.patch(id,1,this.storage.get('cart')).subscribe((response:any) => {
+          this.inCart = true;
+        }) 
+      } else {
+        this.cartService.put(id,1).subscribe((response:any)=> {
+          this.storage.set('cart', response.data.cart);
+          this.inCart = true;
+        })
+      }        
+  }
 
+  addToWhishlist(id:any) {
+      if (this.storage.get('whishlist')) {
+          this.whishlistService.patch(id,this.storage.get('whishlist')).subscribe((data:any)=> {
+            this.inWhishlist = true;
+          })
+      } else {
+        this.whishlistService.put(id).subscribe((data:any)=> {
+          this.storage.set('whishlist',data.id);
+          this.inWhishlist = true;
+        })
+      }
+  } 
 
+  checkCart() {
+    if(this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        response.data.forEach(element => {
+           if (element.product.id == this.product.id)
+            this.inCart=true;
+            
+        });
+        console.log("this.inCart", this.inCart)
+      })
+     
+    }
+    
+  }
+
+  checkWhishlist() {
+    if (this.storage.get('whishlist')){
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        data.product.forEach(product => {
+          if(this.product.id == product.id) 
+          this.inWhishlist= true;
+          
+        });
+        console.log("this.inWhishlist", this.inWhishlist);
+      })
+      
+    } 
+  }
+  checkPopularCart() {
+    if(this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        response.data.forEach(element => {
+          this.popularCarts[this.popularProducts.map(function(product) { return product.id; }).indexOf(element.product.id)]=true;
+        });
+       
+      })
+     
+    }
+   
+  }
+  checkPopularWhishlist() {
+     if (this.storage.get('whishlist')){
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        data.product.forEach(product => {
+          this.popularLikes[this.popularProducts.map(function(product) { return product.id; }).indexOf(product.id)]=true;
+        });
+        console.log("this.inWhishlist", this.inWhishlist);
+      })
+      
+    } 
+  }
 }
 
 

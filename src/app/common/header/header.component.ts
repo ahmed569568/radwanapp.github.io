@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { FormControl } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
+import { WhishlistService } from 'src/app/services/whishlist.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 
 @Component({
@@ -22,8 +25,11 @@ export class HeaderComponent implements OnInit {
   showCate: boolean;
   lastsubCateProductIndex:any;
   keyword = new FormControl('');
+  activeCart: boolean;
+  activeWhishlist: boolean;
   constructor( private router: Router, private categoriesService: CategoriesService ,
-               private route: ActivatedRoute) { 
+               private route: ActivatedRoute, private cartService: CartService,
+               private whishlistService: WhishlistService, private storage: LocalStorageService) { 
      this.categories =[];
      this.menue =false; 
      this.menueList = [ false, false, false, false, false];
@@ -39,6 +45,28 @@ export class HeaderComponent implements OnInit {
       this.categories = data;
       this.showCate = true;
     })
+
+    if (this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        if (response.data.length)
+          this.activeCart = true;
+      })
+    } 
+      
+    if (this.storage.get('whishlist')) {
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe((data:any)=> {
+        if (data.product.length)
+          this.activeWhishlist = true;
+      })
+    }
+    
+    this.cartService.active.subscribe( data=> {
+      this.activeCart = data;
+    })
+    this.whishlistService.active.subscribe( data => {
+      this.activeWhishlist = data;
+    })
+
   }
 
   goTo() {

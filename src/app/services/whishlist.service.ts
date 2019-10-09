@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class WhishlistService {
   url:any;
   httpOptions:any;
+  public active = new Subject <boolean>()
   constructor(private http:HttpClient) { 
     this.url = 'http://elogail.bit68.com/api/';
     this.httpOptions = {
@@ -24,11 +26,13 @@ export class WhishlistService {
 
   put(id:any) {
     var data = { 'product_id':id }
+    this.active.next(true);
     return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
   }
 
    patch(id:any,wishlistID:any){
     var data = { 'product_id':id,  'wishlist': wishlistID };
+    this.active.next(true)
     return this.http.post(this.url + 'wishlist/', data, this.httpOptions);
   }
   

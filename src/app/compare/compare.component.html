@@ -1,33 +1,293 @@
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Action</th>
-                        <th scope="col"*ngFor="let prodcut of products">remove</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Product Name</th>
-                        <td *ngFor="let product of products">{{product.name}}</td>
-                      </tr>
-                      <tr >
-                        <th scope="row">Product Image</th>
-                        <td  *ngFor="let prodcut of prodcuts"><img [src]="product?.productimage[0]?.image" alt=""  height='100' width='300'></td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row">Availability</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Action</th>
+              <th scope="col" *ngFor="let prodcut of products" class="t-header">remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Product Name</th>
+              <td *ngFor="let product of products" class="t-header">{{product.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Product Image</th>
+              <td *ngFor="let product of products" class="td-image">
+                <img [src]="product?.productimage[0]?.image_url" alt="" height='300' width='300'>
+                <div class="price">{{ product.price }},00 EGP</div>
+                <button type="button" class=" add-cart" (click)="addToCart(product.id)">ADD TO CART</button>
+              </td>
+
+            </tr>
+            <tr>
+              <th scope="row">Availability</th>
+              <td *ngFor="let product of products" class="t-header">{{ product.availability }}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Display</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Screen Colors</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Touch Screen</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Screen Type</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Screen Size</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Pixel Density</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">sound</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Alert Types</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Loudspeaker</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Screen Type</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">sound</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Alert Types</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Loudspeaker</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Screen Type</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">sound</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Video</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Secondary Camera</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Primary Camera</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Battery</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Package Content </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Battery Type </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Memory</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Internal Storage</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Card Slot Type</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">RAM </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Internal Storage</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">CPU</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CPU </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Chipset</th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Wireless Connectivity</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Bluetooth </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Wi-Fi </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Basic Specifications
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Device Type </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Announced </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row"># SIM Card </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row"># SIM Card </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">SIM Type </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Software
+
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Operating System </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Flash </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Network
+
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">2G (TDMA, CDMA) </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">3G (UMTS, EDGE) </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">4G ( LTE) </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Ports
+
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">USB Ports </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">Audio Connector </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+
+          </tbody>
+          <thead>
+            <tr>
+              <td colspan=100% class="specifications">Extras
+
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Sensors </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+            <tr>
+              <th scope="row">GPS </th>
+              <td *ngFor="let product of products" class="t-header">_</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </section>

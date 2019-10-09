@@ -13,10 +13,10 @@
        
         </div>
   
-
+       
     <div class="cart">
-        <a routerLink="/whishlist-cart/cart" ><img src="assets/logo/Cart Active@1x.png"  alt=""></a>
-        <a routerLink="/whishlist-cart/whishlist" ><img src="assets/logo/love Active@1x.png"  alt=""></a>
+        <a routerLink="/whishlist-cart/cart" ><img src="assets/logo/Cart Active@1x.png"  alt="" *ngIf="activeCart"><img src="assets/icons/Cartblack@2x.png"  alt="" *ngIf="!activeCart"></a>
+        <a routerLink="/whishlist-cart/whishlist" ><img src="assets/logo/love Active@1x.png"  *ngIf="activeWhishlist" alt=""> <img src="assets/icons/heartblack.svg"  *ngIf="!activeWhishlist" alt=""></a>
     </div>
 
     <div class="like">   
@@ -36,8 +36,10 @@
         <img class="mobile-logo" src="assets/logo/final-logo@2x.svg" alt="" (click)="goHome()">
     </div>
     <div>
-        <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" alt="">
-        <img  class="mobile-love" src="assets/logo/love Active@1x.png" alt="">
+        <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" *ngIf="activeCart" alt="">
+        <img  class="mobile-love" src="assets/logo/love Active@1x.png" *ngIf="activeWhishlist" alt="">
+        <img class="mobile-cart" src="assets/icons/Cartblack@2x.png" *ngIf="!activeCart" alt="">
+        <img  class="mobile-love" src="assets/logo/icons/heartblack.svg" *ngIf="!activeWhishlist" alt="">
     </div>
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showCate">

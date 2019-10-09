@@ -1,8 +1,119 @@
 .table{
     border: 1px solid #eee;
     margin-top: 150px;
+    margin-bottom: 100px;
 }
 .table thead th {
     vertical-align: bottom;
      border-bottom: unset;
+}
+td, th {
+    border: 1px solid #eee;
+}
+th {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #222;
+    background: #f8f8f8;
+}
+.t-header {
+    background-color: unset !important;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    line-height:21px;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat-Light' !important;
+}
+.td-image {
+    text-align: center;
+}
+.price {
+    background-color: #f6eb16;
+    width: 200px;
+    margin: 20px auto;
+    line-height: 60px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)!important;
+    border-radius: 5px 0 0 5px;
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    transition: .5s;
+    position: relative;
+    background-attachment:scroll;
+    background-clip:border-box;
+    cursor: pointer;
+    z-index: 0;
+}
+.price:before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: rgba(0,0,0,.75);
+    border-radius: 50%;
+    position: absolute;
+    left: 103%;
+    bottom: 26.5px;
+}
+.price:after {
+    background: inherit;
+    display: block;
+    content: "";
+    height: 42.426406871px;
+    position: absolute;
+    right: -42.426406871px;
+    top: 0;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 42.426406871px;
+    z-index: -1;
+    box-shadow: 2px -2px 3px -3px;
+    
+}
+.price:hover {
+    background-color:  red;
+}
+.add-cart {
+    padding: 13px 29px;
+    color: #fff;
+    letter-spacing: .05em;
+    border: 2px solid #e31013;
+    background-image: linear-gradient(30deg,#e31013 50%,transparent 50%);
+    background-size: 540px;
+    background-repeat: no-repeat;
+    background-position: 0;
+    transition: background .3s ease-in-out;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)!important;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)!important;
+    padding: 6px 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 0;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-family: 'Montserrat-Light' !important;
+    margin-bottom:30px; 
+}
+.add-cart:hover {
+    background-position: 100%;
+    color: #000;
+    background-color: #fff;
+}
+.specifications {
+    background: #f8f8f8;
+    text-align: center!important;
+    padding: .75rem;
+    vertical-align: top;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat-Light' !important;
 }
