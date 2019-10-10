@@ -56,22 +56,26 @@ export class ProductDetailsComponent implements OnInit {
     })
     this.productsService.getPopularProduct().subscribe( ( data:any ) => {
       this.popularProducts = data;
+      console.log("popularProducts", this.popularProducts);
       this.popularCarts = [...this.popularProducts];
       this.popularCarts.fill(false);
       this.popularLikes = [...this.popularCarts];
       this.checkPopularCart();
-      
+      this.checkPopularWhishlist();
     })
 
     this.productsService.getRecommendedProducts().subscribe ( ( data:any) => {
       this.recProducts = data;
+      console.log("recProducts", this.recProducts)
+      // this.recProducts.reverse();
       this.recommandedCarts = [...this.recProducts];
       this.recommandedCarts.fill(false);
       this.recommandedLikes = [...this.recommandedCarts]
-      this.checkPopularWhishlist();
+      this.checkRecoCart();
+      this.checkRecoWhishlist();
     })
   
-    
+   
   }
 
   setImagesInGallary(imgArray:any) {
@@ -124,6 +128,7 @@ export class ProductDetailsComponent implements OnInit {
   checkCart() {
     if(this.storage.get('cart')) {
       this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        console.log('item in cart', response);
         response.data.forEach(element => {
            if (element.product.id == this.product.id)
             this.inCart=true;
@@ -152,10 +157,13 @@ export class ProductDetailsComponent implements OnInit {
   checkPopularCart() {
     if(this.storage.get('cart')) {
       this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        console.log("data", response.data);
         response.data.forEach(element => {
-          this.popularCarts[this.popularProducts.map(function(product) { return product.id; }).indexOf(element.product.id)]=true;
+          this.popularCarts[this.popularProducts.map(function(product) { return product.product.id; }).indexOf(element.product.id)]=true;
         });
-       
+        console.log("this.popularProducts", this.popularProducts)
+        console.log("Popular Products popularCartscc", this.popularCarts)
+        
       })
      
     }
@@ -164,14 +172,144 @@ export class ProductDetailsComponent implements OnInit {
   checkPopularWhishlist() {
      if (this.storage.get('whishlist')){
       this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        
         data.product.forEach(product => {
-          this.popularLikes[this.popularProducts.map(function(product) { return product.id; }).indexOf(product.id)]=true;
+          this.popularLikes[this.popularProducts.map(function(product) { return product.product.id; }).indexOf(product.id)]=true;
         });
-        console.log("this.inWhishlist", this.inWhishlist);
+        console.log("Whishlist Products ", this.popularLikes)
       })
       
     } 
   }
+
+  checkRecoCart() {
+    if(this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+        response.data.forEach(element => {
+          this.recommandedCarts[this.recProducts.map(function(product) { return product.product.id; }).indexOf(element.product.id)]=true;
+        });
+        console.log("recommandedcarts ", this.recommandedCarts);
+      })
+     
+    }
+   
+  }
+  checkRecoWhishlist() {
+     if (this.storage.get('whishlist')){
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        console.log("data from whishlist", data)
+        data.product.forEach(product => {
+          this.recommandedLikes[this.recProducts.map(function(product) { return product.product.id; }).indexOf(product.id)]=true;
+        });
+        console.log("recommandedLikes ", this.recommandedLikes);
+      })
+      
+    } 
+  }
+
+  addToCartRec(item:any,index:any){
+    if(this.recommandedCarts[index]){
+      this.recommandedCarts[index]=false;
+      this.recProducts.forEach(item => {
+        if(item.product.id == item.product.id)
+          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {})
+      })
+    } else {
+      this.recommandedCarts[index]=true;
+
+        if (this.storage.get('cart')){
+          console.log("cart",this.storage.get('cart'))
+          console.log("item.product.id", item.product.id )
+          this.cartService.patch(item.product.id,1,this.storage.get('cart')).subscribe((response:any) => {
+          })
+         
+        } else {
+          this.cartService.put(item.product.id,1).subscribe((response:any)=> {
+           
+            this.storage.set('cart',response.data.cart)
+          })
+        }
+          
+        
+     
+    }
+    
+  }
+  addToWhishlistRec(item:any, index:any) {
+    if(this.recommandedLikes[index]) {
+      this.recommandedLikes[index]=false;
+
+      this.whishlistService.delete(item.product.id,this.storage.get('whishlist')).subscribe( (data:any)=> {
+      })
+    } else {
+      this.recommandedLikes[index]=true;
+      if (this.storage.get('whishlist')) {
+        this.whishlistService.patch(item.product.id,this.storage.get('whishlist')).subscribe((data:any)=> {
+
+        })
+
+      } else {
+        
+        this.whishlistService.put(item.product.id).subscribe((data:any)=> {
+          console.log("data", data)
+          this.storage.set('whishlist',data.id);
+        })
+      }
+    }
+      
+  }
+  addToWhishlistPopul(item:any, index:any) {
+    if(this.popularLikes[index]) {
+      this.popularLikes[index]=false;
+
+      this.whishlistService.delete(item.product.id,this.storage.get('whishlist')).subscribe( (data:any)=> {
+      })
+    } else {
+      this.popularLikes[index]=true;
+      if (this.storage.get('whishlist')) {
+        this.whishlistService.patch(item.product.id,this.storage.get('whishlist')).subscribe((data:any)=> {
+
+        })
+
+      } else {
+        
+        this.whishlistService.put(item.product.id).subscribe((data:any)=> {
+          console.log("data", data)
+          this.storage.set('whishlist',data.id);
+        })
+      }
+    }
+  }
+
+  addToCartPopul(item:any, index:any) {
+    if(this.popularCarts[index]){
+      this.popularCarts[index]=false;
+      this.recProducts.forEach(item => {
+        if(item.product.id == item.product.id)
+          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {})
+      })
+    } else {
+      this.popularCarts[index]=true;
+
+        if (this.storage.get('cart')){
+          console.log("cart",this.storage.get('cart'))
+          console.log("item.product.id", item.product.id )
+          this.cartService.patch(item.product.id,1,this.storage.get('cart')).subscribe((response:any) => {
+          })
+         
+        } else {
+          this.cartService.put(item.product.id,1).subscribe((response:any)=> {
+           
+            this.storage.set('cart',response.data.cart)
+          })
+        }
+          
+      }
+     
+    
+  }
+
+ 
 }
 
 

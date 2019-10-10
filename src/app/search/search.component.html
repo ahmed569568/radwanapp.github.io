@@ -18,30 +18,13 @@
                 <p>Categories</p>
                 <img src="assets/icons/close.png" alt="">
                 <div class="categories">
-                    <div class="form-check">
+                    <div class="form-check" *ngFor="let cate of categories" >
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
-                            Category 1
+                            {{ cate.name }}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Category 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                                Category 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                                Category 1
-                        </label>
-                    </div>   
+                    
                 </div>
                 <hr>
                 <p>Brand</p>
@@ -90,7 +73,7 @@
         </div>
         <div class="col-lg-9 products">
             <div class="card-deck">
-                <div class="card" *ngFor="let product of result">
+                <div class="card" *ngFor="let product of result;let i=index">
                     <div class="my-wrapper">
                         <img src="{{ product?.productimage[0].image_url }}" class="card-img-top"   (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
@@ -102,8 +85,10 @@
                         <p class="card-text" (click)="navigateProduct(product.id)"><small class="text-muted">{{ product?.brand?.name }}</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product.price }}.00<small>EGP</small></h5>
-                            <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="!likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                            <a *ngIf="likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                            <a *ngIf="!carts[i]" (click)="addToCart(product.id,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="carts[i]" (click)="addToCart(product.id,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                         </div>
                     </div>
                 </div>

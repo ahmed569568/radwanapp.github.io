@@ -110,7 +110,8 @@ export class HomeComponent implements OnInit {
     if(this.likes[index]) {
       this.likes[index]=false;
 
-      // this.whishlistService.
+      this.whishlistService.delete(id,this.storage.get('whishlist')).subscribe( (data:any)=> {
+      })
     } else {
       this.likes[index]=true;
       if (this.storage.get('whishlist')) {

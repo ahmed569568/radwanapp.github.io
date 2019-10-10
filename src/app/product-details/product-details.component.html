@@ -145,7 +145,7 @@
         <div class="col-lg-12">
             <app-slider class="desktop-slider">
                 <div class="card-deck" appSliderItem>
-                    <div class="card" *ngFor="let product of recProducts">
+                    <div class="card" *ngFor="let product of recProducts;let i = index">
                         <div class="my-wrapper">
                             <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                             <div class="middle">
@@ -157,15 +157,17 @@
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
-                            <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlistRec(product,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                            <a *ngIf="recommandedLikes[i]" (click)="addToWhishlistRec(product,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                            <a *ngIf="!recommandedCarts[i]" (click)="addToCartRec(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="recommandedCarts[i]" (click)="addToCartRec(product,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                         </div>
                         </div>
                     </div>
                 </div>
             </app-slider>
             <div class="card-deck mobile-slider">
-                <div class="card" *ngFor="let product of recProducts">
+                <div class="card" *ngFor="let product of recProducts;let i=index">
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
@@ -177,8 +179,10 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     <div class="card-price-like">
                         <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                        <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                        <a *ngIf="recommandedLikes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                        <a *ngIf="!recommandedCarts[i]" (click)="addToCart(product.id,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                        <a *ngIf="recommandedCarts[i]" (click)="addToCart(product.id,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                     </div>
                     </div>
                 </div>
@@ -197,7 +201,7 @@
         <div class="col-lg-12">
             <app-slider class="desktop-slider">
                 <div class="card-deck" appSliderItem>
-                    <div class="card" *ngFor="let product of recProducts">
+                    <div class="card" *ngFor="let product of popularProducts;let i = index">
                         <div class="my-wrapper">
                             <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                             <div class="middle">
@@ -209,10 +213,10 @@
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         <div class="card-price-like">
                             <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
-                            <a *ngIf="!popularLikes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg"  alt=""></a>
-                            <a *ngIf="popularLikes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
-                            <a *ngIf="!popularCarts[i]" (click)="addToCart(product.id,i)"><img src="assets/logo/cart.svg"  alt=""></a>
-                            <a *ngIf="popularCarts[i]" (click)="addToCart(product.id,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
+                            <a *ngIf="!popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                            <a *ngIf="popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                            <a *ngIf="!popularCarts[i]" (click)="addToCartPopul(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="popularCarts[i]" (click)="addToCartPopul(product,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                         </div>
                         </div>
                     </div>
