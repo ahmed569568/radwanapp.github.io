@@ -3,7 +3,7 @@
         <div class="col-lg-3 ">
             <div class="sort first">
                 <p>Sort By</p>
-                <i class="fa fa-angle-down" ></i>
+               
                 <select>
                         
                     <option>Price : Low To High</option>
@@ -13,6 +13,7 @@
                    
                 </select>
                 
+
             </div>
             <div class="search first">
                 <p>Categories</p>
@@ -30,30 +31,12 @@
                 <p>Brand</p>
                 <img src="assets/icons/close.png" alt="">
                 <div class="brands">
-                    <div class="form-check">
+                    <div class="form-check" *ngFor="let brand of brands">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
-                            Category 1
+                            {{ brand.name }}
                         </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Category 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                                Category 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                                Category 1
-                        </label>
-                    </div>   
+                    </div>  
                 </div>
                 <hr>
                 <p>Price</p>

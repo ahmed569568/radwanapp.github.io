@@ -19,7 +19,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 // import { library, dom } from '@fortawesome/fontawesome-svg-core';
 // import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
 // library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
 
 
 
@@ -37,7 +37,7 @@ import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { CompareComponent } from './compare/compare.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [

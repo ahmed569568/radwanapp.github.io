@@ -6,7 +6,8 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { CartService } from '../services/cart.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { CategoriesService } from '../services/categories.service';
-
+import { BrandService } from '../services/brand.service';
+import { faAngleUp} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',
@@ -19,9 +20,12 @@ export class SearchComponent implements OnInit {
   carts: any[];
   cartItems: any[];
   categories:any;
+  brands: any;
+  
   constructor( private route: ActivatedRoute, private searchService: SearchService,
                private storage:LocalStorageService, private cartService: CartService,
-               private whishlistService:WhishlistService, private categoryService: CategoriesService) { }
+               private whishlistService:WhishlistService, private categoryService: CategoriesService,
+               private brandService: BrandService) { }
 
   ngOnInit() {
     this.route.queryParams
@@ -38,8 +42,10 @@ export class SearchComponent implements OnInit {
       })
     })
     this.categoryService.getCategories().subscribe(( data: any)=> {
-      console.log("data", data);
       this.categories = data;
+    })
+    this.brandService.get().subscribe(( data:any) => {
+      this.brands = data;
     })
   }
   mm(data) {
