@@ -37,7 +37,12 @@ import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { CompareComponent } from './compare/compare.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { Ng5SliderModule } from 'ng5-slider';
+
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
   declarations: [
@@ -69,7 +74,10 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
       apiKey: 'AIzaSyBUb5Iw_VNw2jOaToFuPbGF5Wz5Pp7mem8'
     }),
     GalleryModule.forRoot(),
-    StorageServiceModule
+    StorageServiceModule,
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
+    Ng5SliderModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

@@ -7,12 +7,25 @@ import { CartService } from '../services/cart.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { CategoriesService } from '../services/categories.service';
 import { BrandService } from '../services/brand.service';
-import { faAngleUp} from '@fortawesome/free-solid-svg-icons';
 
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Options } from 'ng5-slider';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations: [
+    trigger('changeState', [
+      transition('*=>open', [
+        style({ opacity: 0 }),
+        animate('5s', style({ opacity: 1 })),
+      ]),
+      transition('*=>close', [
+        animate('5s', style({ opacity: 0 }))
+      ])
+    ])
+  ]
+
 })
 export class SearchComponent implements OnInit {
   result:any;
@@ -21,11 +34,34 @@ export class SearchComponent implements OnInit {
   cartItems: any[];
   categories:any;
   brands: any;
-  
+  showCateg: boolean;
+  showBrand: boolean;
+  currentState:any;
+  showPrice:boolean;
+
+  value: number = 0;
+  highValue: number = 10000;
+  options: Options = {
+    floor: 0,
+    ceil: 10000
+  };
+  // searchJson: any;
+  categoryJson:any;
+  brandJson:any;
+  priceJson:any;
   constructor( private route: ActivatedRoute, private searchService: SearchService,
                private storage:LocalStorageService, private cartService: CartService,
                private whishlistService:WhishlistService, private categoryService: CategoriesService,
-               private brandService: BrandService) { }
+               private brandService: BrandService) {
+
+                this.showCateg = true;
+                this.showBrand = true;
+                this.showPrice = true;
+                this.categoryJson = { 'type': 'category','values' : []};
+                this.brandJson = { 'type': 'brand','values' : []};
+                this.priceJson  = { 'type': 'price', 'values': { 'low': '0', 'high': '50000'}};
+                // this.searchJson =  [ this.categoryJson, this.brandJson, this.priceJson ]
+                }
 
   ngOnInit() {
     this.route.queryParams
@@ -128,4 +164,78 @@ export class SearchComponent implements OnInit {
     }
       
   } 
+
+  toggleCateg() {
+    if(this.showCateg){
+
+      this.currentState = 'open'
+      this.showCateg=false;
+    }
+    else {
+      this.currentState = 'close'
+      this.showCateg=true;
+    }
+      
+  }
+
+  toggleBrand() {
+    if (this.showBrand)
+      this.showBrand = false;
+    else 
+      this.showBrand = true;
+  }
+
+
+  togglePrice(){
+    if (this.showPrice)
+      this.showPrice = false;
+    else
+      this.showPrice = true;
+  }
+
+  category($event) {
+    if ($event.target.checked) {
+      if (this.categoryJson.values.indexOf($event.target.value)==-1)
+        this.categoryJson.values.push($event.target.value);
+     
+    }else {
+      this.categoryJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
+    }
+    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
+
+  }
+
+  brandSelect($event) {
+    if ($event.target.checked) {
+      if (this.brandJson.values.indexOf($event.target.value)==-1)
+        this.brandJson.values.push($event.target.value);
+     
+    }else {
+      this.brandJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
+    }
+    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
+
+  }
+
+
+  price($event) {
+    this.priceJson.values.low = $event.value;
+    this.priceJson.values.high = $event.highValue;
+    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
+  }
+  search(categoryValues, brandValues, priceValues){
+    console.log("categoryValues",categoryValues);
+    console.log("brandValues",brandValues)
+    console.log("priceValues",priceValues)
+    if (categoryValues.length)
+      categoryValues.join(',');
+    else if (brandValues.length)
+      brandValues.join(',');
+    else if (priceValues.length)
+      priceValues.join(',');
+
+      console.log("categoryValues",categoryValues);
+      console.log("brandValues",brandValues)
+      console.log("priceValues",priceValues)
+  }
 }

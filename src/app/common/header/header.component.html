@@ -33,7 +33,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <img class="mobile-logo" src="assets/logo/final-logo@2x.svg" alt="" (click)="goHome()">
+        <img class="mobile-logo" src="assets/logo/Mr Hamdy El Ogail.svg" alt="" (click)="goHome()">
     </div>
     <div>
         <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" *ngIf="activeCart" alt="">
@@ -133,9 +133,9 @@
      
     </div>
     <form class="form-inline">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" >
-            <button class="btn btn-primary search" type="button" ><img src="assets/logo/Search@1x.png"  alt="" (click)="goTo()"></button>
-        </form>
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" [formControl]="keyword">
+        <button class="btn btn-primary search" type="button"  (click)="search()"><img src="assets/logo/Search@1x.png"  alt="" ></button>
+    </form>
   </nav>
 
   <header class="header">

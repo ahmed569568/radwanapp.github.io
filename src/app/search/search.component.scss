@@ -52,37 +52,40 @@ padding-bottom: 10%;
 .sort > i {
     position: absolute;
     right: 21px;
-    top: 10px;
+    top: 7px;
     font-size: 22px;
-
+    font-family: FontAwesome !important;
 }
 
 .search {
-    height: 800px;
+    // height: 800px;
     margin-bottom: 3%;
     border-radius: 6px;
 }
-.search > p {
-    font-size: 14px;
-    color: #4b5858;
-    font-weight: bold;
-    float: left;
-    font-family: 'Roboto';
-    margin-top: 3%;
-    margin-left: 4%;
+.header-cate {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px
 }
-.search > img {
+.header-cate .images > img {
     margin-right: 10px;
     margin-top: 10px;
     
-    float: right;
+    
 }
 
-
+.header-cate  > p {
+    font-size: 14px;
+    color: #4b5858;
+    font-weight: bold;
+    font-family: 'Roboto';
+    margin-top: 3%;
+}
 .categories,
 .brands {
-    padding-top: 60px;
-    padding-left: 4%;
+    padding-top: 10px;
+    padding-left: 10px;
     margin-bottom: 14%;
 }
 
@@ -267,16 +270,16 @@ input[type="range"]::-webkit-slider-thumb {
 
 .from
 {
-    margin-left: 20px;
-    color: #4b5858;
-    font-family: 'Roboto-Light';
-    font-size: 12px;
+
+    font-size: 16px;
+    color: rgba(75, 88, 88, 1);
+    font-family: 'Montserrat-Light' !important;
 }
 .to {
-    margin-right: 20px;
-    color: #4b5858;
-    font-family: 'Roboto-Light';
-    font-size: 12px;
+
+    font-size: 16px;
+    color: rgba(75, 88, 88, 1);
+    font-family: 'Montserrat-Light' !important;
 }
 
 
@@ -321,6 +324,39 @@ input[type="range"]::-webkit-slider-thumb {
 .brands .form-check,
 .categories .form-check {
     margin-bottom: 10px;
+}
+
+.price-value,
+.price-slider {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px
+}
+.price-range {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.min,
+.high {
+    
+/*Text styles for 2,150.00 */
+font-family: 'Montserrat-Bold' !important;
+font-size: 12px;
+
+color: rgba(75, 88, 88, 1);
+text-align: left;
+line-height: 24px;
+
+
+}
+.min span,
+.high span {
+    font-family: 'Montserrat-Medium' !important;
+    font-size: 8px;
+    color: rgba(75, 88, 88, 1);
+    text-align: left;
+    line-height: 24px;
 }
 @media (max-width: 576px) { 
     .search {
