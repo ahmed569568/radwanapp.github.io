@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit {
   keyword = new FormControl('');
   activeCart: boolean;
   activeWhishlist: boolean;
+  headerListSpinner:boolean;
+  mnekaNshfa:boolean;
   constructor( private router: Router, private categoriesService: CategoriesService ,
                private route: ActivatedRoute, private cartService: CartService,
                private whishlistService: WhishlistService, private storage: LocalStorageService) { 
@@ -35,10 +37,12 @@ export class HeaderComponent implements OnInit {
      this.menueList = [ false, false, false, false, false];
      this.showCate = false;
      this.subCateProducts= [];
-     
+     this.headerListSpinner = false;
+     this.mnekaNshfa = false;
   }
 
   ngOnInit( ) {
+   
     this.categoriesService.getCategories().subscribe( (data:any) => {
   
       console.log("Categories", data);
@@ -72,6 +76,7 @@ export class HeaderComponent implements OnInit {
   goTo() {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
+    
   }
   search() {
     this.router.navigate(['./search/'],  { relativeTo: this.route ,queryParams: { search: this.keyword.value } })
@@ -82,15 +87,19 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['./'])
   }
   showBorder(index,cateID) {
+    this.headerListSpinner = true;
     this.subCategories =[]
+    
     this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
+      this.mnekaNshfa = true;
       console.log("Sub Categories", data);
       this.subCategories = data.subcategory;
-      
+      this.mnekaNshfa =false;
       this.subCateProducts = [...data.subcategory];
       this.subCateProducts.fill(false);
       console.log("this.subCateProducts", this.subCateProducts)
       console.log("this.subCategories", this.subCategories);
+      this.headerListSpinner = false;
     })
     this.lastLink = index;
     this.menueList.fill(false);
@@ -153,12 +162,16 @@ export class HeaderComponent implements OnInit {
   }
   showHideBorderFromMobile(index,cateID) {
     this.subCategories =[]
+    this.headerListSpinner = true;
     if (this.lastIndexMobile != index) {
       this.lastIndexMobile = index;
       this.menueList.fill(false);
       this.menueList[index]= true;
+      this.mnekaNshfa = true;
       this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
+        this.mnekaNshfa = false;
         this.subCategories = data.subcategory;
+        this.headerListSpinner = false;
         this.subCateProducts = [...data.subcategory];
         this.subCateProducts.fill(false);
       })

@@ -201,7 +201,7 @@ export class SearchComponent implements OnInit {
     }else {
       this.categoryJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
     }
-    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
+   
 
   }
 
@@ -213,7 +213,7 @@ export class SearchComponent implements OnInit {
     }else {
       this.brandJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
     }
-    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
+
 
   }
 
@@ -221,21 +221,21 @@ export class SearchComponent implements OnInit {
   price($event) {
     this.priceJson.values.low = $event.value;
     this.priceJson.values.high = $event.highValue;
-    this.search(this.categoryJson.values,this.brandJson.values,this.priceJson.values);
   }
-  search(categoryValues, brandValues, priceValues){
+  search(categoryValues, brandValues, priceValues,sort){
     console.log("categoryValues",categoryValues);
     console.log("brandValues",brandValues)
     console.log("priceValues",priceValues)
     if (categoryValues.length)
-      categoryValues.join(',');
+      console.log(categoryValues.join(','));
     else if (brandValues.length)
-      brandValues.join(',');
+        console.log(brandValues.join(','));
     else if (priceValues.length)
-      priceValues.join(',');
-
+        console.log(priceValues.join(','));
+    console.log(brandValues.join(','));
       console.log("categoryValues",categoryValues);
       console.log("brandValues",brandValues)
       console.log("priceValues",priceValues)
+      this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.value, priceValues.HighValue,sort)
   }
 }

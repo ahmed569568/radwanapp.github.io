@@ -125,7 +125,7 @@ img {
     opacity: 1;
     z-index: 1000;
 }
-.header-list .title {
+ .title {
     color:#E30B13;
     font-family: 'Roboto-Bold';
     font-weight: bold;
@@ -156,6 +156,10 @@ img {
 }
 .nav-mobile {
     display: none;
+}
+.header-list-spinner {
+    margin: auto;
+    padding-top: 50px;
 }
 /* Mobile Style */
 @media (max-width: 576px) { 

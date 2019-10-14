@@ -117,3 +117,12 @@ th {
     color: rgb(0, 0, 0);
     font-family: 'Montserrat-Light' !important;
 }
+
+@media (max-width: 576px) { 
+    .wrapper {
+        overflow-x: scroll;
+    }
+    .table {
+     display: inline-block;   
+    }
+}

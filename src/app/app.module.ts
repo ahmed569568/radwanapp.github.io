@@ -42,6 +42,10 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Ng5SliderModule } from 'ng5-slider';
+import {AtomSpinnerModule} from 'angular-epic-spinners'
+
+import {LoopingRhumbusesSpinnerModule} from 'angular-epic-spinners';
+import {FingerprintSpinnerModule} from 'angular-epic-spinners';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -77,7 +81,10 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     StorageServiceModule,
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    AtomSpinnerModule,
+    LoopingRhumbusesSpinnerModule,
+    FingerprintSpinnerModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]
