@@ -6,6 +6,7 @@ import { SliderService } from '../services/slider.service';
 import { CartService } from '../services/cart.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { WhishlistService } from '../services/whishlist.service';
+import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
                private categoriesService: CategoriesService, private sliderService: SliderService,
                private cartService: CartService, private storage:LocalStorageService,
-               private whishlistService: WhishlistService) { 
+               private whishlistService: WhishlistService, private spinner: RadwanSpinnerService) { 
                 this.categories =[];
                 this.sliders= [];
                 this.showCate = false;
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
               }
 
   ngOnInit() {
-
+    this.spinner.show();
     this.categoriesService.feature().subscribe( ( data:any) => {
       console.log("this.categories", data);
       this.categories = data;
@@ -41,6 +42,7 @@ export class HomeComponent implements OnInit {
     })
 
     this.productsService.getProducts().subscribe( (data:any) => {
+     
       this.products = data;
       this.likes =[...this.products]
       this.likes.fill(false);
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit {
       console.log(" this.products",  this.products);
       this.checkCart();
       this.checkWhishlist();
-
+      this.spinner.hide();
     }) ;
 
     

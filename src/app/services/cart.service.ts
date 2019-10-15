@@ -30,6 +30,9 @@ export class CartService {
     
   }
   patch(id:any,quantity:any,cartID:any){
+    console.log("id",id);
+    console.log("quantity", quantity);
+    console.log("cartID", cartID)
     var data = { 'product':id, 'quantity':quantity, 'cart': cartID };
     this.active.next(true);
     return this.http.post(this.url + 'cart/me/', data, this.httpOptions);

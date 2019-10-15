@@ -46,6 +46,11 @@ import {AtomSpinnerModule} from 'angular-epic-spinners'
 
 import {LoopingRhumbusesSpinnerModule} from 'angular-epic-spinners';
 import {FingerprintSpinnerModule} from 'angular-epic-spinners';
+import { RadwanSpinnerComponent } from './common/radwan-spinner/radwan-spinner.component';
+
+import {SelfBuildingSquareSpinnerModule} from 'angular-epic-spinners';
+import {BreedingRhombusSpinnerModule} from 'angular-epic-spinners';
+import {HalfCircleSpinnerModule} from 'angular-epic-spinners';
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -64,7 +69,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     WhishlistComponent,
     CartComponent,
     WhishlistCartComponent,
-    CompareComponent
+    CompareComponent,
+    RadwanSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,10 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     Ng5SliderModule,
     AtomSpinnerModule,
     LoopingRhumbusesSpinnerModule,
-    FingerprintSpinnerModule
+    FingerprintSpinnerModule,
+    SelfBuildingSquareSpinnerModule,
+    BreedingRhombusSpinnerModule,
+    HalfCircleSpinnerModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

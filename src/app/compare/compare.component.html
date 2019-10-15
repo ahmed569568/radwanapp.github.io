@@ -6,7 +6,7 @@
           <thead>
             <tr>
               <th scope="col">Action</th>
-              <th scope="col" *ngFor="let prodcut of products" class="t-header">remove</th>
+              <th scope="col" *ngFor="let product of products" class="t-header"  (click)="remove(product.id)">remove</th>
             </tr>
           </thead>
           <tbody>
@@ -16,10 +16,10 @@
             </tr>
             <tr>
               <th scope="row">Product Image</th>
-              <td *ngFor="let product of products" class="td-image">
+              <td *ngFor="let product of products; let i =index" class="td-image">
                 <img [src]="product?.productimage[0]?.image_url" alt="" height='300' width='300'>
                 <div class="price">{{ product.price }},00 EGP</div>
-                <button type="button" class=" add-cart" (click)="addToCart(product.id)">ADD TO CART</button>
+                <button type="button" class=" add-cart" (click)="addToCart(product.id)" *ngIf="!carts[i]">ADD TO CART</button>
               </td>
 
             </tr>
