@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.categoriesService.getCategories().subscribe( ( data:any) => {
+    this.categoriesService.feature().subscribe( ( data:any) => {
       console.log("this.categories", data);
       this.categories = data;
       this.showCate = true;
