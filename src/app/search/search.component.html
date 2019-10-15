@@ -4,11 +4,11 @@
             <div class="sort first">
                 <p>Sort By</p>
                   <i class="fa fa-angle-down"></i>
-                <select>
-                    <option>Price : High To Low</option>
-                    <option>Price : Low To High</option>
-                    <option>Alphabetical </option>
-                    <option>Featured</option>
+                <select (change)="sort($event)">
+                    <option value="-price">Price : High To Low</option>
+                    <option value="price">Price : Low To High</option>
+                    <option value="name">Alphabetical </option>
+                    <option value="">Featured</option>
                 </select>
             </div>
             <div class="search first">

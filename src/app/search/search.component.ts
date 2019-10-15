@@ -49,6 +49,7 @@ export class SearchComponent implements OnInit {
   categoryJson:any;
   brandJson:any;
   priceJson:any;
+  sortValue:any;
   constructor( private route: ActivatedRoute, private searchService: SearchService,
                private storage:LocalStorageService, private cartService: CartService,
                private whishlistService:WhishlistService, private categoryService: CategoriesService,
@@ -60,6 +61,7 @@ export class SearchComponent implements OnInit {
                 this.categoryJson = { 'type': 'category','values' : []};
                 this.brandJson = { 'type': 'brand','values' : []};
                 this.priceJson  = { 'type': 'price', 'values': { 'low': '0', 'high': '50000'}};
+                this.sortValue = '';
                 // this.searchJson =  [ this.categoryJson, this.brandJson, this.priceJson ]
                 }
 
@@ -201,7 +203,7 @@ export class SearchComponent implements OnInit {
     }else {
       this.categoryJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
     }
-   
+   this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
 
   }
 
@@ -213,7 +215,7 @@ export class SearchComponent implements OnInit {
     }else {
       this.brandJson.values.splice(this.categoryJson.values.indexOf(($event.target.value),1));
     }
-
+    this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
 
   }
 
@@ -221,21 +223,21 @@ export class SearchComponent implements OnInit {
   price($event) {
     this.priceJson.values.low = $event.value;
     this.priceJson.values.high = $event.highValue;
+    this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
   }
   search(categoryValues, brandValues, priceValues,sort){
-    console.log("categoryValues",categoryValues);
-    console.log("brandValues",brandValues)
-    console.log("priceValues",priceValues)
-    if (categoryValues.length)
-      console.log(categoryValues.join(','));
-    else if (brandValues.length)
-        console.log(brandValues.join(','));
-    else if (priceValues.length)
-        console.log(priceValues.join(','));
-    console.log(brandValues.join(','));
-      console.log("categoryValues",categoryValues);
-      console.log("brandValues",brandValues)
-      console.log("priceValues",priceValues)
-      this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.value, priceValues.HighValue,sort)
+      this.result = []
+      this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.low, priceValues.high,sort).subscribe( (data: any)=> {
+        this.result = data;
+        this.likes = [...this.result];
+        this.likes.fill(false);
+        this.carts = [...this.likes]
+        this.checkLikes();
+        this.checkCarts();
+      })
+  }
+
+  sort($event) {
+    this.sort = $event.target.value;
   }
 }
