@@ -118,6 +118,19 @@ th {
     font-family: 'Montserrat-Light' !important;
 }
 
+.empty-compare {
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 200px;
+}
+
+.empty-compare h3 {
+    font-size: 24px;
+    color: #777;
+    letter-spacing: .03em;
+    line-height: 100px;
+}
+
 @media (max-width: 576px) { 
     .wrapper {
         overflow-x: scroll;
@@ -125,4 +138,15 @@ th {
     .table {
      display: inline-block;   
     }
+    .empty-compare img {
+        width: 100px;
+    }
+    .empty-compare h3 {
+        font-size: 16px;
+        color: #777;
+        letter-spacing: 0.03em;
+        line-height: 60px;
+    }
 }
+
+

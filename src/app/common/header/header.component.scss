@@ -51,6 +51,7 @@ img {
     display: inline-block;
     margin-right: 15px;
     margin-left: 15px;
+    cursor: pointer;
     
 }
 .header-links > ul.header-links-main > li a {
@@ -58,6 +59,7 @@ img {
     font-family: 'Roboto-Bold';
     font-size: 16px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .header-links > ul.header-links-main > :first-child a {

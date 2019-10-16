@@ -7,6 +7,7 @@ import { CartService } from '../services/cart.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   carts:any;
   cartItems:any[];
   whishlistItems: any[];
+  sync = faSync;
   constructor( private router: Router, private productsService:ProductsService, private route: ActivatedRoute, 
                private categoriesService: CategoriesService, private sliderService: SliderService,
                private cartService: CartService, private storage:LocalStorageService,
@@ -155,4 +157,32 @@ export class HomeComponent implements OnInit {
     } 
   }
 
+  compare(id:any) {
+    var productsID =  this.storage.get('compare');
+    console.log("compare",this.storage.get('compare'));
+
+    if (productsID ) {
+      if (productsID.indexOf(id) != -1) {
+        this.router.navigate(['./compare'], { relativeTo: this.route});
+      } else {
+        if(productsID.length >= 3) {
+          this.router.navigate(['./compare'], { relativeTo: this.route });
+        } else {
+          productsID.push(id);
+          console.log("productsID", productsID)
+          this.storage.set('compare', productsID);
+          this.router.navigate(['./compare'], { relativeTo: this.route });
+        }
+      }
+    } else {
+      this.storage.set('compare', [id]);
+      this.router.navigate(['./compare'], { relativeTo: this.route });
+
+    }
+  }
+
+  searchCategory(id:any) {
+    console.log("id", id);
+    this.router.navigate(['./search'], { relativeTo: this.route, queryParams: { category: id} })
+  }
 }

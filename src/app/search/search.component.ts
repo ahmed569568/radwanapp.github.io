@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { SearchService } from '../services/search.service';
 import { LocalStorageService } from '../services/local-storage.service';
@@ -10,6 +10,9 @@ import { BrandService } from '../services/brand.service';
 
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Options } from 'ng5-slider';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { RadwanSpinnerService } from '../services/radwan-spinner.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -50,10 +53,12 @@ export class SearchComponent implements OnInit {
   brandJson:any;
   priceJson:any;
   sortValue:any;
+  sync = faSync;
   constructor( private route: ActivatedRoute, private searchService: SearchService,
                private storage:LocalStorageService, private cartService: CartService,
                private whishlistService:WhishlistService, private categoryService: CategoriesService,
-               private brandService: BrandService) {
+               private brandService: BrandService, private router: Router,
+               private spinner: RadwanSpinnerService) {
 
                 this.showCateg = true;
                 this.showBrand = true;
@@ -66,6 +71,7 @@ export class SearchComponent implements OnInit {
                 }
 
   ngOnInit() {
+    this.spinner.show();
     this.route.queryParams
     .filter(params => params.search)
     .subscribe(params => {
@@ -77,6 +83,21 @@ export class SearchComponent implements OnInit {
         this.carts = [...this.likes]
         this.checkLikes();
         this.checkCarts();
+        this.spinner.hide();
+      })
+    })
+
+    this.route.queryParams
+    .filter(params => params.category)
+    .subscribe( params => {
+      this.categoryService.getProducts(params.category).subscribe ( (data:any) => {
+        this.result = data;
+        this.likes = [...this.result];
+        this.likes.fill(false);
+        this.carts = [...this.likes];
+        this.checkLikes();
+        this.checkCarts();
+        this.spinner.hide();
       })
     })
     this.categoryService.getCategories().subscribe(( data: any)=> {
@@ -90,7 +111,8 @@ export class SearchComponent implements OnInit {
     console.log(data);
   }
   navigateProduct(id:any) {
-  
+    this.router.navigate( ['./product-details/', id] );
+
   }
   checkLikes() {
     if (this.storage.get('whishlist')){
@@ -226,6 +248,7 @@ export class SearchComponent implements OnInit {
     this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
   }
   search(categoryValues, brandValues, priceValues,sort){
+    this.spinner.show();
       this.result = []
       this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.low, priceValues.high,sort).subscribe( (data: any)=> {
         this.result = data;
@@ -234,10 +257,34 @@ export class SearchComponent implements OnInit {
         this.carts = [...this.likes]
         this.checkLikes();
         this.checkCarts();
+        this.spinner.hide();
       })
   }
 
   sort($event) {
     this.sort = $event.target.value;
+  }
+  compare(id:any) {
+    var productsID =  this.storage.get('compare');
+    console.log("compare",this.storage.get('compare'));
+
+    if (productsID ) {
+      if (productsID.indexOf(id) != -1) {
+        this.router.navigate(['./compare']);
+      } else {
+        if(productsID.length >= 3) {
+          this.router.navigate(['./compare']);
+        } else {
+          productsID.push(id);
+          console.log("productsID", productsID)
+          this.storage.set('compare', productsID);
+          this.router.navigate(['./compare']);
+        }
+      }
+    } else {
+      this.storage.set('compare', [id]);
+      this.router.navigate(['./compare']);
+
+    }
   }
 }

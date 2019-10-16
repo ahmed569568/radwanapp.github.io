@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 wrapper">
-        <table class="table">
+        <table class="table" *ngIf="showTable">
           <thead>
             <tr>
               <th scope="col">Action</th>
@@ -287,6 +287,10 @@
 
           </tbody>
         </table>
+        <div class="empty-compare">
+          <img src="assets/icons/empty-compare.png" alt="">
+          <h3><strong>Compare List is Empty</strong></h3>
+        </div>
       </div>
     </div>
   </div>

@@ -29,4 +29,7 @@ export class CategoriesService {
     return this.http.get( this.url + 'categories/'+ id, this.httpOptions);
   }
 
+  getProducts(id:any) {
+    return  this.http.get( this.url + 'products/?category_id='+ id, this.httpOptions);
+  }
 }

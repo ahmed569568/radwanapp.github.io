@@ -8,6 +8,8 @@ import { from } from 'rxjs';
 import { LocalStorageService } from '../services/local-storage.service';
 import { CartService } from '../services/cart.service';
 import { WhishlistService } from '../services/whishlist.service';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 
 declare var $:any;
 
@@ -31,10 +33,11 @@ export class ProductDetailsComponent implements OnInit {
   recommandedLikes: any[];
   popularCarts:any[];
   recommandedCarts: any[];
-
+  sync =faSync
   constructor( private productsService: ProductsService,  private route: ActivatedRoute,
                private router: Router, private storage:LocalStorageService,
-               private cartService: CartService, private whishlistService: WhishlistService) { 
+               private cartService: CartService, private whishlistService: WhishlistService,
+               private spinner: RadwanSpinnerService) { 
     this.product = {};
     this.recProducts = [];
     this.popularProducts = [];
@@ -42,7 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   
   ngOnInit() {
-   
+    this.spinner.show();
     let id = this.route.snapshot.paramMap.get('id');
     this.productsService.getProduct(id).subscribe( (data:any) => {
       this.product = data;
@@ -52,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
       console.log("Detail Description", this.detailedDescription);
       console.log("Product", this.product);
       this.setImagesInGallary(data.productimage);
-      
+      this.spinner.hide();
     })
     this.productsService.getPopularProduct().subscribe( ( data:any ) => {
       this.popularProducts = data;
@@ -307,6 +310,30 @@ export class ProductDetailsComponent implements OnInit {
       }
      
     
+  }
+
+  compare(id:any) {
+    var productsID =  this.storage.get('compare');
+    console.log("compare",this.storage.get('compare'));
+
+    if (productsID ) {
+      if (productsID.indexOf(id) != -1) {
+        this.router.navigate(['./compare']);
+      } else {
+        if(productsID.length >= 3) {
+          this.router.navigate(['./compare']);
+        } else {
+          productsID.push(id);
+          console.log("productsID", productsID)
+          this.storage.set('compare', productsID);
+          this.router.navigate(['./compare']);
+        }
+      }
+    } else {
+      this.storage.set('compare', [id]);
+      this.router.navigate(['./compare']);
+
+    }
   }
 
  

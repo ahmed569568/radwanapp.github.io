@@ -252,6 +252,7 @@ h1 {
     float: right;
     margin-top: 6%;
     margin-left: 4%;
+    cursor: pointer;
     
     
 }
@@ -263,11 +264,17 @@ h1 {
 .card-price-like :nth-child(3)  {
     float: right;
     margin-top: 6%;
+    margin-left: 4%;
     cursor: pointer;
 }
 .card-price-like :nth-child(3) img {
     height: 17px;
     width: 20px;
+}
+.card-price-like :nth-child(4)  {
+    float: right;
+    margin-top: 6%;
+    cursor: pointer;
 }
 .arrows {
     float: right;
