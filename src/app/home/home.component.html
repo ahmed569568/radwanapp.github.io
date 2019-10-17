@@ -75,7 +75,7 @@
                         <div class="card-price-like">
                           
                             <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
-                            <a (click)="compare(product.id)">    <fa-icon size="1x" [icon]="sync" [spin]="syncRunning"></fa-icon>
+                            <a (click)="compare(product.id)">    <fa-icon size="1x" [icon]="sync"></fa-icon>
                             </a>
                             <a *ngIf="!likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg"  alt=""></a>
                             <a *ngIf="likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
