@@ -42,6 +42,11 @@ export class ProductDetailsComponent implements OnInit {
     this.recProducts = [];
     this.popularProducts = [];
     this.detailedDescription = [];
+
+    // override the route reuse strategy
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+  };
   }
   
   ngOnInit() {
@@ -78,6 +83,17 @@ export class ProductDetailsComponent implements OnInit {
       this.checkRecoWhishlist();
     })
   
+
+
+
+
+
+
+
+
+
+
+    
    
   }
 

@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
                private whishlistService: WhishlistService, private storage: LocalStorageService) { 
      this.categories =[];
      this.menue =false; 
-     this.menueList = [ false, false, false, false, false];
+     this.menueList = [];
      this.showCate = false;
      this.subCateProducts= [];
      this.headerListSpinner = false;
@@ -47,6 +47,8 @@ export class HeaderComponent implements OnInit {
   
       console.log("Categories", data);
       this.categories = data;
+      this.menueList = [...this.categories]
+      this.menueList.fill(false);
       this.showCate = true;
     })
 
@@ -185,6 +187,13 @@ export class HeaderComponent implements OnInit {
     }
     
    
+  }
+  goToCart() {
+    this.router.navigate(['./whishlist-cart/cart']);
+  }
+  goToWhishlist() {
+    
+    this.router.navigate(['./whishlist-cart/whishlist'])
   }
 
 }

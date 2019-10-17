@@ -326,18 +326,27 @@ h5 {
         margin-top: -4px;
    }
 
-   .card-price-like :nth-child(2) img {
+   .card-price-like :nth-child(2)  {
         height: 12px;
         width: 14px;
         cursor: pointer;
     }
-
+    .card-price-like:nth-child(3) {
+        margin-right: 2%;
+    }
+    
    .card-price-like:nth-child(3) img {
         height: 12px !important;
         width: 14px !important;
         cursor: pointer;
+        
     }
     
+    .card-price-like:nth-child(4) img {
+        height: 12px !important;
+        width: 14px !important;
+        cursor: pointer;
+    }
     .card-body {
         padding: 0.9rem;
     }
@@ -350,6 +359,9 @@ h5 {
         margin-top: -7%;
     }
     
+    .card-price-like :nth-child(4)  {
+        margin-top: -7%;
+    }
     .text {
         font-size: 9px;
         padding: 5px 10px;

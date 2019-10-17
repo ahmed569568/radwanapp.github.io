@@ -147,9 +147,9 @@
                 <div class="card-deck" appSliderItem>
                     <div class="card" *ngFor="let product of recProducts;let i = index">
                         <div class="my-wrapper">
-                            <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
+                            <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product?.product?.id)" alt="...">
                             <div class="middle">
-                                <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+                                <div class="text" (click)="navigateProduct(product?.product?.id)">learn More</div>
                             </div>
                         </div>
                         <div class="card-body">
@@ -173,7 +173,7 @@
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
-                            <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+                            <div class="text" (click)="navigateProduct(product?.product?.id)">learn More</div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -205,9 +205,9 @@
                 <div class="card-deck" appSliderItem>
                     <div class="card" *ngFor="let product of popularProducts;let i = index">
                         <div class="my-wrapper">
-                            <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
+                            <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product?.product?.id)" alt="...">
                             <div class="middle">
-                                <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+                                <div class="text" (click)="navigateProduct(product?.product?.id)">learn More</div>
                             </div>
                         </div>
                         <div class="card-body">
