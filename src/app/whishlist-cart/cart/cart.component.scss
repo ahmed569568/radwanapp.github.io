@@ -177,3 +177,29 @@ label {
     cursor: pointer;
     font-size: 12px;
 }
+@media (max-width: 576px) {  
+    .card-title {
+       font-size: 12px;
+    }  
+    .card-text {
+        margin-top: -12px;
+        margin-bottom: 40px;
+        font-size: 12px;
+    }
+    .price {
+        color: #e74c3c;
+        font-family: "Montserrat-Bold" !important;
+        font-size: 12px !important;
+        margin-top: -40px;
+        margin-bottom: -4px;
+    }
+    .save-for-later p {
+        font-size: 10px;
+       
+    }
+    .card-body {
+        padding: 10px;
+        margin-bottom: -17px;
+        
+    }
+}

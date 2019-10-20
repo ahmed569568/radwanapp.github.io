@@ -1,9 +1,9 @@
 <div class="card mb-3" *ngFor="let product of whishlistItems">
   <div class="row no-gutters">
-    <div class="col-md-2">
+    <div class="col-md-2 col-3">
       <img src="{{ product.productimage[0].image_url }}" class="card-img" alt="...">
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 col-9">
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text"><small class="brand">{{ product.brand_name }}</small></p>

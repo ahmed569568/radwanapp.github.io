@@ -1,9 +1,9 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 ">
+            <div class="col-lg-3 col-12">
                 <div class="row checkout" *ngIf="checkout">
-                    <div class="col-lg-12 checkout-description">
+                    <div class="col-lg-12 checkout-description col-12">
                         <p class="total">Total</p>
                         <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">95% OFF</p>
@@ -19,18 +19,18 @@
                     </div>
                     
                 </div>
-                <div class="row wishlist" (click)="activateTab()" #whishlist>
-                    <div class="col-12-lg">
-                        <a routerLink="/whishlist-cart/whishlist"   >
+                <div class="row wishlist" (click)="activateTab('wishlist')" #whishlist>
+                    <div class="col-12-lg col-12">
+                        <a>
                             <img *ngIf="!loveAct" src="assets/icons/heartwhite.svg" alt="">
                             <img *ngIf="loveAct" src="assets/icons/heartblack.svg" alt="">
                             <p>Wishlist</p>
                         </a>
                     </div>
                 </div>
-                <div class="row cart" (click)="activateTab()" #cart>
+                <div class="row cart" (click)="activateTab('cart')" #cart>
                     <div class="col-12-lg">
-                        <a routerLink="/whishlist-cart/cart" >
+                        <a  >
                             <img *ngIf="cartAct" src="assets/icons/Cartblack@2x.png" alt="">
                             <img *ngIf="!cartAct" src="assets/icons/Cartwhite.svg" alt="">
                             <p>Your Cart</p>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { WhishlistService } from 'src/app/services/whishlist.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,8 +12,12 @@ import { WhishlistService } from 'src/app/services/whishlist.service';
 export class CartComponent implements OnInit {
   cartItems: any;
   cartTotal:any;
-  constructor(private cartService: CartService,private storage: LocalStorageService, private whishlist: WhishlistService) { 
-
+  constructor(private cartService: CartService,private storage: LocalStorageService,
+              private whishlist: WhishlistService,  private router: Router,) { 
+      // override the route reuse strategy
+      this.router.routeReuseStrategy.shouldReuseRoute = function() {
+        return false;
+      };
   }
 
   ngOnInit() {

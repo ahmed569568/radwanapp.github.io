@@ -1,9 +1,9 @@
 <div class="card mb-3" *ngFor="let item of cartItems">
     <div class="row no-gutters">
-      <div class="col-md-2">
-        <img src="{{ item.product.productimage[0].image_url }}" class="card-img" alt="...">
+      <div class="col-md-2 col-2">
+        <img src="{{ item.product.productimage[0].image_url }}" class="card-img image-responsive" alt="...">
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10 col-8">
         <div class="card-body">
           <h5 class="card-title">{{ item.product.name }}</h5>
           <p class="card-text"><small class="brand">{{ item.product.brand_name }}</small></p>

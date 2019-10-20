@@ -19,7 +19,9 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
     this.loveAct = false;
     this.cartAct = false;
     this.order = false;
-
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    };
   }
 
   ngOnInit() {
@@ -75,29 +77,37 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
     console.log("cart", this.router.url);
   }
 
-  activateTab(){
-    if(String(this.router.url).includes('/cart')){
-      this.cartStyle.nativeElement.style.background='rgba(231, 76, 60, 1)';
-      this.cartStyle.nativeElement.style.color='white';
-      this.whishlistStyle.nativeElement.style.background='white';
-      this.whishlistStyle.nativeElement.style.color='black';
-      this.whishlistStyle.nativeElement.style.marginTop='10px';
-      this.checkout =true;
-      this.loveAct= true;
-      this.cartAct=false;
-      this.order = false;
-      this.router.navigate(['./whishlist-cart/whishlist']);
-    } else if (String(this.router.url).includes('/whishlist')){
-      this.whishlistStyle.nativeElement.style.background='rgba(231, 76, 60, 1)';
-      this.whishlistStyle.nativeElement.style.color='white';
-      this.cartStyle.nativeElement.style.background='white';
-      this.cartStyle.nativeElement.style.color='black';
-      this.whishlistStyle.nativeElement.style.marginTop='82px';
-      this.checkout = false;
-      this.loveAct= false;
-      this.cartAct= true;
-      this.order = false;
+  activateTab(value:any){
+    if(String(this.router.url).includes('/whishlist-cart/cart') && value != 'cart'){
+      // this.cartStyle.nativeElement.style.background='rgba(231, 76, 60, 1)';
+      // this.cartStyle.nativeElement.style.color='white';
+      // this.whishlistStyle.nativeElement.style.background='white';
+      // this.whishlistStyle.nativeElement.style.color='black';
+      // this.whishlistStyle.nativeElement.style.marginTop='10px';
+      // this.checkout =true;
+      // this.loveAct= true;
+      // this.cartAct=false;
+      // this.order = false;
+      // console.log("mnekkkka");
+      this.router.navigate(['./whishlist-cart/whishlist'])
+    } else if (String(this.router.url).includes('/whishlist-cart/whishlist') && value != 'wishlist'){
+      // this.whishlistStyle.nativeElement.style.background='rgba(231, 76, 60, 1)';
+      // this.whishlistStyle.nativeElement.style.color='white';
+      // this.cartStyle.nativeElement.style.background='white';
+      // this.cartStyle.nativeElement.style.color='black';
+      // this.whishlistStyle.nativeElement.style.marginTop='82px';
+      // this.checkout = false;
+      // this.loveAct= false;
+      // this.cartAct= true;
+      // this.order = false;
       this.router.navigate(['./whishlist-cart/cart']);
+      // console.log("sherymataaa");
+    } else if ( String(this.router.url).includes('/whishlist-cart/checkout')) {
+      if (value == 'wishlist')
+        this.router.navigate(['./whishlist-cart/cart']);
+      else (value == 'cart') 
+        this.router.navigate(['./whishlist-cart/whishlist'])
+
     }
   }
 

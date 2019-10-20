@@ -67,7 +67,7 @@ p.percentage {
    
 }
 .wishlist img {
-    margin-left: 30px;
+    margin-left: 14px;
     margin-right: 20px;
 }
 .wishlist p {
@@ -110,4 +110,25 @@ div.cart a.act{
 }
 div a img {
     width: 22px;
+}
+@media (max-width: 576px) { 
+    section {
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-top: -40px;  
+    }
+    .wishlist img {
+        /* margin-left: 30px; */
+        margin-left: 0px;
+        margin-right: 20px;
+    }
+    .cart img {
+        margin-left: 16px;
+    }
+    .cart {
+        margin-bottom: 0px; 
+    }
+    .form-group {
+         margin-bottom: unset !important;
+    }
 }
