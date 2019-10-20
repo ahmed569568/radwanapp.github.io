@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
+import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 
 @Component({
   selector: 'app-whishlist-cart',
@@ -15,7 +16,8 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   loveAct:boolean;
   cartAct:boolean;
   order:boolean;
-  constructor( private router:Router, private storage: LocalStorageService, private route: ActivatedRoute ) { 
+  constructor( private router:Router, private storage: LocalStorageService,
+               private route: ActivatedRoute, private spinner: RadwanSpinnerService ) { 
     this.loveAct = false;
     this.cartAct = false;
     this.order = false;
@@ -25,6 +27,7 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   }
 
   ngOnInit() {
+    
     if(String(this.router.url).includes('/whishlist-cart/cart')) 
       this.checkout =true;
     else if (String(this.router.url).includes('/whishlist-cart/whishlist'))

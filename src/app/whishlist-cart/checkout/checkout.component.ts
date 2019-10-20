@@ -16,6 +16,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.address = 'your home or work adress to shipping your home or work adress to shipping';
   }
 

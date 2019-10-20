@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { WhishlistService } from 'src/app/services/whishlist.service';
 import { Router } from '@angular/router';
+import { RadwanSpinnerService } from 'src/app/services/radwan-spinner.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,8 @@ export class CartComponent implements OnInit {
   cartItems: any;
   cartTotal:any;
   constructor(private cartService: CartService,private storage: LocalStorageService,
-              private whishlist: WhishlistService,  private router: Router,) { 
+              private whishlist: WhishlistService,  private router: Router,
+              private spinner: RadwanSpinnerService) { 
       // override the route reuse strategy
       this.router.routeReuseStrategy.shouldReuseRoute = function() {
         return false;
@@ -21,10 +23,12 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinner.show();
     this.cartService.get(this.storage.get('cart')).subscribe( (response:any) => {
       console.log("Response", response);
       this.cartItems = response.data
       this.total();
+      this.spinner.hide();
     })
   }
 

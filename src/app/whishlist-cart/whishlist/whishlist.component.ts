@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WhishlistService } from 'src/app/services/whishlist.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { CartService } from 'src/app/services/cart.service';
+import { RadwanSpinnerService } from 'src/app/services/radwan-spinner.service';
 
 @Component({
   selector: 'app-whishlist',
@@ -11,11 +12,13 @@ import { CartService } from 'src/app/services/cart.service';
 export class WhishlistComponent implements OnInit {
   whishlistItems:any [];
   constructor(private whishlistService: WhishlistService, private storage: LocalStorageService,
-              private cartService: CartService) { }
+              private cartService: CartService, private spinner: RadwanSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show()
     this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
       this.whishlistItems = data.product;
+      this.spinner.hide();
       console.log("data", data);
     })
   }
