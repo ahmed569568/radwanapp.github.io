@@ -1,4 +1,4 @@
-import { NgModule, InjectionToken } from '@angular/core';
+import { NgModule, InjectionToken, Component } from '@angular/core';
 import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
@@ -11,6 +11,8 @@ import { WhishlistComponent } from './whishlist-cart/whishlist/whishlist.compone
 import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
 import { CompareComponent } from './compare/compare.component';
+import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component';
+
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
@@ -24,9 +26,9 @@ const routes: Routes = [
       { path:'whishlist-cart', component: WhishlistCartComponent, children: [
         { path: '', component: WhishlistComponent},
         { path: 'whishlist', component: WhishlistComponent},
-        { path:'cart', component: CartComponent }
-      ]   
-      },
+        { path:'cart', component: CartComponent},
+        { path: 'checkout', component: CheckoutComponent}
+      ]},
       {
         path:'compare', component: CompareComponent
       },

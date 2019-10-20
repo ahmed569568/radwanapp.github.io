@@ -51,6 +51,8 @@ import { RadwanSpinnerComponent } from './common/radwan-spinner/radwan-spinner.c
 import {SelfBuildingSquareSpinnerModule} from 'angular-epic-spinners';
 import {BreedingRhombusSpinnerModule} from 'angular-epic-spinners';
 import {HalfCircleSpinnerModule} from 'angular-epic-spinners';
+import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component';
+
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 @NgModule({
@@ -70,7 +72,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     CartComponent,
     WhishlistCartComponent,
     CompareComponent,
-    RadwanSpinnerComponent
+    RadwanSpinnerComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

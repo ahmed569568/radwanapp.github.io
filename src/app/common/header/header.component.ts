@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   activeCart: boolean;
   activeWhishlist: boolean;
   headerListSpinner:boolean;
-  mnekaNshfa:boolean;
+
   constructor( private router: Router, private categoriesService: CategoriesService ,
                private route: ActivatedRoute, private cartService: CartService,
                private whishlistService: WhishlistService, private storage: LocalStorageService) { 
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
      this.showCate = false;
      this.subCateProducts= [];
      this.headerListSpinner = false;
-     this.mnekaNshfa = false;
+
   }
 
   ngOnInit( ) {
@@ -97,10 +97,10 @@ export class HeaderComponent implements OnInit {
     this.subCategories =[]
     
     this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
-      this.mnekaNshfa = true;
+     
       console.log("Sub Categories", data);
       this.subCategories = data.subcategory;
-      this.mnekaNshfa =false;
+
       this.subCateProducts = [...data.subcategory];
       this.subCateProducts.fill(false);
       console.log("this.subCateProducts", this.subCateProducts)
@@ -156,14 +156,18 @@ export class HeaderComponent implements OnInit {
     this.menueList.fill(false);
   }
   selectSubCate(index){
-    if ( this.lastsubCateProductIndex != index) {
-      this.lastsubCateProductIndex =index;
-      this.subCateProducts.fill(false);
-      this.subCateProducts[index] = true;
-    } else {
-      this.lastsubCateProductIndex =null;
-      this.subCateProducts.fill(false);
-    }
+    // console.log("shokryaat", index);
+    // console.log("Sfsdfsdf")
+    // console.log("Menue", this.menueList[index]);
+    // console.log("Shokry", this.)
+    // if ( this.lastsubCateProductIndex != index) {
+    //   this.lastsubCateProductIndex =index;
+    //   this.subCateProducts.fill(false);
+    //   this.subCateProducts[index] = true;
+    // } else {
+    //   this.lastsubCateProductIndex =null;
+    //   this.subCateProducts.fill(false);
+    // }
     
   }
   showHideBorderFromMobile(index,cateID) {
@@ -173,9 +177,9 @@ export class HeaderComponent implements OnInit {
       this.lastIndexMobile = index;
       this.menueList.fill(false);
       this.menueList[index]= true;
-      this.mnekaNshfa = true;
+
       this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
-        this.mnekaNshfa = false;
+
         this.subCategories = data.subcategory;
         this.headerListSpinner = false;
         this.subCateProducts = [...data.subcategory];

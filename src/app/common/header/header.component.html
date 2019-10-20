@@ -45,13 +45,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showCate">
       <ul class="navbar-nav mr-auto">
         <span *ngFor="let cate of categories;let i = index">
-            <li class="nav-item" (click)="showHideBorderFromMobile(0,categories[1]?.id)" >
-                <a class="nav-link" routerLink="./search"  [ngClass]="{'down': menueList[0]}"   >{{ categories[1]?.name }}</a>
+            <li class="nav-item" (click)="showHideBorderFromMobile(i,cate?.id)" >
+                <a class="nav-link" role="button" (click)="searchCategory( categories[1]?.id)"  [ngClass]="{'down': menueList[i]}"   >{{ cate?.name }}</a>
             </li>
-            <ul *ngIf="menueList[0]" class="nav-subCate">
+            <ul *ngIf="menueList[i]" class="nav-subCate">
                 <li  *ngFor="let subCate of subCategories;let i=index">
                     <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-                    <ul class="" *ngIf="menueList[0] && subCateProducts[i]">
+                    <ul class="" *ngIf="menueList[i] && subCateProducts[i]">
                         <li><a href="#">Huawei P30 Lite</a></li>
                         <li><a href="#">Oneplus 6t</a></li>
                         <li><a href="#">Huawei Y7 2019 </a></li>
@@ -60,77 +60,6 @@
                 </li>
             </ul>
         </span>
-        <!-- <li class="nav-item">
-          <a class="nav-link"  routerLink="./search" (click)="showHideBorderFromMobile(1,categories[2]?.id)" [ngClass]="{'down': menueList[1]}"    >{{ categories[2]?.name }}</a>
-        </li>
-        <ul *ngIf="menueList[1]" class="nav-subCate">
-            <li *ngFor="let subCate of subCategories;let i=index">
-                <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-                <ul class="" *ngIf="menueList[1] && subCateProducts[i]">
-                    <li><a href="#">Huawei P30 Lite</a></li>
-                    <li><a href="#">Oneplus 6t</a></li>
-                    <li><a href="#">Huawei Y7 2019 </a></li>
-                    <li><a href="#">Honor 10 lite</a></li>
-                </ul>  
-            </li>
-          </ul> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="./search" (click)="showHideBorderFromMobile(2,categories[0]?.id)"  [ngClass]="{'down': menueList[2]}"  >{{ categories[0]?.name }}</a>
-        </li>
-        <ul *ngIf="menueList[2]" class="nav-subCate">
-          <li *ngFor="let subCate of subCategories;let i=index">
-              <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-              <ul class="" *ngIf="menueList[2] && subCateProducts[i]">
-                  <li><a href="#">Huawei P30 Lite</a></li>
-                  <li><a href="#">Oneplus 6t</a></li>
-                  <li><a href="#">Huawei Y7 2019 </a></li>
-                  <li><a href="#">Honor 10 lite</a></li>
-              </ul>  
-          </li>
-        </ul> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="./search" (click)="showHideBorderFromMobile(3,categories[3]?.id)"  [ngClass]="{'down': menueList[3]}"  >{{ categories[3]?.name }}</a>
-        </li>
-        <ul *ngIf="menueList[3]" class="nav-subCate">
-          <li *ngFor="let subCate of subCategories;let i=index">
-              <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-              <ul class="" *ngIf="menueList[3] && subCateProducts[i]">
-                  <li><a href="#">Huawei P30 Lite</a></li>
-                  <li><a href="#">Oneplus 6t</a></li>
-                  <li><a href="#">Huawei Y7 2019 </a></li>
-                  <li><a href="#">Honor 10 lite</a></li>
-              </ul>  
-          </li>
-        </ul> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="./search" (click)="showHideBorderFromMobile(4,categories[4]?.id)" [ngClass]="{'down': menueList[4]}"  >{{ categories[4]?.name }}</a>
-        </li>
-        <ul *ngIf="menueList[4]" class="nav-subCate">
-          <li *ngFor="let subCate of subCategories;let i=index">
-              <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-              <ul class="" *ngIf="menueList[4] && subCateProducts[i]">
-                  <li><a href="#">Huawei P30 Lite</a></li>
-                  <li><a href="#">Oneplus 6t</a></li>
-                  <li><a href="#">Huawei Y7 2019 </a></li>
-                  <li><a href="#">Honor 10 lite</a></li>
-              </ul>   
-          </li>
-        </ul> -->
-        <!-- <div class="header-list" (mouseenter)="showBorderFromList()" (mouseleave)="hideBorderFromList()"> 
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-2" *ngFor="let subCate of subCategories">
-                      <p class="title">{{ subCate.name }}</p> 
-                      <ul class="types">
-                          <li><a href="#">Huawei P30 Lite</a></li>
-                          <li><a href="#">Oneplus 6t</a></li>
-                          <li><a href="#">Huawei Y7 2019 </a></li>
-                          <li><a href="#">Honor 10 lite</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-        </div> -->
       </ul>
      
     </div>

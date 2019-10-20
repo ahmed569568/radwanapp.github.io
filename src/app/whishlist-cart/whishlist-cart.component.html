@@ -1,4 +1,3 @@
-
 <section>
     <div class="container">
         <div class="row">
@@ -8,7 +7,8 @@
                         <p class="total">Total</p>
                         <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">95% OFF</p>
-                        <button type="button" class="btn btn-primary btn-lg btn-block checkout-now">Checkout Now</button>
+                        <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" (click)="navCheckout()">Checkout Now</button>
+                        <button *ngIf="order" type="button" class="btn btn-primary btn-lg btn-block checkout-now">Order Now</button>
                         <hr>
                         <form class="form-inline">
                             <div class="form-group">
@@ -22,8 +22,8 @@
                 <div class="row wishlist" (click)="activateTab()" #whishlist>
                     <div class="col-12-lg">
                         <a routerLink="/whishlist-cart/whishlist"   >
-                            <img *ngIf="cartAct" src="../../assets/icons/Cartwhite.svg" alt="">
-                            <img *ngIf="!cartAct" src="../../assets/icons/Cartblack@2x.png" alt="">
+                            <img *ngIf="!loveAct" src="assets/icons/heartwhite.svg" alt="">
+                            <img *ngIf="loveAct" src="assets/icons/heartblack.svg" alt="">
                             <p>Wishlist</p>
                         </a>
                     </div>
@@ -31,8 +31,8 @@
                 <div class="row cart" (click)="activateTab()" #cart>
                     <div class="col-12-lg">
                         <a routerLink="/whishlist-cart/cart" >
-                            <img *ngIf="!loveAct" src="../../assets/icons/heartblack.svg" alt="">
-                            <img *ngIf="loveAct" src="../../assets/icons/heartwhite.svg" alt="">
+                            <img *ngIf="cartAct" src="assets/icons/Cartblack@2x.png" alt="">
+                            <img *ngIf="!cartAct" src="assets/icons/Cartwhite.svg" alt="">
                             <p>Your Cart</p>
                         </a>
                     </div>
