@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private spinner: RadwanSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
+    setTimeout(()=> {
+      this.spinner.hide();
+    })
   }
 
 }

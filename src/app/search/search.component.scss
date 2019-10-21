@@ -364,13 +364,25 @@ line-height: 24px;
     text-align: left;
     line-height: 24px;
 }
+
+@media (max-width: 1500px) { 
+    .sort > select {
+ 
+        padding: 10px 33px 10px 10px;
+    }
+    .sort > p {
+        
+        font-size: 14px;
+    }
+  }
+
 @media (max-width: 576px) { 
     .search {
         height: 100%;
         
     }
     .sort {
-        height: 6%;
+        height: 40px;
     }
     .sort > p {
         font-size: 12px;
@@ -382,6 +394,9 @@ line-height: 24px;
     }
     .sort > select {
         font-size: 10px;
+    
+         padding: 10px 80px 10px 10px;
+        
     }
     input[type=checkbox] {
         width: 12px;
@@ -481,6 +496,10 @@ line-height: 24px;
         font-size: 9px;
         padding: 5px 10px;
     }
+    .header-cate {
+        padding-top: 12px;
+    }
+    
 }
 
 @media screen and (device-aspect-ratio: 40/71) {
@@ -532,9 +551,4 @@ and (-webkit-device-pixel-ratio : 3) {
    
  }
 
- @media (max-width: 1500px) { 
-    .sort > select {
  
-        padding: 10px 60px 10px 10px;
-    }
-  }

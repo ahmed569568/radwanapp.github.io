@@ -6,7 +6,7 @@
                     <div class="col-lg-12 checkout-description col-12">
                         <p class="total">Total</p>
                         <p class="price">{{ total }},00 <span>EGP</span></p>
-                        <p class="percentage">95% OFF</p>
+                        <p class="percentage">{{ status }}</p>
                         <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" (click)="navCheckout()">Checkout Now</button>
                         <button *ngIf="order" type="button" class="btn btn-primary btn-lg btn-block checkout-now">Order Now</button>
                         <hr>

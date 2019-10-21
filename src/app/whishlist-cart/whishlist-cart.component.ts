@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 import { FormControl } from '@angular/forms';
+import { PromotionService } from '../services/promotion.service';
 @Component({
   selector: 'app-whishlist-cart',
   templateUrl: './whishlist-cart.component.html',
@@ -17,8 +18,10 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   cartAct:boolean;
   order:boolean;
   promotion =  new FormControl('');
+  status: string;
   constructor( private router:Router, private storage: LocalStorageService,
-               private route: ActivatedRoute, private spinner: RadwanSpinnerService ) { 
+               private route: ActivatedRoute, private spinner: RadwanSpinnerService,
+               private promotionService:PromotionService ) { 
     this.loveAct = false;
     this.cartAct = false;
     this.order = false;
@@ -122,6 +125,20 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   }
   
   apply() {
-    console.log("promotion", this.promotion)
+    console.log("promotion", this.promotion.value)
+    this.promotionService.apply(this.promotion.value, this.storage.get('cart')).subscribe( (data:any) => {
+      this.total = data.promotion.price_after_discount;
+      console.log("data", data);
+      this.status = 'Promotion Applied';
+    }, (error:any) => {
+      if (error.status == 404) {
+        this.total = this.storage.get('total')
+        if (error.statusText == 'Not Found') {
+          this.status = 'Promotion Not Found'
+        }
+      
+      }
+        
+    })
   }
 }

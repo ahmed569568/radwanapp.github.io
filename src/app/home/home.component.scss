@@ -311,6 +311,8 @@ h5 {
    .card-text {
        font-size: 8px;
        margin-top: -14px;
+       min-height: 38px;
+       max-height: 38px;
    }
 
    .card-text :last-child {
