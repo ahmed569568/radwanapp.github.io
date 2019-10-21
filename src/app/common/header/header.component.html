@@ -46,16 +46,14 @@
       <ul class="navbar-nav mr-auto">
         <span *ngFor="let cate of categories;let i = index">
             <li class="nav-item" (click)="showHideBorderFromMobile(i,cate?.id)" >
-                <a class="nav-link" role="button" (click)="searchCategory( categories[1]?.id)"  [ngClass]="{'down': menueList[i]}"   >{{ cate?.name }}</a>
+                <a class="nav-link" role="button" (click)="searchCategory( cate?.id)"  [ngClass]="{'down': menueList[i]}"   >{{ cate?.name }}</a>
             </li>
             <ul *ngIf="menueList[i]" class="nav-subCate">
-                <li  *ngFor="let subCate of subCategories;let i=index">
-                    <a (click)="selectSubCate(i)">{{ subCate.name }}</a> 
-                    <ul class="" *ngIf="menueList[i] && subCateProducts[i]">
-                        <li><a href="#">Huawei P30 Lite</a></li>
-                        <li><a href="#">Oneplus 6t</a></li>
-                        <li><a href="#">Huawei Y7 2019 </a></li>
-                        <li><a href="#">Honor 10 lite</a></li>
+                <li  *ngFor="let subCate of subCategories;let ind=index">
+                    <a (click)="selectSubCate(subCate?.id,ind)">{{ subCate?.name }}</a> 
+                    <ul  *ngIf="subCateList[ind]">
+                        <app-looping-rhombuses-spinner *ngIf="!subCateProd" [animationDuration]="2500" [rhombusSize]="12" [color]="'#E30B13'" ></app-looping-rhombuses-spinner>
+                        <li  class="sub-cate-list-product" *ngFor="let product of subCateProducts" ><a routerLink="/product-details/{{ product.id }}"><p>{{ product.name }}</p></a></li>
                     </ul> 
                 </li>
             </ul>
@@ -73,14 +71,11 @@
       <div class="container">
           <div class="row header-links">
               <ul class="header-links-main">
-                <li *ngIf="showCate" ><a  role="button" (click)="searchCategory( categories[1]?.id)"  (mouseover)="showBorder(0,categories[1]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[0]}">{{ categories[1].name }}</a></li>
-                <li *ngIf="showCate" ><a  role="button" (click)="searchCategory( categories[2]?.id)"  (mouseover)="showBorder(1,categories[2]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[1]}">{{ categories[2].name }}</a></li>
-                <li *ngIf="showCate" ><a  role="button" (click)="searchCategory( categories[0]?.id)"  (mouseover)="showBorder(2,categories[0]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[2]}">{{ categories[0].name }}</a></li>
-                <li *ngIf="showCate" ><a  role="button" (click)="searchCategory( categories[3]?.id)"  (mouseover)="showBorder(3,categories[3]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[3]}">{{ categories[3].name }}</a></li>
-                <li *ngIf="showCate" ><a  role="button" (click)="searchCategory( categories[4]?.id)"  (mouseover)="showBorder(4,categories[4]?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[4]}">{{ categories[4].name }}</a></li>
+                <li   *ngFor="let cate of categories;let i = index" ><a  role="button" (click)="searchCategory(cate?.id)"  (mouseover)="showBorder(i,cate?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[i]}">{{ cate.name }}</a></li>
                 <div class="header-list" (mouseenter)="showBorderFromList()" (mouseleave)="hideBorderFromList()"> 
                   <div class="container">
                       <div class="row">
+                          <app-looping-rhombuses-spinner id="desktop-spinner" *ngIf="headerListSpinner" [animationDuration]="2500" [rhombusSize]="12" [color]="'rgba(0, 0, 0, 0.5)'" ></app-looping-rhombuses-spinner>
                           <div class="col-lg-2" *ngFor="let subCate of subCategories">
                               <p class="title">{{ subCate.name }}</p> 
                               <ul class="types">
@@ -90,80 +85,10 @@
                                   <li><a href="#">Honor 10 lite</a></li>
                               </ul>
                           </div>
-                          <!-- <span>
-                            <app-flower-spinner
-                            [animationDuration]="1000"
-                            [size]="60"
-                            [color]="'#ff1d5e'"
-                           ></app-flower-spinner>
-                          </span> -->
-                          <!-- <div class="col-lg-2">
-                              <p class="title">Popular Mobiles</p>
-                              <ul class="types">
-                                    <li><a href="#">IPhone 8 | X </a></li>
-                                    <li><a href="#">S9 I S9+</a></li>
-                                    <li><a href="#"> Infinix X5010</a></li>
-                                    <li><a href="#">Tecno Camon CX</a></li>
-                                    <li><a href="#">Meizu m6</a></li>
-                              </ul>
-                          </div> -->
-                          <!-- <div class="col-lg-2">
-                              <p class="title">Tablets</p>
-                              <ul class="types">
-                                <li><a href="#">7 - 7.9 Inch</a></li>
-                                <li><a href="#">8 - 8.9 Inch</a></li>
-                                <li><a href="#">9 - 9.9 Inch</a></li>
-                                <li><a href="#">10 Inch & Above</a></li>
-                              </ul>
-                            </div> -->
-                          <!-- <div class="col-lg-2">
-                              <p class="title">Brands</p>
-                              <ul class="types">
-                                <li><a href="#">Lenovo</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Huawei</a></li>
-                                <li><a href="#">Alcatel</a></li>
-                                <li><a href="#">All brands</a></li>
-                              </ul>
-                          </div> -->
-                          <!-- <div class="col-lg-4"><img src="assets/1.jpg" class="cat1" alt="Responsive image"></div> -->
                       </div>
-                      <!-- <div class="row second-part">
-                        <div class="col-lg-2">
-                            <p class="title">New Arrivals</p>
-                            <ul class="types">
-                                <li><a href="#">Huawei P30 Lite</a></li>
-                                <li><a href="#">Oneplus 6t</a></li>
-                                <li><a href="#">Huawei Y7 2019 </a></li>
-                                <li><a href="#">Honor 10 lite</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-2"> 
-                            <p class="title">Popular Mobiles</p>
-                            <ul class="types">
-                                <li><a href="#">IPhone 8 | X </a></li>
-                                <li><a href="#">S9 I S9+</a></li>
-                                <li><a href="#"> Infinix X5010</a></li>
-                                <li><a href="#">Tecno Camon CX</a></li>
-                                <li><a href="#">Meizu m6</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-2">
-                            <p class="title">Popular Mobiles</p>
-                            <ul class="types">
-                                <li><a href="#">7 - 7.9 Inch</a></li>
-                                <li><a href="#">8 - 8.9 Inch</a></li>
-                                <li><a href="#">9 - 9.9 Inch</a></li>
-                                <li><a href="#">10 Inch & Above</a></li>
-                            </ul>
-                        </div>
-                        
-                    </div> -->
                   </div>
                 </div>
               </ul>
-
-              
           </div>
       </div>
   </header>

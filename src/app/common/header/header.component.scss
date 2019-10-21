@@ -163,6 +163,9 @@ img {
     margin: auto;
     padding-top: 50px;
 }
+app-looping-rhombuses-spinner#desktop-spinner{
+    margin: 50px auto;
+}
 /* Mobile Style */
 @media (max-width: 576px) { 
     .header {
@@ -258,7 +261,11 @@ img {
     }
     ul.nav-subCate li {
         list-style-type: none;
-        margin-bottom: 10px
+       
+    }
+    .sub-cate-list-product {
+        margin-top: -36px;
+        margin-bottom: -48px;
     }
     ul.nav-subCate li a {
         color: rgba(0,0,0,.5);

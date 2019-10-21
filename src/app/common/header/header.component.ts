@@ -23,12 +23,13 @@ export class HeaderComponent implements OnInit {
   subCategories: any;
   subCateProducts: any;
   showCate: boolean;
-  lastsubCateProductIndex:any;
+  lastsubCateIndex:any;
   keyword = new FormControl('');
   activeCart: boolean;
   activeWhishlist: boolean;
   headerListSpinner:boolean;
-
+  subCateList: Array<boolean>;
+  subCateProd: boolean;
   constructor( private router: Router, private categoriesService: CategoriesService ,
                private route: ActivatedRoute, private cartService: CartService,
                private whishlistService: WhishlistService, private storage: LocalStorageService) { 
@@ -38,7 +39,8 @@ export class HeaderComponent implements OnInit {
      this.showCate = false;
      this.subCateProducts= [];
      this.headerListSpinner = false;
-
+     this.subCateList = [];
+    
   }
 
   ngOnInit( ) {
@@ -89,35 +91,30 @@ export class HeaderComponent implements OnInit {
     console.log("id", id);
     this.router.navigate(['./search'], { relativeTo: this.route, queryParams: { category: id} })
   }
+
   goHome() {
     this.router.navigate(['./'])
   }
+
   showBorder(index,cateID) {
     this.headerListSpinner = true;
     this.subCategories =[]
-    
     this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
-     
-      console.log("Sub Categories", data);
       this.subCategories = data.subcategory;
-
-      this.subCateProducts = [...data.subcategory];
-      this.subCateProducts.fill(false);
-      console.log("this.subCateProducts", this.subCateProducts)
-      console.log("this.subCategories", this.subCategories);
+      console.log("showBorder categories", this.subCategories)
       this.headerListSpinner = false;
     })
     this.lastLink = index;
     this.menueList.fill(false);
     this.menueList[index]= true;
-    console.log("From Hover")
+ 
   }
   showBorderFromList() {
     this.menueList[this.lastLink]= true;
+    
   }
   hideBorderFromList() {
     this.menueList.fill(false);
-    console.log("momo")
   }
   hideHeader() {
     this.menueList.fill(false);
@@ -155,21 +152,30 @@ export class HeaderComponent implements OnInit {
     this.menue= false;
     this.menueList.fill(false);
   }
-  selectSubCate(index){
-    // console.log("shokryaat", index);
-    // console.log("Sfsdfsdf")
-    // console.log("Menue", this.menueList[index]);
-    // console.log("Shokry", this.)
-    // if ( this.lastsubCateProductIndex != index) {
-    //   this.lastsubCateProductIndex =index;
-    //   this.subCateProducts.fill(false);
-    //   this.subCateProducts[index] = true;
-    // } else {
-    //   this.lastsubCateProductIndex =null;
-    //   this.subCateProducts.fill(false);
-    // }
+
+  selectSubCate(id,index){
+    console.log("product id", id);
+    this.subCateProd = false;
+    this.subCateProducts = [];
+    if ( this.lastsubCateIndex != index) {
+      this.lastsubCateIndex =index;
+      this.subCateList.fill(false);
+      this.subCateList[index] = true;
+      this.categoriesService.getSubCategoryProducts(id).subscribe( (data:any) => {
+        console.log("data products", data);
+        this.subCateProd = true;
+        this.subCateProducts = data;
+        
+      })
+    
+    } else {
+      this.lastsubCateIndex = null;
+      this.subCateProducts=[];
+      this.subCateList.fill(false);
+    }
     
   }
+
   showHideBorderFromMobile(index,cateID) {
     this.subCategories =[]
     this.headerListSpinner = true;
@@ -179,19 +185,22 @@ export class HeaderComponent implements OnInit {
       this.menueList[index]= true;
 
       this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
-
+        console.log("data sub categories", data);
         this.subCategories = data.subcategory;
+        this.subCateList = [...this.subCategories];
+        this.subCateList.fill(false);
         this.headerListSpinner = false;
-        this.subCateProducts = [...data.subcategory];
-        this.subCateProducts.fill(false);
+       
       })
     } else {
       this.lastIndexMobile = null;
+      this.subCateList = [];
       this.menueList.fill(false);
     }
     
    
   }
+
   goToCart() {
     this.router.navigate(['./whishlist-cart/cart']);
   }

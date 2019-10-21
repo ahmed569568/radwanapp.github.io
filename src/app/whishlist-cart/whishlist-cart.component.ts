@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
-
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-whishlist-cart',
   templateUrl: './whishlist-cart.component.html',
@@ -16,6 +16,7 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   loveAct:boolean;
   cartAct:boolean;
   order:boolean;
+  promotion =  new FormControl('');
   constructor( private router:Router, private storage: LocalStorageService,
                private route: ActivatedRoute, private spinner: RadwanSpinnerService ) { 
     this.loveAct = false;
@@ -24,6 +25,7 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
     };
+    
   }
 
   ngOnInit() {
@@ -119,5 +121,7 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
     this.router.navigate(['./whishlist-cart/checkout'])
   }
   
-
+  apply() {
+    console.log("promotion", this.promotion)
+  }
 }

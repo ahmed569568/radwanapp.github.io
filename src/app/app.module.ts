@@ -52,6 +52,7 @@ import {SelfBuildingSquareSpinnerModule} from 'angular-epic-spinners';
 import {BreedingRhombusSpinnerModule} from 'angular-epic-spinners';
 import {HalfCircleSpinnerModule} from 'angular-epic-spinners';
 import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component';
+import {HollowDotsSpinnerModule} from 'angular-epic-spinners';
 
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
@@ -96,7 +97,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     FingerprintSpinnerModule,
     SelfBuildingSquareSpinnerModule,
     BreedingRhombusSpinnerModule,
-    HalfCircleSpinnerModule
+    HalfCircleSpinnerModule,
+    HollowDotsSpinnerModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

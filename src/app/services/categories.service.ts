@@ -25,6 +25,7 @@ export class CategoriesService {
   feature() {
     return this.http.get( this.url + 'categories/?is_featured=1', this.httpOptions);
   }
+  
   getSubCategories(id:any) {
     return this.http.get( this.url + 'categories/'+ id, this.httpOptions);
   }
@@ -32,4 +33,9 @@ export class CategoriesService {
   getProducts(id:any) {
     return  this.http.get( this.url + 'products/?category_id='+ id, this.httpOptions);
   }
+
+  getSubCategoryProducts(id:any) {
+    return this.http.get( this.url + 'products/?subcategory_id=' + id, this.httpOptions);
+  }
+
 }

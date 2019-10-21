@@ -12,9 +12,9 @@
                         <hr>
                         <form class="form-inline">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="promo" placeholder="Add Coupon Code">
+                                <input type="text" class="form-control" id="promo" placeholder="Add Coupon Code" [formControl]="promotion">
                             </div>
-                            <button type="submit" class="btn btn-primary apply" > Apply</button>
+                            <button type="button" class="btn btn-primary apply" (click)="apply()"> Apply</button>
                         </form>
                     </div>
                     
