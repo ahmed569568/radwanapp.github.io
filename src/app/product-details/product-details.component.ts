@@ -120,7 +120,7 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(id:any){
  
       if (this.storage.get('cart')){
-        this.cartService.patch(id,1,this.storage.get('cart')).subscribe((response:any) => {
+        this.cartService.patch(id,'1',this.storage.get('cart')).subscribe((response:any) => {
           this.inCart = true;
         }) 
       } else {

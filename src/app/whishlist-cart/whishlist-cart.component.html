@@ -8,7 +8,6 @@
                         <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">{{ status }}</p>
                         <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" (click)="navCheckout()">Checkout Now</button>
-                        <button *ngIf="order" type="button" class="btn btn-primary btn-lg btn-block checkout-now">Order Now</button>
                         <hr>
                         <form class="form-inline">
                             <div class="form-group">

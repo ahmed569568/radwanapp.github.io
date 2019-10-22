@@ -38,4 +38,7 @@ export class CategoriesService {
     return this.http.get( this.url + 'products/?subcategory_id=' + id, this.httpOptions);
   }
 
+  getSubcateAndProductOfCate(id:any) {
+    return this.http.get( this.url + 'subcategory/?category=' + id);
+  }
 }

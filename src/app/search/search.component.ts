@@ -65,9 +65,12 @@ export class SearchComponent implements OnInit {
                 this.showPrice = true;
                 this.categoryJson = { 'type': 'category','values' : []};
                 this.brandJson = { 'type': 'brand','values' : []};
-                this.priceJson  = { 'type': 'price', 'values': { 'low': '0', 'high': '50000'}};
+                this.priceJson  = { 'type': 'price', 'values': { 'low': '0', 'high': '10000'}};
                 this.sortValue = '';
                 // this.searchJson =  [ this.categoryJson, this.brandJson, this.priceJson ]
+                this.router.routeReuseStrategy.shouldReuseRoute = function() {
+                  return false;
+              };
                 }
 
   ngOnInit() {
@@ -249,6 +252,43 @@ export class SearchComponent implements OnInit {
   }
   search(categoryValues, brandValues, priceValues,sort){
     this.spinner.show();
+    if (categoryValues.length == 0 && brandValues.length == 0 && priceValues.low == '0' && priceValues.high=='10000' && sort == '') {
+      this.route.queryParams
+      .filter(params => params.search)
+      .subscribe(params => {
+        //get query parameter search and call search end point
+        this.searchService.search(params.search).subscribe((data:any) => {
+          this.result = data;
+          this.likes = [...this.result];
+          this.likes.fill(false);
+          this.carts = [...this.likes]
+          this.checkLikes();
+          this.checkCarts();
+          this.spinner.hide();
+        })
+      })
+  
+      this.route.queryParams
+      .filter(params => params.category)
+      .subscribe( params => {
+        this.categoryService.getProducts(params.category).subscribe ( (data:any) => {
+          this.result = data;
+          this.likes = [...this.result];
+          this.likes.fill(false);
+          this.carts = [...this.likes];
+          this.checkLikes();
+          this.checkCarts();
+          this.spinner.hide();
+        })
+      })
+      this.categoryService.getCategories().subscribe(( data: any)=> {
+        this.categories = data;
+      })
+      this.brandService.get().subscribe(( data:any) => {
+        this.brands = data;
+      })
+    }else {
+
       this.result = []
       this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.low, priceValues.high,sort).subscribe( (data: any)=> {
         this.result = data;
@@ -259,10 +299,14 @@ export class SearchComponent implements OnInit {
         this.checkCarts();
         this.spinner.hide();
       })
+    }
+      
   }
 
   sort($event) {
-    this.sort = $event.target.value;
+     
+    this.sortValue = $event.target.value;
+    this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
   }
   compare(id:any) {
     var productsID =  this.storage.get('compare');

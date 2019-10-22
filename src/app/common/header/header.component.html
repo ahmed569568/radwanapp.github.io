@@ -76,13 +76,11 @@
                   <div class="container">
                       <div class="row">
                           <app-looping-rhombuses-spinner id="desktop-spinner" *ngIf="headerListSpinner" [animationDuration]="2500" [rhombusSize]="12" [color]="'rgba(0, 0, 0, 0.5)'" ></app-looping-rhombuses-spinner>
-                          <div class="col-lg-2" *ngFor="let subCate of subCategories">
-                              <p class="title">{{ subCate.name }}</p> 
+                          <div class="col-lg-3" *ngFor="let subCate of subCategories">
+                              <p class="title">{{ subCate?.name }}</p> 
                               <ul class="types">
-                                  <li><a href="#">Huawei P30 Lite</a></li>
-                                  <li><a href="#">Oneplus 6t</a></li>
-                                  <li><a href="#">Huawei Y7 2019 </a></li>
-                                  <li><a href="#">Honor 10 lite</a></li>
+                                  <li *ngFor="let product of subCate?.product"><a routerLink="/product-details/{{ product?.id }}"><p>{{ product.name }}</p></a></li>
+                                 
                               </ul>
                           </div>
                       </div>

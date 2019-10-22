@@ -1,11 +1,11 @@
 <div class="card mb-3" *ngFor="let item of cartItems">
     <div class="row no-gutters">
       <div class="col-md-2 col-2">
-        <img src="{{ item.product.productimage[0].image_url }}" class="card-img image-responsive" alt="...">
+        <img src="{{ item.product.productimage[0].image_url }}" class="card-img image-responsive" alt="..." (click)="navigateProduct(item.product.id)">
       </div>
       <div class="col-md-10 col-8">
         <div class="card-body">
-          <h5 class="card-title">{{ item.product.name }}</h5>
+          <h5 class="card-title" (click)="navigateProduct(item.product.id)" >{{ item.product.name }}</h5>
           <p class="card-text"><small class="brand">{{ item.product.brand_name }}</small></p>
           <p class="price">{{ item.product.price}},00<span>EGP</span></p>
             <div class="save-for-later">

@@ -43,7 +43,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled',onSameUrlNavigation: 'reload' })
 ],
   exports: [RouterModule],
   providers: [ { provide: externalUrlProvider,  useValue: (route: ActivatedRouteSnapshot) => { const externalUrl = route.paramMap.get('externalUrl'); window.open(externalUrl, '_self'); } } ]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -10,6 +12,12 @@ export class CheckoutComponent implements OnInit {
   editAdd: boolean;
   cashDelvery: boolean;
   onlinePayment:  boolean;
+  paymentForm = new FormGroup({
+    name: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    phone : new FormControl('',Validators.required),
+    city: new FormControl('',Validators.required)
+  });
   constructor() { 
     this.cashDelvery = false;
     this.onlinePayment = true;
@@ -17,10 +25,11 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     
-    this.address = 'your home or work adress to shipping your home or work adress to shipping';
+    this.address = 'your home or work address to shipping your home or work address to shipping';
   }
 
   editAddress() {
+    this.address = '';
     if (this.editAdd == true)
       this.editAdd = false;
     else 
@@ -33,5 +42,8 @@ export class CheckoutComponent implements OnInit {
   } 
   selectPayment($event) {
     this.cashDelvery = false;
+  }
+  payNow() {
+    console.log("this.paymentForm.value", this.paymentForm.value)
   }
 }

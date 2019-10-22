@@ -25,7 +25,7 @@ export class SearchService {
     return this.http.get( this.url + 'products/?search=' + keyword, this.httpOptions )
   }
   filter(catIDs,barndIDs,priceLow,priceHigh,sort) {
-    return this.http.get( this.url + 'products/?category_id=' + catIDs + '&brand=' + barndIDs + '&price__lte='+ priceLow + '&price__gte=' + priceHigh + '&sort=' + sort);
+    return this.http.get( this.url + 'products/?category_id=' + catIDs + '&brand=' + barndIDs + '&price__lte='+ priceHigh + '&price__gte=' + priceLow + '&sort=' + sort);
    
   }
 }

@@ -89,6 +89,7 @@ p.percentage {
     color: rgba(22, 45, 54, 1);
     font-weight: bold;  
     margin-bottom: .75rem; 
+    cursor: pointer;
       
 }
 .card-text {
@@ -102,6 +103,7 @@ p.percentage {
 }
 .card-img {
     width: 100%;
+    cursor: pointer;
 }
 .save-for-later {
     display: inline-block;

@@ -14,7 +14,7 @@
             <p class="by">by <span>{{ product?.brand?.name }}</span></p>
             <p class="first-price">{{ product?.price }}.00<span>EGP</span></p>
             <a  class="btn  btn-lg active buy" role="button"  (click)="buy()">buy now</a>
-            <a  *ngIf="!inCart" class="btn cart btn-lg active" role="button" aria-pressed="true" (click)="addToCart(product?.id)" style="cursor:pointer;"><img src="assets/icons/Addtocartbtn.png" alt=""></a>
+            <a  *ngIf="!inCart" class="btn cart btn-lg active" [ngStyle]="{'border-color': product.availability == 'In Stock' ? '#adb5bd' : '#ecf0f1' }"  role="button" aria-pressed="true" (click)="addToCart(product?.id)" style="cursor:pointer;"><img src="assets/icons/Addtocartbtn.png" alt=""></a>
             <div class="wish">
                 <a *ngIf="!inWhishlist" class="btn wishlist btn-lg active" role="button" aria-pressed="true" (click)="addToWhishlist(product?.id)" style="cursor:pointer;"><img src="assets/icons/love@1x.png" alt=""><span>Add to wishlist</span></a>
                 <span id="first"> <a  href="#"><i class="fa fa-facebook"></i></a></span>
@@ -161,7 +161,7 @@
                             </a>
                             <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlistRec(product,i)"><img src="assets/logo/love.svg"  alt=""></a>
                             <a *ngIf="recommandedLikes[i]" (click)="addToWhishlistRec(product,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
-                            <a *ngIf="!recommandedCarts[i]" (click)="addToCartRec(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'" (click)="addToCartRec(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
                             <a *ngIf="recommandedCarts[i]" (click)="addToCartRec(product,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                         </div>
                         </div>
@@ -181,9 +181,11 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     <div class="card-price-like">
                         <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
+                        <a (click)="compare(product?.product?.id)" >    <fa-icon size="1x" [icon]="sync"></fa-icon>
+                        </a>
                         <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlist(product.id)"><img src="assets/logo/love.svg"  alt=""></a>
                         <a *ngIf="recommandedLikes[i]" (click)="addToWhishlist(product.id)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
-                        <a *ngIf="!recommandedCarts[i]" (click)="addToCart(product.id)"><img src="assets/logo/cart.svg"  alt=""></a>
+                        <a *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'" (click)="addToCart(product.id)"><img src="assets/logo/cart.svg"  alt=""></a>
                         <a *ngIf="recommandedCarts[i]" (click)="addToCart(product.id)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                     </div>
                     </div>
@@ -219,7 +221,7 @@
                             </a>
                             <a *ngIf="!popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love.svg"  alt=""></a>
                             <a *ngIf="popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
-                            <a *ngIf="!popularCarts[i]" (click)="addToCartPopul(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                            <a *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'" (click)="addToCartPopul(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
                             <a *ngIf="popularCarts[i]" (click)="addToCartPopul(product,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                         </div>
                         </div>
@@ -227,7 +229,7 @@
                 </div>
             </app-slider>
             <div class="card-deck mobile-slider">
-                <div class="card" *ngFor="let product of recProducts">
+                <div class="card" *ngFor="let product of recProducts; let i=index">
                     <div class="my-wrapper">
                         <img src="assets/Tv.jpg" class="card-img-top"  (click)="navigateProduct(product.id)" alt="...">
                         <div class="middle">
@@ -239,8 +241,12 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     <div class="card-price-like">
                         <h5 class="price">{{ product?.product?.price }}.00<small>EGP</small></h5>
-                        <a href="#"><img src="assets/logo/love.svg"  alt=""></a>
-                        <a href="#"><img src="assets/logo/cart.svg"  alt=""></a>
+                        <a (click)="compare(product?.product?.id)" >    <fa-icon size="1x" [icon]="sync" ></fa-icon>
+                        </a>
+                        <a *ngIf="!popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love.svg"  alt=""></a>
+                        <a *ngIf="popularLikes[i]" (click)="addToWhishlistPopul(product,i)"><img src="assets/logo/love Active@1x.png"  alt=""></a>
+                        <a *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'" (click)="addToCartPopul(product,i)"><img src="assets/logo/cart.svg"  alt=""></a>
+                        <a *ngIf="popularCarts[i]" (click)="addToCartPopul(product,i)"><img src="assets/icons/Cart-actv.svg"  alt=""></a>
                     </div>
                     </div>
                 </div>

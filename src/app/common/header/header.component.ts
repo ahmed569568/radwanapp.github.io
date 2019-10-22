@@ -99,8 +99,8 @@ export class HeaderComponent implements OnInit {
   showBorder(index,cateID) {
     this.headerListSpinner = true;
     this.subCategories =[]
-    this.categoriesService.getSubCategories(cateID).subscribe( (data:any) => {
-      this.subCategories = data.subcategory;
+    this.categoriesService.getSubcateAndProductOfCate(cateID).subscribe( (data:any) => {
+      this.subCategories = data;
       console.log("showBorder categories", this.subCategories)
       this.headerListSpinner = false;
     })
