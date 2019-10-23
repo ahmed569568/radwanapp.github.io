@@ -41,4 +41,13 @@ export class ProductsService {
      return this.http.get( this.url + 'products/compare/?product_ids=' + ids);
      
    }
+
+   submitForm(data:any) {
+    var formdata = {
+      'username': data.name,
+      'password': data.email
+    }
+    console.log( "SErvice formdata",formdata)
+    //  return this.http.post( this.url, data, this.httpOptions)
+   }
 }

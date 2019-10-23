@@ -122,7 +122,13 @@
     color: #ffffff;
     width: 90%;
   }
-
+  .form-control:focus {
+    box-shadow: unset ; 
+  }
+  .btn:focus {
+  
+  box-shadow:unset;
+  }
   @media (max-width: 576px) {
     .upper{
       height: 160px;

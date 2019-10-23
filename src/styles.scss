@@ -165,3 +165,10 @@ span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-high {
 .svg-inline--fa  path{
     fill: #c8d3dd !important;
 }
+.form-control:focus {
+    box-shadow: unset ; 
+}
+.btn:focus {
+ 
+ box-shadow:unset;
+}

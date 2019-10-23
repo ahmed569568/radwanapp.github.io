@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,12 +14,12 @@ export class CheckoutComponent implements OnInit {
   cashDelvery: boolean;
   onlinePayment:  boolean;
   paymentForm = new FormGroup({
-    name: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    phone : new FormControl('',Validators.required),
-    city: new FormControl('',Validators.required)
+    name: new FormControl('',[Validators.required,Validators.minLength(2)]),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    phone : new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
+    city: new FormControl('',[Validators.required,Validators.minLength(2)])
   });
-  constructor() { 
+  constructor( private product: ProductsService) { 
     this.cashDelvery = false;
     this.onlinePayment = true;
   }
@@ -43,7 +44,27 @@ export class CheckoutComponent implements OnInit {
   selectPayment($event) {
     this.cashDelvery = false;
   }
+ 
+  
+  get email() {
+    return this.paymentForm.get('email');
+  }
+
+  get name() {
+    return this.paymentForm.get('name');
+  }
+
+  get phone() {
+    return this.paymentForm.get('phone');
+  }
+
+  get city() {
+    return this.paymentForm.get('city');
+  }
+  
   payNow() {
-    console.log("this.paymentForm.value", this.paymentForm.value)
+   
+    this.product.submitForm(this.paymentForm.value)
+    console.log("this.paymentForm.value", )
   }
 }

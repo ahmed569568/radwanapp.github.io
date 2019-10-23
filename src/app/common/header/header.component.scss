@@ -166,6 +166,15 @@ img {
 app-looping-rhombuses-spinner#desktop-spinner{
     margin: 50px auto;
 }
+.form-control:focus {
+    
+    box-shadow: unset;
+}
+.btn-primary:focus {
+    box-shadow: unset;
+}
+
+
 /* Mobile Style */
 @media (max-width: 576px) { 
     .header {
@@ -292,5 +301,13 @@ app-looping-rhombuses-spinner#desktop-spinner{
         padding-top: 1%;
         padding-bottom: 5%;
     }
-   
+    .mobile-cart {
+        margin-right: 12px;
+    }
+    .mobile-love {
+        margin-right: 12px;
+    }
+    .mobile-logo {
+        width: 128px;
+    }
  }

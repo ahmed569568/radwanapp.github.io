@@ -113,6 +113,7 @@ h5 {
 }
 .my-wrapper {
     background: rgba(231, 76, 60, 0.2);
+    min-height: 290px;
 }
 .my-wrapper:hover img {
     opacity: 0.1;
@@ -304,8 +305,8 @@ h5 {
 
    .card {
         // width: 160px;
-        min-width: 42%;
-        width:42%;
+        min-width: 50%;
+        width:50%;
    }
 
    .card-text {
@@ -368,18 +369,25 @@ h5 {
         font-size: 9px;
         padding: 5px 10px;
     }
+    .my-wrapper {
+        min-height: 130px;
+    }
     
  }
 
  @media screen and (device-aspect-ratio: 40/71) {
     .card {
         // width: 160px;
-        min-width: 45%;
-        width:45%;
+        min-width: 58%;
+        width:58%;
    }
    .text {
     font-size: 6px;
     padding: 5px 10px;
   }
+  .my-wrapper {
+    min-height: 100px;
+  }
+
    
  }

@@ -78,12 +78,12 @@ export class HeaderComponent implements OnInit {
   }
 
   goTo() {
-    this.router.navigate(['./search'], { relativeTo: this.route})
+    this.router.navigate(['./search'])
     
     
   }
   search() {
-    this.router.navigate(['./search/'],  { relativeTo: this.route ,queryParams: { search: this.keyword.value } })
+    this.router.navigate(['./search/'],  {queryParams: { search: this.keyword.value } })
     
   }
   

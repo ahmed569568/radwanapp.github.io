@@ -36,9 +36,16 @@
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="email" placeholder="Email *" formControlName="email">
+                        <span *ngIf=" email.value != '' && email.invalid" class="email-invalid">
+                            Invalid Email
+                        </span>
+                        
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Phone *" formControlName="phone">
+                        <span *ngIf=" phone.value != '' && phone.value.length != 11" class="email-invalid">
+                            Invalid Phone Number
+                        </span>
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="City *" formControlName="city">

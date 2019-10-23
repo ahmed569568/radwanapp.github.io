@@ -65,6 +65,9 @@ i {
     color: #231F20;
 }
 @media (max-width: 576px) {
+    ul {
+        padding-inline-start: unset;
+    }
     ul li {
         font-size: 10px;
         color: #ffffff;
@@ -98,6 +101,7 @@ i {
         font-size: 12px;
         cursor: pointer;
     }
+    
     
  }
 

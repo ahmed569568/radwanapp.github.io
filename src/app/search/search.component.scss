@@ -110,6 +110,7 @@ padding-bottom: 10%;
 }
 .my-wrapper {
     background: rgba(231, 76, 60, 0.2);
+    min-height: 290px;
 }
 .my-wrapper:hover img {
     opacity: 0.1;
@@ -513,8 +514,9 @@ line-height: 24px;
  
     .card {
          // width: 160px;
-         min-width: 50%;
-         width:50%;
+         min-width: 56%;
+         width:56%;
+         
     }
  
     .card-text {
@@ -577,12 +579,15 @@ line-height: 24px;
          font-size: 9px;
          padding: 5px 10px;
      }
+     .my-wrapper {
+        min-height: 130px;
+    }
 }
 
 @media screen and (device-aspect-ratio: 40/71) {
     .card {
-        min-width: 58%;
-        width:58%;
+        min-width: 70%;
+        width:70%;
     }
    .sort > p {
         font-size: 9px;
@@ -599,6 +604,9 @@ line-height: 24px;
     }
     .slider {
         margin-top: 27%;
+    }
+    .my-wrapper {
+        min-height: 100px;
     }
 }
 

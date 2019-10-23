@@ -101,6 +101,11 @@ section#forth {
     padding-right: unset !important;
     padding-left: unset !important;
 }
+.email-invalid {
+    font-size: 12px;
+    color: red;
+    margin-left: 3px;
+}
 
 @media (max-width: 576px) {   
     .shipping-address {
