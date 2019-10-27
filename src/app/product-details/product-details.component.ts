@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { AccessibilityConfig, Image, ImageEvent } from '@ks89/angular-modal-gallery';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
@@ -19,7 +19,7 @@ declare var $:any;
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-  
+ 
   
   product: any;
   imagesRect: Image[] = [];

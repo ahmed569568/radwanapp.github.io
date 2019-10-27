@@ -48,11 +48,14 @@ import {LoopingRhumbusesSpinnerModule} from 'angular-epic-spinners';
 import {FingerprintSpinnerModule} from 'angular-epic-spinners';
 import { RadwanSpinnerComponent } from './common/radwan-spinner/radwan-spinner.component';
 
+import {FulfillingSquareSpinnerModule} from 'angular-epic-spinners';
 import {SelfBuildingSquareSpinnerModule} from 'angular-epic-spinners';
 import {BreedingRhombusSpinnerModule} from 'angular-epic-spinners';
 import {HalfCircleSpinnerModule} from 'angular-epic-spinners';
 import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component';
 import {HollowDotsSpinnerModule} from 'angular-epic-spinners';
+import { ThanksComponent } from './thanks/thanks.component';
+import { RadwanCartModalComponent } from './common/radwan-cart-modal/radwan-cart-modal.component';
 
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
@@ -74,7 +77,9 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     WhishlistCartComponent,
     CompareComponent,
     RadwanSpinnerComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ThanksComponent,
+    RadwanCartModalComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +103,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     SelfBuildingSquareSpinnerModule,
     BreedingRhombusSpinnerModule,
     HalfCircleSpinnerModule,
-    HollowDotsSpinnerModule
+    HollowDotsSpinnerModule,
+    FulfillingSquareSpinnerModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

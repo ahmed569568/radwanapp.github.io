@@ -54,12 +54,16 @@ export class SearchComponent implements OnInit {
   priceJson:any;
   sortValue:any;
   sync = faSync;
+  sortSelect: any;
+  cateCheck: any [];
+  brandCheck: any [];
+  filterSpinner: boolean;
   constructor( private route: ActivatedRoute, private searchService: SearchService,
                private storage:LocalStorageService, private cartService: CartService,
                private whishlistService:WhishlistService, private categoryService: CategoriesService,
                private brandService: BrandService, private router: Router,
                private spinner: RadwanSpinnerService) {
-
+                this.filterSpinner = false;
                 this.showCateg = true;
                 this.showBrand = true;
                 this.showPrice = true;
@@ -67,6 +71,8 @@ export class SearchComponent implements OnInit {
                 this.brandJson = { 'type': 'brand','values' : []};
                 this.priceJson  = { 'type': 'price', 'values': { 'low': '0', 'high': '10000'}};
                 this.sortValue = '';
+                this.cateCheck = [];
+                this.brandCheck = [];
                 // this.searchJson =  [ this.categoryJson, this.brandJson, this.priceJson ]
                 this.router.routeReuseStrategy.shouldReuseRoute = function() {
                   return false;
@@ -105,10 +111,20 @@ export class SearchComponent implements OnInit {
     })
     this.categoryService.getCategories().subscribe(( data: any)=> {
       this.categories = data;
+      this.cateCheck = [...this.cateCheck];
+      this.cateCheck.fill(false);
     })
     this.brandService.get().subscribe(( data:any) => {
       this.brands = data;
+      this.brandCheck = [...this.brands];
+      this.brandCheck.fill(false);
     })
+
+    if (window.screen.width <= 576) { // 768px portrait
+      this.showCateg = false;
+      this.showBrand = false;
+      this.showPrice = false;
+    }
   }
   mm(data) {
     console.log(data);
@@ -251,8 +267,9 @@ export class SearchComponent implements OnInit {
     this.search(this.categoryJson.values, this.brandJson.values, this.priceJson.values, this.sortValue);
   }
   search(categoryValues, brandValues, priceValues,sort){
-    this.spinner.show();
+
     if (categoryValues.length == 0 && brandValues.length == 0 && priceValues.low == '0' && priceValues.high=='10000' && sort == '') {
+      this.spinner.show();
       this.route.queryParams
       .filter(params => params.search)
       .subscribe(params => {
@@ -287,8 +304,13 @@ export class SearchComponent implements OnInit {
       this.brandService.get().subscribe(( data:any) => {
         this.brands = data;
       })
+      if (window.screen.width <= 576) { // 768px portrait
+        this.showCateg = false;
+        this.showBrand = false;
+        this.showPrice = false;
+      }
     }else {
-
+      this.filterSpinner = true;
       this.result = []
       this.searchService.filter(categoryValues.join(','),brandValues.join(','),priceValues.low, priceValues.high,sort).subscribe( (data: any)=> {
         this.result = data;
@@ -297,7 +319,7 @@ export class SearchComponent implements OnInit {
         this.carts = [...this.likes]
         this.checkLikes();
         this.checkCarts();
-        this.spinner.hide();
+        this.filterSpinner = false;
       })
     }
       
@@ -331,4 +353,61 @@ export class SearchComponent implements OnInit {
 
     }
   }
+
+  clearSearch() {
+    this.spinner.show();
+    this.sortSelect = '';
+    this.cateCheck.fill(false) ;
+    this.brandCheck.fill(false);
+    this.highValue = 10000;
+    this.value = 0;
+    this.categoryJson.values.length = 0 ;
+    this.brandJson.values.length = 0; 
+    this.priceJson.values.low = '0'; 
+    this.priceJson.values.high=='10000';
+    this.sortValue= '';
+
+    this.route.queryParams
+    .filter(params => params.search)
+    .subscribe(params => {
+      //get query parameter search and call search end point
+      this.searchService.search(params.search).subscribe((data:any) => {
+        this.result = data;
+        this.likes = [...this.result];
+        this.likes.fill(false);
+        this.carts = [...this.likes]
+        this.checkLikes();
+        this.checkCarts();
+        this.spinner.hide();
+      })
+    })
+
+    this.route.queryParams
+    .filter(params => params.category)
+    .subscribe( params => {
+      this.categoryService.getProducts(params.category).subscribe ( (data:any) => {
+        this.result = data;
+        this.likes = [...this.result];
+        this.likes.fill(false);
+        this.carts = [...this.likes];
+        this.checkLikes();
+        this.checkCarts();
+        this.spinner.hide();
+      })
+    })
+    this.categoryService.getCategories().subscribe(( data: any)=> {
+      this.categories = data;
+    })
+    this.brandService.get().subscribe(( data:any) => {
+      this.brands = data;
+    })
+    if (window.screen.width <= 576) { // 768px portrait
+      this.showCateg = false;
+      this.showBrand = false;
+      this.showPrice = false;
+    }
+  }
+  
+
+
 }

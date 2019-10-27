@@ -179,6 +179,13 @@ label {
     cursor: pointer;
     font-size: 12px;
 }
+.cart-empty {
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    color: #4b5858;
+
+}
 @media (max-width: 576px) {  
     .card-title {
        font-size: 12px;
@@ -203,5 +210,8 @@ label {
         padding: 10px;
         margin-bottom: -17px;
         
+    }
+    .cart-empty {
+        font-size: 26px;
     }
 }

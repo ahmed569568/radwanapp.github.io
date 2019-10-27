@@ -8,7 +8,8 @@ import { Subject } from 'rxjs';
 export class CartService {
   url:any;
   httpOptions:any;
-  public active = new Subject <boolean> ()
+  public active = new Subject <boolean> ();
+  public Total = new Subject<any>();
   constructor(private http:HttpClient) { 
     this.url = 'http://elogail.bit68.com/api/';
     this.httpOptions = {

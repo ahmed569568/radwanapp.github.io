@@ -7,13 +7,13 @@
                         <p class="total">Total</p>
                         <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">{{ status }}</p>
-                        <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" (click)="navCheckout()">Checkout Now</button>
+                        <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" [disabled]=" total=='00' " (click)="navCheckout()">Checkout Now</button>
                         <hr>
                         <form class="form-inline">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="promo" placeholder="Add Coupon Code" [formControl]="promotion">
                             </div>
-                            <button type="button" class="btn btn-primary apply" (click)="apply()"> Apply</button>
+                            <button type="button" class="btn btn-primary apply" (click)="apply()" [disabled]=" total == 00 " > Apply</button>
                         </form>
                     </div>
                     

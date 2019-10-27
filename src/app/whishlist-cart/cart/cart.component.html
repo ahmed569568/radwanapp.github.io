@@ -1,4 +1,8 @@
-<div class="card mb-3" *ngFor="let item of cartItems">
+<span *ngIf="cartEmpty">
+  <h1 class="cart-empty">Cart is empty</h1>
+</span>
+<span *ngIf="!cartEmpty">
+  <div class="card mb-3" *ngFor="let item of cartItems">
     <div class="row no-gutters">
       <div class="col-md-2 col-2">
         <img src="{{ item.product.productimage[0].image_url }}" class="card-img image-responsive" alt="..." (click)="navigateProduct(item.product.id)">
@@ -18,4 +22,5 @@
       </div>
     </div>
   </div>
+</span>
   

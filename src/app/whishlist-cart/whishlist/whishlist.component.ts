@@ -12,22 +12,41 @@ import { Router } from '@angular/router';
 })
 export class WhishlistComponent implements OnInit {
   whishlistItems:any [];
+  whishlistEmpty:boolean;
   constructor(private whishlistService: WhishlistService, private storage: LocalStorageService,
               private cartService: CartService, private spinner: RadwanSpinnerService,
               private router: Router) { }
 
   ngOnInit() {
-    this.spinner.show()
-    this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
-      this.whishlistItems = data.product;
+    this.spinner.show();
+    if (this.storage.get('whishlist') != null) {
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+        this.whishlistItems = data.product;
+        if (this.whishlistItems.length == 0 ) {
+          this.whishlistEmpty = true;
+          this.whishlistService.active.next(false);
+          this.spinner.hide();
+        }
+        this.spinner.hide();
+        console.log("data", data);
+      })
+    } else {
+      this.whishlistEmpty = true;
       this.spinner.hide();
-      console.log("data", data);
-    })
+    }
   }
 
   removeFromWhishlist(id) {
     this.whishlistService.delete(id,this.storage.get('whishlist')).subscribe( (response:any) => {
-      this.whishlistItems = response.product;
+      
+      if ( response.product.length == 0) {
+        this.whishlistEmpty = true;
+        this.whishlistService.active.next(false);
+      } else {
+        this.whishlistEmpty = false;
+        this.whishlistItems = response.product;
+        
+      }
     })
   }
   addToCart(id:any) {

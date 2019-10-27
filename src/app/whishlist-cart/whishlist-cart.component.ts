@@ -4,6 +4,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 import { FormControl } from '@angular/forms';
 import { PromotionService } from '../services/promotion.service';
+import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-whishlist-cart',
   templateUrl: './whishlist-cart.component.html',
@@ -21,18 +22,22 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   status: string;
   constructor( private router:Router, private storage: LocalStorageService,
                private route: ActivatedRoute, private spinner: RadwanSpinnerService,
-               private promotionService:PromotionService ) { 
+               private promotionService:PromotionService, private cartService: CartService ) { 
     this.loveAct = false;
     this.cartAct = false;
     this.order = false;
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
     };
-    
+    this.total = '00'
   }
 
   ngOnInit() {
-    
+    this.total = this.storage.get('total');
+    this.cartService.Total.subscribe( ( data:any)=> {
+      this.total = data;
+    })
+   
     if(String(this.router.url).includes('/whishlist-cart/cart')) 
       this.checkout =true;
     else if (String(this.router.url).includes('/whishlist-cart/whishlist'))
@@ -41,11 +46,11 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
       this.checkout = true;
       this.order = true;
     }
-      
+    
+   
 
-
-    this.total = this.storage.get('total')
-    console.log("this.total", this.total);
+   
+    
     
   }
   ngAfterViewInit() {

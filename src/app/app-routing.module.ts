@@ -12,6 +12,7 @@ import { CartComponent } from './whishlist-cart/cart/cart.component';
 import { WhishlistCartComponent } from './whishlist-cart/whishlist-cart.component';
 import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component';
+import { ThanksComponent } from './thanks/thanks.component';
 
 
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -32,6 +33,7 @@ const routes: Routes = [
       {
         path:'compare', component: CompareComponent
       },
+      { path: 'thanks', component:ThanksComponent},
       {
         path: 'externalRedirect',
         canActivate: [externalUrlProvider],

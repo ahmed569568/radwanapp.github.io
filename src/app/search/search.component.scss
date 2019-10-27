@@ -365,7 +365,30 @@ line-height: 24px;
     text-align: left;
     line-height: 24px;
 }
-
+.clear {
+    background-color: #E30B13 !important;
+    border-color: #E30B13 !important;
+    width: 104% !important;
+}
+.btn-primary:focus {
+    box-shadow: unset !important;
+}
+span.filter {
+    bottom: 0;
+    height: 50px;
+    left: 50%;
+    /* margin: auto; */
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 50px;
+}
+app-fulfilling-square-spinner#filter {
+    display: block;
+}
+app-fulfilling-square-spinner#filterMobile {
+    display: none;
+}
 @media (max-width: 1500px) { 
     .sort > select {
  
@@ -379,7 +402,7 @@ line-height: 24px;
 
 @media (max-width: 576px) { 
     .search {
-        height: 100%;
+        height: 75%;
         
     }
     .sort {
@@ -429,6 +452,7 @@ line-height: 24px;
     }
     .products {
         margin-top: 30%;
+        
     }
     // .card-deck {
     //     flex-direction: row;
@@ -581,6 +605,23 @@ line-height: 24px;
      }
      .my-wrapper {
         min-height: 130px;
+    }
+
+    span.filter {
+        bottom: 0px;
+        height: 50px;
+        left: 45%;
+        position: absolute;
+        right: 0;
+        top: 30%;
+        width: 50px;
+    }
+
+    app-fulfilling-square-spinner#filter {
+        display: none;
+    }
+    app-fulfilling-square-spinner#filterMobile {
+        display: block;
     }
 }
 

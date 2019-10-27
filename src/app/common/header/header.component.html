@@ -7,7 +7,7 @@
         </div>
     <form class="form-inline">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search"  [formControl]="keyword">
-        <button  class="btn btn-primary search" type="button"  (click)="search()"><img src="assets/logo/Search@1x.png"  alt="" ></button>
+        <button  class="btn btn-primary search" type="submit"  (click)="search()"  (keyup.enter)="search()"><img src="assets/logo/Search@1x.png"  alt="" ></button>
     </form>
     <div class="like">
        
@@ -37,9 +37,9 @@
     </div>
     <div>
         <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" *ngIf="activeCart" alt="" (click)="goToCart()">
+        <img class="mobile-cart" src="assets/icons/Cartblack@2x.png" *ngIf="!activeCart" alt="" style="width: 23px;" (click)="goToCart()">
         <img  class="mobile-love" src="assets/logo/love Active@1x.png" *ngIf="activeWhishlist" alt="" (click)="goToWhishlist()">
-        <img class="mobile-cart" src="assets/icons/Cartblack@2x.png" *ngIf="!activeCart" alt="" (click)="goToCart()">
-        <img  class="mobile-love" src="assets/logo/icons/heartblack.svg" *ngIf="!activeWhishlist" alt="" (click)="goToWhishlist()">
+        <img  class="mobile-love" src="assets/icons/heartblack.svg" *ngIf="!activeWhishlist" alt="" style="width: 23px;" (click)="goToWhishlist()">
     </div>
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showCate">
@@ -63,7 +63,7 @@
     </div>
     <form class="form-inline">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" [formControl]="keyword">
-        <button class="btn btn-primary search" type="button"  (click)="search()"><img src="assets/logo/Search@1x.png"  alt="" ></button>
+        <button class="btn btn-primary search" type="submit"  (click)="search()" (keyup.enter)="search()" ><img src="assets/logo/Search@1x.png"  alt="" ></button>
     </form>
   </nav>
 

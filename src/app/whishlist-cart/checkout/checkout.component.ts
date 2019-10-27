@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -19,7 +20,8 @@ export class CheckoutComponent implements OnInit {
     phone : new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
     city: new FormControl('',[Validators.required,Validators.minLength(2)])
   });
-  constructor( private product: ProductsService) { 
+
+  constructor( private product: ProductsService,private router: Router) { 
     this.cashDelvery = false;
     this.onlinePayment = true;
   }
@@ -66,5 +68,6 @@ export class CheckoutComponent implements OnInit {
    
     this.product.submitForm(this.paymentForm.value)
     console.log("this.paymentForm.value", )
+    this.router.navigate(['./thanks'])
   }
 }

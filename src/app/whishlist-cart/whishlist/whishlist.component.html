@@ -1,21 +1,27 @@
-<div class="card mb-3" *ngFor="let product of whishlistItems">
-  <div class="row no-gutters">
-    <div class="col-md-2 col-3">
-      <img src="{{ product.productimage[0].image_url }}" class="card-img" alt="..." (click)="navigateProduct(product.id)">
-    </div>
-    <div class="col-md-10 col-9">
-      <div class="card-body">
-        <h5 class="card-title" (click)="navigateProduct(product.id)">{{ product.name }}</h5>
-        <p class="card-text"><small class="brand">{{ product.brand_name }}</small></p>
-        <p class="price">{{ product.price}},00<span>EGP</span></p>
-          <div class="save-for-later">
-            <p (click)="addToCart(product.id)"><small>Add To Cart</small></p>
-          </div>
-          <div class=" remove">
-            <p (click)="removeFromWhishlist(product.id)"><small>Remove</small></p>
-          </div>
+<span *ngIf="whishlistEmpty">
+  <h1 class="whishlist-empty">Whishlist is empty</h1>
+</span>
+
+<span *ngIf="!whishlistEmpty">
+  <div class="card mb-3" *ngFor="let product of whishlistItems">
+    <div class="row no-gutters">
+      <div class="col-md-2 col-3">
+        <img src="{{ product.productimage[0].image_url }}" class="card-img" alt="..." (click)="navigateProduct(product.id)">
+      </div>
+      <div class="col-md-10 col-9">
+        <div class="card-body">
+          <h5 class="card-title" (click)="navigateProduct(product.id)">{{ product.name }}</h5>
+          <p class="card-text"><small class="brand">{{ product.brand_name }}</small></p>
+          <p class="price">{{ product.price}},00<span>EGP</span></p>
+            <div class="save-for-later">
+              <p (click)="addToCart(product.id)" *ngIf="product.availability == 'In Stock'"><small>Add To Cart</small></p>
+            </div>
+            <div class=" remove" [ngStyle]="{'margin-left': product.availability == 'In Stock' ? '30px' : '0px' }" >
+              <p (click)="removeFromWhishlist(product.id)"><small>Remove</small></p>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</span>
 

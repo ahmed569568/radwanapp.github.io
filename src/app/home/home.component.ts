@@ -83,6 +83,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['./search'], { relativeTo: this.route})
     
   }
+
+  
   addToCart(id:any,index:any){
     if(this.carts[index]){
       this.carts[index]=false;

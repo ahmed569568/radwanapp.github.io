@@ -1,0 +1,38 @@
+section {
+    background-color: #ecf0f1;
+}
+h1,
+h5 {
+    text-align: center;
+}
+h1 {
+    margin-top: 200px;
+    color: #4b5858;
+}
+h5 {
+    margin-bottom: 200px;
+    color: #4b5858;
+}
+@media (max-width: 576px) { 
+    h1 {
+        font-size: 26px;
+    }
+    h5 {
+        font-size: 15px;
+    }
+  }
+
+
+ .info-widget {
+    width: 31.75%;
+    border: 1px solid black;
+    display: inline-block;
+  }
+
+  .middle {
+    float: left;
+    width: 90%;
+    overflow: auto;
+    /*will change this to hidden later to deny scolling to user*/
+    white-space: nowrap;
+  }

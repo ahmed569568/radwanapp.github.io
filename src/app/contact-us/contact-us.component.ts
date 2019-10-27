@@ -26,4 +26,7 @@ export class ContactUsComponent implements OnInit {
   get email() {
     return this.contactForm.get('email');
   }
+  contact() {
+    console.log("Shokry Suleiman")
+  }
 }

@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { WhishlistService } from 'src/app/services/whishlist.service';
 import { Router } from '@angular/router';
 import { RadwanSpinnerService } from 'src/app/services/radwan-spinner.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,8 @@ import { RadwanSpinnerService } from 'src/app/services/radwan-spinner.service';
 export class CartComponent implements OnInit {
   cartItems: any;
   cartTotal:any;
+  cartEmpty:boolean;
+  
   constructor(private cartService: CartService,private storage: LocalStorageService,
               private whishlist: WhishlistService,  private router: Router,
               private spinner: RadwanSpinnerService) { 
@@ -20,30 +23,61 @@ export class CartComponent implements OnInit {
       this.router.routeReuseStrategy.shouldReuseRoute = function() {
         return false;
       };
+      this.cartTotal = '00';
   }
 
   ngOnInit() {
     this.spinner.show();
-    this.cartService.get(this.storage.get('cart')).subscribe( (response:any) => {
-      console.log("Response", response);
-      this.cartItems = response.data
-      this.total();
+    if ( this.storage.get('cart') != null) {
+      this.cartEmpty =false;
+      this.cartService.get(this.storage.get('cart')).subscribe( (response:any) => {
+        console.log("Response", response);
+        this.cartItems = response.data
+        this.total();
+        this.spinner.hide();
+      })
+    } else {
+      this.cartEmpty = true;
+      this.cartTotal = '00';
+      this.cartService.Total.next(this.cartTotal);
       this.spinner.hide();
-    })
+    }
+   
   }
 
   total() {
     var total=0;
-     this.cartItems.forEach(element => {
-      total += element.product.price;
-    });
-    this.cartTotal = total;
-    this.storage.set('total', this.cartTotal)
+     if (this.cartItems.length != 0) {
+      this.cartItems.forEach(element => {
+        total += element.product.price;
+      });
+      this.cartTotal = total;
+      this.storage.set('total', this.cartTotal)
+      this.cartService.Total.next(this.cartTotal);
+      
+     } else {
+       this.cartTotal = '00';
+       this.cartEmpty =true;
+       this.storage.set('total',this.cartTotal);
+       this.cartService.Total.next(this.cartTotal);
+       this.cartService.active.next(false);
+     }
   }
   removeFromCart(id) {
     this.cartService.delete(id,this.storage.get('cart')).subscribe( (response:any) => {
       console.log("data", response);
-      this.cartItems = response.data;
+
+      if ( response.data.length == 0) {
+        this.cartTotal = '00';
+        this.storage.set('total','00');
+        this.cartEmpty = true;
+        this.cartService.Total.next(this.cartTotal);
+        this.cartService.active.next(false);
+      } else {
+        this.cartItems = response.data;
+        this.total();
+      }
+      
     })
     console.log("shokry", id)
   }
