@@ -10,13 +10,16 @@ import { CartService } from '../services/cart.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
+import { CartComponent } from '../whishlist-cart/cart/cart.component';
 
 declare var $:any;
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
+  providers: []
+  
 })
 export class ProductDetailsComponent implements OnInit {
  
@@ -108,8 +111,35 @@ export class ProductDetailsComponent implements OnInit {
  
 
  
-  buy() {
-    console.log("sfsdfsaffsd");
+  buy(product:any) {
+    // console.log("this.product", product)
+    // console.log("sfsdfsaffsd");
+    if (product.availability == 'In Stock') {
+      if (this.inCart == true) {
+        this.router.navigate(['./whishlist-cart/cart']);
+      } else {
+        if (this.storage.get('cart')){
+          this.cartService.patch(product.id,'1',this.storage.get('cart')).subscribe((response:any) => {
+            this.inCart = true;
+
+            this.router.navigate(['./whishlist-cart/cart'])
+          }) 
+        } else {
+          this.cartService.put(product.id,1).subscribe((response:any)=> {
+            this.storage.set('cart', response.data.cart);
+            console.log("here my  bug");
+            this.inCart = true;
+
+            this.router.navigate(['./whishlist-cart/cart'])
+          })
+        }  
+
+        
+      }
+      
+    } else {
+      this.cartService.showOutStock();
+    }
   }
 
   navigateProduct(id:any) {
@@ -133,7 +163,7 @@ export class ProductDetailsComponent implements OnInit {
   
   addProductToCart(product:any) {
     if (product.availability != 'In Stock') {
-
+      this.cartService.showOutStock();
     } else {
       this.cartService.showAdd();
       if (this.storage.get('cart')){

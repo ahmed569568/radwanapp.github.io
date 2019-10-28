@@ -20,7 +20,6 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService,private storage: LocalStorageService,
               private whishlist: WhishlistService,  private router: Router,
               private spinner: RadwanSpinnerService) { 
-      // override the route reuse strategy
       this.router.routeReuseStrategy.shouldReuseRoute = function() {
         return false;
       };
@@ -29,7 +28,19 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cartService.checkout.subscribe( data => {
+      console.log("My Data checkout", data);
+    })
+    this.cartService.checkout.subscribe( data => {
+      console.log("Checkout Now");
+      console.log("data",data);
+      this.init();
+    })
+    this.init();
+  }
+  public init() {
     this.spinner.show();
+    console.log("this.storage.get('cart')", this.storage.get('cart'))
     if ( this.storage.get('cart') != null) {
       this.cartEmpty =false;
       this.cartService.get(this.storage.get('cart')).subscribe( (response:any) => {
@@ -44,10 +55,8 @@ export class CartComponent implements OnInit {
       this.cartService.Total.next(this.cartTotal);
       this.spinner.hide();
     }
-   
   }
-
-  total() {
+  public total() {
     var total=0;
      if (this.cartItems.length != 0) {
       this.cartItems.forEach(element => {

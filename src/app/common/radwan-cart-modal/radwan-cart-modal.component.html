@@ -7,3 +7,9 @@
     <i class="fa fa-times"></i>
     <p>Product has removed from <span>cart.</span></p>
 </div>
+
+<div class="cart-remove" *ngIf="showOutStock" (click)="hideNotif()">
+    <i class="fa fa-times"></i>
+    <p>This Product is out of stock.</p>
+</div>
+

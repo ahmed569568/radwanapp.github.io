@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class RadwanCartModalComponent implements OnInit {
   showAdd: boolean;
   showRemove: boolean;
+  showOutStock: boolean;
   constructor( private cartService: CartService) { }
 
   ngOnInit() {
@@ -22,11 +23,15 @@ export class RadwanCartModalComponent implements OnInit {
       this.showRemove = data;
      
     })
+    this.cartService.outOfStock.subscribe( data => {
+      this.showOutStock = data;
+    })
   }
 
   hideNotif() {
     this.showAdd = false;
     this.showRemove = false;
+    this.showOutStock = false;
   }
 
 }

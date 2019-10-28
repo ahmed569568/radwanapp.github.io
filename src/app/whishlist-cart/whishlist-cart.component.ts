@@ -33,6 +33,7 @@ export class WhishlistCartComponent implements OnInit,  AfterViewInit {
   }
 
   ngOnInit() {
+  
     this.total = this.storage.get('total');
     this.cartService.Total.subscribe( ( data:any)=> {
       this.total = data;

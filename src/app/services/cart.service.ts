@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,9 @@ export class CartService {
   public Total = new Subject<any>();
   public cartNotifAdd = new Subject<boolean>();
   public cartNotifRemove = new Subject<boolean>();
-
+  public outOfStock = new Subject<boolean>();
+  public checkout =  new BehaviorSubject('');
+  
   constructor(private http:HttpClient) { 
     this.url = 'http://elogail.bit68.com/api/';
     this.httpOptions = {
@@ -70,6 +72,21 @@ export class CartService {
   
   }
   
+  showOutStock() {
+    this.outOfStock.next(true);
+    setInterval( () => {
+      this.hideOutStock()
+    }, 5000)
+
+  }
+  hideOutStock() {
+    this.outOfStock.next(false);
+  }
+
+  toCheckout() {
+    
+    this.checkout.next('true');
+  }
 }
 
 

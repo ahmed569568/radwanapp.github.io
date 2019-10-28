@@ -56,6 +56,7 @@ import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component'
 import {HollowDotsSpinnerModule} from 'angular-epic-spinners';
 import { ThanksComponent } from './thanks/thanks.component';
 import { RadwanCartModalComponent } from './common/radwan-cart-modal/radwan-cart-modal.component';
+import { CartService } from './services/cart.service';
 
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);

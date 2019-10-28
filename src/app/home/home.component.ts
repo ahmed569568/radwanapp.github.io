@@ -36,6 +36,9 @@ export class HomeComponent implements OnInit {
               }
 
   ngOnInit() {
+    this.cartService.checkout.subscribe( data => {
+      console.log("My Data", data);
+    })
     this.spinner.show();
     this.categoriesService.feature().subscribe( ( data:any) => {
       console.log("this.categories", data);
