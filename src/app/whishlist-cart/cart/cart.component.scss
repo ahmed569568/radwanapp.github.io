@@ -186,6 +186,22 @@ label {
     color: #4b5858;
 
 }
+span.spinner {
+    bottom: 0;
+    height: 50px;
+    left: 50%;
+    /* margin: auto; */
+    position: absolute;
+    right: 0;
+    top: 30%;
+    width: 50px;
+}
+app-fulfilling-square-spinner#spinner {
+    display: block;
+}
+app-fulfilling-square-spinner#spinnerMobile {
+    display: none;
+}
 @media (max-width: 576px) {  
     .card-title {
        font-size: 12px;
@@ -213,5 +229,13 @@ label {
     }
     .cart-empty {
         font-size: 26px;
+        margin-top: 40px;
+        margin-bottom: 70px;
+    }
+    app-fulfilling-square-spinner#filter {
+        display: none;
+    }
+    app-fulfilling-square-spinner#filterMobile {
+        display: block;
     }
 }

@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   cartItems: any;
   cartTotal:any;
   cartEmpty:boolean;
+  spinnerCart:boolean;
   
   constructor(private cartService: CartService,private storage: LocalStorageService,
               private whishlist: WhishlistService,  private router: Router,
@@ -24,6 +25,7 @@ export class CartComponent implements OnInit {
         return false;
       };
       this.cartTotal = '00';
+      this.spinnerCart = false;
   }
 
   ngOnInit() {
@@ -64,9 +66,11 @@ export class CartComponent implements OnInit {
      }
   }
   removeFromCart(id) {
+    this.cartService.showRemove();
+    this.spinnerCart = true;
     this.cartService.delete(id,this.storage.get('cart')).subscribe( (response:any) => {
       console.log("data", response);
-
+      this.spinnerCart = false;
       if ( response.data.length == 0) {
         this.cartTotal = '00';
         this.storage.set('total','00');

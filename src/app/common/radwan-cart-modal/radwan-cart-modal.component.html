@@ -1,1 +1,9 @@
-<p>radwan-cart-modal works!</p>
+<div class="cart-add" *ngIf="showAdd" (click)="hideNotif()">
+    <i class="fa fa-check"></i>
+    <p>Product has been added to <span>cart.</span></p>
+</div>
+
+<div class="cart-remove" *ngIf="showRemove" (click)="hideNotif()">
+    <i class="fa fa-times"></i>
+    <p>Product has removed from <span>cart.</span></p>
+</div>

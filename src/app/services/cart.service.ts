@@ -10,6 +10,9 @@ export class CartService {
   httpOptions:any;
   public active = new Subject <boolean> ();
   public Total = new Subject<any>();
+  public cartNotifAdd = new Subject<boolean>();
+  public cartNotifRemove = new Subject<boolean>();
+
   constructor(private http:HttpClient) { 
     this.url = 'http://elogail.bit68.com/api/';
     this.httpOptions = {
@@ -43,6 +46,30 @@ export class CartService {
     return this.http.delete( this.url + 'cart/me/' + cartID  + '/?cart_product=' + id , this.httpOptions);
   }
  
+  showAdd() {
+    this.cartNotifAdd.next(true);
+    setInterval( () => { 
+      this.hideAdd() 
+    }, 5000)
+  }
+  
+  hideAdd() {
+    this.cartNotifAdd.next(false);
+  
+  }
+
+  showRemove() {
+    this.cartNotifRemove.next(true);
+    setInterval( () => { 
+      this.hideRemove() 
+    }, 5000)
+  }
+  
+  hideRemove() {
+    this.cartNotifRemove.next(false);
+  
+  }
+  
 }
 
 

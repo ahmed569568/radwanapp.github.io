@@ -13,9 +13,12 @@ import { Router } from '@angular/router';
 export class WhishlistComponent implements OnInit {
   whishlistItems:any [];
   whishlistEmpty:boolean;
+  wishlistSpinner:boolean;
   constructor(private whishlistService: WhishlistService, private storage: LocalStorageService,
               private cartService: CartService, private spinner: RadwanSpinnerService,
-              private router: Router) { }
+              private router: Router) { 
+                this.wishlistSpinner = false;
+              }
 
   ngOnInit() {
     this.spinner.show();
@@ -37,8 +40,9 @@ export class WhishlistComponent implements OnInit {
   }
 
   removeFromWhishlist(id) {
+    this.wishlistSpinner = true;
     this.whishlistService.delete(id,this.storage.get('whishlist')).subscribe( (response:any) => {
-      
+      this.wishlistSpinner = false;
       if ( response.product.length == 0) {
         this.whishlistEmpty = true;
         this.whishlistService.active.next(false);
@@ -49,7 +53,9 @@ export class WhishlistComponent implements OnInit {
       }
     })
   }
+  
   addToCart(id:any) {
+    this.cartService.showAdd();
     if(this.storage.get('cart')) {
       this.cartService.patch(id,1,this.storage.get('cart')).subscribe( (data:any) => {
         this.removeFromWhishlist(id);

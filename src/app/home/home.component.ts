@@ -87,17 +87,21 @@ export class HomeComponent implements OnInit {
   
   addToCart(id:any,index:any){
     if(this.carts[index]){
+      this.cartService.showRemove();
       this.carts[index]=false;
       this.cartItems.forEach(item => {
         if(item.product.id == id)
-          this.cartService.delete(item.id,this.storage.get('cart')).subscribe((data:any)=> {})
+          this.cartService.delete(item.id,this.storage.get('cart')).subscribe((data:any)=> {
+            
+          })
       })
     } else {
       this.carts[index]=true;
-      
+      this.cartService.showAdd();
         if (this.storage.get('cart')){
           console.log("cart",this.storage.get('cart'))
           this.cartService.patch(id,1,this.storage.get('cart')).subscribe((response:any) => {
+            
           })
          
         } else {

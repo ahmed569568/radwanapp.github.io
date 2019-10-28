@@ -118,7 +118,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   
   addToCart(id:any){
- 
+      
       if (this.storage.get('cart')){
         this.cartService.patch(id,'1',this.storage.get('cart')).subscribe((response:any) => {
           this.inCart = true;
@@ -130,6 +130,25 @@ export class ProductDetailsComponent implements OnInit {
         })
       }        
   }
+  
+  addProductToCart(product:any) {
+    if (product.availability != 'In Stock') {
+
+    } else {
+      this.cartService.showAdd();
+      if (this.storage.get('cart')){
+        this.cartService.patch(product.id,'1',this.storage.get('cart')).subscribe((response:any) => {
+          this.inCart = true;
+        }) 
+      } else {
+        this.cartService.put(product.id,1).subscribe((response:any)=> {
+          this.storage.set('cart', response.data.cart);
+          this.inCart = true;
+        })
+      }      
+    }
+  }
+  
 
   addToWhishlist(id:any) {
       if (this.storage.get('whishlist')) {
@@ -229,13 +248,16 @@ export class ProductDetailsComponent implements OnInit {
   addToCartRec(item:any,index:any){
     if(this.recommandedCarts[index]){
       this.recommandedCarts[index]=false;
+      this.cartService.showRemove();
       this.recProducts.forEach(item => {
         if(item.product.id == item.product.id)
-          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {})
+          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {
+            
+          })
       })
     } else {
       this.recommandedCarts[index]=true;
-
+      this.cartService.showAdd();
         if (this.storage.get('cart')){
           console.log("cart",this.storage.get('cart'))
           console.log("item.product.id", item.product.id )
@@ -301,7 +323,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCartPopul(item:any, index:any) {
+
     if(this.popularCarts[index]){
+      this.cartService.showRemove();
       this.popularCarts[index]=false;
       this.recProducts.forEach(item => {
         if(item.product.id == item.product.id)
@@ -309,7 +333,7 @@ export class ProductDetailsComponent implements OnInit {
       })
     } else {
       this.popularCarts[index]=true;
-
+      this.cartService.showAdd();
         if (this.storage.get('cart')){
           console.log("cart",this.storage.get('cart'))
           console.log("item.product.id", item.product.id )

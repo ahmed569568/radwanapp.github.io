@@ -14,7 +14,7 @@
             <p class="by">by <span>{{ product?.brand?.name }}</span></p>
             <p class="first-price">{{ product?.price }}.00<span>EGP</span></p>
             <a  class="btn  btn-lg active buy" role="button"  (click)="buy()">buy now</a>
-            <a  *ngIf="!inCart" class="btn cart btn-lg active" [ngStyle]="{'border-color': product.availability == 'In Stock' ? '#adb5bd' : '#ecf0f1' }"  role="button" aria-pressed="true" (click)="addToCart(product?.id)" style="cursor:pointer;"><img src="assets/icons/Addtocartbtn.png" alt=""></a>
+            <a  *ngIf="!inCart" class="btn cart btn-lg active" [ngStyle]="{'border-color': product.availability == 'In Stock' ? '#adb5bd' : '#ecf0f1' }"  role="button" aria-pressed="true" (click)="addProductToCart(product)" style="cursor:pointer;"><img src="assets/icons/Addtocartbtn.png" alt=""></a>
             <div class="wish">
                 <a *ngIf="!inWhishlist" class="btn wishlist btn-lg active" role="button" aria-pressed="true" (click)="addToWhishlist(product?.id)" style="cursor:pointer;"><img src="assets/icons/love@1x.png" alt=""><span>Add to wishlist</span></a>
                 <span id="first"> <a  href="#"><i class="fa fa-facebook"></i></a></span>
