@@ -4,7 +4,6 @@
     margin-bottom: 8px;
     padding-top: 15px;
     cursor: pointer;
-   
 }
 .wishlist img {
     margin-left: 30px;
@@ -18,14 +17,11 @@
     color: white;
     padding-top: 15px;
     margin-bottom: 100px;
-    cursor: pointer;
-
-    
+    cursor: pointer;  
 }
 .cart p {
     display: inline-block;
 }
-
 .cart img {
     margin-left: 30px;
     margin-right: 20px;
@@ -38,8 +34,7 @@
     color: rgba(22, 45, 54, 1);
     font-weight: bold;  
     margin-bottom: .75rem; 
-    cursor: pointer;
-      
+    cursor: pointer;  
 }
 .card-text {
     margin-top: -8px;
@@ -56,7 +51,6 @@
 }
 .save-for-later {
     display: inline-block;
-   
 }
 .remove {
     display: inline-block;
@@ -78,9 +72,6 @@ label {
     background-color: rgba(216, 216, 216, 1);
     border-radius: 4px !important;
 }
-
-
-
 .custom-control-label::before {
     position: absolute;
     top: 1px;
@@ -98,15 +89,14 @@ label {
 .custom-checkbox .custom-control-label::before {
     // border-radius: unset !important;
 }
+
 .price {
     color: rgba(231, 76, 60, 1);
     font-family: 'Montserrat-Bold' !important;
     font-size: 14;
     margin-top: -35px;
     margin-bottom: 5px;
-
 }
-
 .price span {
     font-family: 'Montserrat-Bold' !important;
     font-size: 10px;
@@ -114,7 +104,6 @@ label {
 .card-body {
     padding: 15px;
     padding-bottom: 0px;
-
 }
 .save-for-later p {
     font-size: 10px;
@@ -128,7 +117,6 @@ label {
     cursor: pointer;
     font-size: 12px;
 }
-
 .whishlist-empty {
     text-align: center;
     margin-bottom: 100px;
@@ -139,7 +127,6 @@ span.spinner {
     bottom:0;
     height: 50px;
     left: 50%;
-    /* margin: auto; */
     position: absolute;
     right: 0;
     top: 30%;

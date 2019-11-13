@@ -7,12 +7,14 @@
                         <p class="total">Total</p>
                         <p class="price">{{ total }},00 <span>EGP</span></p>
                         <p class="percentage">{{ status }}</p>
+                        <!-- Hide Checkout Button In Checkout Page -->
                         <button *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" [disabled]=" total=='00' " (click)="navCheckout()">Checkout Now</button>
                         <hr>
                         <form class="form-inline">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="promo" placeholder="Add Coupon Code" [formControl]="promotion">
                             </div>
+                            
                             <button type="button" class="btn btn-primary apply" (click)="apply()" [disabled]=" total == 00 " > Apply</button>
                         </form>
                     </div>
@@ -21,6 +23,7 @@
                 <div class="row wishlist" (click)="activateTab('wishlist')" #whishlist>
                     <div class="col-12-lg col-12">
                         <a>
+                            <!-- here show active whishlist when active route whishlist or otherwise -->
                             <img *ngIf="!loveAct" src="assets/icons/heartwhite.svg" alt="">
                             <img *ngIf="loveAct" src="assets/icons/heartblack.svg" alt="">
                             <p>Wishlist</p>
@@ -29,7 +32,8 @@
                 </div>
                 <div class="row cart" (click)="activateTab('cart')" #cart>
                     <div class="col-12-lg">
-                        <a  >
+                        <a>
+                            <!-- here show active cart when active route cart or otherwise -->
                             <img *ngIf="cartAct" src="assets/icons/Cartblack@2x.png" alt="">
                             <img *ngIf="!cartAct" src="assets/icons/Cartwhite.svg" alt="">
                             <p>Your Cart</p>

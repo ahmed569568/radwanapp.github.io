@@ -31,7 +31,6 @@ export class WhishlistComponent implements OnInit {
           this.spinner.hide();
         }
         this.spinner.hide();
-        console.log("data", data);
       })
     } else {
       this.whishlistEmpty = true;
@@ -45,11 +44,11 @@ export class WhishlistComponent implements OnInit {
       this.wishlistSpinner = false;
       if ( response.product.length == 0) {
         this.whishlistEmpty = true;
+        // if no items in whishlist then deactive whishlist
         this.whishlistService.active.next(false);
       } else {
         this.whishlistEmpty = false;
         this.whishlistItems = response.product;
-        
       }
     })
   }
@@ -72,4 +71,5 @@ export class WhishlistComponent implements OnInit {
   navigateProduct(id:any) {
     this.router.navigate( ['./product-details/', id] );
   }
+  
 }

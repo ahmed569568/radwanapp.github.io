@@ -11,4 +11,3 @@ export class AppComponent {
   title = 'RADWAN';
 }
 
-// angular-epic-spinners

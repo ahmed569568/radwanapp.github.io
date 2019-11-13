@@ -34,6 +34,7 @@ const routes: Routes = [
         path:'compare', component: CompareComponent
       },
       { path: 'thanks', component:ThanksComponent},
+      //this for open external links which in slider 
       {
         path: 'externalRedirect',
         canActivate: [externalUrlProvider],

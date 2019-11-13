@@ -1,29 +1,25 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
-import { AccessibilityConfig, Image, ImageEvent } from '@ks89/angular-modal-gallery';
+import { AccessibilityConfig, Image,  } from '@ks89/angular-modal-gallery';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { ProductsService } from '../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
 import { LocalStorageService } from '../services/local-storage.service';
 import { CartService } from '../services/cart.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
-import { CartComponent } from '../whishlist-cart/cart/cart.component';
 
-declare var $:any;
+
+declare var $: any;
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss'],
-  providers: []
-  
+  styleUrls: ['./product-details.component.scss']
+
 })
 export class ProductDetailsComponent implements OnInit {
- 
-  
+
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;
@@ -34,40 +30,51 @@ export class ProductDetailsComponent implements OnInit {
   inWhishlist: boolean;
   popularLikes: any[];
   recommandedLikes: any[];
-  popularCarts:any[];
+  popularCarts: any[];
   recommandedCarts: any[];
-  sync =faSync
-  constructor( private productsService: ProductsService,  private route: ActivatedRoute,
-               private router: Router, private storage:LocalStorageService,
-               private cartService: CartService, private whishlistService: WhishlistService,
-               private spinner: RadwanSpinnerService) { 
-    this.product = {};
-    this.recProducts = [];
-    this.popularProducts = [];
-    this.detailedDescription = [];
+  sync = faSync
 
-    // override the route reuse strategy
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+
+
+  @ViewChild('recommendedScroll', { static: true, read: ElementRef }) public recommendedScroll: ElementRef<any>;
+  @ViewChild('popularScroll', { static: true, read: ElementRef }) public popularScroll: ElementRef<any>;
+
+
+  constructor(private productsService: ProductsService, private route: ActivatedRoute,
+              private router: Router, private storage: LocalStorageService,
+              private cartService: CartService, private whishlistService: WhishlistService,
+              private spinner: RadwanSpinnerService) {
+              this.product = {};
+              this.recProducts = [];
+              this.popularProducts = [];
+              this.detailedDescription = [];
+
+    //to excute ngOninit() When Get Product Detail  With Different Product ID  On Same Route(Product Details)
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
-  };
+    };
+
+
   }
-  
+
   ngOnInit() {
+
     this.spinner.show();
+    //get id of product from url
     let id = this.route.snapshot.paramMap.get('id');
-    this.productsService.getProduct(id).subscribe( (data:any) => {
+
+    this.productsService.getProduct(id).subscribe((data: any) => {
       this.product = data;
       this.checkCart();
       this.checkWhishlist();
       this.detailedDescription = data.detaileddescription;
-      console.log("Detail Description", this.detailedDescription);
-      console.log("Product", this.product);
       this.setImagesInGallary(data.productimage);
       this.spinner.hide();
     })
-    this.productsService.getPopularProduct().subscribe( ( data:any ) => {
+
+
+    this.productsService.getPopularProduct().subscribe((data: any) => {
       this.popularProducts = data;
-      console.log("popularProducts", this.popularProducts);
       this.popularCarts = [...this.popularProducts];
       this.popularCarts.fill(false);
       this.popularLikes = [...this.popularCarts];
@@ -75,322 +82,278 @@ export class ProductDetailsComponent implements OnInit {
       this.checkPopularWhishlist();
     })
 
-    this.productsService.getRecommendedProducts().subscribe ( ( data:any) => {
+
+    this.productsService.getRecommendedProducts().subscribe((data: any) => {
       this.recProducts = data;
-      console.log("recProducts", this.recProducts)
-      // this.recProducts.reverse();
       this.recommandedCarts = [...this.recProducts];
       this.recommandedCarts.fill(false);
       this.recommandedLikes = [...this.recommandedCarts]
       this.checkRecoCart();
       this.checkRecoWhishlist();
     })
-  
 
-
-
-
-
-
-
-
-
-
-    
-   
   }
 
-  setImagesInGallary(imgArray:any) {
-    for ( let i=0;i< imgArray.length; i++) {
-      this.imagesRect.push(new Image(i, { img: imgArray[i].image_url},{ img:  imgArray[i].image_url }))
+  setImagesInGallary(imgArray: any) {
+    for (let i = 0; i < imgArray.length; i++) {
+      this.imagesRect.push(new Image(i, { img: imgArray[i].image_url }, { img: imgArray[i].image_url }))
     }
-    this.showGallary =true;
+    this.showGallary = true;
   }
-  
 
- 
 
- 
-  buy(product:any) {
-    // console.log("this.product", product)
-    // console.log("sfsdfsaffsd");
+
+
+
+  buy(product: any) {
+    //when click on buy now add to cart and navigate to cart component
     if (product.availability == 'In Stock') {
+
       if (this.inCart == true) {
+
         this.router.navigate(['./whishlist-cart/cart']);
+
       } else {
-        if (this.storage.get('cart')){
-          this.cartService.patch(product.id,'1',this.storage.get('cart')).subscribe((response:any) => {
-            this.inCart = true;
 
-            this.router.navigate(['./whishlist-cart/cart'])
-          }) 
+        if (this.storage.get('cart')) {
+
+          this.cartService.patch(product.id, '1', this.storage.get('cart')).subscribe((response: any) => {
+            this.inCart = true;
+            this.router.navigate(['./whishlist-cart/cart']);
+            
+          })
+
         } else {
-          this.cartService.put(product.id,1).subscribe((response:any)=> {
-            this.storage.set('cart', response.data.cart);
-            console.log("here my  bug");
-            this.inCart = true;
 
+          this.cartService.put(product.id, 1).subscribe((response: any) => {
+            this.storage.set('cart', response.data.cart);
+            this.inCart = true;
             this.router.navigate(['./whishlist-cart/cart'])
           })
-        }  
 
-        
+        }
+
       }
-      
+
     } else {
       this.cartService.showOutStock();
     }
   }
 
-  navigateProduct(id:any) {
-    this.router.navigate( ['./product-details/', id]);
-     
+  navigateProduct(id: any) {
+    this.router.navigate(['./product-details/', id]);
   }
-  
-  addToCart(id:any){
-      
-      if (this.storage.get('cart')){
-        this.cartService.patch(id,'1',this.storage.get('cart')).subscribe((response:any) => {
-          this.inCart = true;
-        }) 
-      } else {
-        this.cartService.put(id,1).subscribe((response:any)=> {
-          this.storage.set('cart', response.data.cart);
-          this.inCart = true;
-        })
-      }        
+
+  addToCart(id: any) {
+    if (this.storage.get('cart')) {
+      this.cartService.patch(id, '1', this.storage.get('cart')).subscribe((response: any) => {
+        this.inCart = true;
+      })
+    } else {
+      this.cartService.put(id, 1).subscribe((response: any) => {
+        this.storage.set('cart', response.data.cart);
+        this.inCart = true;
+      })
+    }
   }
-  
-  addProductToCart(product:any) {
+
+  addProductToCart(product: any) {
     if (product.availability != 'In Stock') {
       this.cartService.showOutStock();
     } else {
       this.cartService.showAdd();
-      if (this.storage.get('cart')){
-        this.cartService.patch(product.id,'1',this.storage.get('cart')).subscribe((response:any) => {
+      if (this.storage.get('cart')) {
+        this.cartService.patch(product.id, '1', this.storage.get('cart')).subscribe((response: any) => {
           this.inCart = true;
-        }) 
+        })
       } else {
-        this.cartService.put(product.id,1).subscribe((response:any)=> {
+        this.cartService.put(product.id, 1).subscribe((response: any) => {
           this.storage.set('cart', response.data.cart);
           this.inCart = true;
         })
-      }      
+      }
     }
   }
-  
 
-  addToWhishlist(id:any) {
-      if (this.storage.get('whishlist')) {
-          this.whishlistService.patch(id,this.storage.get('whishlist')).subscribe((data:any)=> {
-            this.inWhishlist = true;
-          })
-      } else {
-        this.whishlistService.put(id).subscribe((data:any)=> {
-          this.storage.set('whishlist',data.id);
-          this.inWhishlist = true;
-        })
-      }
-  } 
+
+  addToWhishlist(id: any) {
+    if (this.storage.get('whishlist')) {
+      this.whishlistService.patch(id, this.storage.get('whishlist')).subscribe((data: any) => {
+        this.inWhishlist = true;
+      })
+    } else {
+      this.whishlistService.put(id).subscribe((data: any) => {
+        this.storage.set('whishlist', data.id);
+        this.inWhishlist = true;
+      })
+    }
+  }
 
   checkCart() {
-    if(this.storage.get('cart')) {
-      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
-        console.log('item in cart', response);
+    if (this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response: any) => {
         response.data.forEach(element => {
-           if (element.product.id == this.product.id)
-            this.inCart=true;
-            
+          if (element.product.id == this.product.id)
+            this.inCart = true;
         });
-        console.log("this.inCart", this.inCart)
       })
-     
+
     }
-    
+
   }
 
   checkWhishlist() {
-    if (this.storage.get('whishlist')){
-      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
+    if (this.storage.get('whishlist')) {
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe((data: any) => {
         data.product.forEach(product => {
-          if(this.product.id == product.id) 
-          this.inWhishlist= true;
-          
+          if (this.product.id == product.id)
+            this.inWhishlist = true;
+
         });
         console.log("this.inWhishlist", this.inWhishlist);
       })
-      
-    } 
+
+    }
   }
   checkPopularCart() {
-    if(this.storage.get('cart')) {
-      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
-        console.log("data", response.data);
+    if (this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response: any) => {
         response.data.forEach(element => {
-          this.popularCarts[this.popularProducts.map(function(product) { return product.product.id; }).indexOf(element.product.id)]=true;
+          this.popularCarts[this.popularProducts.map(function (product) { return product.product.id; }).indexOf(element.product.id)] = true;
         });
-        console.log("this.popularProducts", this.popularProducts)
-        console.log("Popular Products popularCartscc", this.popularCarts)
-        
       })
-     
     }
-   
   }
+
   checkPopularWhishlist() {
-     if (this.storage.get('whishlist')){
-      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
-        
+    if (this.storage.get('whishlist')) {
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe((data: any) => {
         data.product.forEach(product => {
-          this.popularLikes[this.popularProducts.map(function(product) { return product.product.id; }).indexOf(product.id)]=true;
+          this.popularLikes[this.popularProducts.map(function (product) { return product.product.id; }).indexOf(product.id)] = true;
         });
-        console.log("Whishlist Products ", this.popularLikes)
       })
-      
-    } 
+    }
   }
 
   checkRecoCart() {
-    if(this.storage.get('cart')) {
-      this.cartService.get(this.storage.get('cart')).subscribe((response:any)=> {
+    if (this.storage.get('cart')) {
+      this.cartService.get(this.storage.get('cart')).subscribe((response: any) => {
         response.data.forEach(element => {
-          this.recommandedCarts[this.recProducts.map(function(product) { return product.product.id; }).indexOf(element.product.id)]=true;
+          this.recommandedCarts[this.recProducts.map(function (product) { return product.product.id; }).indexOf(element.product.id)] = true;
         });
-        console.log("recommandedcarts ", this.recommandedCarts);
       })
-     
     }
-   
+
   }
   checkRecoWhishlist() {
-     if (this.storage.get('whishlist')){
-      this.whishlistService.get(this.storage.get('whishlist')).subscribe( (data:any)=> {
-        console.log("data from whishlist", data)
+    if (this.storage.get('whishlist')) {
+      this.whishlistService.get(this.storage.get('whishlist')).subscribe((data: any) => {
         data.product.forEach(product => {
-          this.recommandedLikes[this.recProducts.map(function(product) { return product.product.id; }).indexOf(product.id)]=true;
+          this.recommandedLikes[this.recProducts.map(function (product) { return product.product.id; }).indexOf(product.id)] = true;
         });
-        console.log("recommandedLikes ", this.recommandedLikes);
       })
-      
-    } 
+
+    }
   }
 
-  addToCartRec(item:any,index:any){
-    if(this.recommandedCarts[index]){
-      this.recommandedCarts[index]=false;
+  addToCartRec(item: any, index: any) {
+
+    if (this.recommandedCarts[index]) {
+      this.recommandedCarts[index] = false;
       this.cartService.showRemove();
       this.recProducts.forEach(item => {
-        if(item.product.id == item.product.id)
-          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {
-            
+        if (item.product.id == item.product.id)
+          this.cartService.delete(item.product.id, this.storage.get('cart')).subscribe((data: any) => {
           })
       })
     } else {
-      this.recommandedCarts[index]=true;
+      this.recommandedCarts[index] = true;
       this.cartService.showAdd();
-        if (this.storage.get('cart')){
-          console.log("cart",this.storage.get('cart'))
-          console.log("item.product.id", item.product.id )
-          this.cartService.patch(item.product.id,1,this.storage.get('cart')).subscribe((response:any) => {
-          })
-         
-        } else {
-          this.cartService.put(item.product.id,1).subscribe((response:any)=> {
-           
-            this.storage.set('cart',response.data.cart)
-          })
-        }
-          
-        
-     
-    }
-    
-  }
-  addToWhishlistRec(item:any, index:any) {
-    if(this.recommandedLikes[index]) {
-      this.recommandedLikes[index]=false;
+      if (this.storage.get('cart')) {
+        this.cartService.patch(item.product.id, 1, this.storage.get('cart')).subscribe((response: any) => {
+        })
+      } else {
+        this.cartService.put(item.product.id, 1).subscribe((response: any) => {
+          this.storage.set('cart', response.data.cart)
+        })
+      }
 
-      this.whishlistService.delete(item.product.id,this.storage.get('whishlist')).subscribe( (data:any)=> {
+
+
+    }
+
+  }
+
+  addToWhishlistRec(item: any, index: any) {
+    if (this.recommandedLikes[index]) {
+      this.recommandedLikes[index] = false;
+      this.whishlistService.delete(item.product.id, this.storage.get('whishlist')).subscribe((data: any) => {
       })
     } else {
-      this.recommandedLikes[index]=true;
+      this.recommandedLikes[index] = true;
       if (this.storage.get('whishlist')) {
-        this.whishlistService.patch(item.product.id,this.storage.get('whishlist')).subscribe((data:any)=> {
+        this.whishlistService.patch(item.product.id, this.storage.get('whishlist')).subscribe((data: any) => {
 
         })
 
       } else {
-        
-        this.whishlistService.put(item.product.id).subscribe((data:any)=> {
-          console.log("data", data)
-          this.storage.set('whishlist',data.id);
+        this.whishlistService.put(item.product.id).subscribe((data: any) => {
+          this.storage.set('whishlist', data.id);
         })
       }
     }
-      
-  }
-  addToWhishlistPopul(item:any, index:any) {
-    if(this.popularLikes[index]) {
-      this.popularLikes[index]=false;
 
-      this.whishlistService.delete(item.product.id,this.storage.get('whishlist')).subscribe( (data:any)=> {
+  }
+
+  addToWhishlistPopul(item: any, index: any) {
+    if (this.popularLikes[index]) {
+      this.popularLikes[index] = false;
+      this.whishlistService.delete(item.product.id, this.storage.get('whishlist')).subscribe((data: any) => {
       })
     } else {
-      this.popularLikes[index]=true;
+      this.popularLikes[index] = true;
       if (this.storage.get('whishlist')) {
-        this.whishlistService.patch(item.product.id,this.storage.get('whishlist')).subscribe((data:any)=> {
-
+        this.whishlistService.patch(item.product.id, this.storage.get('whishlist')).subscribe((data: any) => {
         })
-
       } else {
-        
-        this.whishlistService.put(item.product.id).subscribe((data:any)=> {
-          console.log("data", data)
-          this.storage.set('whishlist',data.id);
+        this.whishlistService.put(item.product.id).subscribe((data: any) => {
+          this.storage.set('whishlist', data.id);
         })
       }
     }
   }
 
-  addToCartPopul(item:any, index:any) {
+  addToCartPopul(item: any, index: any) {
 
-    if(this.popularCarts[index]){
+    if (this.popularCarts[index]) {
       this.cartService.showRemove();
-      this.popularCarts[index]=false;
+      this.popularCarts[index] = false;
       this.recProducts.forEach(item => {
-        if(item.product.id == item.product.id)
-          this.cartService.delete(item.product.id,this.storage.get('cart')).subscribe((data:any)=> {})
+        if (item.product.id == item.product.id)
+          this.cartService.delete(item.product.id, this.storage.get('cart')).subscribe((data: any) => { })
       })
     } else {
-      this.popularCarts[index]=true;
+      this.popularCarts[index] = true;
       this.cartService.showAdd();
-        if (this.storage.get('cart')){
-          console.log("cart",this.storage.get('cart'))
-          console.log("item.product.id", item.product.id )
-          this.cartService.patch(item.product.id,1,this.storage.get('cart')).subscribe((response:any) => {
-          })
-         
-        } else {
-          this.cartService.put(item.product.id,1).subscribe((response:any)=> {
-           
-            this.storage.set('cart',response.data.cart)
-          })
-        }
-          
+      if (this.storage.get('cart')) {
+        this.cartService.patch(item.product.id, 1, this.storage.get('cart')).subscribe((response: any) => {
+        })
+      } else {
+        this.cartService.put(item.product.id, 1).subscribe((response: any) => {
+          this.storage.set('cart', response.data.cart)
+        })
       }
-     
-    
+    }
   }
 
-  compare(id:any) {
-    var productsID =  this.storage.get('compare');
-    console.log("compare",this.storage.get('compare'));
+  compare(id: any) {
 
-    if (productsID ) {
+    var productsID = this.storage.get('compare');
+    if (productsID) {
       if (productsID.indexOf(id) != -1) {
         this.router.navigate(['./compare']);
       } else {
-        if(productsID.length >= 3) {
+        if (productsID.length >= 3) {
           this.router.navigate(['./compare']);
         } else {
           productsID.push(id);
@@ -402,11 +365,24 @@ export class ProductDetailsComponent implements OnInit {
     } else {
       this.storage.set('compare', [id]);
       this.router.navigate(['./compare']);
-
     }
   }
 
- 
+  scrollRecomRight() {
+    this.recommendedScroll.nativeElement.scrollTo({ left: (this.recommendedScroll.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
+ scrollRecomLeft() {
+    this.recommendedScroll.nativeElement.scrollTo({ left: (this.recommendedScroll.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+  }
+
+  scrollPopularRight() {
+    this.popularScroll.nativeElement.scrollTo({ left: (this.popularScroll.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
+  scrollPopularLeft() {
+    this.popularScroll.nativeElement.scrollTo({ left: (this.popularScroll.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+  }
 }
 
 

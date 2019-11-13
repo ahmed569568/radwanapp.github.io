@@ -5,7 +5,8 @@
                 <h2 class="shipping-address">Shipping Address</h2>
                 <div class="address-edit">
                     <p class="address" *ngIf="!editAdd">{{ address }}</p>
-                    <input class="form-control" *ngIf="editAdd" type="text" placeholder="Address *" [(ngModel)]="address">
+                    <input class="form-control" *ngIf="editAdd" type="text" placeholder="Address *"
+                        [(ngModel)]="address">
                     <a class="edit" *ngIf="!editAdd" role="button" (click)="editAddress()">Edit</a>
                 </div>
             </div>
@@ -17,7 +18,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-               <h2 class="online-payment"><span><input class="form-check-input" type="checkbox"  id="defaultCheck1" (change)="selectPayment($event)" [(ngModel)]="onlinePayment"></span> Online Payment</h2>
+                <h2 class="online-payment"><span><input class="form-check-input" type="checkbox" id="defaultCheck1"
+                            (change)="selectPayment($event)" [(ngModel)]="onlinePayment"></span> Online Payment</h2>
             </div>
         </div>
     </div>
@@ -27,7 +29,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-               <h2 class="cash-delivery"><span><input class="form-check-input" type="checkbox"  id="defaultCheck1" (change)="selectCash($event)" [(ngModel)]="cashDelvery"></span> Cash On Delivery</h2>
+                <h2 class="cash-delivery"><span><input class="form-check-input" type="checkbox" id="defaultCheck1"
+                            (change)="selectCash($event)" [(ngModel)]="cashDelvery"></span> Cash On Delivery</h2>
             </div>
             <div class="col-lg-12 form-cash-delivery" *ngIf="cashDelvery">
                 <form [formGroup]="paymentForm">
@@ -39,7 +42,7 @@
                         <span *ngIf=" email.value != '' && email.invalid" class="email-invalid">
                             Invalid Email
                         </span>
-                        
+
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Phone *" formControlName="phone">
@@ -61,10 +64,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 pay-now">
-                <form   (ngSubmit)="payNow()">
-                    <button type="submit" [disabled]="!paymentForm.valid || address==''" class="btn btn-primary btn-lg btn-block">Pay Now</button>
+                <form (ngSubmit)="payNow()">
+                    <button type="submit" [disabled]="!paymentForm.valid || address==''"
+                        class="btn btn-primary btn-lg btn-block">Pay Now</button>
                 </form>
-            </div>  
+            </div>
         </div>
     </div>
 </section>

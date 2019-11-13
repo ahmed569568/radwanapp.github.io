@@ -1,93 +1,115 @@
-<nav class="navbar navbar-light nav-desktop" >
+<!-- navbar for desktop -->
+<nav class="navbar navbar-light nav-desktop">
     <a class="navbar-brand" href="#">
-        <img src="assets/logo/Mr Hamdy El Ogail.svg"  alt="">
+        <img src="assets/logo/Mr Hamdy El Ogail.svg" alt="">
     </a>
+    <!-- let space between logo and search input (display flex) -->
     <div class="like">
-       
-        </div>
+    </div>
     <form class="form-inline">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search"  [formControl]="keyword">
-        <button  class="btn btn-primary search" type="submit"  (click)="search()"  (keyup.enter)="search()"><img src="assets/logo/Search@1x.png"  alt="" ></button>
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" [formControl]="keyword">
+        <button class="btn btn-primary search" type="submit" (click)="search()" (keyup.enter)="search()"><img
+                src="assets/logo/Search@1x.png" alt=""></button>
     </form>
+    <!-- let space between search input and cart icon  -->
     <div class="like">
-       
-        </div>
-  
-       
+    </div>
     <div class="cart">
-        <a routerLink="/whishlist-cart/cart" ><img src="assets/logo/Cart Active@1x.png"  alt="" *ngIf="activeCart"><img src="assets/icons/Cartblack@2x.png"  alt="" *ngIf="!activeCart"></a>
-        <a routerLink="/whishlist-cart/whishlist" ><img src="assets/logo/love Active@1x.png"  *ngIf="activeWhishlist" alt=""> <img src="assets/icons/heartblack.svg"  *ngIf="!activeWhishlist" alt=""></a>
+        <a routerLink="/whishlist-cart/cart"><img src="assets/logo/Cart Active@1x.png" alt="" *ngIf="activeCart"><img
+                src="assets/icons/Cartblack@2x.png" alt="" *ngIf="!activeCart"></a>
+        <a routerLink="/whishlist-cart/whishlist"><img src="assets/logo/love Active@1x.png" *ngIf="activeWhishlist"
+                alt=""> <img src="assets/icons/heartblack.svg" *ngIf="!activeWhishlist" alt=""></a>
     </div>
-
-    <div class="like">   
+    <!-- space after whishlist icon -->
+    <div class="like">
     </div>
     <div class="like">
-       
     </div>
 </nav>
 
+<!-- nav bar in mobile  -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav-mobile">
-    
-  
     <div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <img class="mobile-logo" src="assets/logo/Mr Hamdy El Ogail.svg" alt="" (click)="goHome()">
     </div>
     <div>
         <img class="mobile-cart" src="assets/logo/Cart Active@1x.png" *ngIf="activeCart" alt="" (click)="goToCart()">
-        <img class="mobile-cart" src="assets/icons/Cartblack@2x.png" *ngIf="!activeCart" alt="" style="width: 23px;" (click)="goToCart()">
-        <img  class="mobile-love" src="assets/logo/love Active@1x.png" *ngIf="activeWhishlist" alt="" (click)="goToWhishlist()">
-        <img  class="mobile-love" src="assets/icons/heartblack.svg" *ngIf="!activeWhishlist" alt="" style="width: 23px;" (click)="goToWhishlist()">
+        <img class="mobile-cart" src="assets/icons/Cartblack@2x.png" *ngIf="!activeCart" alt="" style="width: 23px;"
+            (click)="goToCart()">
+        <img class="mobile-love" src="assets/logo/love Active@1x.png" *ngIf="activeWhishlist" alt=""
+            (click)="goToWhishlist()">
+        <img class="mobile-love" src="assets/icons/heartblack.svg" *ngIf="!activeWhishlist" alt="" style="width: 23px;"
+            (click)="goToWhishlist()">
     </div>
-   
+    <!-- display categories -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="showCate">
-      <ul class="navbar-nav mr-auto">
-        <span *ngFor="let cate of categories;let i = index">
-            <li class="nav-item" (click)="showHideBorderFromMobile(i,cate?.id)" >
-                <a class="nav-link" role="button" (click)="searchCategory( cate?.id)"  [ngClass]="{'down': menueList[i]}"   >{{ cate?.name }}</a>
-            </li>
-            <ul *ngIf="menueList[i]" class="nav-subCate">
-                <li  *ngFor="let subCate of subCategories;let ind=index">
-                    <a (click)="selectSubCate(subCate?.id,ind)">{{ subCate?.name }}</a> 
-                    <ul  *ngIf="subCateList[ind]">
-                        <app-looping-rhombuses-spinner *ngIf="!subCateProd" [animationDuration]="2500" [rhombusSize]="12" [color]="'#E30B13'" ></app-looping-rhombuses-spinner>
-                        <li  class="sub-cate-list-product" *ngFor="let product of subCateProducts" ><a routerLink="/product-details/{{ product.id }}"><p>{{ product.name }}</p></a></li>
-                    </ul> 
+        <ul class="navbar-nav mr-auto">
+            <span *ngFor="let cate of categories;let i = index">
+                <li class="nav-item" (click)="showHideBorderFromMobile(i,cate?.id)">
+                    <a class="nav-link" role="button" (click)="searchCategoryMobile( cate?.id, menueList[i])"
+                        [ngClass]="{'down': menueList[i]}">{{ cate?.name }}</a>
                 </li>
-            </ul>
-        </span>
-      </ul>
-     
+                <!-- inside each category there are subcategory unorder list  -->
+                <ul *ngIf="menueList[i]" class="nav-subCate">
+                    <li *ngFor="let subCate of subCategories;let ind=index">
+                        <a (click)="selectSubCate(subCate?.id,ind)">{{ subCate?.name }}</a>
+                        <!-- inside each subcategory products of subcategory -->
+                        <ul *ngIf="subCateList[ind]">
+                            <!-- show spinner where products of subcategory get back -->
+                            <app-looping-rhombuses-spinner *ngIf="!subCateProd" [animationDuration]="2500"
+                                [rhombusSize]="12" [color]="'#E30B13'"></app-looping-rhombuses-spinner>
+                            <li class="sub-cate-list-product" *ngFor="let product of subCateProducts"><a
+                                    routerLink="/product-details/{{ product.id }}">
+                                    <p>{{ product.name }}</p>
+                                </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </span>
+        </ul>
+
     </div>
+    <!-- then show search input  -->
     <form class="form-inline">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search" [formControl]="keyword">
-        <button class="btn btn-primary search" type="submit"  (click)="search()" (keyup.enter)="search()" ><img src="assets/logo/Search@1x.png"  alt="" ></button>
+        <button class="btn btn-primary search" type="submit" (click)="search()" (keyup.enter)="search()"><img
+                src="assets/logo/Search@1x.png" alt=""></button>
     </form>
-  </nav>
+</nav>
 
-  <header class="header">
-      <div class="container">
-          <div class="row header-links">
-              <ul class="header-links-main">
-                <li   *ngFor="let cate of categories;let i = index" ><a  role="button" (click)="searchCategory(cate?.id)"  (mouseover)="showBorder(i,cate?.id)" (mouseleave)="hideBorderFromList()" [ngClass]="{'down': menueList[i]}">{{ cate.name }}</a></li>
-                <div class="header-list" (mouseenter)="showBorderFromList()" (mouseleave)="hideBorderFromList()"> 
-                  <div class="container">
-                      <div class="row">
-                          <app-looping-rhombuses-spinner id="desktop-spinner" *ngIf="headerListSpinner" [animationDuration]="2500" [rhombusSize]="12" [color]="'rgba(0, 0, 0, 0.5)'" ></app-looping-rhombuses-spinner>
-                          <div class="col-lg-3" *ngFor="let subCate of subCategories">
-                              <p class="title">{{ subCate?.name }}</p> 
-                              <ul class="types">
-                                  <li *ngFor="let product of subCate?.product"><a routerLink="/product-details/{{ product?.id }}"><p>{{ product.name }}</p></a></li>
-                                 
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
+<!-- only display block in desktop -->
+<header class="header">
+    <div class="container">
+        <div class="row header-links">
+            <ul class="header-links-main">
+                <li *ngFor="let cate of categories;let i = index"><a role="button" (click)="searchCategory(cate?.id)"
+                        (mouseover)="showBorder(i,cate?.id)" (mouseleave)="hideBorderFromList()"
+                        [ngClass]="{'down': menueList[i]}">{{ cate.name }}</a></li>
+                        <!-- {'down': menueList[i]} that's mean that if  hover on a specifice category then show borderbottom white and hide border of others -->
+                <div class="header-list" (mouseenter)="showBorderFromList()" (mouseleave)="hideBorderFromList()">
+                    <div class="container">
+                        <div class="row">
+                            <!-- show spinner while subcategories get back from request -->
+                            <app-looping-rhombuses-spinner id="desktop-spinner" *ngIf="headerListSpinner"
+                                [animationDuration]="2500" [rhombusSize]="12" [color]="'rgba(0, 0, 0, 0.5)'">
+                            </app-looping-rhombuses-spinner>
+                            <div class="col-lg-3" *ngFor="let subCate of subCategories">
+                                <p class="title">{{ subCate?.name }}</p>
+                                <ul class="types">
+                                    <li *ngFor="let product of subCate?.product"><a routerLink="/product-details/{{ product?.id }}">
+                                        <p>{{ product.name }}</p></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </ul>
-          </div>
-      </div>
-  </header>
-  <app-radwan-cart-modal></app-radwan-cart-modal>
+            </ul>
+        </div>
+    </div>
+</header>
+<app-radwan-cart-modal></app-radwan-cart-modal>

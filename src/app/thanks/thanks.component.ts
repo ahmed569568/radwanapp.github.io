@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-thanks',
@@ -6,15 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./thanks.component.scss']
 })
 export class ThanksComponent implements OnInit {
-  @ViewChild('widgetsContent',{ static: true, read: ElementRef }) public widgetsContent: ElementRef<any>;
-
-  public scrollRight(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
-  }
-
-  public scrollLeft(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
-  }
+ 
   constructor() { }
 
   ngOnInit() {

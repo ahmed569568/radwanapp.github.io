@@ -1,6 +1,5 @@
 .mid {
-    background-color: 
-    rgba(245, 245, 245, 1);
+    background-color: rgba(245, 245, 245, 1);
 }
 .rowMid {
     margin-left: 10%;
@@ -120,7 +119,7 @@ h5 {
 }
 .my-wrapper:hover .middle {
     opacity: 1;
-  }
+}
 .middle {
     transition: .5s ease;
     opacity: 0;
@@ -130,7 +129,7 @@ h5 {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
 .text {
     background-color: #e74c3c;
     color: white;
@@ -138,27 +137,25 @@ h5 {
     padding: 10px 24px;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
   
-  .title {
+.title {
     background: rgba(227, 11, 19, 1);
     color: white;
     position: absolute;
     top: 110px;
     font-size: 17px;
     padding: 3px 22px;
-  }
-  .title-text {
+}
+.title-text {
     width: 100px;
-    // width: 116%;
-  }
 
-
-  .cat-info {
-     position: relative;
-     cursor: pointer;
-  }
+}
+.cat-info {
+    position: relative;
+    cursor: pointer;
+}
 .title-game {
     background: rgba(227, 11, 19, 1);
     color: white;
@@ -181,29 +178,6 @@ h5 {
     z-index: 1;
 }
 
-// .cat1 {
-//     max-width:100%;
-// }
-// .last-categ {
-//     max-width: 100%;
-// }
-
-// @media (max-width:1512px) {
-//     .cat1 {
-//         width:280px;
-//     }
-//     .last-categ {
-//         width: 570px;
-//     }
-// }
-// @media (max-width:1412px) {
-//     .cat1 {
-//         width:260px;
-//     }
-//     .last-categ {
-//         width: 530px;
-//     }
-// }
 .title-game {
     width: 120%;
 }
@@ -217,6 +191,7 @@ h5 {
     cursor: pointer;
 }
 
+/*Style For Narrow Width Screens*/
 @media (max-width:1316px) {
     .title {
         top: 85px;
@@ -230,24 +205,21 @@ h5 {
     }
 }
 
+/*Style For Mobile Screens*/
 @media (max-width: 576px) { 
-
     .rowMid {
         margin: auto;
     }
-
     .cat1 {
         width: 250px;
         height: 180px;
 
     }
-
     .title{
         top: 100px;
         font-weight: bold;
         font-size: 12px;
     }
-    
     .title-text {
         width: 80px;
     }
@@ -269,14 +241,11 @@ h5 {
         font-weight: bold;
         width: 220px;
     }
-  
-    
     div .cat-info img.last-categ {
         width: 250px !important;
         height: 180px !important;
 
     }
-
     .sale {
         font-size: 14px;
         padding: 0px 8px;
@@ -284,15 +253,12 @@ h5 {
         left: 18px;
         width: 180px;
     }
-
     .products {
         padding-bottom: 30px;
     }
-
    .products h5 {
         font-size: 14px;
    }
-
    .card-deck {
        flex-direction: row;
        overflow-x: auto;
@@ -300,35 +266,28 @@ h5 {
        -webkit-flex-direction: row;
        overflow: scroll;
        width: 100%;
-
     }
 
    .card {
-        // width: 160px;
         min-width: 50%;
         width:50%;
    }
-
    .card-text {
        font-size: 8px;
        margin-top: -14px;
        min-height: 38px;
        max-height: 38px;
    }
-
    .card-text :last-child {
     margin-top: -16px;
    }
-
    .text-muted {
         font-size: 7px;
    }
-
    .price {
         font-size: 9px !important;
         margin-top: -4px;
    }
-
    .card-price-like :nth-child(2)  {
         height: 12px;
         width: 14px;
@@ -337,14 +296,12 @@ h5 {
     .card-price-like:nth-child(3) {
         margin-right: 2%;
     }
-    
    .card-price-like:nth-child(3) img {
         height: 12px !important;
         width: 14px !important;
         cursor: pointer;
         
     }
-    
     .card-price-like:nth-child(4) img {
         height: 12px !important;
         width: 14px !important;
@@ -353,15 +310,12 @@ h5 {
     .card-body {
         padding: 0.9rem;
     }
-
     .card-price-like :nth-child(3) {
         margin-top: -7%;
     }
-
     .card-price-like :nth-child(2)  {
         margin-top: -7%;
     }
-    
     .card-price-like :nth-child(4)  {
         margin-top: -7%;
     }
@@ -375,9 +329,9 @@ h5 {
     
  }
 
+/*Style For Iphone 5/5se*/
  @media screen and (device-aspect-ratio: 40/71) {
     .card {
-        // width: 160px;
         min-width: 58%;
         width:58%;
    }
@@ -387,7 +341,7 @@ h5 {
   }
   .my-wrapper {
     min-height: 54%;
-}
+  }
 
    
  }

@@ -6,19 +6,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SliderService {
   url: string;
-  httpOptions:any;
-  constructor(private http: HttpClient) { 
+  httpOptions: any;
+  constructor(private http: HttpClient) {
     this.url = 'http://elogail.bit68.com/api/';
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     };
   }
 
   getSliders() {
-    return this.http.get( this.url + 'slider_view',this.httpOptions);
+    return this.http.get(this.url + 'slider_view', this.httpOptions);
   }
 }

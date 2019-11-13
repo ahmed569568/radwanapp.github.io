@@ -11,7 +11,6 @@ p.total {
    font-family: 'Montserrat-Light' !important;
    font-size: 14px;
 }
-  
 p.percentage {
    color: rgba(22, 45, 54, 1);
    margin-top: -15px;
@@ -24,7 +23,6 @@ p.percentage {
     border-radius: .1rem;
     font-size: 14px;
     padding: .8rem 1rem;
-    
 }
 .checkout-description{
     margin-top: 20px;
@@ -55,7 +53,6 @@ p.percentage {
     margin-bottom: 8px;
     padding-top: 15px;
     cursor: pointer;
-   
 }
 .wishlist img {
     margin-left: 30px;
@@ -70,8 +67,6 @@ p.percentage {
     padding-top: 15px;
     margin-bottom: 100px;
     cursor: pointer;
-
-    
 }
 .cart p {
     display: inline-block;
@@ -90,7 +85,6 @@ p.percentage {
     font-weight: bold;  
     margin-bottom: .75rem; 
     cursor: pointer;
-      
 }
 .card-text {
     margin-top: -8px;
@@ -107,7 +101,6 @@ p.percentage {
 }
 .save-for-later {
     display: inline-block;
-   
 }
 .remove {
     display: inline-block;
@@ -129,9 +122,6 @@ label {
     background-color: rgba(216, 216, 216, 1);
     border-radius: 4px !important;
 }
-
-
-
 .custom-control-label::before {
     position: absolute;
     top: 1px;
@@ -155,9 +145,7 @@ label {
     font-size: 14;
     margin-top: -35px;
     margin-bottom: 5px;
-
 }
-
 .price span {
     font-family: 'Montserrat-Bold' !important;
     font-size: 10px;
@@ -165,7 +153,6 @@ label {
 .card-body {
     padding: 15px;
     padding-bottom: 0px;
-
 }
 .save-for-later p {
     font-size: 10px;
@@ -184,13 +171,11 @@ label {
     margin-bottom: 100px;
     margin-top: 100px;
     color: #4b5858;
-
 }
 span.spinner {
     bottom: 0;
     height: 50px;
     left: 50%;
-    /* margin: auto; */
     position: absolute;
     right: 0;
     top: 30%;
@@ -220,12 +205,10 @@ app-fulfilling-square-spinner#spinnerMobile {
     }
     .save-for-later p {
         font-size: 10px;
-       
     }
     .card-body {
         padding: 10px;
         margin-bottom: -17px;
-        
     }
     .cart-empty {
         font-size: 26px;

@@ -14,10 +14,8 @@ ul li {
 }
 .social  li{
     display: inline-block;
-    // background-color: #d8d8d8;
     width: 25px;
     height: 25px;
-    // border-radius: 50%;
     margin: 0 3px 0 3px;
 }
 .social  li a {
@@ -48,13 +46,11 @@ p > span {
 .social-desktop {
     display: block;
 }
-
-i {
+i{
     font-family:FontAwesome !important;
     font-size: 18px;
     cursor: pointer;
 }
-
 .fa-twitter:hover {
     color: #38A1F3;
 }
@@ -96,13 +92,11 @@ i {
         font-size: 12px;
         color: #ecf0f1;
     }
-    i {
+    i{
         font-family:FontAwesome !important;
         font-size: 12px;
         cursor: pointer;
     }
-    
-    
  }
 
  
@@ -112,5 +106,4 @@ i {
         width: 13px;
         height: 13px;
     }  
-   
  }

@@ -2,31 +2,34 @@
   <h1 class="cart-empty">Cart is empty</h1>
 </span>
 <span *ngIf="!cartEmpty">
-  <span *ngIf="spinnerCart"  class="spinner">
-      <app-fulfilling-square-spinner  id="spinner" [animationDuration]="4000" [size]="50" [color]="'#E30B13'"></app-fulfilling-square-spinner>
-      <app-fulfilling-square-spinner  id="spinnerMobile" [animationDuration]="4000" [size]="40" [color]="'#E30B13'"></app-fulfilling-square-spinner>
+  <span *ngIf="spinnerCart" class="spinner">
+    <!-- spinner while item in cart get back  -->
+    <app-fulfilling-square-spinner id="spinner" [animationDuration]="4000" [size]="50" [color]="'#E30B13'">
+    </app-fulfilling-square-spinner>
+    <app-fulfilling-square-spinner id="spinnerMobile" [animationDuration]="4000" [size]="40" [color]="'#E30B13'">
+    </app-fulfilling-square-spinner>
   </span>
   <span *ngIf="!spinnerCart">
     <div class="card mb-3" *ngFor="let item of cartItems">
       <div class="row no-gutters">
         <div class="col-md-2 col-2">
-          <img src="{{ item.product.productimage[0].image_url }}" class="card-img image-responsive" alt="..." (click)="navigateProduct(item.product.id)">
+          <img src="{{ item?.product?.productimage[0]?.image_url }}" class="card-img image-responsive" alt="..."
+            (click)="navigateProduct(item.product.id)">
         </div>
         <div class="col-md-10 col-8">
           <div class="card-body">
-            <h5 class="card-title" (click)="navigateProduct(item.product.id)" >{{ item.product.name }}</h5>
+            <h5 class="card-title" (click)="navigateProduct(item?.product?.id)">{{ item.product.name }}</h5>
             <p class="card-text"><small class="brand">{{ item.product.brand_name }}</small></p>
             <p class="price">{{ item.product.price}},00<span>EGP</span></p>
-              <div class="save-for-later">
-                <p (click)="addToWhishlist(item)"><small>Save for later</small></p>
-              </div>
-              <div class=" remove">
-                <p (click)="removeFromCart(item.id)"><small>Remove</small></p>
-              </div>
+            <div class="save-for-later">
+              <p (click)="addToWhishlist(item)"><small>Save for later</small></p>
+            </div>
+            <div class="remove">
+              <p (click)="removeFromCart(item?.id)"><small>Remove</small></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </span>
 </span>
-  

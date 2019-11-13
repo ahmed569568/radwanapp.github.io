@@ -9,11 +9,13 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
+
   contactForm = new FormGroup({
     name: new FormControl('',Validators.required),
     email: new FormControl('',[Validators.required,Validators.email]),
     message : new FormControl('',Validators.required)
   });
+
   constructor(private spinner: RadwanSpinnerService) { }
 
   ngOnInit() {
@@ -26,7 +28,8 @@ export class ContactUsComponent implements OnInit {
   get email() {
     return this.contactForm.get('email');
   }
+
   contact() {
-    console.log("Shokry Suleiman")
+    console.log("Shoukry Suleiman")
   }
 }

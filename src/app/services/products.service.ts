@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ProductsService {
 
   url: string;
-  httpOptions:any;
+  httpOptions: any;
 
   constructor(private http: HttpClient) {
 
@@ -15,39 +15,31 @@ export class ProductsService {
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       })
     };
 
-   }
+  }
 
-    getProducts() {
-      return this.http.get( this.url + 'products',this.httpOptions);
-    }
+  getProducts() {
+    return this.http.get(this.url + 'products', this.httpOptions);
+  }
 
-   getProduct(id:any) {
-    return this.http.get( this.url + 'products/'+ id  ,this.httpOptions);
-   }
+  getProduct(id: any) {
+    return this.http.get(this.url + 'products/' + id, this.httpOptions);
+  }
 
-   getPopularProduct() {
-    return this.http.get( this.url + 'popular_products'  ,this.httpOptions);
-   }
-   
-   getRecommendedProducts() {
-    return this.http.get( this.url + 'reccommended_products'  ,this.httpOptions);
-   }
-   compare(ids) {
-     return this.http.get( this.url + 'products/compare/?product_ids=' + ids);
-     
-   }
+  getPopularProduct() {
+    return this.http.get(this.url + 'popular_products', this.httpOptions);
+  }
 
-   submitForm(data:any) {
-    var formdata = {
-      'username': data.name,
-      'password': data.email
-    }
-    console.log( "SErvice formdata",formdata)
-    //  return this.http.post( this.url, data, this.httpOptions)
-   }
+  getRecommendedProducts() {
+    return this.http.get(this.url + 'reccommended_products', this.httpOptions);
+  }
+  compare(ids) {
+    return this.http.get(this.url + 'products/compare/?product_ids=' + ids);
+
+  }
+
 }

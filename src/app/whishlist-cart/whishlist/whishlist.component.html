@@ -3,34 +3,38 @@
 </span>
 
 <span *ngIf="!whishlistEmpty" class="not-empty-whishlist">
-  <span class="spinner" *ngIf="wishlistSpinner" >
-      <app-fulfilling-square-spinner  id="spinner" [animationDuration]="4000" [size]="50" [color]="'#E30B13'"></app-fulfilling-square-spinner>
-      <app-fulfilling-square-spinner  id="spinnerMobile" [animationDuration]="4000" [size]="40" [color]="'#E30B13'"></app-fulfilling-square-spinner>
+  <span class="spinner" *ngIf="wishlistSpinner">
+    <app-fulfilling-square-spinner id="spinner" [animationDuration]="4000" [size]="50" [color]="'#E30B13'">
+    </app-fulfilling-square-spinner>
+    <app-fulfilling-square-spinner id="spinnerMobile" [animationDuration]="4000" [size]="40" [color]="'#E30B13'">
+    </app-fulfilling-square-spinner>
   </span>
-  
+
   <span *ngIf="!wishlistSpinner">
     <div class="card mb-3" *ngFor="let product of whishlistItems">
       <div class="row no-gutters">
         <div class="col-md-2 col-3">
-          <img src="{{ product.productimage[0].image_url }}" class="card-img" alt="..." (click)="navigateProduct(product.id)">
+          <img src="{{ product?.productimage[0]?.image_url }}" class="card-img" alt="..."
+            (click)="navigateProduct(product?.id)">
         </div>
         <div class="col-md-10 col-9">
           <div class="card-body">
-            <h5 class="card-title" (click)="navigateProduct(product.id)">{{ product.name }}</h5>
-            <p class="card-text"><small class="brand">{{ product.brand_name }}</small></p>
-            <p class="price">{{ product.price}},00<span>EGP</span></p>
-              <div class="save-for-later">
-                <p (click)="addToCart(product.id)" *ngIf="product.availability == 'In Stock'"><small>Add To Cart</small></p>
-              </div>
-              <div class=" remove" [ngStyle]="{'margin-left': product.availability == 'In Stock' ? '30px' : '0px' }" >
-                <p (click)="removeFromWhishlist(product.id)"><small>Remove</small></p>
-              </div>
+            <h5 class="card-title" (click)="navigateProduct(product?.id)">{{ product?.name }}</h5>
+            <p class="card-text"><small class="brand">{{ product?.brand_name }}</small></p>
+            <p class="price">{{ product?.price}},00<span>EGP</span></p>
+            <div class="save-for-later">
+              <p (click)="addToCart(product?.id)" *ngIf="product?.availability == 'In Stock'"><small>Add To Cart</small>
+              </p>
+            </div>
+            <div class=" remove" [ngStyle]="{'margin-left': product?.availability == 'In Stock' ? '30px' : '0px' }">
+              <p (click)="removeFromWhishlist(product?.id)"><small>Remove</small></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </span>
- 
-</span>
 
+</span>
+<!-- to make height fixed when spinner show  -->
 <div class="spinner-height" *ngIf="wishlistSpinner"></div>

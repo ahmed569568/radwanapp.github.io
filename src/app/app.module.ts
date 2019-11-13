@@ -13,12 +13,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { AgmCoreModule } from '@agm/core';
 import 'hammerjs'; 
 import { GalleryModule } from '@ks89/angular-modal-gallery';
-import { NgxGalleryModule } from 'ngx-gallery';
+
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
-// import { library, dom } from '@fortawesome/fontawesome-svg-core';
-// import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
-// library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
 
 
 
@@ -27,8 +24,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faExternalLinkAlt, faPlus, faTimes, faDownload } from '@fortawesome/free-solid-svg-icons';
 import {  HttpClientModule } from '@angular/common/http';
-import { SliderComponent } from './common/slider/slider.component';
-import { SliderItemDirective } from './directives/slider-item.directive';
+
 import { NotfoundComponent } from './common/notfound/notfound.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -56,7 +52,6 @@ import { CheckoutComponent } from './whishlist-cart/checkout/checkout.component'
 import {HollowDotsSpinnerModule} from 'angular-epic-spinners';
 import { ThanksComponent } from './thanks/thanks.component';
 import { RadwanCartModalComponent } from './common/radwan-cart-modal/radwan-cart-modal.component';
-import { CartService } from './services/cart.service';
 
 
 library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
@@ -70,8 +65,6 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     ProductDetailsComponent,
     ContactUsComponent,
     AboutUsComponent,
-    SliderComponent,
-    SliderItemDirective,
     NotfoundComponent,
     WhishlistComponent,
     CartComponent,
@@ -86,7 +79,6 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModule,
-    NgxGalleryModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

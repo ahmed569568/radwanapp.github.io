@@ -15,7 +15,6 @@ h1 {
     padding-left: 10%;
     padding-top: 5%;
 }
-
 .by {
     font-family: 'Roboto-Medium';
     font-size: 16px;
@@ -35,14 +34,12 @@ h1 {
     font-size: 30px;
     color: #E30B13;
     font-weight: bold;
-
 }
 .first-price span {
     font-size: 16px;
     margin-left: 5px;
 }
 .buy {
-
     cursor: pointer;
     color: white !important;
     background-color: #2ecc71;
@@ -77,7 +74,6 @@ h1 {
     font-weight: bold;
     color: #95a5a6;
     margin-left: 10px;
-   
 }
 .wishlist img {
     width: 18px;
@@ -85,9 +81,7 @@ h1 {
 #first {
     height: 20px;
     width: 20px;
-    // background-color: #344edb;
     display: inline-block;
-    // border-radius: 50%;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 4%;
@@ -101,25 +95,19 @@ h1 {
 #second {
     height: 20px;
     width: 20px;
-    // background-color: #32c5ff;
     display: inline-block;
-    // border-radius: 50%;
     margin-right: 10px;
 }
 #third {
     height: 20px;
     width: 20px;
-    // background-color: #b620e0;
     display: inline-block;
-    // border-radius:50%;
     margin-right: 10px;
 }
 #fourth {
     height: 20px;
     width: 20px;
-    // background-color: #071a25;
     display: inline-block;
-    // border-radius: 50%;
     margin-right: 10px;
 }
 .links {
@@ -136,7 +124,6 @@ h1 {
 .links :nth-child(1) {
     margin-right: 2%;
 }
-
 .links :nth-child(2) {
     margin-right: 2%;
 }
@@ -162,10 +149,7 @@ h1 {
 }
 .spec {
     display: flex;
-    
-    // margin-left: -23%;
 }
-
 .prod-spec {
     font-family: 'Roboto-Bold';
     font-size: 22px;
@@ -205,13 +189,6 @@ h1 {
     margin-bottom: 30%;
     
 }
-
-.card-deck {
-    // margin-left: 10%;
-    // margin-right: 10%;
-    margin-bottom:1%;
-}
-
 .card {
     border:unset;
     margin-left: 5px;
@@ -219,6 +196,38 @@ h1 {
     max-width: 24%;
     min-width: 24%;
     margin-bottom: 2%;
+}
+
+.scrolling-wrapper-flexbox {
+    display: flex;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow: hidden !important;
+    .card1{
+      display: unset !important;
+      flex: 0 0 auto !important;
+      position: relative;
+      margin-left: 5px;
+      margin-right: 5px;
+      max-width: 24%;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      padding-bottom: 20px;
+    }
+  }
+.controls {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.arrow-left > img ,
+.arrow-right > img {
+    cursor: pointer;
+}
+.arrow-left {
+    margin-right: 80px;
+    margin-bottom: 30px;
 }
 .card:hover {
     box-shadow: -5px 5px 10px 5px rgba(0, 0, 255, .2);
@@ -248,20 +257,16 @@ h1 {
     font-weight: bold;
     font-size: 17px;
 }
-
 .price small {
     margin-left: 5px;
     font-size: 60%;
     font-weight: bold;
 }
-
 .card-price-like :nth-child(2) {
     float: right;
     margin-top: 6%;
     margin-left: 4%;
     cursor: pointer;
-    
-    
 }
 .card-price-like :nth-child(2)  img {
     height: 16px;
@@ -300,7 +305,6 @@ figure {
 .current-image {
     min-height: 430px;
     max-height: 430px;
-    
 }
 .gallary-desktop {
     display: block;
@@ -323,7 +327,7 @@ figure {
 }
 .my-wrapper:hover .middle {
     opacity: 1;
-  }
+}
 .middle {
     transition: .5s ease;
     opacity: 0;
@@ -333,7 +337,7 @@ figure {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
 .text {
     background-color: #e74c3c;
     color: white;
@@ -341,31 +345,35 @@ figure {
     padding: 10px 24px;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 .spec > p {
     font-size: 16px;
     text-align: justify;
     padding-right: 100px;
 
 }
- i {
-     font-family:FontAwesome !important;
-     font-size: 18px;
-     cursor: pointer;
- }
+i {
+    font-family:FontAwesome !important;
+    font-size: 18px;
+    cursor: pointer;
+}
 
 .fa-twitter:hover {
     color: #38A1F3;
 }
+
 .fa-facebook:hover {
     color: #4267b2;
 }
+
 .fa-instagram:hover {
     color: #231F20;
 }
+
 .fa-pinterest-p:hover {
     color:#BD081C;
 }
+
 @media (max-width: 576px) { 
     .gallary-desktop {
         display: none;
@@ -468,8 +476,6 @@ figure {
     .spec :nth-child(2) li {
         line-height: 2.1;
     }
-    
-    
     .spec :nth-child(2) {
         font-size: 6px
     }
@@ -493,56 +499,43 @@ figure {
         width: 100%;
  
      }
- 
     .card {
-         // width: 160px;
-         min-width: 50%;
-         width:50%;
-         
+        min-width: 50%;
+        width:50%;
     }
-
     .card-text {
         font-size: 8px;
         margin-top: -14px;
         min-height: 38px;
         max-height: 38px;
     }
- 
     .card-text :last-child {
      margin-top: -16px;
     }
- 
     .text-muted {
          font-size: 7px;
     }
- 
     .price {
          font-size: 9px !important;
          margin-top: -4px;
     }
- 
     .card-price-like :nth-child(2) img {
          height: 12px;
          width: 14px;
-     }
- 
+    }
     .card-price-like:nth-child(3) img {
          height: 12px !important;
          width: 14px !important;
      }
-     
      .card-body {
          padding: 0.9rem;
      }
- 
      .card-price-like :nth-child(3) {
          margin-top: -7%;
      }
- 
      .card-price-like :nth-child(2)  {
          margin-top: -7%;
      }
-     
      .text {
          font-size: 9px;
          padding: 5px 10px;
@@ -553,15 +546,14 @@ figure {
      .my-wrapper {
         min-height: 50%;
     }
-
- 
+    .scrolling-wrapper-flexbox {
+        display: none;
+    }
+    .controls{
+        display: none;
+    }
 }
 
-
-// .spec :nth-child(2) {
-    
-//     @include media-breakpoint-down(xs) {  margin-right: -3px; }
-// }
 
 @media screen and (device-aspect-ratio: 40/71) {
     .links a {
@@ -578,7 +570,6 @@ figure {
         font-size: 6px;
     }
     .card {
-        // width: 160px;
         min-width: 45%;
         width:45%;
    }
@@ -590,10 +581,15 @@ figure {
         min-height: 48%;
     }
     .card {
-        // width: 160px;
         min-width: 58%;
         width:58%;
    }
+   .scrolling-wrapper-flexbox {
+        display: none;
+}
+    .controls{
+        display: none;
+    }
  }
 
 

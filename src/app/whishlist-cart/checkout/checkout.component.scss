@@ -50,17 +50,13 @@ input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-  
-    /* Styling checkbox */
     width: 16px;
     height: 16px;
     background-color: #fff;
     border: 1px solid gray;
     border-radius: 4px;
     margin-top: 1px;
-
 }
-
 input[type="checkbox"]:checked {
     background-color: red;
     border-color: red;
@@ -76,12 +72,9 @@ form {
     margin-bottom: 20px;
 }
 .form-control:focus {
-  
-     border-color: unset !important; 
- 
+    border-color: unset !important; 
     box-shadow: unset !important;
 }
-
 section#third {
     margin-bottom: 20px;
 }
@@ -93,7 +86,6 @@ section#third {
 .btn-primary.focus, .btn-primary:focus {
     box-shadow: unset !important;
 }
-
 section#forth {
     background-color:  unset !important;
 }
@@ -106,7 +98,6 @@ section#forth {
     color: red;
     margin-left: 3px;
 }
-
 @media (max-width: 576px) {   
     .shipping-address {
         padding-top: 10px;
@@ -139,10 +130,7 @@ section#forth {
     .form-control { 
         font-size: 14px;
     }
-
     .btn-block {
-      
         margin: 5px auto;
-        
     }
 }

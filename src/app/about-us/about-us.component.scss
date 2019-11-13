@@ -2,88 +2,86 @@
     background-image: url('../../assets/images/about.jpg');
     height: 440px;
     background-size: 100% 100%;
-  }
-
-  .lower {
+}
+.lower {
     background-color: #f5f5f5;
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 3%;
-  }
-  .store {
+}
+.store {
     font-family: 'Roboto';
     font-size: 32px;
     font-weight: bold;
     color: rgba(75, 88, 88, 1);
-  }
-  .by {
+}
+.by {
     font-family: 'Roboto-Medium';
     font-size: 24px;
     color: rgba(75, 88, 88, 1);
     text-align: left;
-  }
-  .by span {
+}
+.by span {
     font-family: 'Roboto-Light';
     font-size: 24px;
     color: rgba(52, 152, 219, 1);
-  }
-  .paragraph {
+}
+.paragraph {
     font-family: 'Roboto-Medium';
     font-size: 16px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
-  }
-  .contact-detail {
+}
+.contact-detail {
     font-family: 'Roboto-Medium';
     font-size: 24px;
     color: rgba(75, 88, 88, 1);
     margin-top: 6%;
     font-weight: bold;
-  }
-  .fax {
+}
+.fax {
     font-family: 'Roboto-Medium';
     font-size: 18px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
-  }
-  .tel {
+}
+.tel {
     font-family: 'Roboto-Medium';
     font-size: 18px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
-  }
-  .phone {
+}
+.phone {
     font-family: 'Roboto-Medium';
     font-size: 18px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
-  }
-  .store-address {
+}
+.store-address {
     font-family: 'Roboto-Medium';
     font-size: 24px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
     margin-top: 6%;
-  }
-  .address {
+}
+.address {
     font-family: 'Roboto-Medium';
     font-size: 18px;
     color: rgba(75, 88, 88, 1);
     font-weight: bold;
     margin-bottom: 10%;
-  }
-  agm-map {
-    height: 450px;
-  }
-
-  .location {
-    font-family: 'Roboto-Medium';
-    font-size: 20px;
-    color: rgba(75, 88, 88, 1);
-    font-weight: bold;
-    margin-bottom: 5%;
-  }
-  @media (max-width: 576px) {
+}
+agm-map {
+  height: 450px;
+}
+.location {
+  font-family: 'Roboto-Medium';
+  font-size: 20px;
+  color: rgba(75, 88, 88, 1);
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+@media (max-width: 576px) {
   .upper{
     height: 160px;
   }
@@ -117,13 +115,11 @@
     margin-top: 0%;
   }
   .address {
-
     font-size: 12px;
     color: #4b5858;
     font-weight: bold;
     margin-bottom: 8%;
   }
-
   .location{
     font-size: 14px;
     color: #4b5858;

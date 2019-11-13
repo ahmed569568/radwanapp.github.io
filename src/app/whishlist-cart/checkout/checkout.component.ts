@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,13 +20,12 @@ export class CheckoutComponent implements OnInit {
     city: new FormControl('',[Validators.required,Validators.minLength(2)])
   });
 
-  constructor( private product: ProductsService,private router: Router) { 
+  constructor(private router: Router) { 
     this.cashDelvery = false;
     this.onlinePayment = true;
   }
 
   ngOnInit() {
-    
     this.address = 'your home or work address to shipping your home or work address to shipping';
   }
 
@@ -43,6 +41,7 @@ export class CheckoutComponent implements OnInit {
     console.log("selectCash()", $event.target.checked);
     this.onlinePayment = false;
   } 
+
   selectPayment($event) {
     this.cashDelvery = false;
   }
@@ -65,9 +64,7 @@ export class CheckoutComponent implements OnInit {
   }
   
   payNow() {
-   
-    this.product.submitForm(this.paymentForm.value)
-    console.log("this.paymentForm.value", )
     this.router.navigate(['./thanks'])
   }
+  
 }

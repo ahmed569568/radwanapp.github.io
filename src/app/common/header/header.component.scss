@@ -4,12 +4,10 @@
 .navbar-brand {
     margin-left: 6rem;
 }
-
 img {
     width: auto;
     height: auto;
 }
-
 .form-control {
     width: 600px;
     border: 1px;
@@ -33,7 +31,6 @@ img {
 .cart :nth-child(2) > img{
     width: 32px;
 }
-
 .header {
     background-color: #E30B13;
 }
@@ -44,15 +41,12 @@ img {
     list-style-type:none;
     margin: 1rem;
     margin-left: 170px;
-   
 }
-
 .header-links ul.header-links-main > li {
     display: inline-block;
     margin-right: 15px;
     margin-left: 15px;
-    cursor: pointer;
-    
+    cursor: pointer; 
 }
 .header-links > ul.header-links-main > li a {
     color: #ffffff;
@@ -61,11 +55,8 @@ img {
     text-decoration: none;
     cursor: pointer;
 }
-
 .header-links > ul.header-links-main > :first-child a {
-   
     margin-left: -75px;
-    
 }
 .down {
     border-width: 5px;
@@ -79,33 +70,6 @@ img {
     padding-bottom: 14px;
     border-color: #fff;
 }
-// .mm {
-//     display: flex;
-//     flex-wrap: wrap;
-//     align-items: center;
-// }
-// #slider {
-//     /*height: 350px;
-//     overflow: hidden;
-//     width: 100%;*/
-// }
-
-// .carousel-item {
-//     height: 350px;
-// }
-
-// .carousel-indicators li {
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 100%;
-// }
-// .carousel-indicators {
-//     bottom: -50px;
-// }
-
-// body {
-//     background-color: lightslategray;
-// }
 .header-list {
     background-color: #fff;
     z-index: -1;
@@ -187,8 +151,6 @@ app-looping-rhombuses-spinner#desktop-spinner{
         display: flex;
         background-color: rgba(236, 236, 236, 1) !important;
     }
-    
- 
     .navbar-light .navbar-toggler {
         border-color: unset; 
         border: 1px;
@@ -244,26 +206,9 @@ app-looping-rhombuses-spinner#desktop-spinner{
         line-height: 10px;
         text-decoration: none;
     }
-  
     .cat1 {
         display: none;
     }
-
-    // .nav-item ul li:hover~div.header-list {
-    //     opacity: 1;
-    //     transition: opacity 600ms ease;
-    //     z-index: 1000;
-    // }
-    // .header-list:hover{
-    //     opacity: 1;
-    //     z-index: 1000;
-    // }
-    // ul.navbar-nav > li a:hover {
-    //     border-width: 5px;
-    //     border-bottom-style: solid;
-    //     padding-bottom: 14px;
-    //     border-color: #fff;
-    // }
     ul.nav-subCate{
         padding-inline-start: 20px;
         margin-top: 20px;
@@ -291,6 +236,7 @@ app-looping-rhombuses-spinner#desktop-spinner{
  }
 
  @media screen and (device-aspect-ratio: 40/71) {
+     
     .header-list {
         background-color: #fff;
         z-index: 1;
@@ -310,4 +256,5 @@ app-looping-rhombuses-spinner#desktop-spinner{
     .mobile-logo {
         width: 128px;
     }
+
  }

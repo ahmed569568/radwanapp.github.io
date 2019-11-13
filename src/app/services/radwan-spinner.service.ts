@@ -5,13 +5,13 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RadwanSpinnerService {
-  public showSpinner =  new Subject <boolean> ()
+  public showSpinner = new Subject<boolean>()
   constructor() { }
-
+  //show spinnner event
   show() {
     this.showSpinner.next(true);
   }
-
+  //hide spinner event
   hide() {
     this.showSpinner.next(false);
   }

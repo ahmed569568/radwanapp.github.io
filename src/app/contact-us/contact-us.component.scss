@@ -30,8 +30,7 @@
     border-radius: unset;
     height: 46px;
     border-color: #ecf0f1;
-    margin-bottom: 1%;
-    
+    margin-bottom: 1%;    
 }
 .email {
     float: right;
@@ -53,83 +52,80 @@
     color: #4b5858;
     font-weight: bold;
 }
-
-
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #95a5a6;
     font-family: 'Roboto';
     font-size: 14px;
     font-weight: 500;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
+}
+::-moz-placeholder { /* Firefox 19+ */
     font-family: 'Roboto';
     font-size: 14px;
     font-weight: 500;
     color: #95a5a6;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
+}
+:-ms-input-placeholder { /* IE 10+ */
     color: #95a5a6;
     font-family: 'Roboto';
     font-size: 14px;
     font-weight: 500;
-  }
-  :-moz-placeholder { /* Firefox 18- */
+}
+:-moz-placeholder { /* Firefox 18- */
     color: #95a5a6;
     font-family: 'Roboto';
     font-size: 14px;
     font-weight: 500;
-  }
-  .phone {
+}
+.phone {
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: bold;
     color: #4b5858;
-  }
-  .tel {
+}
+.tel {
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: bold;
     color: #4b5858;
-  }
-  .fax {
+}
+.fax {
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: bold;
     color: #4b5858;
-  }
-  .third-title {
+}
+.third-title {
     font-family: 'Roboto';
     font-size: 24px;
     font-weight: bold;
     color: #4b5858;
-  }
-  .address{
+}
+.address{
     font-family: 'Roboto';
     font-size: 18px;
     font-weight: bold;
     color: #4b5858;
-  }
-  .upper {
+}
+.upper {
     background-image: url('../../assets/images/about.jpg');
     height: 440px;
     background-size: 100% 100%;
-  }
-  .btn-lg {
+}
+.btn-lg {
     background-color: #3498db;
     font-family: 'Roboto';
     font-size: 18px;
     font-weight: 500;
     color: #ffffff;
     width: 90%;
-  }
-  .form-control:focus {
+}
+.form-control:focus {
     box-shadow: unset ; 
-  }
-  .btn:focus {
-  
+}
+.btn:focus {
   box-shadow:unset;
-  }
-  @media (max-width: 576px) {
+}
+@media (max-width: 576px) {
     .upper{
       height: 160px;
     }
@@ -147,7 +143,6 @@
       position: absolute;
       top: 45px;
     }
-  
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #95a5a6;
       font-family: 'Roboto';
@@ -215,6 +210,6 @@
       margin-bottom: 10%;
     }
     
-  }
+}
 
   
