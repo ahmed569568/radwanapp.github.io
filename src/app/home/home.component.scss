@@ -345,3 +345,14 @@ h5 {
 
    
  }
+
+ .products.featured{
+     padding-bottom: unset !important;
+
+     h5{
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 3%;
+
+     }
+ }
