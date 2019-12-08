@@ -33,34 +33,34 @@
   <div class="row ">
     <!-- Bootstrap4 Cards -->
     <div class="card-deck">
-      <ng-container *ngFor="let product of products;let i=index">
+      <ng-container *ngFor="let product of featuredProducts; let i=index">
         <div class="card" *ngIf="i<4">
           <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
           <div class="my-wrapper">
             <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-            <img src="{{ product?.productimage[0].image_url }}" class="card-img-top"
-              (click)="navigateProduct(product.id)" alt="...">
+            <img src="{{ product?.productimage[0]?.image_url }}" class="card-img-top"
+              (click)="navigateProduct(product?.id)" alt="...">
             <div class="middle">
-              <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+              <div class="text" (click)="navigateProduct(product?.id)">learn More</div>
             </div>
           </div>
           <div class="card-body">
-            <p class="card-text" (click)="navigateProduct(product.id)">{{ product?.name }}</p>
-            <p class="card-text" (click)="navigateProduct(product.id)"><small
+            <p class="card-text" (click)="navigateProduct(product?.id)">{{ product?.name }}</p>
+            <p class="card-text" (click)="navigateProduct(product?.id)"><small
                 class="text-muted">{{ product?.brand?.name }}</small></p>
             <div class="card-price-like">
-              <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
+              <h5 class="price">{{ product?.price}}.00<small>EGP</small></h5>
               <!-- here we use angular-icons -->
-              <a (click)="compare(product.id)">
+              <a (click)="compare(product?.id)">
                 <fa-icon size="1x" [icon]="sync"></fa-icon>
               </a>
-              <a *ngIf="!likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg" alt=""></a>
-              <a *ngIf="likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"
+              <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id,i)"><img src="assets/logo/love.svg" alt=""></a>
+              <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id,i)"><img src="assets/logo/love Active@1x.png"
                   alt=""></a>
               <!-- Product Out Of Stock Hide Cart -->
-              <a *ngIf="!carts[i] && product.availability == 'In Stock'" (click)="addToCart(product.id,i)"><img
+              <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product?.id,i)"><img
                   src="assets/logo/cart.svg" alt=""></a>
-              <a *ngIf="carts[i]" (click)="addToCart(product.id,i)"><img src="assets/icons/Cart-actv.svg" alt=""></a>
+              <a *ngIf="carts[i]" (click)="addToCart(product?.id,i)"><img src="assets/icons/Cart-actv.svg" alt=""></a>
 
             </div>
           </div>
@@ -121,33 +121,33 @@
   <div class="row ">
     <!-- Bootstrap4 Cards -->
     <div class="card-deck">
-      <div class="card" *ngFor="let product of products;let i=index">
+      <div class="card" *ngFor="let product of popularProducts; let i=index">
         <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
         <div class="my-wrapper">
           <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-          <img src="{{ product?.productimage[0].image_url }}" class="card-img-top" (click)="navigateProduct(product.id)"
-            alt="...">
+          <img src="{{ product?.productimage[0]?.image_url }}" class="card-img-top"
+            (click)="navigateProduct(product?.id)" alt="...">
           <div class="middle">
-            <div class="text" (click)="navigateProduct(product.id)">learn More</div>
+            <div class="text" (click)="navigateProduct(product?.id)">learn More</div>
           </div>
         </div>
         <div class="card-body">
-          <p class="card-text" (click)="navigateProduct(product.id)">{{ product?.name }}</p>
-          <p class="card-text" (click)="navigateProduct(product.id)"><small
+          <p class="card-text" (click)="navigateProduct(product?.id)">{{ product?.name }}</p>
+          <p class="card-text" (click)="navigateProduct(product?.id)"><small
               class="text-muted">{{ product?.brand?.name }}</small></p>
           <div class="card-price-like">
-            <h5 class="price">{{ product.price}}.00<small>EGP</small></h5>
+            <h5 class="price">{{ product?.price}}.00<small>EGP</small></h5>
             <!-- here we use angular-icons -->
-            <a (click)="compare(product.id)">
+            <a (click)="compare(product?.id)">
               <fa-icon size="1x" [icon]="sync"></fa-icon>
             </a>
-            <a *ngIf="!likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love.svg" alt=""></a>
-            <a *ngIf="likes[i]" (click)="addToWhishlist(product.id,i)"><img src="assets/logo/love Active@1x.png"
+            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id,i)"><img src="assets/logo/love.svg" alt=""></a>
+            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id,i)"><img src="assets/logo/love Active@1x.png"
                 alt=""></a>
             <!-- Product Out Of Stock Hide Cart -->
-            <a *ngIf="!carts[i] && product.availability == 'In Stock'" (click)="addToCart(product.id,i)"><img
+            <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id,i)"><img
                 src="assets/logo/cart.svg" alt=""></a>
-            <a *ngIf="carts[i]" (click)="addToCart(product.id,i)"><img src="assets/icons/Cart-actv.svg" alt=""></a>
+            <a *ngIf="carts[i]" (click)="addToCart(product?.id,i)"><img src="assets/icons/Cart-actv.svg" alt=""></a>
 
           </div>
         </div>

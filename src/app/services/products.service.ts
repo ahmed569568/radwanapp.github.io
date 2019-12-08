@@ -30,6 +30,16 @@ export class ProductsService {
     return this.http.get(this.url + 'products/' + id, this.httpOptions);
   }
 
+  getFeaturedProducts() {
+    return this.http.get(this.url + 'products/?featured=true', this.httpOptions);
+  }
+
+
+  getPopularProducts() {
+    return this.http.get(this.url + 'products/?popular=true', this.httpOptions);
+  }
+
+
   getPopularProduct() {
     return this.http.get(this.url + 'popular_products', this.httpOptions);
   }

@@ -8,6 +8,8 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { WhishlistService } from '../services/whishlist.service';
 import { RadwanSpinnerService } from '../services/radwan-spinner.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { map } from 'rxjs/internal/operators/map';
+import { zip } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -25,17 +27,21 @@ export class HomeComponent implements OnInit {
   cartItems: any[];
   whishlistItems: any[];
   sync = faSync;
+  featuredProducts: any;
+  popularProducts: any;
 
   constructor(private router: Router, private productsService: ProductsService, private route: ActivatedRoute,
-              private categoriesService: CategoriesService, private sliderService: SliderService,
-              private cartService: CartService, private storage: LocalStorageService,
-              private whishlistService: WhishlistService, private spinner: RadwanSpinnerService) {
+    private categoriesService: CategoriesService, private sliderService: SliderService,
+    private cartService: CartService, private storage: LocalStorageService,
+    private whishlistService: WhishlistService, private spinner: RadwanSpinnerService) {
 
-              this.categories = [];
-              this.sliders = [];
-              this.showCate = false;
-              this.cartItems = [];
-              this.whishlistItems = [];
+    this.categories = [];
+    this.sliders = [];
+    this.showCate = false;
+    this.cartItems = [];
+    this.whishlistItems = [];
+    this.featuredProducts = [];
+    this.popularProducts = [];
 
   }
 
@@ -45,7 +51,29 @@ export class HomeComponent implements OnInit {
       this.categories = data;
       this.showCate = true;
     })
-//Set 
+
+    let featured = this.productsService.getFeaturedProducts().pipe(map(res => {
+      this.featuredProducts = res;
+      // console.log(res);
+
+      return this.featuredProducts;
+    }))
+
+    let popular = this.productsService.getPopularProducts().pipe(map(res => {
+      this.popularProducts = res;
+      // console.log(res);
+
+      return this.popularProducts;
+    }))
+
+
+    zip(featured, popular).subscribe(res => {
+      // console.log(res);
+      this.spinner.hide();
+      console.clear();
+    })
+
+    //Set 
     this.productsService.getProducts().subscribe((data: any) => {
       this.products = data;
       //copy array of products in array of likes/carts then fill  fasle 
@@ -87,7 +115,7 @@ export class HomeComponent implements OnInit {
       this.carts[index] = false;
       this.cartItems.forEach(item => {
         if (item.product.id == id)
-          this.cartService.delete(item.id, this.storage.get('cart')).subscribe((data: any) => {})
+          this.cartService.delete(item.id, this.storage.get('cart')).subscribe((data: any) => { })
       })
     } else {
       //product not in cart
@@ -96,7 +124,7 @@ export class HomeComponent implements OnInit {
       this.cartService.showAdd();
       if (this.storage.get('cart')) {
         //user already have cart 
-        this.cartService.patch(id, 1, this.storage.get('cart')).subscribe((response: any) => {})
+        this.cartService.patch(id, 1, this.storage.get('cart')).subscribe((response: any) => { })
       } else {
         // if user dosen't have cart
         this.cartService.put(id, 1).subscribe((response: any) => {
