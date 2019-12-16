@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ProductsService } from "../services/products.service";
 import { CategoriesService } from "../services/categories.service";
@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit {
   featuredProducts: any;
   popularProducts: any;
 
+  @ViewChild("recommendedScroll", { static: true, read: ElementRef })
+  public recommendedScroll: ElementRef<any>;
+  @ViewChild("popularScroll", { static: true, read: ElementRef })
+  public popularScroll: ElementRef<any>;
+
   constructor(
     private router: Router,
     private productsService: ProductsService,
@@ -60,8 +65,7 @@ export class HomeComponent implements OnInit {
     let featured = this.productsService.getFeaturedProducts().pipe(
       map(res => {
         this.featuredProducts = res;
-        // console.log(res);
-
+        // console.log(this.featuredProducts);
         return this.featuredProducts;
       })
     );
@@ -69,8 +73,6 @@ export class HomeComponent implements OnInit {
     let popular = this.productsService.getPopularProducts().pipe(
       map(res => {
         this.popularProducts = res;
-        // console.log(res);
-
         return this.popularProducts;
       })
     );
@@ -78,14 +80,14 @@ export class HomeComponent implements OnInit {
     zip(featured, popular).subscribe(res => {
       // console.log(res);
       this.spinner.hide();
-      console.clear();
+      // console.clear();
     });
 
-    //Set
+    // Set
     this.productsService.getProducts().subscribe((data: any) => {
       this.products = data;
-      //copy array of products in array of likes/carts then fill  fasle
-      //then check product if product in whishlist/cart set true likes/carts
+      // copy array of products in array of likes/carts then fill  fasle
+      // then check product if product in whishlist/cart set true likes/carts
       this.likes = [...this.products];
       this.likes.fill(false);
       this.carts = [...this.likes];
@@ -107,7 +109,7 @@ export class HomeComponent implements OnInit {
   }
 
   navigateSlider(url: any) {
-    //Open Link In New Tab
+    // Open Link In New Tab
     if (url)
       this.router.navigate(["/externalRedirect", { externalUrl: url }], {
         skipLocationChange: false
@@ -264,5 +266,32 @@ export class HomeComponent implements OnInit {
     } else {
       this.cartService.showOutStock();
     }
+  }
+  scrollRecomRight() {
+    this.recommendedScroll.nativeElement.scrollTo({
+      left: this.recommendedScroll.nativeElement.scrollLeft + 150,
+      behavior: "smooth"
+    });
+  }
+
+  scrollRecomLeft() {
+    this.recommendedScroll.nativeElement.scrollTo({
+      left: this.recommendedScroll.nativeElement.scrollLeft - 150,
+      behavior: "smooth"
+    });
+  }
+
+  scrollPopularRight() {
+    this.popularScroll.nativeElement.scrollTo({
+      left: this.popularScroll.nativeElement.scrollLeft + 150,
+      behavior: "smooth"
+    });
+  }
+
+  scrollPopularLeft() {
+    this.popularScroll.nativeElement.scrollTo({
+      left: this.popularScroll.nativeElement.scrollLeft - 150,
+      behavior: "smooth"
+    });
   }
 }

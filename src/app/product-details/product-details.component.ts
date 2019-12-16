@@ -101,10 +101,6 @@ export class ProductDetailsComponent implements OnInit {
     this.showGallary = true;
   }
 
-
-
-
-
   buy(product: any) {
     //when click on buy now add to cart and navigate to cart component
     if (product.availability == 'In Stock') {

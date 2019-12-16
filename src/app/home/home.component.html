@@ -31,10 +31,24 @@
     <h5>Featured products</h5>
   </div>
   <div class="row ">
+<!-- tayeb adding 2 arrows for nav -->
+  <div class="col-lg-11" style="height: 58px;" *ngIf="featuredProducts.length>4">
+      <div class="controls">
+          <div class="arrow-right">
+              <!-- scroll to right -->
+              <img src="assets/icons/Arrow right@1x.png" (click)="scrollRecomRight()" alt="">
+          </div>
+          <div class="arrow-left">
+              <!-- scroll to left -->
+              <img src="assets/icons/Arrow left@1x.png" (click)="scrollRecomLeft()" alt="">
+          </div>
+      </div>
+    </div>
+
     <!-- Bootstrap4 Cards -->
-    <div class="card-deck">
+    <div class="card-deck" #recommendedScroll>
       <ng-container *ngFor="let product of featuredProducts; let i=index">
-        <div class="card" *ngIf="i<4">
+        <div class="card">
           <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
           <div class="my-wrapper">
             <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
@@ -61,9 +75,7 @@
               <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product?.id,i)"><img
                   src="assets/logo/cart.svg" alt=""></a>
               <a *ngIf="carts[i]" (click)="addToCart(product?.id,i)"><img src="assets/icons/Cart-actv.svg" alt=""></a>
-              
             </div>
-           
           </div>
           <div style="background-color: #231f20;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
             <a  role="button" (click)="buy(product)">Buy Now</a>
@@ -123,8 +135,21 @@
     <h5>Popular products</h5>
   </div>
   <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+  <div class="col-lg-11" style="height: 58px;" *ngIf="popularProducts.length>4">
+      <div class="controls">
+          <div class="arrow-right">
+              <!-- scroll to right -->
+              <img src="assets/icons/Arrow right@1x.png" (click)="scrollPopularRight()" alt="">
+          </div>
+          <div class="arrow-left">
+              <!-- scroll to left -->
+              <img src="assets/icons/Arrow left@1x.png" (click)="scrollPopularLeft()" alt="">
+          </div>
+      </div>
+    </div>
     <!-- Bootstrap4 Cards -->
-    <div class="card-deck">
+    <div class="card-deck" #popularScroll>
       <div class="card" *ngFor="let product of popularProducts; let i=index">
         <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
         <div class="my-wrapper">

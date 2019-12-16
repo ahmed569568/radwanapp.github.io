@@ -192,6 +192,9 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
+                    <div style="background-color: #231f20;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
+                        <a  role="button" (click)="buy(product.product)">Buy Now</a>
+                      </div>
                 </div>
             </div>
             <!-- display block in mobile version so can scroll by touch move right left  -->
@@ -219,6 +222,10 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
+                    <div style="background-color: #231f20;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
+                        <a  role="button" (click)="buy(product.product)">Buy Now</a>
+                      </div>
+                    
                 </div>
             </div>
         </div>
@@ -265,6 +272,9 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
+                    <div style="background-color: #231f20;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
+                        <a  role="button" (click)="buy(product.product)">Buy Now</a>
+                      </div>
                 </div>
             </div>
 
@@ -292,6 +302,9 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
+                    <div style="background-color: #231f20;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
+                        <a  role="button" (click)="buy(product.product)">Buy Now</a>
+                      </div>
                 </div>
             </div>
         </div>
