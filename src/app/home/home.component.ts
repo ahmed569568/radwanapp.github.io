@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
     let featured = this.productsService.getFeaturedProducts().pipe(
       map(res => {
         this.featuredProducts = res;
-        // console.log(this.featuredProducts);
+        console.log(this.featuredProducts);
         return this.featuredProducts;
       })
     );
