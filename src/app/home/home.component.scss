@@ -127,8 +127,7 @@ h5 {
   backface-visibility: hidden;
 }
 .my-wrapper {
-  background: rgba(231, 76, 60, 0.2);
-  min-height: 55%;
+  min-height: 30%;
 }
 .my-wrapper:hover img {
   opacity: 0.1;
@@ -218,7 +217,7 @@ h5 {
   }
 }
 
-/*Style For Mobile Screens*/
+/*Style For Mobile Screens*/ //iphone 4
 @media (max-width: 576px) {
   .rowMid {
     margin: auto;
@@ -334,7 +333,7 @@ h5 {
     padding: 5px 10px;
   }
   .my-wrapper {
-    min-height: 45%;
+    min-height: 40%;
   }
 }
 
