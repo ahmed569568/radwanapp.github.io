@@ -13,7 +13,7 @@
             <h1>{{ product?.name }}</h1>
             <p class="by">by <span>{{ product?.brand?.name }}</span></p>
             <p class="first-price">{{ product?.price }}.00<span>EGP</span></p>
-            <a class="btn  btn-lg active buy" role="button" (click)="buy(product)">buy now</a>
+            <a style="background-color: green" class="btn  btn-lg active buy" role="button" (click)="buy(product)">buy now</a>
             <!-- if product in stock set border to cart icon -->
             <!-- if product in cart hide cart icon -->
             <a *ngIf="!inCart" class="btn cart btn-lg active"
@@ -95,7 +95,7 @@
                     <li>what !</li>
                 </ul>
             </div>
-        </div>     
+        </div>
         <div class="col-lg-6 col-6">
             <p class="prod-spec">Product Specifications</p>
             <div class="spec">
@@ -192,7 +192,7 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
-                    <div style="background-color: #0b4d26;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
+                    <div style="background-color: green;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
                         <a  role="button" (click)="buy(product.product)">Buy Now</a>
                       </div>
 
@@ -227,13 +227,13 @@
                         </div>
                     </div>
 
-                    <div style="background-color: #0b4d26;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
+                    <div style="background-color: green;color: white ;text-align: center;" class="card-footer" *ngIf="!recommandedCarts[i] && product?.product?.availability == 'In Stock'">
                       <a  role="button" (click)="buy(product.product)">Buy Now</a>
                     </div>
                     <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="recommandedCarts[i] || !(product?.product?.availability == 'In Stock')">
                       <a  role="button">Buy Now</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -280,7 +280,7 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
-                    <div style="background-color: #0b4d26;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
+                    <div style="background-color: green;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
                       <a  role="button" (click)="buy(product.product)">Buy Now</a>
                     </div>
                     <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="popularCarts[i] || !(product?.product?.availability == 'In Stock')">
@@ -313,7 +313,7 @@
                                     src="assets/icons/Cart-actv.svg" alt=""></a>
                         </div>
                     </div>
-                    <div style="background-color: #0b4d26;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
+                    <div style="background-color: green;color: white ;text-align: center;" class="card-footer" *ngIf="!popularCarts[i] && product?.product?.availability == 'In Stock'">
                       <a  role="button" (click)="buy(product.product)">Buy Now</a>
                     </div>
                     <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="popularCarts[i] || !(product?.product?.availability == 'In Stock')">

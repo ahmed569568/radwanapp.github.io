@@ -9,6 +9,7 @@
             <p class="percentage">{{ status }}</p>
             <!-- Hide Checkout Button In Checkout Page -->
             <button
+              style="height: 60px;"
               *ngIf="!order"
               type="button"
               class="btn btn-primary btn-lg btn-block checkout-now"
@@ -21,6 +22,7 @@
             <form class="form-inline">
               <div class="form-group">
                 <input
+                  style="height: 60px;"
                   type="text"
                   class="form-control"
                   id="promo"
@@ -30,6 +32,7 @@
               </div>
 
               <button
+                style="height: 60px;"
                 type="button"
                 class="btn btn-primary apply"
                 (click)="apply()"
