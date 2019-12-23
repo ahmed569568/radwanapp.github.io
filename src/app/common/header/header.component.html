@@ -108,6 +108,7 @@
       <span *ngFor="let cate of categories; let i = index">
         <li class="nav-item" (click)="showHideBorderFromMobile(i, cate?.id)">
           <a
+            style="font-weight: bold;"
             class="nav-link"
             role="button"
             (click)="searchCategoryMobile(cate?.id, menueList[i])"
@@ -169,6 +170,7 @@
       <ul class="header-links-main">
         <li *ngFor="let cate of categories; let i = index">
           <a
+            style="font-weight: bold;"
             role="button"
             (click)="searchCategory(cate?.id)"
             (mouseover)="showBorder(i, cate?.id)"
