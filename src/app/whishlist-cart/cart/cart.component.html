@@ -38,7 +38,12 @@
             <p class="card-text">
               <small class="brand">{{ item.product.brand_name }}</small>
             </p>
-            <p class="price">{{ item.product.price }},00<span>EGP</span></p>
+            <p class="price" *ngIf="item.product.price_after_sale">
+              {{ item.product.price_after_sale }},00<span>EGP</span>
+            </p>
+            <p class="price" *ngIf="!item.product.price_after_sale">
+              {{ item.product.price }},00<span>EGP</span>
+            </p>
             <div class="save-for-later">
               <p (click)="addToWhishlist(item)">
                 <small>Save for later</small>

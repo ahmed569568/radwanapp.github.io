@@ -29,11 +29,21 @@ export class HomeComponent implements OnInit {
   sync = faSync;
   featuredProducts: any;
   popularProducts: any;
+  newArrivals: any;
+  flashSale: any;
+  tvSale: any;
+  mobileSale: any;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
   @ViewChild("popularScroll", { static: true, read: ElementRef })
   public popularScroll: ElementRef<any>;
+  @ViewChild("tvScroll", { static: true, read: ElementRef })
+  public tvScroll: ElementRef<any>;
+  @ViewChild("mobileScroll", { static: true, read: ElementRef })
+  public mobileScroll: ElementRef<any>;
+  @ViewChild("newArrivalsScroll", { static: true, read: ElementRef })
+  public newArrivalsScroll: ElementRef<any>;
 
   constructor(
     private router: Router,
@@ -53,6 +63,10 @@ export class HomeComponent implements OnInit {
     this.whishlistItems = [];
     this.featuredProducts = [];
     this.popularProducts = [];
+    this.newArrivals = [];
+    this.flashSale = [];
+    this.tvSale = [];
+    this.mobileSale = [];
   }
 
   ngOnInit() {
@@ -60,6 +74,14 @@ export class HomeComponent implements OnInit {
     this.categoriesService.feature().subscribe((data: any) => {
       this.categories = data;
       this.showCate = true;
+    });
+    // getting NewArrivals , TV Offers and Mobile Offers
+    this.productsService.getHomeItems().subscribe((res: any) => {
+      console.log(res);
+      this.tvSale = res.is_tv_sale;
+      this.mobileSale = res.is_mobile_sale;
+      this.newArrivals = res.new_arrivals;
+      this.flashSale = res.is_flash_sale;
     });
 
     let featured = this.productsService.getFeaturedProducts().pipe(
@@ -267,31 +289,63 @@ export class HomeComponent implements OnInit {
       this.cartService.showOutStock();
     }
   }
-  scrollRecomRight() {
-    this.recommendedScroll.nativeElement.scrollTo({
-      left: this.recommendedScroll.nativeElement.scrollLeft + 150,
-      behavior: "smooth"
-    });
+  // scroll Right function to all sliders in page
+  scrollRight(type: any) {
+    if (type == "Recom") {
+      this.recommendedScroll.nativeElement.scrollTo({
+        left: this.recommendedScroll.nativeElement.scrollLeft + 150,
+        behavior: "smooth"
+      });
+    } else if (type == "Popular") {
+      this.popularScroll.nativeElement.scrollTo({
+        left: this.popularScroll.nativeElement.scrollLeft + 150,
+        behavior: "smooth"
+      });
+    } else if (type == "TV") {
+      this.tvScroll.nativeElement.scrollTo({
+        left: this.tvScroll.nativeElement.scrollLeft + 150,
+        behavior: "smooth"
+      });
+    } else if (type == "Mobile") {
+      this.mobileScroll.nativeElement.scrollTo({
+        left: this.mobileScroll.nativeElement.scrollLeft + 150,
+        behavior: "smooth"
+      });
+    } else if (type == "newArrivals") {
+      this.newArrivalsScroll.nativeElement.scrollTo({
+        left: this.newArrivalsScroll.nativeElement.scrollLeft + 150,
+        behavior: "smooth"
+      });
+    }
   }
 
-  scrollRecomLeft() {
-    this.recommendedScroll.nativeElement.scrollTo({
-      left: this.recommendedScroll.nativeElement.scrollLeft - 150,
-      behavior: "smooth"
-    });
-  }
-
-  scrollPopularRight() {
-    this.popularScroll.nativeElement.scrollTo({
-      left: this.popularScroll.nativeElement.scrollLeft + 150,
-      behavior: "smooth"
-    });
-  }
-
-  scrollPopularLeft() {
-    this.popularScroll.nativeElement.scrollTo({
-      left: this.popularScroll.nativeElement.scrollLeft - 150,
-      behavior: "smooth"
-    });
+  // scroll Left function to all sliders in page
+  scrollLeft(type: any) {
+    if (type == "Recom") {
+      this.recommendedScroll.nativeElement.scrollTo({
+        left: this.recommendedScroll.nativeElement.scrollLeft - 150,
+        behavior: "smooth"
+      });
+    } else if (type == "Popular") {
+      this.popularScroll.nativeElement.scrollTo({
+        left: this.popularScroll.nativeElement.scrollLeft - 150,
+        behavior: "smooth"
+      });
+    } else if (type == "TV") {
+      this.tvScroll.nativeElement.scrollTo({
+        left: this.tvScroll.nativeElement.scrollLeft - 150,
+        behavior: "smooth"
+      });
+    } else if (type == "Mobile") {
+      this.mobileScroll.nativeElement.scrollTo({
+        left: this.mobileScroll.nativeElement.scrollLeft - 150,
+        behavior: "smooth"
+      });
+    } else if (type == "newArrivals") {
+      this.newArrivalsScroll.nativeElement.scrollTo({
+        left: this.newArrivalsScroll.nativeElement.scrollLeft - 150,
+        behavior: "smooth"
+      });
+    }
   }
 }

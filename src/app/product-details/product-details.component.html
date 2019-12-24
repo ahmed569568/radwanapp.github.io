@@ -12,7 +12,14 @@
         <div class="col-lg-6 second">
             <h1>{{ product?.name }}</h1>
             <p class="by">by <span>{{ product?.brand?.name }}</span></p>
-            <p class="first-price">{{ product?.price }}.00<span>EGP</span></p>
+            <p class="first-price" *ngIf="product?.price_after_sale">{{ product?.price_after_sale }}<span>EGP</span>  
+              ( {{ product?.discount_percentage }}%) 
+            </p>
+            <p class="first-price" [ngStyle]="{
+              'text-decoration': product?.price_after_sale
+                ? 'line-through'
+                : 'none'
+            }">{{ product?.price }}.00<span>EGP</span></p>
             <a style="background-color: green" class="btn  btn-lg active buy" role="button" (click)="buy(product)">buy now</a>
             <!-- if product in stock set border to cart icon -->
             <!-- if product in cart hide cart icon -->
