@@ -29,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
   recommandedLikes: any[];
   popularCarts: any[];
   recommandedCarts: any[];
+  relatedProducts: any[];
   sync = faSync;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
@@ -49,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
     this.recProducts = [];
     this.popularProducts = [];
     this.detailedDescription = [];
+    this.relatedProducts = [];
 
     //to excute ngOninit() When Get Product Detail  With Different Product ID  On Same Route(Product Details)
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
@@ -64,6 +66,9 @@ export class ProductDetailsComponent implements OnInit {
     this.productsService.getProduct(id).subscribe((data: any) => {
       console.log(data);
       this.product = data;
+      // adding related products to a list to use it in the slider by tayeb
+      this.relatedProducts = data.related_products;
+      console.log("omar", this.relatedProducts);
       this.checkCart();
       this.checkWhishlist();
       this.detailedDescription = data.detaileddescription;
@@ -82,6 +87,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productsService.getRecommendedProducts().subscribe((data: any) => {
       this.recProducts = data;
+      console.log("omar", this.recProducts);
       this.recommandedCarts = [...this.recProducts];
       this.recommandedCarts.fill(false);
       this.recommandedLikes = [...this.recommandedCarts];
