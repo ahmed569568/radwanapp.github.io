@@ -72,10 +72,17 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    ///my work
+    this.route.queryParams.forEach(s=>{
+      console.log("ssssssss",  s.subCatId);
+      console.log("ssssssss",   s.CatId);
+    })
+    ////
     this.spinner.show();
     this.route.queryParams
       .filter(params => params.search)
       .subscribe(params => {
+        console.log(params)
         //get query parameter search and call search end point
         this.searchService.search(params.search).subscribe((data: any) => {
           this.result = data;
@@ -93,6 +100,23 @@ export class SearchComponent implements OnInit {
       .subscribe(params => {
         this.categoryService
           .getProducts(params.category)
+          .subscribe((data: any) => {
+            this.result = data;
+            this.likes = [...this.result];
+            this.likes.fill(false);
+            this.carts = [...this.likes];
+            this.checkLikes();
+            this.checkCarts();
+            this.spinner.hide();
+          });
+      });
+
+
+      this.route.queryParams
+      .filter(params => params.sub_category)
+      .subscribe(params => {
+        this.categoryService
+          .getSubCategoryProducts(params.sub_category)
           .subscribe((data: any) => {
             this.result = data;
             this.likes = [...this.result];

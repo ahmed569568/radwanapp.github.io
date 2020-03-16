@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
   headerListSpinner: boolean;
   subCateList: Array<boolean>;
   subCateProd: boolean;
+  CatgID ; 
 
   constructor(private router: Router, private categoriesService: CategoriesService,
               private route: ActivatedRoute, private cartService: CartService,
@@ -100,6 +101,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['./']);
   }
 
+  navTo(sub_category){
+    this.router.navigate(['./search'], {queryParams: { sub_category: sub_category , CatId :this.CatgID } })
+  }
+
   showBorder(index, cateID) {
     //display spinner until subcategories return.
     this.headerListSpinner = true;
@@ -107,6 +112,9 @@ export class HeaderComponent implements OnInit {
     this.subCategories = []
     this.categoriesService.getSubcateAndProductOfCate(cateID).subscribe((data: any) => {
       this.subCategories = data;
+      this.CatgID = cateID;
+      console.log("omaaaaaar" , cateID )
+      console.log("omaaaaaar" , this.subCategories )
       this.headerListSpinner = false;
     })
     //here we save the last category border bottom

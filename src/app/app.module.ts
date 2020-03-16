@@ -16,6 +16,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery';
 
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -97,7 +98,8 @@ library.add(faExternalLinkAlt, faPlus, faTimes, faDownload);
     BreedingRhombusSpinnerModule,
     HalfCircleSpinnerModule,
     HollowDotsSpinnerModule,
-    FulfillingSquareSpinnerModule
+    FulfillingSquareSpinnerModule,
+    // NgbModule
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent]

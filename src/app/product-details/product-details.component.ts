@@ -11,12 +11,15 @@ import { RadwanSpinnerService } from "../services/radwan-spinner.service";
 
 declare var $: any;
 
+
+
 @Component({
   selector: "app-product-details",
   templateUrl: "./product-details.component.html",
   styleUrls: ["./product-details.component.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
+
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;
@@ -31,6 +34,8 @@ export class ProductDetailsComponent implements OnInit {
   recommandedCarts: any[];
   relatedProducts: any[];
   sync = faSync;
+
+
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -64,11 +69,11 @@ export class ProductDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get("id");
 
     this.productsService.getProduct(id).subscribe((data: any) => {
-      console.log(data);
+      console.log( data);
       this.product = data;
       // adding related products to a list to use it in the slider by tayeb
       this.relatedProducts = data.related_products;
-      console.log("omar", this.relatedProducts);
+      // console.log("omar", this.relatedProducts);
       this.checkCart();
       this.checkWhishlist();
       this.detailedDescription = data.detaileddescription;

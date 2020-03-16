@@ -293,27 +293,27 @@ export class HomeComponent implements OnInit {
   scrollRight(type: any) {
     if (type == "Recom") {
       this.recommendedScroll.nativeElement.scrollTo({
-        left: this.recommendedScroll.nativeElement.scrollLeft + 150,
+        left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     } else if (type == "Popular") {
       this.popularScroll.nativeElement.scrollTo({
-        left: this.popularScroll.nativeElement.scrollLeft + 150,
+        left: this.popularScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     } else if (type == "TV") {
       this.tvScroll.nativeElement.scrollTo({
-        left: this.tvScroll.nativeElement.scrollLeft + 150,
+        left: this.tvScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     } else if (type == "Mobile") {
       this.mobileScroll.nativeElement.scrollTo({
-        left: this.mobileScroll.nativeElement.scrollLeft + 150,
+        left: this.mobileScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     } else if (type == "newArrivals") {
       this.newArrivalsScroll.nativeElement.scrollTo({
-        left: this.newArrivalsScroll.nativeElement.scrollLeft + 150,
+        left: this.newArrivalsScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     }
@@ -323,27 +323,27 @@ export class HomeComponent implements OnInit {
   scrollLeft(type: any) {
     if (type == "Recom") {
       this.recommendedScroll.nativeElement.scrollTo({
-        left: this.recommendedScroll.nativeElement.scrollLeft - 150,
+        left: this.recommendedScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     } else if (type == "Popular") {
       this.popularScroll.nativeElement.scrollTo({
-        left: this.popularScroll.nativeElement.scrollLeft - 150,
+        left: this.popularScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     } else if (type == "TV") {
       this.tvScroll.nativeElement.scrollTo({
-        left: this.tvScroll.nativeElement.scrollLeft - 150,
+        left: this.tvScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     } else if (type == "Mobile") {
       this.mobileScroll.nativeElement.scrollTo({
-        left: this.mobileScroll.nativeElement.scrollLeft - 150,
+        left: this.mobileScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     } else if (type == "newArrivals") {
       this.newArrivalsScroll.nativeElement.scrollTo({
-        left: this.newArrivalsScroll.nativeElement.scrollLeft - 150,
+        left: this.newArrivalsScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     }

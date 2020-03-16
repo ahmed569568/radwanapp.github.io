@@ -1,48 +1,25 @@
 <div class="container-fluid" style="background-color: white;">
-  <div class="row">
-    <div class="col-lg-6 first">
-      <!-- Show In Desktop -->
-      <ks-carousel
-        *ngIf="showGallary"
-        [id]="107"
-        [images]="imagesRect"
-        [playConfig]="{ autoPlay: false }"
-        [previewConfig]="{ visible: true, number: 5 }"
-        class="gallary-desktop"
-      ></ks-carousel>
-      <!-- show In Mobile -->
-      <ks-carousel
-        *ngIf="showGallary"
-        [id]="108"
-        [images]="imagesRect"
-        [playConfig]="{ autoPlay: false }"
-        [previewConfig]="{ visible: true, number: 2 }"
-        class="gallary-mobile"
-      ></ks-carousel>
-    </div>
-    <div class="col-lg-6 second">
-      <h1>{{ product?.name }}</h1>
-      <p class="by">
-        by <span>{{ product?.brand?.name }}</span>
-      </p>
-      <p class="first-price" *ngIf="product?.price_after_sale">
-        {{ product?.price_after_sale }}<span>EGP</span> (
-        {{ product?.discount_percentage }}%)
-      </p>
-      <p
-        class="first-price"
-        [ngStyle]="{
+    <div class="row">
+        <div class="col-lg-6 first">
+            <!-- Show In Desktop -->
+            <ks-carousel *ngIf="showGallary" [id]="107" [images]="imagesRect" [playConfig]="{ autoPlay: false }" [previewConfig]="{ visible: true, number: 5 }" class="gallary-desktop"></ks-carousel>
+            <!-- show In Mobile -->
+            <ks-carousel *ngIf="showGallary" [id]="108" [images]="imagesRect" [playConfig]="{ autoPlay: false }" [previewConfig]="{ visible: true, number: 2 }" class="gallary-mobile"></ks-carousel>
+        </div>
+        <div class="col-lg-6 second">
+            <h1>{{ product?.name }}</h1>
+            <p class="by">
+                by <span>{{ product?.brand?.name }}</span>
+            </p>
+            <p class="first-price" *ngIf="product?.price_after_sale">
+                {{ product?.price_after_sale }}<span>EGP</span> ( {{ product?.discount_percentage }}%)
+            </p>
+            <p class="first-price" [ngStyle]="{
           'text-decoration': product?.price_after_sale ? 'line-through' : 'none'
-        }"
-      >
-        {{ product?.price }}.00<span>EGP</span>
-      </p>
-      <a
-        style="background-color: #298f1d"
-        class="btn  btn-lg active buy"
-        role="button"
-        (click)="buy(product)"
-        >buy now</a
+        }">
+                {{ product?.price }}.00<span>EGP</span>
+            </p>
+            <a style="background-color: #298f1d" class="btn  btn-lg active buy" role="button" (click)="buy(product)">buy now</a
       >
       <!-- if product in stock set border to cart icon -->
       <!-- if product in cart hide cart icon -->
@@ -59,35 +36,51 @@
         style="cursor:pointer;"
         ><img src="assets/icons/Addtocartbtn.png" alt=""
       /></a>
-      <div class="wish">
-        <!-- if product in whishlist hide whish list  -->
-        <a
-          *ngIf="!inWhishlist"
-          class="btn wishlist btn-lg active"
-          role="button"
-          aria-pressed="true"
-          (click)="addToWhishlist(product?.id)"
-          style="cursor:pointer;"
-          ><img src="assets/icons/love@1x.png" alt="" /><span
-            >Add to wishlist</span
+            <div class="wish">
+                <!-- if product in whishlist hide whish list  -->
+                <a *ngIf="!inWhishlist" class="btn wishlist btn-lg active" role="button" aria-pressed="true" (click)="addToWhishlist(product?.id)" style="cursor:pointer;"><img src="assets/icons/love@1x.png" alt="" /><span>Add to wishlist</span
           ></a
         >
         <span id="first">
           <a href="#"><i class="fa fa-facebook"></i></a
         ></span>
-        <span id="second">
+                    <span id="second">
           <a href="#"><i class="fa fa-twitter"></i></a
         ></span>
-        <span id="third">
+                    <span id="third">
           <a href="#"><i class="fa fa-instagram"></i></a
         ></span>
-        <span id="fourth">
+                    <span id="fourth">
           <a href="#"><i class="fa fa-pinterest-p"></i></a
         ></span>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- descreption section -->
+
+    <!--my work-->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">title</th>
+                <th scope="col">content</th>
+                <!-- <th scope="col">Population</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let deta of product?.detaileddescription; index as i">
+                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                <td>
+                    {{deta.title}}
+                </td>
+                <td> {{deta.content}}
+                </td>
+                <!-- <td>{{ country.population | number }}</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- descreption section
   <div class="row">
     <div class="col-lg-12 links">
       <a href="#">Description</a>
@@ -112,251 +105,174 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<!-- Related  need produact imgs in related product of product to complete it by Tayeb  -->
+    <!-- Related  need produact imgs in related product of product to complete it by Tayeb  -->
 
-<!-- Recommended -->
-<div class="container-fluid rec" style="background-color: white;">
-  <div class="row">
-    <div class="col-12-lg">
-      <p class="recommended">Recommended for you</p>
-    </div>
-
-    <div class="col-lg-12">
-      <!-- display non in mobile version -->
-      <div class="controls">
-        <div class="arrow-right">
-          <!-- scroll to right -->
-          <img
-            src="assets/icons/Arrow right@1x.png"
-            (click)="scrollRecomRight()"
-            alt=""
-          />
-        </div>
-        <div class="arrow-left">
-          <!-- scroll to left -->
-          <img
-            src="assets/icons/Arrow left@1x.png"
-            (click)="scrollRecomLeft()"
-            alt=""
-          />
-        </div>
-      </div>
-      <!-- flex box scroll x and hide scroll bar -->
-      <div class="scrolling-wrapper-flexbox" #recommendedScroll>
-        <div
-          class="card card1"
-          *ngFor="let product of recProducts; let i = index"
-        >
-          <div class="my-wrapper" style="height: 60%;">
-            <img
-              src="{{ (product?.product?.productimage)[0]?.image_url }}"
-              class="card-img-top"
-              (click)="navigateProduct(product?.product?.id)"
-              alt="..."
-            />
-            <div class="middle">
-              <div class="text" (click)="navigateProduct(product?.product?.id)">
-                learn More
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <p class="card-text">{{ product?.product?.name }}</p>
-              </div>
+    <!-- Recommended -->
+    <div class="container-fluid rec" style="background-color: white;">
+        <div class="row">
+            <div class="col-12-lg">
+                <p class="recommended">Recommended for you</p>
             </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="card-text">
-                  <small class="text-muted">{{
+            <div class="col-lg-12">
+                <!-- display non in mobile version -->
+                <div class="controls">
+                    <div class="arrow-right">
+                        <!-- scroll to right -->
+                        <img src="assets/icons/Arrow right@1x.png" (click)="scrollRecomRight()" alt="" />
+                    </div>
+                    <div class="arrow-left">
+                        <!-- scroll to left -->
+                        <img src="assets/icons/Arrow left@1x.png" (click)="scrollRecomLeft()" alt="" />
+                    </div>
+                </div>
+                <!-- flex box scroll x and hide scroll bar -->
+                <div class="scrolling-wrapper-flexbox" #recommendedScroll>
+                    <div class="card card1" *ngFor="let product of recProducts; let i = index">
+                        <div class="my-wrapper" style="height: 60%;">
+                            <img src="{{ (product?.product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.product?.id)" alt="..." />
+                            <div class="middle">
+                                <div class="text" (click)="navigateProduct(product?.product?.id)">
+                                    learn More
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text">{{ product?.product?.name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <p class="card-text">
+                                        <small class="text-muted">{{
                     product?.product?.brand_name
                   }}</small>
-                </p>
-              </div>
-            </div>
+                                    </p>
+                                </div>
+                            </div>
 
-            <div class="row" *ngIf="product?.product?.price_after_sale">
-              <div class="col">
-                <h5 class="price" style="width: 83%;">
-                  {{ product?.product?.price_after_sale }}<small>EGP</small>
-                </h5>
+                            <div class="row" *ngIf="product?.product?.price_after_sale">
+                                <div class="col">
+                                    <h5 class="price" style="width: 83%;">
+                                        {{ product?.product?.price_after_sale }}<small>EGP</small>
+                                    </h5>
 
-                <h5 class="price">
-                  {{ product?.product?.discount_percentage }}%
-                </h5>
-              </div>
-            </div>
+                                    <h5 class="price">
+                                        {{ product?.product?.discount_percentage }}%
+                                    </h5>
+                                </div>
+                            </div>
 
-            <div class="card-price-like">
-              <div class="row">
-                <div class="col">
-                  <h5
-                    class="price"
-                    [ngStyle]="{
+                            <div class="card-price-like">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="price" [ngStyle]="{
                       'text-decoration': product?.product?.price_after_sale
                         ? 'line-through'
                         : 'none'
-                    }"
-                    style="margin-top: 6%;"
-                  >
-                    {{ product?.product?.price }}.00<small>EGP</small>
-                  </h5>
-                  <a (click)="compare(product?.product?.id)"
-                    ><fa-icon size="1x" [icon]="sync"></fa-icon>
-                  </a>
-                  <a
-                    *ngIf="!recommandedLikes[i]"
-                    (click)="addToWhishlistRec(product, i)"
-                    ><img src="assets/logo/love.svg" alt=""
-                  /></a>
+                    }" style="margin-top: 6%;">
+                                            {{ product?.product?.price }}.00<small>EGP</small>
+                                        </h5>
+                                        <a (click)="compare(product?.product?.id)">
+                                            <fa-icon size="1x" [icon]="sync"></fa-icon>
+                                        </a>
+                                        <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlistRec(product, i)"><img src="assets/logo/love.svg" alt="" /></a>
 
-                  <a
-                    *ngIf="recommandedLikes[i]"
-                    (click)="addToWhishlistRec(product, i)"
-                    ><img src="assets/logo/love Active@1x.png" alt=""
-                  /></a>
+                                        <a *ngIf="recommandedLikes[i]" (click)="addToWhishlistRec(product, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
 
-                  <a
-                    *ngIf="
+                                        <a *ngIf="
                       !recommandedCarts[i] &&
                       product?.product?.availability == 'In Stock'
-                    "
-                    (click)="addToCartRec(product, i)"
-                    ><img src="assets/logo/cart.svg" alt=""
-                  /></a>
-                  <a
-                    *ngIf="recommandedCarts[i]"
-                    (click)="addToCartRec(product, i)"
-                    ><img src="assets/icons/Cart-actv.svg" alt=""
-                  /></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            style="background-color: #298f1d;color: white ;text-align: center;"
-            class="card-footer"
-            *ngIf="
+                    " (click)="addToCartRec(product, i)"><img src="assets/logo/cart.svg" alt="" /></a>
+                                        <a *ngIf="recommandedCarts[i]" (click)="addToCartRec(product, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="
               !recommandedCarts[i] &&
               product?.product?.availability == 'In Stock'
-            "
-          >
-            <a role="button" (click)="buy(product.product)">Buy Now</a>
-          </div>
+            ">
+                            <a role="button" (click)="buy(product.product)">Buy Now</a>
+                        </div>
 
-          <div
-            style="background-color: grey;color: white ;text-align: center;"
-            class="card-footer"
-            *ngIf="
+                        <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="
               recommandedCarts[i] ||
               !(product?.product?.availability == 'In Stock')
-            "
-          >
-            <a role="button">Buy Now</a>
-          </div>
-        </div>
-      </div>
-      <!-- display block in mobile version so can scroll by touch move right left  -->
-      <div class="card-deck mobile-slider">
-        <div class="card" *ngFor="let product of recProducts; let i = index">
-          <div class="my-wrapper">
-            <img
-              src="{{ (product?.product?.productimage)[0]?.image_url }}"
-              class="card-img-top"
-              (click)="navigateProduct(product?.id)"
-              alt="..."
-            />
-            <div class="middle">
-              <div class="text" (click)="navigateProduct(product?.product?.id)">
-                learn More
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{ product?.product?.name }}</p>
-            <p class="card-text">
-              <small class="text-muted">{{
+            ">
+                            <a role="button">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- display block in mobile version so can scroll by touch move right left  -->
+                <div class="card-deck mobile-slider">
+                    <div class="card" *ngFor="let product of recProducts; let i = index">
+                        <div class="my-wrapper">
+                            <img src="{{ (product?.product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
+                            <div class="middle">
+                                <div class="text" (click)="navigateProduct(product?.product?.id)">
+                                    learn More
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ product?.product?.name }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">{{
                 product?.product?.brand_name
               }}</small>
-            </p>
-            <div
-              class="card-price-like"
-              *ngIf="product?.product?.price_after_sale"
-            >
-              <h5 class="price" style="width: 83%;">
-                {{ product?.product?.price_after_sale }}<small>EGP</small>
-              </h5>
+                            </p>
+                            <div class="card-price-like" *ngIf="product?.product?.price_after_sale">
+                                <h5 class="price" style="width: 83%;">
+                                    {{ product?.product?.price_after_sale }}<small>EGP</small>
+                                </h5>
 
-              <h5 class="price">
-                {{ product?.product?.discount_percentage }}%
-              </h5>
-            </div>
-            <div class="card-price-like">
-              <h5
-                class="price"
-                [ngStyle]="{
+                                <h5 class="price">
+                                    {{ product?.product?.discount_percentage }}%
+                                </h5>
+                            </div>
+                            <div class="card-price-like">
+                                <h5 class="price" [ngStyle]="{
                   'text-decoration': product?.product?.price_after_sale
                     ? 'line-through'
                     : 'none'
-                }"
-              >
-                {{ product?.product?.price }}.00<small>EGP</small>
-              </h5>
-              <a (click)="compare(product?.product?.id)">
-                <fa-icon size="1x" [icon]="sync"></fa-icon
-              ></a>
-              <a
-                *ngIf="!recommandedLikes[i]"
-                (click)="addToWhishlist(product.id)"
-                ><img src="assets/logo/love.svg" alt=""
-              /></a>
+                }">
+                                    {{ product?.product?.price }}.00<small>EGP</small>
+                                </h5>
+                                <a (click)="compare(product?.product?.id)">
+                                    <fa-icon size="1x" [icon]="sync"></fa-icon>
+                                </a>
+                                <a *ngIf="!recommandedLikes[i]" (click)="addToWhishlist(product.id)"><img src="assets/logo/love.svg" alt="" /></a>
 
-              <a
-                *ngIf="recommandedLikes[i]"
-                (click)="addToWhishlist(product.id)"
-                ><img src="assets/logo/love Active@1x.png" alt=""
-              /></a>
+                                <a *ngIf="recommandedLikes[i]" (click)="addToWhishlist(product.id)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
 
-              <a
-                *ngIf="
+                                <a *ngIf="
                   !recommandedCarts[i] &&
                   product?.product?.availability == 'In Stock'
-                "
-                (click)="addToCart(product.id)"
-                ><img src="assets/logo/cart.svg" alt=""
-              /></a>
-              <a *ngIf="recommandedCarts[i]" (click)="addToCart(product.id)"
-                ><img src="assets/icons/Cart-actv.svg" alt=""
-              /></a>
-            </div>
-          </div>
+                " (click)="addToCart(product.id)"><img src="assets/logo/cart.svg" alt="" /></a>
+                                <a *ngIf="recommandedCarts[i]" (click)="addToCart(product.id)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
+                            </div>
+                        </div>
 
-          <div
-            style="background-color: #298f1d;color: white ;text-align: center;"
-            class="card-footer"
-            *ngIf="
+                        <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="
               !recommandedCarts[i] &&
               product?.product?.availability == 'In Stock'
-            "
-          >
-            <a role="button" (click)="buy(product.product)">Buy Now</a>
-          </div>
-          <div
-            style="background-color: grey;color: white ;text-align: center;"
-            class="card-footer"
-            *ngIf="
+            ">
+                            <a role="button" (click)="buy(product.product)">Buy Now</a>
+                        </div>
+                        <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="
               recommandedCarts[i] ||
               !(product?.product?.availability == 'In Stock')
-            "
-          >
-            <a role="button">Buy Now</a>
-          </div>
+            ">
+                            <a role="button">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
