@@ -127,12 +127,15 @@
                     <a *ngIf="carts[i]" (click)="addToCart(product.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
                 </div>
             </div>
-            <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
-                <a role="button" (click)="buy(product)">Buy Now</a>
+            <div (click)="buy(product) " style="background-color: #298f1d;color: white ;text-align: center; " class="card-footer " *ngIf="!carts[i] && product?.availability=='In Stock' ">
+                <a role="button ">Buy Now</a>
+            </div>
+
+            <div style="background-color: grey;color: white ;text-align: center; " class="card-footer " *ngIf="carts[i] || !(product?.availability=='In Stock' ) ">
+                <a role="button ">Buy Now</a>
             </div>
         </div>
     </div>
-
     <div *ngIf="result.length == 0" class="empty">
         <h5>No products found for this category</h5>
     </div>

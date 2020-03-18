@@ -31,62 +31,57 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Recom')" alt="" />
+                    <img src="assets/icons/Arrow right@1x.png " (click)="scrollRight( 'Recom') " alt=" " />
                 </div>
-                <div class="arrow-left">
+                <div class="arrow-left ">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Recom')" alt="" />
+                    <img src="assets/icons/Arrow left@1x.png " (click)="scrollLeft( 'Recom') " alt=" " />
                 </div>
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #recommendedScroll>
-            <ng-container *ngFor="let product of featuredProducts; let i = index">
-                <div class="card">
+        <div class="card-deck " #recommendedScroll>
+            <ng-container *ngFor="let product of featuredProducts; let i=i ndex ">
+                <div class="card ">
                     <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                    <div class="my-wrapper">
+                    <div class="my-wrapper ">
                         <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                        <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct(product?.id)">
+                        <img src="{{ (product?.productimage)[0]?.image_url }} " class="card-img-top " (click)="navigateProduct(product?.id) " alt="... " />
+                        <div class="middle ">
+                            <div class="text " (click)="navigateProduct(product?.id) ">
                                 learn More
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text" (click)="navigateProduct(product?.id)">
+                    <div class="card-body ">
+                        <div class="row ">
+                            <div class="col ">
+                                <p class="card-text " (click)="navigateProduct(product?.id) ">
                                     {{ product?.name }}
                                 </p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text" (click)="navigateProduct(product?.id)">
-                                    <small class="text-muted">{{ product?.brand?.name }}</small>
+                        <div class="row ">
+                            <div class="col ">
+                                <p class="card-text " (click)="navigateProduct(product?.id) ">
+                                    <small class="text-muted ">{{ product?.brand?.name }}</small>
                                 </p>
                             </div>
                         </div>
                         <!-- discount area -->
-                        <div class="row" *ngIf="product?.price_after_sale">
-                            <div class="col">
-                                <h5 class="price" style="width: 83%;">
+                        <div class="row " *ngIf="product?.price_after_sale ">
+                            <div class="col ">
+                                <h5 class="price " style="width: 83%; ">
                                     {{ product?.price_after_sale }}<small>EGP</small>
                                 </h5>
 
-                                <h5 class="price">{{ product?.discount_percentage }}%</h5>
+                                <h5 class="price ">{{ product?.discount_percentage }}%</h5>
                             </div>
                         </div>
 
                         <!-- real price -->
                         <div class="card-price-like">
-                            <h5 [ngStyle]="{
-                                'text-decoration': product?.price_after_sale
-                                  ? 'line-through'
-                                  : 'none','color': product?.price_after_sale
-                                  ? 'red'
-                                  : 'black','font-size': product?.price_after_sale? '26px' :'15px'}">
+                            <h5 [ngStyle]="{ 'text-decoration': product?.price_after_sale ? 'line-through' : 'none', 'color': product?.price_after_sale ? 'black' : 'red', 'font-size': product?.price_after_sale? '15px' : '20px'} ">
                                 {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
                             </h5>
                             <!-- here we use angular-icons -->
@@ -180,8 +175,8 @@
                             'text-decoration': product?.price_after_sale
                               ? 'line-through'
                               : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'black','font-size': product?.price_after_sale? '26px' :'15px'}">
+                              ? 'black'
+                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
                             {{ product?.price | currency:'EGP':'symbol':'4.2-2' }}
                         </h5>
                         <!-- here we use angular-icons -->
@@ -273,8 +268,8 @@
                             'text-decoration': product?.price_after_sale
                               ? 'line-through'
                               : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'black','font-size': product?.price_after_sale? '26px' :'15px'}">
+                              ? 'black'
+                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
                             {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
                         </h5>
                         <!-- here we use angular-icons -->
@@ -366,8 +361,8 @@
                             'text-decoration': product?.price_after_sale
                               ? 'line-through'
                               : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'black','font-size': product?.price_after_sale? '26px' :'15px'}">
+                              ? 'black'
+                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
                             {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
                         </h5>
                         <!-- here we use angular-icons -->
@@ -459,8 +454,8 @@
                             'text-decoration': product?.price_after_sale
                               ? 'line-through'
                               : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'black','font-size': product?.price_after_sale? '26px' :'15px'}">
+                              ? 'black'
+                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
                             {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
                         </h5>
                         <!-- here we use angular-icons -->

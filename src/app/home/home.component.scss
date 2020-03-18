@@ -341,9 +341,6 @@ h5 {
         width: 14px !important;
         cursor: pointer;
     }
-    .card-body {
-        padding: 0.9rem;
-    }
     .card-price-like :nth-child(3) {
         margin-top: -7%;
     }
@@ -385,6 +382,8 @@ h5 {
         font-weight: 600;
         text-transform: uppercase;
         margin-bottom: 3%;
+        // color: #e74c3c !important;
+        font-size: 21px !important;
     }
 }
 

@@ -2,7 +2,11 @@
     background-color: #fff;
 }
 
-.navbar-brand {}
+.navbar-brand {
+    .img-logo {
+        margin-left: 65px;
+    }
+}
 
 img {
     width: auto;
@@ -12,21 +16,19 @@ img {
 ///////my work
 .form-control {
     width: 600px;
-    border: 1px;
+    border: 1px solid #1f2a33 !important;
+    border-radius: 25px !important;
 }
 
 .search {
-    background-color: #ec901f;
-    border-color: #ec901f;
+    background-color: #1f2a33;
+    border-color: #1f2a33;
     padding-right: 30px;
     padding-left: 30px;
     position: absolute;
     padding-left: 30px;
     margin-left: 518px;
     border-radius: 0 25px 25px 0;
-    &:hover {
-        background-color: #fff;
-    }
 }
 
 .search>img {
@@ -55,8 +57,8 @@ img {
 
 .header-links ul.header-links-main {
     list-style-type: none;
-    margin: 1rem;
-    margin-left: 170px;
+    margin: auto;
+    padding: 17px 0 17px 0;
 }
 
 .header-links ul.header-links-main>li {
@@ -69,7 +71,7 @@ img {
 .header-links>ul.header-links-main>li a {
     color: #ffffff;
     // font-family: 'Nosifer', cursive !important;
-    font-size: 14px;
+    font-size: 19px;
     text-decoration: none;
     font-style: italic;
     cursor: pointer;
@@ -118,10 +120,10 @@ img {
 }
 
 .title {
-    color: #e30b13;
+    color: #1f2a33;
     font-family: "Roboto-Bold";
     font-weight: bold;
-    font-size: 14px;
+    font-size: 17px;
     cursor: pointer;
 }
 
