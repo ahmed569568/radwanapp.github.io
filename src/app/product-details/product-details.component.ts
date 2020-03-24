@@ -111,6 +111,7 @@ export class ProductDetailsComponent implements OnInit {
         )
       );
     }
+
     this.showGallary = true;
   }
 
@@ -402,28 +403,28 @@ export class ProductDetailsComponent implements OnInit {
 
   scrollRecomRight() {
     this.recommendedScroll.nativeElement.scrollTo({
-      left: this.recommendedScroll.nativeElement.scrollLeft + 150,
+      left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
     });
   }
 
   scrollRecomLeft() {
     this.recommendedScroll.nativeElement.scrollTo({
-      left: this.recommendedScroll.nativeElement.scrollLeft - 150,
+      left: this.recommendedScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
     });
   }
 
   scrollPopularRight() {
     this.popularScroll.nativeElement.scrollTo({
-      left: this.popularScroll.nativeElement.scrollLeft + 150,
+      left: this.popularScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
     });
   }
 
   scrollPopularLeft() {
     this.popularScroll.nativeElement.scrollTo({
-      left: this.popularScroll.nativeElement.scrollLeft - 150,
+      left: this.popularScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
     });
   }

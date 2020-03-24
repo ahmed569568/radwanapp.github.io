@@ -17,6 +17,7 @@ import "rxjs/add/operator/filter";
   styleUrls: ["./search.component.scss"]
 })
 export class SearchComponent implements OnInit {
+  newCategory:any;
   result: any;
   likes: any[];
   carts: any[];
@@ -31,7 +32,8 @@ export class SearchComponent implements OnInit {
   highValue: number = 10000;
   options: Options = {
     floor: 0,
-    ceil: 10000
+    ceil: 10000,
+
   };
   categoryJson: any;
   brandJson: any;
@@ -148,6 +150,15 @@ export class SearchComponent implements OnInit {
       this.showBrand = false;
       this.showPrice = false;
     }
+
+    this.getProducts()
+  }
+
+  getProducts(){
+    this.searchService.getProduct().subscribe(res => {
+      console.log("ezzat" , res);
+      this.newCategory = res;
+    })
   }
 
   navigateProduct(id: any) {

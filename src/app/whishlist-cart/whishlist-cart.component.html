@@ -5,7 +5,7 @@
                 <div class="row checkout" *ngIf="checkout">
                     <div class="col-lg-12 checkout-description col-12">
                         <p class="total">Total</p>
-                        <p class="price">{{ total }},00 <span>EGP</span></p>
+                        <p class="price">{{ total | currency:'EGP':'symbol':'4.0'}} <span></span></p>
                         <p class="percentage">{{ status }}</p>
                         <!-- Hide Checkout Button In Checkout Page -->
                         <button style="height: 60px;" *ngIf="!order" type="button" class="btn btn-primary btn-lg btn-block checkout-now" [disabled]="total == '00'" (click)="navCheckout()">

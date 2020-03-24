@@ -14,7 +14,6 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-
     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
@@ -31,11 +30,13 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png " (click)="scrollRight( 'Recom') " alt=" " />
+                    <!-- <img src="assets/icons/Arrow right@1x.png " (click)="scrollRight( 'Recom') " alt=" " /> -->
+                    <i class="far fa-chevron-right" (click)="scrollRight( 'Recom') "></i>
                 </div>
                 <div class="arrow-left ">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png " (click)="scrollLeft( 'Recom') " alt=" " />
+                    <!-- <img src="assets/icons/Arrow left@1x.png " (click)="scrollLeft( 'Recom') " alt=" " /> -->
+                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Recom') "></i>
                 </div>
             </div>
         </div>
@@ -61,28 +62,27 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col ">
+                        <div class="row">
+                            <div class="col">
                                 <p class="card-text " (click)="navigateProduct(product?.id) ">
-                                    <small class="text-muted ">{{ product?.brand?.name }}</small>
+                                    <small class="text-muted-home">{{ product?.brand?.name }}</small>
                                 </p>
                             </div>
                         </div>
                         <!-- discount area -->
                         <div class="row " *ngIf="product?.price_after_sale ">
-                            <div class="col ">
-                                <h5 class="price " style="width: 83%; ">
-                                    {{ product?.price_after_sale }}<small>EGP</small>
+                            <div class="col">
+                                <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
+                                    {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
                                 </h5>
-
                                 <h5 class="price ">{{ product?.discount_percentage }}%</h5>
                             </div>
                         </div>
 
                         <!-- real price -->
-                        <div class="card-price-like">
-                            <h5 [ngStyle]="{ 'text-decoration': product?.price_after_sale ? 'line-through' : 'none', 'color': product?.price_after_sale ? 'black' : 'red', 'font-size': product?.price_after_sale? '15px' : '20px'} ">
-                                {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
+                        <div class="card-price-like price-home">
+                            <h5 class="h5-price" [ngStyle]="{ 'text-decoration': product?.price_after_sale ? 'none' : 'none', 'color': product?.price_after_sale ? 'red' : 'red', 'font-size': product?.price_after_sale? '20px' : '20px'} ">
+                                {{ product?.price | currency:'EGP':'symbol':'2.0'}}
                             </h5>
                             <!-- here we use angular-icons -->
                             <a (click)="compare(product?.id) ">
@@ -121,11 +121,15 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Popular')" alt="" />
+                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Popular')" alt="" /> -->
+                    <i class="far fa-chevron-right" (click)="scrollRight( 'Popular') "></i>
+
                 </div>
                 <div class="arrow-left">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Popular')" alt="" />
+                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Popular')" alt="" /> -->
+                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Popular') "></i>
+
                 </div>
             </div>
         </div>
@@ -162,22 +166,22 @@
                     <!-- discount area -->
                     <div class="row" *ngIf="product?.price_after_sale">
                         <div class="col">
-                            <h5 class="price" style="width: 83%;">
-                                {{ product?.price_after_sale }}<small>EGP</small>
-                            </h5>
+                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
+                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
 
+                            </h5>
                             <h5 class="price">{{ product?.discount_percentage }}%</h5>
                         </div>
                     </div>
 
-                    <div class="card-price-like">
+                    <div class="card-price-like price-home">
                         <h5 [ngStyle]="{
                             'text-decoration': product?.price_after_sale
-                              ? 'line-through'
+                              ? 'none'
                               : 'none','color': product?.price_after_sale
-                              ? 'black'
-                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'4.2-2' }}
+                              ? 'red'
+                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
+                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
                         </h5>
                         <!-- here we use angular-icons -->
                         <a (click)="compare(product?.id)">
@@ -214,11 +218,15 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('newArrivals')" alt="" />
+                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('newArrivals')" alt="" /> -->
+                    <i class="far fa-chevron-right" (click)="scrollRight( 'newArrivals') "></i>
+
                 </div>
                 <div class="arrow-left">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('newArrivals')" alt="" />
+                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('newArrivals')" alt="" /> -->
+                    <i class="far fa-chevron-left" (click)="scrollLeft( 'newArrivals') "></i>
+
                 </div>
             </div>
         </div>
@@ -255,22 +263,22 @@
                     <!-- discount area -->
                     <div class="row" *ngIf="product?.price_after_sale">
                         <div class="col">
-                            <h5 class="price" style="width: 83%;">
-                                {{ product?.price_after_sale }}<small>EGP</small>
+                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
+                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
                             </h5>
 
                             <h5 class="price">{{ product?.discount_percentage }}%</h5>
                         </div>
                     </div>
 
-                    <div class="card-price-like">
+                    <div class="card-price-like price-home">
                         <h5 [ngStyle]="{
                             'text-decoration': product?.price_after_sale
-                              ? 'line-through'
+                              ? 'none'
                               : 'none','color': product?.price_after_sale
-                              ? 'black'
-                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
+                              ? 'red'
+                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
+                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
                         </h5>
                         <!-- here we use angular-icons -->
                         <a (click)="compare(product?.id)">
@@ -307,11 +315,15 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('TV')" alt="" />
+                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('TV')" alt="" /> -->
+                    <i class="far fa-chevron-right" (click)="scrollRight( 'TV') "></i>
+
                 </div>
                 <div class="arrow-left">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('TV')" alt="" />
+                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('TV')" alt="" /> -->
+                    <i class="far fa-chevron-left" (click)="scrollLeft( 'TV') "></i>
+
                 </div>
             </div>
         </div>
@@ -348,22 +360,22 @@
                     <!-- discount area -->
                     <div class="row" *ngIf="product?.price_after_sale">
                         <div class="col">
-                            <h5 class="price" style="width: 83%;">
-                                {{ product?.price_after_sale }}<small>EGP</small>
+                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
+                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
                             </h5>
 
                             <h5 class="price">{{ product?.discount_percentage }}%</h5>
                         </div>
                     </div>
 
-                    <div class="card-price-like">
+                    <div class="card-price-like price-home">
                         <h5 [ngStyle]="{
                             'text-decoration': product?.price_after_sale
-                              ? 'line-through'
+                              ? 'none'
                               : 'none','color': product?.price_after_sale
-                              ? 'black'
-                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
+                              ? 'red'
+                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
+                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
                         </h5>
                         <!-- here we use angular-icons -->
                         <a (click)="compare(product?.id)">
@@ -400,11 +412,15 @@
             <div class="controls">
                 <div class="arrow-right">
                     <!-- scroll to right -->
-                    <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Mobile')" alt="" />
+                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Mobile')" alt="" /> -->
+                    <i class="far fa-chevron-right" (click)="scrollRight( 'Mobile') "></i>
+
                 </div>
                 <div class="arrow-left">
                     <!-- scroll to left -->
-                    <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Mobile')" alt="" />
+                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Mobile')" alt="" /> -->
+                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Mobile') "></i>
+
                 </div>
             </div>
         </div>
@@ -441,22 +457,22 @@
                     <!-- discount area -->
                     <div class="row" *ngIf="product?.price_after_sale">
                         <div class="col">
-                            <h5 class="price" style="width: 83%;">
-                                {{ product?.price_after_sale }}<small>EGP</small>
+                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
+                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
                             </h5>
 
                             <h5 class="price">{{ product?.discount_percentage }}%</h5>
                         </div>
                     </div>
 
-                    <div class="card-price-like">
+                    <div class="card-price-like price-home">
                         <h5 [ngStyle]="{
                             'text-decoration': product?.price_after_sale
-                              ? 'line-through'
+                              ? 'none'
                               : 'none','color': product?.price_after_sale
-                              ? 'black'
-                              : 'red','font-size': product?.price_after_sale? '15px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'4.2-2'}}
+                              ? 'red'
+                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
+                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
                         </h5>
                         <!-- here we use angular-icons -->
                         <a (click)="compare(product?.id)">
@@ -481,3 +497,5 @@
         </div>
     </div>
 </div>
+
+<!---->

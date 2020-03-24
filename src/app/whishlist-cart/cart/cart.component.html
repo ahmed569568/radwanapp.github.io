@@ -19,7 +19,7 @@
     >
     </app-fulfilling-square-spinner>
   </span>
-  <span *ngIf="!spinnerCart">
+<span *ngIf="!spinnerCart">
     <div class="card mb-3" *ngFor="let item of cartItems">
       <div class="row no-gutters">
         <div class="col-md-2 col-2">
@@ -39,22 +39,22 @@
               <small class="brand">{{ item.product.brand_name }}</small>
             </p>
             <p class="price" *ngIf="item.product.price_after_sale">
-              {{ item.product.price_after_sale }},00<span>EGP</span>
-            </p>
-            <p class="price" *ngIf="!item.product.price_after_sale">
-              {{ item.product.price }},00<span>EGP</span>
-            </p>
-            <div class="save-for-later">
-              <p (click)="addToWhishlist(item)">
-                <small>Save for later</small>
-              </p>
-            </div>
-            <div class="remove">
-              <p (click)="removeFromCart(item?.id)"><small>Remove</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </span>
+              {{ item.product.price_after_sale | currency:'EGP':'symbol':'2.0'}}<span></span>
+</p>
+<p class="price" *ngIf="!item.product.price_after_sale">
+    {{ item.product.price | currency:'EGP':'symbol':'1.0'}}<span></span>
+</p>
+<div class="save-for-later">
+    <p (click)="addToWhishlist(item)">
+        <small>Save for later</small>
+    </p>
+</div>
+<div class="remove">
+    <p (click)="removeFromCart(item?.id)"><small>Remove</small></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</span>
 </span>

@@ -80,13 +80,15 @@ h5 {
     font-family: "Roboto-Light";
     font-size: 10px;
     color: #3498db !important;
+    position: absolute;
+    margin-top: 11px;
 }
 
 .price {
     margin-left: unset;
     float: left;
-    font-weight: bold;
-    font-size: 17px;
+    // font-weight: bold;
+    // font-size: 22px;
 }
 
 .price small {
@@ -294,7 +296,7 @@ h5 {
         padding-bottom: 30px;
     }
     .products h5 {
-        font-size: 14px;
+        // font-size: 14px;
     }
     .card-deck {
         flex-direction: row;
@@ -379,12 +381,16 @@ h5 {
 .products.featured {
     padding-bottom: unset !important;
     h5 {
-        font-weight: 600;
+        // font-weight: 600;
         text-transform: uppercase;
         margin-bottom: 3%;
-        // color: #e74c3c !important;
-        font-size: 21px !important;
+        margin-top: 70px;
+        font-size: 26px; // color: #e74c3c !important;
+        // font-size: 21px !important;
     }
 }
 
 ///////
+.h5-price {
+    margin-top: 20px !important;
+}

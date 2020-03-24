@@ -21,6 +21,10 @@ export class SearchService {
     };
   }
 
+  getProduct(){
+    return this.http.get(`${this.url}ProductSearchView/?query=union&sub_category=1&fbclid=IwAR2U2NNTgdTgY3Y0bnxaIygaaffjS7phpAvvgAEpzPTv1UbM2-zw5eIqtto`, this.httpOptions)
+  }
+  
   search(keyword: any) {
     return this.http.get(this.url + 'products/?search=' + keyword, this.httpOptions)
   }

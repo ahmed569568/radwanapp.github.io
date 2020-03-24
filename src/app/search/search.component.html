@@ -112,10 +112,10 @@
                     {{ product?.name }}
                 </p>
                 <p class="card-text" (click)="navigateProduct(product?.id)">
-                    <small class="text-muted">{{ product?.brand?.name }}</small>
+                    <small class="text-muted-search">{{ product?.brand?.name }}</small>
                 </p>
                 <div class="card-price-like">
-                    <h5 class="price">{{ product.price }}.00<small>EGP</small></h5>
+                    <h5 class="price">{{ product.price | currency:'EGP':'symbol':'2.0'}}<small></small></h5>
                     <a (click)="compare(product.id)">
                         <fa-icon size="1x" [icon]="sync"></fa-icon>
                     </a>
@@ -130,8 +130,7 @@
             <div (click)="buy(product) " style="background-color: #298f1d;color: white ;text-align: center; " class="card-footer " *ngIf="!carts[i] && product?.availability=='In Stock' ">
                 <a role="button ">Buy Now</a>
             </div>
-
-            <div style="background-color: grey;color: white ;text-align: center; " class="card-footer " *ngIf="carts[i] || !(product?.availability=='In Stock' ) ">
+            <div style="background-color: grey;color: white ;text-align: center; " class="card-footer" *ngIf="carts[i] || !(product?.availability=='In Stock' ) ">
                 <a role="button ">Buy Now</a>
             </div>
         </div>

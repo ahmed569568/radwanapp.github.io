@@ -42,9 +42,9 @@ h1 {
 
 .first-price {
     font-family: "Roboto-Bold";
-    font-size: 30px;
-    color: #e30b13;
-    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    // font-weight: bold;
 }
 
 .first-price span {
@@ -160,7 +160,7 @@ h1 {
     background-color: #ecf0f1;
     padding-left: 10%;
     padding-right: 10%;
-    padding-top: 5%;
+    padding-bottom: 2%;
 }
 
 .description h2 {
@@ -223,8 +223,8 @@ h1 {
     font-size: 24px;
     color: #4b5858;
     font-weight: bold;
-    margin-top: 30%;
-    margin-bottom: 30%;
+    margin-top: 25%;
+    margin-bottom: 5%;
 }
 
 .card {
@@ -298,18 +298,30 @@ h1 {
 
 .price {
     margin-left: unset;
-    color: #e30b13;
+    color: #000 !important;
     float: left;
-    font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
+    margin-top: 23px;
+    margin-bottom: 33%;
+    text-decoration: line-through;
+}
+
+.price-4 {
+    color: red;
 }
 
 .price small {
     margin-left: 5px;
     font-size: 60%;
     font-weight: bold;
+    font-size: 80%;
+    font-weight: 400;
 }
 
+// .small {
+//     margin-top: 22px !important;
+//     position: absolute
+// }
 .card-price-like :nth-child(2) {
     float: right;
     margin-top: 6%;
@@ -420,7 +432,7 @@ figure {
 
 i {
     font-family: FontAwesome !important;
-    font-size: 18px;
+    // font-size: 18px;
     cursor: pointer;
 }
 
@@ -573,11 +585,11 @@ i {
         min-height: 38px;
         max-height: 38px;
     }
-    .card-text :last-child {
-        margin-top: -16px;
-    }
     .text-muted {
-        font-size: 7px;
+        font-size: 10px;
+        color: #3498db !important;
+        margin-top: 20px !important;
+        position: absolute !important;
     }
     .price {
         font-size: 9px !important;
@@ -654,3 +666,5 @@ i {
         display: none;
     }
 }
+
+////
