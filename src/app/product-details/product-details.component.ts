@@ -11,15 +11,12 @@ import { RadwanSpinnerService } from "../services/radwan-spinner.service";
 
 declare var $: any;
 
-
-
 @Component({
   selector: "app-product-details",
   templateUrl: "./product-details.component.html",
   styleUrls: ["./product-details.component.scss"]
 })
 export class ProductDetailsComponent implements OnInit {
-
   product: any;
   imagesRect: Image[] = [];
   showGallary: boolean = false;
@@ -34,8 +31,6 @@ export class ProductDetailsComponent implements OnInit {
   recommandedCarts: any[];
   relatedProducts: any[];
   sync = faSync;
-
-
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -69,7 +64,7 @@ export class ProductDetailsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get("id");
 
     this.productsService.getProduct(id).subscribe((data: any) => {
-      console.log( data);
+      console.log(data);
       this.product = data;
       // adding related products to a list to use it in the slider by tayeb
       this.relatedProducts = data.related_products;
@@ -102,14 +97,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   setImagesInGallary(imgArray: any) {
+    console.log("imgArray", imgArray);
     for (let i = 0; i < imgArray.length; i++) {
-      this.imagesRect.push(
-        new Image(
-          i,
-          { img: imgArray[i].image_url },
-          { img: imgArray[i].image_url }
-        )
-      );
+      if (imgArray[i].image_url) {
+        this.imagesRect.push(
+          new Image(
+            i,
+            { img: imgArray[i].image_url },
+            { img: imgArray[i].image_url }
+          )
+        );
+      }
     }
 
     this.showGallary = true;
