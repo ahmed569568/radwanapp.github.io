@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   flashSale: any;
   tvSale: any;
   mobileSale: any;
+  RecmoCounter = 1;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -292,6 +293,14 @@ export class HomeComponent implements OnInit {
   // scroll Right function to all sliders in page
   scrollRight(type: any) {
     if (type == "Recom") {
+      this.RecmoCounter++;
+      console.log(
+        "this.featuredProducts.length / 4",
+        Math.round(this.featuredProducts.length / 4)
+      );
+      if (this.RecmoCounter == Math.round(this.featuredProducts.length / 4)) {
+        document.getElementById("recomRight").style.display = "none";
+      }
       this.recommendedScroll.nativeElement.scrollTo({
         left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"

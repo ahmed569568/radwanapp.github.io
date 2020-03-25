@@ -1,501 +1,710 @@
 <!-- Slider  First Image In Array Of Slides Must Be Out Of *ngFor  -->
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <!-- sliderAct Is First Image In Our Array Of Image sliders  -->
-            <img src="{{ sliderAct?.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSlider(sliderAct?.url)" />
-        </div>
-        <div class="carousel-item" *ngFor="let slider of sliders">
-            <img src="{{ slider?.picture }}" class="d-block w-100" alt="..." style="cursor:pointer;" (click)="navigateSlider(slider?.url)" />
-        </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!-- sliderAct Is First Image In Our Array Of Image sliders  -->
+      <img
+        src="{{ sliderAct?.picture }}"
+        class="d-block w-100"
+        alt="..."
+        style="cursor:pointer;"
+        (click)="navigateSlider(sliderAct?.url)"
+      />
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <div class="carousel-item" *ngFor="let slider of sliders">
+      <img
+        src="{{ slider?.picture }}"
+        class="d-block w-100"
+        alt="..."
+        style="cursor:pointer;"
+        (click)="navigateSlider(slider?.url)"
+      />
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleControls"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleControls"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 
 <div class="container-fluid products featured" style="background-color: white;">
-    <div class="row">
-        <h5>Featured products</h5>
+  <div class="row">
+    <h5>Featured products</h5>
+  </div>
+  <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+    <div
+      class="col-lg-11"
+      style="height: 58px;"
+      *ngIf="featuredProducts.length > 4"
+    >
+      <div class="controls">
+        <div class="arrow-right">
+          <!-- scroll to right -->
+          <!-- <img src="assets/icons/Arrow right@1x.png " (click)="scrollRight( 'Recom') " alt=" " /> -->
+          <i
+            class="far fa-chevron-right"
+            (click)="scrollRight('Recom')"
+            id="recomRight"
+          ></i>
+        </div>
+        <div class="arrow-left ">
+          <!-- scroll to left -->
+          <!-- <img src="assets/icons/Arrow left@1x.png " (click)="scrollLeft( 'Recom') " alt=" " /> -->
+          <i class="far fa-chevron-left" (click)="scrollLeft('Recom')"></i>
+        </div>
+      </div>
     </div>
-    <div class="row ">
-        <!-- tayeb adding 2 arrows for nav -->
-        <div class="col-lg-11" style="height: 58px;" *ngIf="featuredProducts.length > 4">
-            <div class="controls">
-                <div class="arrow-right">
-                    <!-- scroll to right -->
-                    <!-- <img src="assets/icons/Arrow right@1x.png " (click)="scrollRight( 'Recom') " alt=" " /> -->
-                    <i class="far fa-chevron-right" (click)="scrollRight( 'Recom') "></i>
-                </div>
-                <div class="arrow-left ">
-                    <!-- scroll to left -->
-                    <!-- <img src="assets/icons/Arrow left@1x.png " (click)="scrollLeft( 'Recom') " alt=" " /> -->
-                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Recom') "></i>
-                </div>
+    <!-- Bootstrap4 Cards -->
+    <div class="card-deck " #recommendedScroll>
+      <ng-container *ngFor="let product of featuredProducts; let i = i; ndex">
+        <div class="card ">
+          <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
+          <div class="my-wrapper ">
+            <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
+            <img
+              src="{{ (product?.productimage)[0]?.image_url }} "
+              class="card-img-top "
+              (click)="navigateProduct(product?.id)"
+              alt="... "
+            />
+            <div class="middle ">
+              <div class="text " (click)="navigateProduct(product?.id)">
+                learn More
+              </div>
             </div>
+          </div>
+          <div class="card-body ">
+            <div class="row ">
+              <div class="col ">
+                <p class="card-text " (click)="navigateProduct(product?.id)">
+                  {{ product?.name }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="card-text " (click)="navigateProduct(product?.id)">
+                  <small class="text-muted-home">{{
+                    product?.brand?.name
+                  }}</small>
+                </p>
+              </div>
+            </div>
+            <!-- discount area -->
+            <div class="row " *ngIf="product?.price_after_sale">
+              <div class="col">
+                <h5
+                  class="price-dis"
+                  style="width: 83%; font-size: 15px; text-decoration: line-through;"
+                >
+                  {{ product?.price_after_sale | currency: "EGP":"symbol":"2.0"
+                  }}<small></small>
+                </h5>
+                <h5 class="price ">{{ product?.discount_percentage }}%</h5>
+              </div>
+            </div>
+
+            <!-- real price -->
+            <div class="card-price-like price-home">
+              <h5
+                class="h5-price"
+                [ngStyle]="{
+                  'text-decoration': product?.price_after_sale
+                    ? 'none'
+                    : 'none',
+                  color: product?.price_after_sale ? 'red' : 'red',
+                  'font-size': product?.price_after_sale ? '20px' : '20px'
+                }"
+              >
+                {{ product?.price | currency: "EGP":"symbol":"2.0" }}
+              </h5>
+              <!-- here we use angular-icons -->
+              <a (click)="compare(product?.id)">
+                <fa-icon size="1x " [icon]="sync"></fa-icon>
+              </a>
+              <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+                ><img src="assets/logo/love.svg " alt=" "
+              /></a>
+              <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+                ><img src="assets/logo/love Active@1x.png " alt=" "
+              /></a>
+
+              <!-- Product Out Of Stock Hide Cart -->
+              <a
+                *ngIf="!carts[i] && product?.availability == 'In Stock'"
+                (click)="addToCart(product?.id, i)"
+                ><img src="assets/logo/cart.svg " alt=" "
+              /></a>
+
+              <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"
+                ><img src="assets/icons/Cart-actv.svg " alt=" "
+              /></a>
+            </div>
+          </div>
+          <div
+            (click)="buy(product)"
+            style="background-color: #298f1d;color: white ;text-align: center; "
+            class="card-footer "
+            *ngIf="!carts[i] && product?.availability == 'In Stock'"
+          >
+            <a role="button ">Buy Now</a>
+          </div>
+
+          <div
+            style="background-color: grey;color: white ;text-align: center; "
+            class="card-footer "
+            *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+          >
+            <a role="button ">Buy Now</a>
+          </div>
         </div>
-        <!-- Bootstrap4 Cards -->
-        <div class="card-deck " #recommendedScroll>
-            <ng-container *ngFor="let product of featuredProducts; let i=i ndex ">
-                <div class="card ">
-                    <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                    <div class="my-wrapper ">
-                        <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                        <img src="{{ (product?.productimage)[0]?.image_url }} " class="card-img-top " (click)="navigateProduct(product?.id) " alt="... " />
-                        <div class="middle ">
-                            <div class="text " (click)="navigateProduct(product?.id) ">
-                                learn More
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body ">
-                        <div class="row ">
-                            <div class="col ">
-                                <p class="card-text " (click)="navigateProduct(product?.id) ">
-                                    {{ product?.name }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text " (click)="navigateProduct(product?.id) ">
-                                    <small class="text-muted-home">{{ product?.brand?.name }}</small>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- discount area -->
-                        <div class="row " *ngIf="product?.price_after_sale ">
-                            <div class="col">
-                                <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
-                                    {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
-                                </h5>
-                                <h5 class="price ">{{ product?.discount_percentage }}%</h5>
-                            </div>
-                        </div>
-
-                        <!-- real price -->
-                        <div class="card-price-like price-home">
-                            <h5 class="h5-price" [ngStyle]="{ 'text-decoration': product?.price_after_sale ? 'none' : 'none', 'color': product?.price_after_sale ? 'red' : 'red', 'font-size': product?.price_after_sale? '20px' : '20px'} ">
-                                {{ product?.price | currency:'EGP':'symbol':'2.0'}}
-                            </h5>
-                            <!-- here we use angular-icons -->
-                            <a (click)="compare(product?.id) ">
-                                <fa-icon size="1x " [icon]="sync "></fa-icon>
-                            </a>
-                            <a *ngIf="!likes[i] " (click)="addToWhishlist(product?.id, i) "><img src="assets/logo/love.svg " alt=" " /></a>
-                            <a *ngIf="likes[i] " (click)="addToWhishlist(product?.id, i) "><img src="assets/logo/love Active@1x.png " alt=" " /></a>
-
-                            <!-- Product Out Of Stock Hide Cart -->
-                            <a *ngIf="!carts[i] && product?.availability=='In Stock' " (click)="addToCart(product?.id, i) "><img src="assets/logo/cart.svg " alt=" " /></a>
-
-                            <a *ngIf="carts[i] " (click)="addToCart(product?.id, i) "><img src="assets/icons/Cart-actv.svg " alt=" " /></a>
-                        </div>
-                    </div>
-                    <div (click)="buy(product) " style="background-color: #298f1d;color: white ;text-align: center; " class="card-footer " *ngIf="!carts[i] && product?.availability=='In Stock' ">
-                        <a role="button ">Buy Now</a>
-                    </div>
-
-                    <div style="background-color: grey;color: white ;text-align: center; " class="card-footer " *ngIf="carts[i] || !(product?.availability=='In Stock' ) ">
-                        <a role="button ">Buy Now</a>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
+      </ng-container>
     </div>
+  </div>
 </div>
 
 <!-- Here List All Products  -->
-<div class="container-fluid products featured " style="background-color: white; ">
-    <div class="row ">
-        <h5>Popular products</h5>
-    </div>
-    <div class="row ">
-        <!-- tayeb adding 2 arrows for nav -->
-        <div class="col-lg-11 " style="height: 58px; " *ngIf="popularProducts.length> 4">
-            <div class="controls">
-                <div class="arrow-right">
-                    <!-- scroll to right -->
-                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Popular')" alt="" /> -->
-                    <i class="far fa-chevron-right" (click)="scrollRight( 'Popular') "></i>
-
-                </div>
-                <div class="arrow-left">
-                    <!-- scroll to left -->
-                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Popular')" alt="" /> -->
-                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Popular') "></i>
-
-                </div>
-            </div>
+<div
+  class="container-fluid products featured "
+  style="background-color: white; "
+>
+  <div class="row ">
+    <h5>Popular products</h5>
+  </div>
+  <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+    <div
+      class="col-lg-11 "
+      style="height: 58px; "
+      *ngIf="popularProducts.length > 4"
+    >
+      <div class="controls">
+        <div class="arrow-right">
+          <!-- scroll to right -->
+          <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Popular')" alt="" /> -->
+          <i class="far fa-chevron-right" (click)="scrollRight('Popular')"></i>
         </div>
-        <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #popularScroll>
-            <div class="card" *ngFor="let product of popularProducts; let i = index">
-                <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                <div class="my-wrapper">
-                    <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                    <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                    <div class="middle">
-                        <div class="text" (click)="navigateProduct(product?.id)">
-                            learn More
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                {{ product?.name }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                <small class="text-muted">{{ product?.brand?.name }}</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- discount area -->
-                    <div class="row" *ngIf="product?.price_after_sale">
-                        <div class="col">
-                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
-                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
-
-                            </h5>
-                            <h5 class="price">{{ product?.discount_percentage }}%</h5>
-                        </div>
-                    </div>
-
-                    <div class="card-price-like price-home">
-                        <h5 [ngStyle]="{
-                            'text-decoration': product?.price_after_sale
-                              ? 'none'
-                              : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
-                        </h5>
-                        <!-- here we use angular-icons -->
-                        <a (click)="compare(product?.id)">
-                            <fa-icon size="1x" [icon]="sync"></fa-icon>
-                        </a>
-                        <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love.svg" alt="" /></a>
-                        <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
-
-                        <!-- Product Out Of Stock Hide Cart -->
-                        <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id, i)"><img src="assets/logo/cart.svg" alt="" /></a>
-
-                        <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
-                    </div>
-                </div>
-                <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
-                    <a role="button" (click)="buy(product)">Buy Now</a>
-                </div>
-                <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="carts[i] || !(product?.availability == 'In Stock')">
-                    <a role="button">Buy Now</a>
-                </div>
-            </div>
+        <div class="arrow-left">
+          <!-- scroll to left -->
+          <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Popular')" alt="" /> -->
+          <i class="far fa-chevron-left" (click)="scrollLeft('Popular')"></i>
         </div>
+      </div>
     </div>
+    <!-- Bootstrap4 Cards -->
+    <div class="card-deck" #popularScroll>
+      <div class="card" *ngFor="let product of popularProducts; let i = index">
+        <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
+        <div class="my-wrapper">
+          <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
+          <img
+            src="{{ (product?.productimage)[0]?.image_url }}"
+            class="card-img-top"
+            (click)="navigateProduct(product?.id)"
+            alt="..."
+          />
+          <div class="middle">
+            <div class="text" (click)="navigateProduct(product?.id)">
+              learn More
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                {{ product?.name }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                <small class="text-muted">{{ product?.brand?.name }}</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- discount area -->
+          <div class="row" *ngIf="product?.price_after_sale">
+            <div class="col">
+              <h5
+                class="price-dis"
+                style="width: 83%; font-size: 15px; text-decoration: line-through;"
+              >
+                {{ product?.price_after_sale | currency: "EGP":"symbol":"2.0"
+                }}<small></small>
+              </h5>
+              <h5 class="price">{{ product?.discount_percentage }}%</h5>
+            </div>
+          </div>
+
+          <div class="card-price-like price-home">
+            <h5
+              [ngStyle]="{
+                'text-decoration': product?.price_after_sale ? 'none' : 'none',
+                color: product?.price_after_sale ? 'red' : 'red',
+                'font-size': product?.price_after_sale ? '20px' : '20px'
+              }"
+            >
+              {{ product?.price | currency: "EGP":"symbol":"2.0" }}
+            </h5>
+            <!-- here we use angular-icons -->
+            <a (click)="compare(product?.id)">
+              <fa-icon size="1x" [icon]="sync"></fa-icon>
+            </a>
+            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love.svg" alt=""
+            /></a>
+            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love Active@1x.png" alt=""
+            /></a>
+
+            <!-- Product Out Of Stock Hide Cart -->
+            <a
+              *ngIf="!carts[i] && product?.availability == 'In Stock'"
+              (click)="addToCart(product.id, i)"
+              ><img src="assets/logo/cart.svg" alt=""
+            /></a>
+
+            <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"
+              ><img src="assets/icons/Cart-actv.svg" alt=""
+            /></a>
+          </div>
+        </div>
+        <div
+          style="background-color: #298f1d;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="!carts[i] && product?.availability == 'In Stock'"
+        >
+          <a role="button" (click)="buy(product)">Buy Now</a>
+        </div>
+        <div
+          style="background-color: grey;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+        >
+          <a role="button">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- adding New Arrivals -->
-<div class="container-fluid products featured" style="background-color: white;" [ngStyle]="{ display: newArrivals.length == 0 ? 'none' : 'block' }">
-    <div class="row">
-        <h5>New Arrivals</h5>
-    </div>
-    <div class="row ">
-        <!-- tayeb adding 2 arrows for nav -->
-        <div class="col-lg-11" style="height: 58px;" *ngIf="popularProducts.length > 4">
-            <div class="controls">
-                <div class="arrow-right">
-                    <!-- scroll to right -->
-                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('newArrivals')" alt="" /> -->
-                    <i class="far fa-chevron-right" (click)="scrollRight( 'newArrivals') "></i>
-
-                </div>
-                <div class="arrow-left">
-                    <!-- scroll to left -->
-                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('newArrivals')" alt="" /> -->
-                    <i class="far fa-chevron-left" (click)="scrollLeft( 'newArrivals') "></i>
-
-                </div>
-            </div>
+<div
+  class="container-fluid products featured"
+  style="background-color: white;"
+  [ngStyle]="{ display: newArrivals.length == 0 ? 'none' : 'block' }"
+>
+  <div class="row">
+    <h5>New Arrivals</h5>
+  </div>
+  <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+    <div
+      class="col-lg-11"
+      style="height: 58px;"
+      *ngIf="popularProducts.length > 4"
+    >
+      <div class="controls">
+        <div class="arrow-right">
+          <!-- scroll to right -->
+          <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('newArrivals')" alt="" /> -->
+          <i
+            class="far fa-chevron-right"
+            (click)="scrollRight('newArrivals')"
+          ></i>
         </div>
-        <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #newArrivalsScroll>
-            <div class="card" *ngFor="let product of newArrivals; let i = index">
-                <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                <div class="my-wrapper">
-                    <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                    <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                    <div class="middle">
-                        <div class="text" (click)="navigateProduct(product?.id)">
-                            learn More
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                {{ product?.name }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                <small class="text-muted">{{ product?.brand?.name }}</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- discount area -->
-                    <div class="row" *ngIf="product?.price_after_sale">
-                        <div class="col">
-                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
-                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
-                            </h5>
-
-                            <h5 class="price">{{ product?.discount_percentage }}%</h5>
-                        </div>
-                    </div>
-
-                    <div class="card-price-like price-home">
-                        <h5 [ngStyle]="{
-                            'text-decoration': product?.price_after_sale
-                              ? 'none'
-                              : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
-                        </h5>
-                        <!-- here we use angular-icons -->
-                        <a (click)="compare(product?.id)">
-                            <fa-icon size="1x" [icon]="sync"></fa-icon>
-                        </a>
-                        <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love.svg" alt="" /></a>
-                        <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
-
-                        <!-- Product Out Of Stock Hide Cart -->
-                        <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id, i)"><img src="assets/logo/cart.svg" alt="" /></a>
-
-                        <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
-                    </div>
-                </div>
-                <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
-                    <a role="button" (click)="buy(product)">Buy Now</a>
-                </div>
-                <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="carts[i] || !(product?.availability == 'In Stock')">
-                    <a role="button">Buy Now</a>
-                </div>
-            </div>
+        <div class="arrow-left">
+          <!-- scroll to left -->
+          <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('newArrivals')" alt="" /> -->
+          <i
+            class="far fa-chevron-left"
+            (click)="scrollLeft('newArrivals')"
+          ></i>
         </div>
+      </div>
     </div>
+    <!-- Bootstrap4 Cards -->
+    <div class="card-deck" #newArrivalsScroll>
+      <div class="card" *ngFor="let product of newArrivals; let i = index">
+        <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
+        <div class="my-wrapper">
+          <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
+          <img
+            src="{{ (product?.productimage)[0]?.image_url }}"
+            class="card-img-top"
+            (click)="navigateProduct(product?.id)"
+            alt="..."
+          />
+          <div class="middle">
+            <div class="text" (click)="navigateProduct(product?.id)">
+              learn More
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                {{ product?.name }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                <small class="text-muted">{{ product?.brand?.name }}</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- discount area -->
+          <div class="row" *ngIf="product?.price_after_sale">
+            <div class="col">
+              <h5
+                class="price-dis"
+                style="width: 83%; font-size: 15px; text-decoration: line-through;"
+              >
+                {{ product?.price_after_sale | currency: "EGP":"symbol":"2.0"
+                }}<small></small>
+              </h5>
+
+              <h5 class="price">{{ product?.discount_percentage }}%</h5>
+            </div>
+          </div>
+
+          <div class="card-price-like price-home">
+            <h5
+              [ngStyle]="{
+                'text-decoration': product?.price_after_sale ? 'none' : 'none',
+                color: product?.price_after_sale ? 'red' : 'red',
+                'font-size': product?.price_after_sale ? '20px' : '20px'
+              }"
+            >
+              {{ product?.price | currency: "EGP":"symbol":"2.0" }}
+            </h5>
+            <!-- here we use angular-icons -->
+            <a (click)="compare(product?.id)">
+              <fa-icon size="1x" [icon]="sync"></fa-icon>
+            </a>
+            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love.svg" alt=""
+            /></a>
+            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love Active@1x.png" alt=""
+            /></a>
+
+            <!-- Product Out Of Stock Hide Cart -->
+            <a
+              *ngIf="!carts[i] && product?.availability == 'In Stock'"
+              (click)="addToCart(product.id, i)"
+              ><img src="assets/logo/cart.svg" alt=""
+            /></a>
+
+            <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"
+              ><img src="assets/icons/Cart-actv.svg" alt=""
+            /></a>
+          </div>
+        </div>
+        <div
+          style="background-color: #298f1d;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="!carts[i] && product?.availability == 'In Stock'"
+        >
+          <a role="button" (click)="buy(product)">Buy Now</a>
+        </div>
+        <div
+          style="background-color: grey;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+        >
+          <a role="button">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- adding Tv Sale -->
-<div class="container-fluid products featured" style="background-color: white;" [ngStyle]="{ display: tvSale.length == 0 ? 'none' : 'block' }">
-    <div class="row">
-        <h5>TV Offers</h5>
-    </div>
-    <div class="row ">
-        <!-- tayeb adding 2 arrows for nav -->
-        <div class="col-lg-11" style="height: 58px;" *ngIf="popularProducts.length > 4">
-            <div class="controls">
-                <div class="arrow-right">
-                    <!-- scroll to right -->
-                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('TV')" alt="" /> -->
-                    <i class="far fa-chevron-right" (click)="scrollRight( 'TV') "></i>
-
-                </div>
-                <div class="arrow-left">
-                    <!-- scroll to left -->
-                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('TV')" alt="" /> -->
-                    <i class="far fa-chevron-left" (click)="scrollLeft( 'TV') "></i>
-
-                </div>
-            </div>
+<div
+  class="container-fluid products featured"
+  style="background-color: white;"
+  [ngStyle]="{ display: tvSale.length == 0 ? 'none' : 'block' }"
+>
+  <div class="row">
+    <h5>TV Offers</h5>
+  </div>
+  <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+    <div
+      class="col-lg-11"
+      style="height: 58px;"
+      *ngIf="popularProducts.length > 4"
+    >
+      <div class="controls">
+        <div class="arrow-right">
+          <!-- scroll to right -->
+          <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('TV')" alt="" /> -->
+          <i class="far fa-chevron-right" (click)="scrollRight('TV')"></i>
         </div>
-        <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #tvScroll>
-            <div class="card" *ngFor="let product of tvSale; let i = index">
-                <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                <div class="my-wrapper">
-                    <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                    <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                    <div class="middle">
-                        <div class="text" (click)="navigateProduct(product?.id)">
-                            learn More
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                {{ product?.name }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                <small class="text-muted">{{ product?.brand?.name }}</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- discount area -->
-                    <div class="row" *ngIf="product?.price_after_sale">
-                        <div class="col">
-                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
-                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
-                            </h5>
-
-                            <h5 class="price">{{ product?.discount_percentage }}%</h5>
-                        </div>
-                    </div>
-
-                    <div class="card-price-like price-home">
-                        <h5 [ngStyle]="{
-                            'text-decoration': product?.price_after_sale
-                              ? 'none'
-                              : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
-                        </h5>
-                        <!-- here we use angular-icons -->
-                        <a (click)="compare(product?.id)">
-                            <fa-icon size="1x" [icon]="sync"></fa-icon>
-                        </a>
-                        <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love.svg" alt="" /></a>
-                        <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
-
-                        <!-- Product Out Of Stock Hide Cart -->
-                        <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id, i)"><img src="assets/logo/cart.svg" alt="" /></a>
-
-                        <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
-                    </div>
-                </div>
-                <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
-                    <a role="button" (click)="buy(product)">Buy Now</a>
-                </div>
-                <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="carts[i] || !(product?.availability == 'In Stock')">
-                    <a role="button">Buy Now</a>
-                </div>
-            </div>
+        <div class="arrow-left">
+          <!-- scroll to left -->
+          <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('TV')" alt="" /> -->
+          <i class="far fa-chevron-left" (click)="scrollLeft('TV')"></i>
         </div>
+      </div>
     </div>
+    <!-- Bootstrap4 Cards -->
+    <div class="card-deck" #tvScroll>
+      <div class="card" *ngFor="let product of tvSale; let i = index">
+        <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
+        <div class="my-wrapper">
+          <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
+          <img
+            src="{{ (product?.productimage)[0]?.image_url }}"
+            class="card-img-top"
+            (click)="navigateProduct(product?.id)"
+            alt="..."
+          />
+          <div class="middle">
+            <div class="text" (click)="navigateProduct(product?.id)">
+              learn More
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                {{ product?.name }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                <small class="text-muted">{{ product?.brand?.name }}</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- discount area -->
+          <div class="row" *ngIf="product?.price_after_sale">
+            <div class="col">
+              <h5
+                class="price-dis"
+                style="width: 83%; font-size: 15px; text-decoration: line-through;"
+              >
+                {{ product?.price_after_sale | currency: "EGP":"symbol":"2.0"
+                }}<small></small>
+              </h5>
+
+              <h5 class="price">{{ product?.discount_percentage }}%</h5>
+            </div>
+          </div>
+
+          <div class="card-price-like price-home">
+            <h5
+              [ngStyle]="{
+                'text-decoration': product?.price_after_sale ? 'none' : 'none',
+                color: product?.price_after_sale ? 'red' : 'red',
+                'font-size': product?.price_after_sale ? '20px' : '20px'
+              }"
+            >
+              {{ product?.price | currency: "EGP":"symbol":"2.0" }}
+            </h5>
+            <!-- here we use angular-icons -->
+            <a (click)="compare(product?.id)">
+              <fa-icon size="1x" [icon]="sync"></fa-icon>
+            </a>
+            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love.svg" alt=""
+            /></a>
+            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love Active@1x.png" alt=""
+            /></a>
+
+            <!-- Product Out Of Stock Hide Cart -->
+            <a
+              *ngIf="!carts[i] && product?.availability == 'In Stock'"
+              (click)="addToCart(product.id, i)"
+              ><img src="assets/logo/cart.svg" alt=""
+            /></a>
+
+            <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"
+              ><img src="assets/icons/Cart-actv.svg" alt=""
+            /></a>
+          </div>
+        </div>
+        <div
+          style="background-color: #298f1d;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="!carts[i] && product?.availability == 'In Stock'"
+        >
+          <a role="button" (click)="buy(product)">Buy Now</a>
+        </div>
+        <div
+          style="background-color: grey;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+        >
+          <a role="button">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- adding Mobile Sale -->
-<div class="container-fluid products featured" style="background-color: white;" [ngStyle]="{ display: mobileSale.length == 0 ? 'none' : 'block' }">
-    <div class="row">
-        <h5>Mobile Offers</h5>
-    </div>
-    <div class="row ">
-        <!-- tayeb adding 2 arrows for nav -->
-        <div class="col-lg-11" style="height: 58px;" *ngIf="popularProducts.length > 4">
-            <div class="controls">
-                <div class="arrow-right">
-                    <!-- scroll to right -->
-                    <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Mobile')" alt="" /> -->
-                    <i class="far fa-chevron-right" (click)="scrollRight( 'Mobile') "></i>
-
-                </div>
-                <div class="arrow-left">
-                    <!-- scroll to left -->
-                    <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Mobile')" alt="" /> -->
-                    <i class="far fa-chevron-left" (click)="scrollLeft( 'Mobile') "></i>
-
-                </div>
-            </div>
+<div
+  class="container-fluid products featured"
+  style="background-color: white;"
+  [ngStyle]="{ display: mobileSale.length == 0 ? 'none' : 'block' }"
+>
+  <div class="row">
+    <h5>Mobile Offers</h5>
+  </div>
+  <div class="row ">
+    <!-- tayeb adding 2 arrows for nav -->
+    <div
+      class="col-lg-11"
+      style="height: 58px;"
+      *ngIf="popularProducts.length > 4"
+    >
+      <div class="controls">
+        <div class="arrow-right">
+          <!-- scroll to right -->
+          <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRight('Mobile')" alt="" /> -->
+          <i class="far fa-chevron-right" (click)="scrollRight('Mobile')"></i>
         </div>
-        <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #mobileScroll>
-            <div class="card" *ngFor="let product of mobileSale; let i = index">
-                <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
-                <div class="my-wrapper">
-                    <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
-                    <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                    <div class="middle">
-                        <div class="text" (click)="navigateProduct(product?.id)">
-                            learn More
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                {{ product?.name }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text" (click)="navigateProduct(product?.id)">
-                                <small class="text-muted">{{ product?.brand?.name }}</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- discount area -->
-                    <div class="row" *ngIf="product?.price_after_sale">
-                        <div class="col">
-                            <h5 class="price-dis" style="width: 83%; font-size: 15px; text-decoration: line-through;">
-                                {{ product?.price_after_sale | currency:'EGP':'symbol':'2.0'}}<small></small>
-                            </h5>
-
-                            <h5 class="price">{{ product?.discount_percentage }}%</h5>
-                        </div>
-                    </div>
-
-                    <div class="card-price-like price-home">
-                        <h5 [ngStyle]="{
-                            'text-decoration': product?.price_after_sale
-                              ? 'none'
-                              : 'none','color': product?.price_after_sale
-                              ? 'red'
-                              : 'red','font-size': product?.price_after_sale? '20px' : '20px'}">
-                            {{ product?.price | currency:'EGP':'symbol':'2.0'}}
-                        </h5>
-                        <!-- here we use angular-icons -->
-                        <a (click)="compare(product?.id)">
-                            <fa-icon size="1x" [icon]="sync"></fa-icon>
-                        </a>
-                        <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love.svg" alt="" /></a>
-                        <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
-
-                        <!-- Product Out Of Stock Hide Cart -->
-                        <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id, i)"><img src="assets/logo/cart.svg" alt="" /></a>
-
-                        <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
-                    </div>
-                </div>
-                <div style="background-color: #298f1d;color: white ;text-align: center;" class="card-footer" *ngIf="!carts[i] && product?.availability == 'In Stock'">
-                    <a role="button" (click)="buy(product)">Buy Now</a>
-                </div>
-                <div style="background-color: grey;color: white ;text-align: center;" class="card-footer" *ngIf="carts[i] || !(product?.availability == 'In Stock')">
-                    <a role="button">Buy Now</a>
-                </div>
-            </div>
+        <div class="arrow-left">
+          <!-- scroll to left -->
+          <!-- <img src="assets/icons/Arrow left@1x.png" (click)="scrollLeft('Mobile')" alt="" /> -->
+          <i class="far fa-chevron-left" (click)="scrollLeft('Mobile')"></i>
         </div>
+      </div>
     </div>
+    <!-- Bootstrap4 Cards -->
+    <div class="card-deck" #mobileScroll>
+      <div class="card" *ngFor="let product of mobileSale; let i = index">
+        <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
+        <div class="my-wrapper">
+          <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
+          <img
+            src="{{ (product?.productimage)[0]?.image_url }}"
+            class="card-img-top"
+            (click)="navigateProduct(product?.id)"
+            alt="..."
+          />
+          <div class="middle">
+            <div class="text" (click)="navigateProduct(product?.id)">
+              learn More
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                {{ product?.name }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="card-text" (click)="navigateProduct(product?.id)">
+                <small class="text-muted">{{ product?.brand?.name }}</small>
+              </p>
+            </div>
+          </div>
+
+          <!-- discount area -->
+          <div class="row" *ngIf="product?.price_after_sale">
+            <div class="col">
+              <h5
+                class="price-dis"
+                style="width: 83%; font-size: 15px; text-decoration: line-through;"
+              >
+                {{ product?.price_after_sale | currency: "EGP":"symbol":"2.0"
+                }}<small></small>
+              </h5>
+
+              <h5 class="price">{{ product?.discount_percentage }}%</h5>
+            </div>
+          </div>
+
+          <div class="card-price-like price-home">
+            <h5
+              [ngStyle]="{
+                'text-decoration': product?.price_after_sale ? 'none' : 'none',
+                color: product?.price_after_sale ? 'red' : 'red',
+                'font-size': product?.price_after_sale ? '20px' : '20px'
+              }"
+            >
+              {{ product?.price | currency: "EGP":"symbol":"2.0" }}
+            </h5>
+            <!-- here we use angular-icons -->
+            <a (click)="compare(product?.id)">
+              <fa-icon size="1x" [icon]="sync"></fa-icon>
+            </a>
+            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love.svg" alt=""
+            /></a>
+            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+              ><img src="assets/logo/love Active@1x.png" alt=""
+            /></a>
+
+            <!-- Product Out Of Stock Hide Cart -->
+            <a
+              *ngIf="!carts[i] && product?.availability == 'In Stock'"
+              (click)="addToCart(product.id, i)"
+              ><img src="assets/logo/cart.svg" alt=""
+            /></a>
+
+            <a *ngIf="carts[i]" (click)="addToCart(product?.id, i)"
+              ><img src="assets/icons/Cart-actv.svg" alt=""
+            /></a>
+          </div>
+        </div>
+        <div
+          style="background-color: #298f1d;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="!carts[i] && product?.availability == 'In Stock'"
+        >
+          <a role="button" (click)="buy(product)">Buy Now</a>
+        </div>
+        <div
+          style="background-color: grey;color: white ;text-align: center;"
+          class="card-footer"
+          *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+        >
+          <a role="button">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!---->
