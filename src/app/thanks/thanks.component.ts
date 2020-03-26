@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thanks.component.scss']
 })
 export class ThanksComponent implements OnInit {
-  
-  constructor() { }
 
-  ngOnInit() {
+  constructor() { 
+  
+   
   }
 
+  ngOnInit() {
+
+  
+ 
+
+  }
 }

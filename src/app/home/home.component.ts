@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit {
   tvSale: any;
   mobileSale: any;
   RecmoCounter = 1;
+  ////
+  isOpen:boolean=true;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -292,15 +294,16 @@ export class HomeComponent implements OnInit {
   }
   // scroll Right function to all sliders in page
   scrollRight(type: any) {
+    this.isOpen = !this.isOpen
     if (type == "Recom") {
       this.RecmoCounter++;
       console.log(
         "this.featuredProducts.length / 4",
         Math.round(this.featuredProducts.length / 4)
       );
-      if (this.RecmoCounter == Math.round(this.featuredProducts.length / 4)) {
-        document.getElementById("recomRight").style.display = "none";
-      }
+      // if (this.RecmoCounter == Math.round(this.featuredProducts.length / 4)) {
+      //   document.getElementById("recomRight").style.color = "red";
+      // }
       this.recommendedScroll.nativeElement.scrollTo({
         left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
@@ -330,6 +333,8 @@ export class HomeComponent implements OnInit {
 
   // scroll Left function to all sliders in page
   scrollLeft(type: any) {
+    this.isOpen = !this.isOpen
+
     if (type == "Recom") {
       this.recommendedScroll.nativeElement.scrollTo({
         left: this.recommendedScroll.nativeElement.scrollLeft - 1000,

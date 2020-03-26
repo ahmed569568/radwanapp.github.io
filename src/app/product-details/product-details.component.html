@@ -1,22 +1,10 @@
 <div class="container-fluid" style="background-color: white;">
-    <div class="row" style="    max-height: 666px;">
+    <div class="row">
         <div class="col-lg-6 first">
             <!-- Show In Desktop -->
             <ks-carousel *ngIf="showGallary" [id]="107" [images]="imagesRect" [playConfig]="{ autoPlay: false }" [previewConfig]="{ visible: true, number: 5 }" class="gallary-desktop"></ks-carousel>
             <!-- show In Mobile -->
             <ks-carousel *ngIf="showGallary" [id]="108" [images]="imagesRect" [playConfig]="{ autoPlay: false }" [previewConfig]="{ visible: true, number: 2 }" class="gallary-mobile"></ks-carousel>
-            <!-- <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." /> -->
-            <!---->
-            <!-- <div class="controls">
-                <div class="arrow-right"> -->
-            <!-- scroll to right -->
-            <!-- <i class="far fa-chevron-right" (click)="scrollRight( 'newArrivals') "></i>
-        </div>
-        <div class="arrow-left" style="margin-right: 515px !important;"> -->
-            <!-- scroll to left -->
-            <!-- <i class="far fa-chevron-left" (click)="scrollLeft( 'newArrivals') "></i>
-        </div>
-    </div> -->
             <!---->
         </div>
         <div class="col-lg-6 second">
@@ -141,12 +129,20 @@
                     <div class="arrow-right">
                         <!-- scroll to right -->
                         <!-- <img src="assets/icons/Arrow right@1x.png" (click)="scrollRecomRight()" alt="" /> -->
-                        <i class="far fa-chevron-right" (click)="scrollRecomRight()"></i>
+                        <i class="far fa-chevron-right" [ngStyle]="{
+                            'color': isOpen
+                              ? 'black'
+                              : 'grey'
+                          }" (click)="scrollRecomRight()"></i>
                     </div>
                     <div class=" arrow-left ">
                         <!-- scroll to left -->
                         <!-- <img src="assets/icons/Arrow left@1x.png " (click)="scrollRecomLeft() " alt=" " /> -->
-                        <i class="far fa-chevron-left" (click)="scrollRecomLeft() "></i>
+                        <i class="far fa-chevron-left" [ngStyle]="{
+                            'color': isOpen
+                              ? 'grey'
+                              : 'black'
+                          }" (click)="scrollRecomLeft() "></i>
                     </div>
                 </div>
                 <!-- flex box scroll x and hide scroll bar -->
@@ -191,8 +187,7 @@
 
                             <div class="card-price-like ">
                                 <div class="row ">
-                                    <div class="col ">
-
+                                    <div class="col">
                                         <h5 class="price2 " style="margin-top: -70px; " [ngStyle]="{ 'text-decoration': product?.product?.price_after_sale ? 'none' : 'none', 'color': product?.product?.price_after_sale ? 'red' : 'red',
                             'font-size':product?.product?.price_after_sale? '20px' : '20px' } ">
                                             {{ product?.product?.price | currency:'EGP':'symbol':'2.0'}}<small></small>
@@ -275,3 +270,4 @@
             </div>
         </div>
     </div>
+</div>

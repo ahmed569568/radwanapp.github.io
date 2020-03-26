@@ -1,338 +1,332 @@
-        /* You can add global styles to this file, and also import other style files */
-
-        @font-face {
-          font-family: Montserrat;
-          src: url(assets/font/Montserrat-Medium.ttf) format("opentype");
-        }
-
-        @font-face {
-          font-family: Montserrat-Light;
-          src: url(assets/font/Montserrat-Light.ttf) format("opentype");
-        }
-
-        @font-face {
-          font-family: Montserrat-Bold;
-          src: url(assets/font/Montserrat-Bold.ttf) format("opentype");
-        }
-
-        * {
-          font-family: Montserrat !important;
-        }
-
-        figure {
-          margin-bottom: 3% !important;
-        }
-
-        #current-image {
-          border-radius: 5px !important;
-        }
-
-        .dots-container>.dot.active {
-          cursor: pointer;
-          opacity: .9;
-          background: red !important;
-        }
-
-        .previews-container>.preview-inner-container {
-          padding-left: 8% !important;
-          padding-right: 8% !important;
-        }
-
-        .previews-container>.preview-inner-container>.preview-image {
-          margin-left: 5px;
-          margin-right: 5px;
-          border-radius: 5px !important;
-          width: 85px !important;
-          height: 75px !important;
-        }
-
-        .dots-container {
-          margin-bottom: 8px !important;
-        }
-
-        .dots-container>.dot {
-          background: rgba(149, 165, 166, 1) !important;
-          border-radius: 5px;
-          height: 10px;
-          margin-left: 4px;
-          margin-right: 4px;
-          width: 10px;
-          opacity: unset !important;
-          cursor: pointer;
-        }
-
-        img.inside.preview-image.active:focus {
-          border: unset !important;
-        }
-
-        img.inside.preview-image.active {
-          border: 1px solid rgba(231, 76, 60, 1) !important;
-          background-color: rgba(231, 76, 60, 0.2) !important;
-        }
-
-        #carousel-container>.current-figure>#current-image,
-        #carousel-container>.current-figure>#current-image-legacy {
-          object-fit: contain !important;
-          width: 85% !important;
-          display: block;
-          height: 500px !important;
-          margin: auto !important;
-          max-width: 100%;
-          max-height: unset !important;
-        }
-
-        // added by omar el tayeb
-        .inside.left-arrow-image {
-          background-image: url(./assets/icons/Arrowleft.png) !important;
-          width: 17px !important;
-          height: 30px !important;
-          background-repeat: no-repeat !important;
-          background-size: cover !important;
-
-        }
-
-        .inside.right-arrow-image {
-          background-image: url(./assets/icons/Arrowright.png) !important;
-          width: 17px !important;
-          height: 30px !important;
-          background-repeat: no-repeat !important;
-          background-size: cover !important;
-          opacity: 0.5 !important;
-        }
-
-        // finish here
-
-        .left-arrow-preview-image {
-          background-image: url(./assets/icons/arrow-down-sign-to-navigate.svg) !important;
-          background-size: 100% 100% !important;
-        }
-
-        .right-arrow-preview-image {
-          background-image: url(./assets/icons/arrow--sign-to-navigate-right.svg) !important;
-          background-size: 100% 100% !important;
-        }
-
-        .previews-container>.nav-left {
-          left: 50px !important;
-        }
-
-        .previews-container>.nav-right {
-          left: 545px !important;
-        }
-
-        .ng5-slider .ng5-slider-bar {
-          height: 2px !important;
-        }
-
-        @media (max-width: 576px) {
-
-          #carousel-container>.current-figure>#current-image,
-          #carousel-container>.current-figure>#current-image-legacy {
-            height: auto !important;
-          }
-
-          .previews-container>.nav-left {
-            left: 50px !important;
-          }
-
-          .previews-container>.nav-right {
-            left: 291px !important;
-          }
-
-          .svg-inline--fa {
-            font-size: 12px !important;
-          }
-        }
-
-        @media screen and (device-aspect-ratio: 40/71) {
-          .previews-container>.nav-right {
-            left: 250px !important;
-          }
-
-          .previews-container>.nav-left {
-            left: 35px !important;
-          }
-        }
-
-        :focus {
-          outline: 0 !important;
-        }
-
-        .ng5-slider .ng5-slider-pointer {
-          background-color: #E30B13 !important;
-          width: 15px !important;
-          height: 15px !important;
-          top: -7px !important;
-          border-radius: 5px !important;
-        }
-
-        .ng5-slider .ng5-slider-pointer:after {
-          content: unset !important;
-          width: 8px;
-          height: 8px;
-          position: absolute;
-          top: 12px;
-          left: 12px;
-          border-radius: 4px;
-          /* background: black !important;/ */
-        }
-
-        .ng5-slider .ng5-slider-selection {
-          z-index: 2;
-          background: #E30B13 !important;
-          border-radius: 2px;
-        }
-
-        .ng5-slider .ng5-slider-bubble {
-          font-size: 11px !important;
-          font-weight: bold !important;
-          color: #E30B13 !important;
-        }
-
-        .ng5-slider .ng5-slider-bubble.ng5-slider-limit {
-          visibility: hidden !important;
-        }
-
-        .ngx-pagination .current {
-          background: #E30B13 !important;
-        }
-
-        span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-value,
-        span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-high {
-          visibility: hidden !important;
-        }
-
-        .svg-inline--fa path {
-          fill: #c8d3dd !important;
-        }
-
-        .form-control:focus {
-          box-shadow: unset;
-        }
-
-        .btn:focus {
-          box-shadow: unset;
-        }
-
-        ///////my work
-        * {
-          box-sizing: border-box;
-          font-family: 'Kanit', sans-serif !important;
-        }
-
-        html,
-        body {
-          display: flex;
-          flex-direction: column;
-          margin: 0;
-          height: 100%;
-          width: 100%;
-          color: #222;
-        }
-
-        .card-deck {
-          width: 100% !important;
-          margin: 0 0 0 10px !important;
-          line-height: normal;
-
-          h5 {
-            display: inline-block;
-            display: initial;
-          }
-        }
-
-        .navbar-light .navbar-nav .nav-link {
-          color: #000 !important;
-        }
-
-        .text-muted {
-          font-size: 10px;
-          color: #3498db !important;
-          margin-top: 10px !important;
-          position: absolute !important;
-        }
-
-        .text-muted-home {
-          font-size: 10px;
-          color: #3498db !important;
-          margin-top: 18px !important;
-          position: absolute !important;
-        }
-
-        .text-muted-search {
-          font-size: 10px;
-          color: #3498db !important;
-          margin-top: 48px !important;
-          position: absolute !important;
-        }
-
-        .card-body {
-          // padding: 0.9rem;
-          height: 220px !important;
-          display: grid !important;
-          align-content: space-between !important;
-        }
-
-        .price {
-          color: red !important;
-          // font-size: 28px;
-        }
-
-        .price2 {
-          margin-bottom: 25px !important;
-        }
-
-        .card {
-          margin-left: 7px !important;
-        }
-
-        .price-home {
-          margin-top: -88px !important;
-        }
-
-        .card-text {
-          display: contents !important;
-        }
-
-        // .card {
-        //     max-width: 700px !important;
-        // }
-        /////
-        .far {
-          font-size: 30px;
-          color: gray;
-          cursor: pointer;
-
-          &:hover {
-            color: black;
-          }
-        }
-
-        .card-text:last-child {
-          margin-bottom: 0;
-          margin-top: -10px !important;
-        }
-
-        @media (max-width: 992px) {}
-
-        @media(max-width: 768px) {}
-
-        @media(max-width: 576px) {
-          .search {
-            margin-left: 165px !important;
-            height: 33px !important;
-          }
-        }
-
-        i {
-          font-family: FontAwesome !important
-        }
-
-        // .left-arrow-preview-image {
-        //     width: unset !important;
-        //     height: unset !important;
-        // }
-        // .right-arrow-preview-image {
-        //     width: unset !important;
-        //     height: unset !important
-        // }
+                /* You can add global styles to this file, and also import other style files */
+                
+                @font-face {
+                    font-family: Montserrat;
+                    src: url(assets/font/Montserrat-Medium.ttf) format("opentype");
+                }
+                
+                @font-face {
+                    font-family: Montserrat-Light;
+                    src: url(assets/font/Montserrat-Light.ttf) format("opentype");
+                }
+                
+                @font-face {
+                    font-family: Montserrat-Bold;
+                    src: url(assets/font/Montserrat-Bold.ttf) format("opentype");
+                }
+                
+                * {
+                    font-family: Montserrat !important;
+                }
+                
+                figure {
+                    margin-bottom: 3% !important;
+                }
+                
+                #current-image {
+                    border-radius: 5px !important;
+                }
+                
+                .dots-container>.dot.active {
+                    cursor: pointer;
+                    opacity: .9;
+                    background: red !important;
+                }
+                
+                .previews-container>.preview-inner-container {
+                    padding-left: 8% !important;
+                    padding-right: 8% !important;
+                }
+                
+                .previews-container>.preview-inner-container>.preview-image {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    border-radius: 5px !important;
+                    width: 85px !important;
+                    height: 75px !important;
+                }
+                
+                .dots-container {
+                    margin-bottom: 8px !important;
+                }
+                
+                .dots-container>.dot {
+                    background: rgba(149, 165, 166, 1) !important;
+                    border-radius: 5px;
+                    height: 10px;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    width: 10px;
+                    opacity: unset !important;
+                    cursor: pointer;
+                }
+                
+                img.inside.preview-image.active:focus {
+                    border: unset !important;
+                }
+                
+                img.inside.preview-image.active {
+                    border: 1px solid rgba(231, 76, 60, 1) !important;
+                    background-color: rgba(231, 76, 60, 0.2) !important;
+                }
+                
+                #carousel-container>.current-figure>#current-image,
+                #carousel-container>.current-figure>#current-image-legacy {
+                    object-fit: contain !important;
+                    width: 85% !important;
+                    display: block;
+                    height: 500px !important;
+                    margin: auto !important;
+                    max-width: 100%;
+                    max-height: unset !important;
+                }
+                
+                // added by omar el tayeb
+                .inside.left-arrow-image {
+                    background-image: url(./assets/icons/Arrowleft.png) !important;
+                    width: 17px !important;
+                    height: 30px !important;
+                    background-repeat: no-repeat !important;
+                    background-size: cover !important;
+                }
+                
+                .inside.right-arrow-image {
+                    background-image: url(./assets/icons/Arrowright.png) !important;
+                    width: 17px !important;
+                    height: 30px !important;
+                    background-repeat: no-repeat !important;
+                    background-size: cover !important;
+                    opacity: 0.5 !important;
+                }
+                
+                // finish here
+                .left-arrow-preview-image {
+                    background-image: url(./assets/icons/arrow-down-sign-to-navigate.svg) !important;
+                    background-size: 100% 100% !important;
+                }
+                
+                .right-arrow-preview-image {
+                    background-image: url(./assets/icons/arrow--sign-to-navigate-right.svg) !important;
+                    background-size: 100% 100% !important;
+                }
+                
+                .previews-container>.nav-left {
+                    left: 50px !important;
+                }
+                
+                .previews-container>.nav-right {
+                    left: 545px !important;
+                }
+                
+                .ng5-slider .ng5-slider-bar {
+                    height: 2px !important;
+                }
+                
+                @media (max-width: 576px) {
+                    #carousel-container>.current-figure>#current-image,
+                    #carousel-container>.current-figure>#current-image-legacy {
+                        height: auto !important;
+                    }
+                    .previews-container>.nav-left {
+                        left: 50px !important;
+                    }
+                    .previews-container>.nav-right {
+                        left: 291px !important;
+                    }
+                    .svg-inline--fa {
+                        font-size: 12px !important;
+                    }
+                }
+                
+                @media screen and (device-aspect-ratio: 40/71) {
+                    .previews-container>.nav-right {
+                        left: 250px !important;
+                    }
+                    .previews-container>.nav-left {
+                        left: 35px !important;
+                    }
+                }
+                
+                 :focus {
+                    outline: 0 !important;
+                }
+                
+                .ng5-slider .ng5-slider-pointer {
+                    background-color: #E30B13 !important;
+                    width: 15px !important;
+                    height: 15px !important;
+                    top: -7px !important;
+                    border-radius: 5px !important;
+                }
+                
+                .ng5-slider .ng5-slider-pointer:after {
+                    content: unset !important;
+                    width: 8px;
+                    height: 8px;
+                    position: absolute;
+                    top: 12px;
+                    left: 12px;
+                    border-radius: 4px;
+                    /* background: black !important;/ */
+                }
+                
+                .ng5-slider .ng5-slider-selection {
+                    z-index: 2;
+                    background: #E30B13 !important;
+                    border-radius: 2px;
+                }
+                
+                .ng5-slider .ng5-slider-bubble {
+                    font-size: 11px !important;
+                    font-weight: bold !important;
+                    color: #E30B13 !important;
+                }
+                
+                .ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+                    visibility: hidden !important;
+                }
+                
+                .ngx-pagination .current {
+                    background: #E30B13 !important;
+                }
+                
+                span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-value,
+                span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-high {
+                    visibility: hidden !important;
+                }
+                
+                .svg-inline--fa path {
+                    fill: #c8d3dd !important;
+                }
+                
+                .form-control:focus {
+                    box-shadow: unset;
+                }
+                
+                .btn:focus {
+                    box-shadow: unset;
+                }
+                
+                ///////my work
+                * {
+                    box-sizing: border-box;
+                    font-family: 'Kanit', sans-serif !important;
+                }
+                
+                html,
+                body {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                    height: 100%;
+                    width: 100%;
+                    color: #222;
+                }
+                
+                .card-deck {
+                    width: 100% !important;
+                    margin: 0 0 0 10px !important;
+                    line-height: normal;
+                    h5 {
+                        display: inline-block;
+                        display: initial;
+                    }
+                }
+                
+                .navbar-light .navbar-nav .nav-link {
+                    color: #000 !important;
+                }
+                
+                .text-muted {
+                    font-size: 10px;
+                    color: #3498db !important;
+                    margin-top: 10px !important;
+                    position: absolute !important;
+                }
+                
+                .text-muted-home {
+                    font-size: 10px;
+                    color: #3498db !important;
+                    margin-top: 18px !important;
+                    position: absolute !important;
+                }
+                
+                .text-muted-search {
+                    font-size: 10px;
+                    color: #3498db !important;
+                    margin-top: 48px !important;
+                    position: absolute !important;
+                }
+                
+                .card-body {
+                    // padding: 0.9rem;
+                    height: 220px !important;
+                    display: grid !important;
+                    align-content: space-between !important;
+                }
+                
+                .price {
+                    color: red !important;
+                    // font-size: 28px;
+                }
+                
+                .price2 {
+                    margin-bottom: 25px !important;
+                }
+                
+                .card {
+                    margin-left: 7px !important;
+                }
+                
+                .price-home {
+                    margin-top: -88px !important;
+                }
+                
+                .card-text {
+                    display: contents !important;
+                }
+                
+                // .card {
+                //     max-width: 700px !important;
+                // }
+                /////
+                .far {
+                    font-size: 30px;
+                    cursor: pointer;
+                    //     &:hover {
+                    //         color: black;
+                    //     }
+                }
+                
+                .card-text:last-child {
+                    margin-bottom: 0;
+                    margin-top: -10px !important;
+                }
+                
+                @media (max-width: 992px) {}
+                
+                @media(max-width: 768px) {}
+                
+                @media(max-width: 576px) {
+                    .search {
+                        margin-left: 165px !important;
+                        height: 33px !important;
+                    }
+                    .first-sort {
+                        display: contents !important;
+                        // max-width: 400px !important;
+                    }
+                }
+                
+                i {
+                    font-family: FontAwesome !important
+                }
+                
+                // .left-arrow-preview-image {
+                //     width: unset !important;
+                //     height: unset !important;
+                // }
+                // .right-arrow-preview-image {
+                //     width: unset !important;
+                //     height: unset !important
+                // }

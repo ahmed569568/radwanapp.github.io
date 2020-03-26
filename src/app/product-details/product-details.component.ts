@@ -31,6 +31,8 @@ export class ProductDetailsComponent implements OnInit {
   recommandedCarts: any[];
   relatedProducts: any[];
   sync = faSync;
+   ////
+   isOpen:boolean=true;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -400,6 +402,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   scrollRecomRight() {
+    this.isOpen = !this.isOpen
+
     this.recommendedScroll.nativeElement.scrollTo({
       left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
@@ -407,13 +411,18 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   scrollRecomLeft() {
+    this.isOpen = !this.isOpen
+
     this.recommendedScroll.nativeElement.scrollTo({
       left: this.recommendedScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
+
     });
   }
 
   scrollPopularRight() {
+    this.isOpen = !this.isOpen
+
     this.popularScroll.nativeElement.scrollTo({
       left: this.popularScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
@@ -421,6 +430,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   scrollPopularLeft() {
+    this.isOpen = !this.isOpen
+
     this.popularScroll.nativeElement.scrollTo({
       left: this.popularScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
