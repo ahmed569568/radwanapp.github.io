@@ -44,6 +44,8 @@ export class SearchComponent implements OnInit {
   cateCheck: any[];
   brandCheck: any[];
   filterSpinner: boolean;
+  activeCategory: number;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +57,8 @@ export class SearchComponent implements OnInit {
     private brandService: BrandService,
     private router: Router,
     private spinner: RadwanSpinnerService
-  ) {
+  )
+  {
     this.filterSpinner = false;
     this.showCateg = true;
     this.showBrand = true;
@@ -74,6 +77,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
     ///my work
     this.route.queryParams.forEach(s=>{
       console.log("ssssssss",  s.subCatId);
@@ -151,7 +155,13 @@ export class SearchComponent implements OnInit {
       this.showPrice = false;
     }
 
-    this.getProducts()
+    this.getProducts();
+    this.route.queryParams.subscribe(qP => {
+      if (qP.category) {
+        console.log(qP.category);
+        this.activeCategory = +qP.category;
+      }
+    });
   }
 
   getProducts(){
@@ -268,6 +278,7 @@ export class SearchComponent implements OnInit {
   //Search Automatic when user check any category
 
   category($event) {
+
     if ($event.target.checked) {
       if (this.categoryJson.values.indexOf($event.target.value) == -1)
         this.categoryJson.values.push($event.target.value);

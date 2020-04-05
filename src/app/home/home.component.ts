@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   mobileSale: any;
   RecmoCounter = 1;
   ////
-  isOpen:boolean=true;
+  isOpen = false;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -294,13 +294,15 @@ export class HomeComponent implements OnInit {
   }
   // scroll Right function to all sliders in page
   scrollRight(type: any) {
-    this.isOpen = !this.isOpen
+    if (this.isOpen) {
+      return;
+    }
     if (type == "Recom") {
       this.RecmoCounter++;
-      console.log(
-        "this.featuredProducts.length / 4",
-        Math.round(this.featuredProducts.length / 4)
-      );
+      // console.log(
+      //   "this.featuredProducts.length / 4",
+      //   Math.round(this.featuredProducts.length / 4)
+      // );
       // if (this.RecmoCounter == Math.round(this.featuredProducts.length / 4)) {
       //   document.getElementById("recomRight").style.color = "red";
       // }
@@ -329,12 +331,15 @@ export class HomeComponent implements OnInit {
         behavior: "smooth"
       });
     }
+    this.isOpen = !this.isOpen;
   }
+
 
   // scroll Left function to all sliders in page
   scrollLeft(type: any) {
-    this.isOpen = !this.isOpen
-
+    if (!this.isOpen) {
+      return;
+    }
     if (type == "Recom") {
       this.recommendedScroll.nativeElement.scrollTo({
         left: this.recommendedScroll.nativeElement.scrollLeft - 1000,
@@ -361,5 +366,6 @@ export class HomeComponent implements OnInit {
         behavior: "smooth"
       });
     }
+    this.isOpen = !this.isOpen;
   }
 }

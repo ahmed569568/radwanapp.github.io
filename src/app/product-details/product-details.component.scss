@@ -299,7 +299,7 @@ h1 {
     margin-left: unset;
     color: #000 !important;
     float: left;
-    font-size: 15px;
+    font-size: 12px;
     margin-top: 23px;
     margin-bottom: 33%;
     text-decoration: line-through;
@@ -307,6 +307,10 @@ h1 {
 
 .price-4 {
     color: red;
+    position: absolute;
+    margin-top: 19px;
+    font-size: 17px;
+    margin-left: 61px;
 }
 
 .price small {
@@ -583,12 +587,6 @@ i {
         margin-top: -14px;
         min-height: 38px;
         max-height: 38px;
-    }
-    .text-muted {
-        font-size: 10px;
-        color: #3498db !important;
-        margin-top: 20px !important;
-        position: absolute !important;
     }
     .price {
         font-size: 9px !important;
