@@ -280,9 +280,13 @@ export class SearchComponent implements OnInit {
   category($event) {
 
     if ($event.target.checked) {
+      this.router.navigate([`/search?category={$event.target.value}`]);
+    // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
+
       if (this.categoryJson.values.indexOf($event.target.value) == -1)
         this.categoryJson.values.push($event.target.value);
-    } else {
+    } 
+    else {
       this.categoryJson.values.splice(
         this.categoryJson.values.indexOf($event.target.value, 1)
       );

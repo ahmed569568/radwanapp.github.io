@@ -40,7 +40,7 @@
 
                     <div class="brands" *ngIf="showBrand">
                         <div class="form-check" *ngFor="let brand of brands; let i = index">
-                            <input class="form-check-input" type="checkbox" [value]="brand.id" id="defaultCheck2" (change)="brandSelect($event)" [(ngModel)]="brandCheck[i]" />
+                            <input class="form-check-input" type="checkbox" [value]="brand.id" id="defaultCheck2" (change)="brandSelect($event)" [(ngModel)]="brandCheck[i + id]" />
                             <label class="form-check-label" for="defaultCheck2">
               {{ brand.name }}
             </label>

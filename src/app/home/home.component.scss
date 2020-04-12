@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    margin-right: 30px;
+    margin-right: 100px;
 }
 
 .rowMid {
@@ -64,15 +64,15 @@ h5 {
 
 .card {
     border: unset;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 43px !important;
+    margin-right: 20px !important;
     max-width: 24%;
-    min-width: 24%;
+    min-width: 20%;
     margin-bottom: 2%;
 }
 
 .price-discount {
-    margin-top: 8px;
+    margin-top: -33px;
     margin-left: 66px;
     font-size: 15px;
     color: red;
@@ -302,16 +302,6 @@ h5 {
     .products {
         padding-bottom: 30px;
     }
-    .products h5 {
-        // font-size: 14px;
-    }
-    .card-deck {
-        flex-direction: row;
-        overflow-x: auto;
-        -webkit-flex-direction: row;
-        overflow: scroll;
-        width: 100%;
-    }
     .card {
         min-width: 50%;
         width: 50%;
@@ -392,7 +382,7 @@ h5 {
         text-transform: uppercase;
         margin-bottom: 3%;
         margin-top: 70px;
-        margin-left: 25px !important;
+        margin-left: 133px !important;
         font-size: 17px; // color: #e74c3c !important;
         // font-size: 21px !important;
     }

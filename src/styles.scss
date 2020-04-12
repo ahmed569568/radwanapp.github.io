@@ -225,8 +225,17 @@
                 
                 .card-deck {
                     width: 100% !important;
-                    margin: 0 10px 0 10px !important;
+                    margin: 0 75px 0 75px !important;
                     line-height: normal;
+                    flex-direction: row;
+                    overflow-x: auto;
+                    -webkit-flex-direction: row;
+                    overflow: scroll;
+                    width: 100%;
+                    // display: flex;
+                    // flex-wrap: nowrap !important;
+                    // overflow-x: auto !important;
+                    // overflow: hidden !important;
                     h5 {
                         display: inline-block;
                         display: initial;
@@ -240,9 +249,9 @@
                 .text-muted {
                     font-size: 10px;
                     color: #3498db !important;
-                    margin-top: 107px !important;
+                    margin-top: 80px !important;
                     position: absolute !important;
-                    margin-left: 242px !important;
+                    margin-left: 160px !important;
                 }
                 
                 .text-muted-product {
@@ -258,7 +267,7 @@
                     color: #3498db !important;
                     margin-top: 100px !important;
                     position: absolute !important;
-                    margin-left: 184px !important;
+                    margin-left: 155px !important;
                 }
                 
                 .card-body {
