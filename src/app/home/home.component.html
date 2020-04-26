@@ -49,9 +49,9 @@
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck " #recommendedScroll>
+        <div class="card-deck card-content" #recommendedScroll>
             <ng-container *ngFor="let product of featuredProducts; let i = index;">
-                <div class="card ">
+                <div class="card  ">
                     <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
                     <div class="my-wrapper ">
                         <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
@@ -99,7 +99,7 @@
                         <!-- real price -->
                         <div class="card-price-like price-home">
                             <h5 class="h5-price">
-                                <div style="height: 30px; display: block; text-decoration: line-through; color: black; font-size: 12px;">
+                                <div style="height: 30px;  display: block; text-decoration: line-through; color: black; font-size: 12px;">
                                     <span *ngIf="product?.price_after_sale">
                                         {{product?.price_after_sale | currency: "EGP":"symbol":"2.0"}}
                                     </span>
@@ -165,8 +165,8 @@
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #popularScroll>
-            <div class="card" *ngFor="let product of popularProducts; let i = index">
+        <div class="card-deck card-content" #popularScroll>
+            <div class="card " *ngFor="let product of popularProducts; let i = index">
                 <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
                 <div class="my-wrapper">
                     <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
@@ -212,7 +212,7 @@
 
                     <div class="card-price-like price-home">
                         <h5 class="h5-price">
-                            <div style="height: 30px; display: block; text-decoration: line-through; color: black; font-size: 12px;">
+                            <div style="height: 30px;  display: block; text-decoration: line-through; color: black; font-size: 12px;">
                                 <span *ngIf="product?.price_after_sale">
                                     {{product?.price_after_sale | currency: "EGP":"symbol":"2.0"}}
                                 </span>
@@ -273,8 +273,8 @@
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #newArrivalsScroll>
-            <div class="card" style="max-width: 200px !important;" *ngFor="let product of newArrivals; let i = index">
+        <div class="card-deck card-content" #newArrivalsScroll>
+            <div class="card " style="max-width: 200px !important;" *ngFor="let product of newArrivals; let i = index">
                 <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
                 <div class="my-wrapper">
                     <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
@@ -320,7 +320,7 @@
 
                     <div class="card-price-like price-home">
                         <h5 class="h5-price">
-                            <div style="height: 30px; display: block; text-decoration: line-through; color: black; font-size: 12px;">
+                            <div style="height: 30px;  display: block; text-decoration: line-through; color: black; font-size: 12px;">
                                 <span *ngIf="product?.price_after_sale">
                                     {{product?.price_after_sale | currency: "EGP":"symbol":"2.0"}}
                                 </span>
@@ -381,7 +381,7 @@
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #tvScroll>
+        <div class="card-deck card-content" #tvScroll>
             <div class="card" *ngFor="let product of tvSale; let i = index">
                 <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
                 <div class="my-wrapper">
@@ -429,7 +429,7 @@
 
                     <div class="card-price-like price-home">
                         <h5 class="h5-price">
-                            <div style="height: 30px; display: block; text-decoration: line-through; color: black; font-size: 12px;">
+                            <div style="height: 30px;  display: block; text-decoration: line-through; color: black; font-size: 12px;">
                                 <span *ngIf="product?.price_after_sale">
                                     {{product?.price_after_sale | currency: "EGP":"symbol":"2.0"}}
                                 </span>
@@ -490,8 +490,8 @@
             </div>
         </div>
         <!-- Bootstrap4 Cards -->
-        <div class="card-deck" #mobileScroll>
-            <div class="card" *ngFor="let product of mobileSale; let i = index">
+        <div class="card-deck card-content" #mobileScroll>
+            <div class="card " *ngFor="let product of mobileSale; let i = index">
                 <!-- my-wrapper position relative to middle class to display show more button in the middle of product image when hover -->
                 <div class="my-wrapper">
                     <!-- Product Has Array Of Images So We Display First Image In Product Images Array -->
@@ -537,7 +537,7 @@
                     </div>
                     <div class="card-price-like price-home">
                         <h5 class="h5-price">
-                            <div style="height: 30px; display: block; text-decoration: line-through; color: black; font-size: 12px;">
+                            <div style="height: 30px;  display: block; text-decoration: line-through; color: black; font-size: 12px;">
                                 <span *ngIf="product?.price_after_sale">
                                     {{product?.price_after_sale | currency: "EGP":"symbol":"2.0"}}
                                 </span>
