@@ -17,7 +17,7 @@ import "rxjs/add/operator/filter";
   styleUrls: ["./search.component.scss"]
 })
 export class SearchComponent implements OnInit {
-  newCategory:any;
+  newCategory: any;
   result: any;
   likes: any[];
   carts: any[];
@@ -32,8 +32,7 @@ export class SearchComponent implements OnInit {
   highValue: number = 10000;
   options: Options = {
     floor: 0,
-    ceil: 10000,
-
+    ceil: 10000
   };
   categoryJson: any;
   brandJson: any;
@@ -46,7 +45,6 @@ export class SearchComponent implements OnInit {
   filterSpinner: boolean;
   activeCategory: number;
 
-
   constructor(
     private route: ActivatedRoute,
     private searchService: SearchService,
@@ -57,8 +55,7 @@ export class SearchComponent implements OnInit {
     private brandService: BrandService,
     private router: Router,
     private spinner: RadwanSpinnerService
-  )
-  {
+  ) {
     this.filterSpinner = false;
     this.showCateg = true;
     this.showBrand = true;
@@ -77,18 +74,17 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
     ///my work
-    this.route.queryParams.forEach(s=>{
-      console.log("ssssssss",  s.subCatId);
-      console.log("ssssssss",   s.CatId);
-    })
+    this.route.queryParams.forEach(s => {
+      console.log("ssssssss", s.subCatId);
+      console.log("ssssssss", s.CatId);
+    });
     ////
     this.spinner.show();
     this.route.queryParams
       .filter(params => params.search)
       .subscribe(params => {
-        console.log(params)
+        console.log(params);
         //get query parameter search and call search end point
         this.searchService.search(params.search).subscribe((data: any) => {
           this.result = data;
@@ -117,8 +113,7 @@ export class SearchComponent implements OnInit {
           });
       });
 
-
-      this.route.queryParams
+    this.route.queryParams
       .filter(params => params.sub_category)
       .subscribe(params => {
         this.categoryService
@@ -158,17 +153,15 @@ export class SearchComponent implements OnInit {
     this.getProducts();
     this.route.queryParams.subscribe(qP => {
       if (qP.category) {
-        console.log(qP.category);
         this.activeCategory = +qP.category;
       }
     });
   }
 
-  getProducts(){
+  getProducts() {
     this.searchService.getProduct().subscribe(res => {
-      console.log("ezzat" , res);
       this.newCategory = res;
-    })
+    });
   }
 
   navigateProduct(id: any) {
@@ -278,15 +271,13 @@ export class SearchComponent implements OnInit {
   //Search Automatic when user check any category
 
   category($event) {
-
     if ($event.target.checked) {
       this.router.navigate([`/search?category={$event.target.value}`]);
-    // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
+      // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
 
       if (this.categoryJson.values.indexOf($event.target.value) == -1)
         this.categoryJson.values.push($event.target.value);
-    } 
-    else {
+    } else {
       this.categoryJson.values.splice(
         this.categoryJson.values.indexOf($event.target.value, 1)
       );

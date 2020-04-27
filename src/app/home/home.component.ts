@@ -103,9 +103,7 @@ export class HomeComponent implements OnInit {
     );
 
     zip(featured, popular).subscribe(res => {
-      // console.log(res);
       this.spinner.hide();
-      // console.clear();
     });
 
     // Set
@@ -333,7 +331,6 @@ export class HomeComponent implements OnInit {
     }
     this.isOpen = !this.isOpen;
   }
-
 
   // scroll Left function to all sliders in page
   scrollLeft(type: any) {
