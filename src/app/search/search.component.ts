@@ -272,39 +272,24 @@ export class SearchComponent implements OnInit {
   //Search Automatic when user check any category
 
   category($event) {
-<<<<<<< HEAD
-    if ($event.target.checked) {
-      this.router.navigate([`/search?category={$event.target.value}`]);
-      // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
-=======
-
     // if ($event.target.checked) {
-      // this.router.navigate([`/search?category={$event.target.value}`]);
+    // this.router.navigate([`/search?category={$event.target.value}`]);
     // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
->>>>>>> 74c0c48b4cdc787cf2448aaf47b6629bcbf5f208
 
-      // if (this.categoryJson.values.indexOf($event.target.value) == -1)
-        this.categoryJson.values.push($event.target.value);
-<<<<<<< HEAD
-    } else {
-      this.categoryJson.values.splice(
-        this.categoryJson.values.indexOf($event.target.value, 1)
-      );
-    }
-=======
-    // } 
-    // else {
-      // this.categoryJson.values.splice(
-        // this.categoryJson.values.indexOf($event.target.value, 1)
-      // );
+    // if (this.categoryJson.values.indexOf($event.target.value) == -1)
+    this.categoryJson.values.push($event.target.value);
     // }
->>>>>>> 74c0c48b4cdc787cf2448aaf47b6629bcbf5f208
+    // else {
+    // this.categoryJson.values.splice(
+    // this.categoryJson.values.indexOf($event.target.value, 1)
+    // );
+    // }
     this.search(
       this.categoryJson.values,
       this.brandJson.values,
       this.priceJson.values,
       this.sortValue
-      );
+    );
   }
 
   brandSelect($event) {
@@ -348,7 +333,7 @@ export class SearchComponent implements OnInit {
       this.route.queryParams
         .filter(params => params.search)
         .subscribe(params => {
-          console.log('KK', params.search);
+          console.log("KK", params.search);
           this.searchService.search(params.search).subscribe((data: any) => {
             this.result = data;
             this.likes = [...this.result];
