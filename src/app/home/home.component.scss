@@ -43,8 +43,8 @@ h5 {
 }
 
 .card-deck {
-    margin-left: 10%;
-    margin-right: 10%;
+    // margin-left: 10%;
+    // margin-right: 10%;
     margin-bottom: 1%;
     // tayeb edit
     overflow-x: hidden;
@@ -69,10 +69,11 @@ h5 {
     max-width: 24%;
     min-width: 20%;
     margin-bottom: 2%;
+    display: inline-flex;
 }
 
 .price-discount {
-    margin-top: -33px;
+    margin-top: -26px;
     margin-left: 66px;
     font-size: 15px;
     color: red;
@@ -90,6 +91,7 @@ h5 {
     color: #3498db !important;
     position: absolute;
     margin-top: 11px;
+    display: contents;
 }
 
 .price {

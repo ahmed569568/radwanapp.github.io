@@ -136,11 +136,12 @@ export class SearchComponent implements OnInit {
       this.cateCheck.fill(false);
     });
 
-    this.brandService.get().subscribe((data: any) => {
-      this.brands = data;
-      this.brandCheck = [...this.brands];
-      this.brandCheck.fill(false);
-    });
+    // TODO: Not working server return 500 server error
+    // this.brandService.get().subscribe((data: any) => {
+    //   this.brands = data;
+    //   this.brandCheck = [...this.brands];
+    //   this.brandCheck.fill(false);
+    // });
 
     //hide categories, brands and price in mobile version
 
@@ -271,23 +272,39 @@ export class SearchComponent implements OnInit {
   //Search Automatic when user check any category
 
   category($event) {
+<<<<<<< HEAD
     if ($event.target.checked) {
       this.router.navigate([`/search?category={$event.target.value}`]);
       // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
+=======
 
-      if (this.categoryJson.values.indexOf($event.target.value) == -1)
+    // if ($event.target.checked) {
+      // this.router.navigate([`/search?category={$event.target.value}`]);
+    // this.router.navigate(['./'], { relativeTo: this.route, queryParams: { category: $event.target.value } })
+>>>>>>> 74c0c48b4cdc787cf2448aaf47b6629bcbf5f208
+
+      // if (this.categoryJson.values.indexOf($event.target.value) == -1)
         this.categoryJson.values.push($event.target.value);
+<<<<<<< HEAD
     } else {
       this.categoryJson.values.splice(
         this.categoryJson.values.indexOf($event.target.value, 1)
       );
     }
+=======
+    // } 
+    // else {
+      // this.categoryJson.values.splice(
+        // this.categoryJson.values.indexOf($event.target.value, 1)
+      // );
+    // }
+>>>>>>> 74c0c48b4cdc787cf2448aaf47b6629bcbf5f208
     this.search(
       this.categoryJson.values,
       this.brandJson.values,
       this.priceJson.values,
       this.sortValue
-    );
+      );
   }
 
   brandSelect($event) {
@@ -318,7 +335,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  search(categoryValues, brandValues, priceValues, sort) {
+  search(categoryValues, brandValues?, priceValues?, sort?) {
     //if user reset search then back to origin route.
     if (
       categoryValues.length == 0 &&
@@ -331,6 +348,7 @@ export class SearchComponent implements OnInit {
       this.route.queryParams
         .filter(params => params.search)
         .subscribe(params => {
+          console.log('KK', params.search);
           this.searchService.search(params.search).subscribe((data: any) => {
             this.result = data;
             this.likes = [...this.result];
@@ -471,9 +489,10 @@ export class SearchComponent implements OnInit {
     this.categoryService.getCategories().subscribe((data: any) => {
       this.categories = data;
     });
-    this.brandService.get().subscribe((data: any) => {
-      this.brands = data;
-    });
+    // TODO: Not working server return 500 server error
+    // this.brandService.get().subscribe((data: any) => {
+    //   this.brands = data;
+    // });
     if (window.screen.width <= 576) {
       this.showCateg = false;
       this.showBrand = false;

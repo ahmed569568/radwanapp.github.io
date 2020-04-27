@@ -178,6 +178,7 @@ label {
 .card-body {
     padding: 15px;
     padding-bottom: 0px;
+    height: 300px !important;
 }
 
 .save-for-later p {
@@ -219,38 +220,38 @@ app-fulfilling-square-spinner#spinnerMobile {
     display: none;
 }
 
-@media (max-width: 576px) {
-    .card-title {
-        font-size: 12px;
-    }
-    .card-text {
-        margin-top: -12px;
-        margin-bottom: 40px;
-        font-size: 12px;
-    }
-    .price {
-        color: #e74c3c;
-        font-family: "Montserrat-Bold" !important;
-        font-size: 12px !important;
-        margin-top: -40px;
-        margin-bottom: -4px;
-    }
-    .save-for-later p {
-        font-size: 10px;
-    }
-    .card-body {
-        padding: 10px;
-        margin-bottom: -17px;
-    }
-    .cart-empty {
-        font-size: 26px;
-        margin-top: 40px;
-        margin-bottom: 70px;
-    }
-    app-fulfilling-square-spinner#filter {
-        display: none;
-    }
-    app-fulfilling-square-spinner#filterMobile {
-        display: block;
-    }
-}
+// @media (max-width: 576px) {
+//     .card-title {
+//         font-size: 12px;
+//     }
+//     .card-text {
+//         margin-top: -12px;
+//         margin-bottom: 40px;
+//         font-size: 12px;
+//     }
+//     .price {
+//         color: #e74c3c;
+//         font-family: "Montserrat-Bold" !important;
+//         font-size: 12px !important;
+//         margin-top: -40px;
+//         margin-bottom: -4px;
+//     }
+//     .save-for-later p {
+//         font-size: 10px;
+//     }
+//     .card-body {
+//         padding: 10px;
+//         margin-bottom: -17px;
+//     }
+//     .cart-empty {
+//         font-size: 26px;
+//         margin-top: 40px;
+//         margin-bottom: 70px;
+//     }
+//     app-fulfilling-square-spinner#filter {
+//         display: none;
+//     }
+//     app-fulfilling-square-spinner#filterMobile {
+//         display: block;
+//     }
+// }

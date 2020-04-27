@@ -5,61 +5,75 @@
     padding-top: 15px;
     cursor: pointer;
 }
+
 .wishlist img {
     margin-left: 30px;
     margin-right: 20px;
 }
+
 .wishlist p {
     display: inline-block;
 }
+
 .cart {
     background-color: rgba(249, 59, 47, 1);
     color: white;
     padding-top: 15px;
     margin-bottom: 100px;
-    cursor: pointer;  
+    cursor: pointer;
 }
+
 .cart p {
     display: inline-block;
 }
+
 .cart img {
     margin-left: 30px;
     margin-right: 20px;
 }
+
 .card-list {
     margin-top: 80px;
     margin-bottom: 150px;
 }
+
 .card-title {
     color: rgba(22, 45, 54, 1);
-    font-weight: bold;  
-    margin-bottom: .75rem; 
-    cursor: pointer;  
+    font-weight: bold;
+    margin-bottom: .75rem;
+    cursor: pointer;
 }
+
 .card-text {
     margin-top: -8px;
     margin-bottom: 40px;
 }
+
 .brand {
     color: rgba(52, 152, 219, 1) !important;
     font-family: 'Montserrat-Light';
     margin-top: -8px;
 }
+
 .card-img {
     width: 100%;
     cursor: pointer;
 }
+
 .save-for-later {
     display: inline-block;
 }
+
 .remove {
     display: inline-block;
     margin-left: 30px;
 }
+
 label {
     font-size: 10px;
     color: rgba(52, 152, 219, 1);
 }
+
 .custom-control-label::after {
     position: absolute;
     top: 1px;
@@ -72,6 +86,7 @@ label {
     background-color: rgba(216, 216, 216, 1);
     border-radius: 4px !important;
 }
+
 .custom-control-label::before {
     position: absolute;
     top: 1px;
@@ -97,34 +112,40 @@ label {
     margin-top: -35px;
     margin-bottom: 5px;
 }
+
 .price span {
     font-family: 'Montserrat-Bold' !important;
     font-size: 10px;
 }
+
 .card-body {
     padding: 15px;
     padding-bottom: 0px;
 }
+
 .save-for-later p {
     font-size: 10px;
     color: rgba(52, 152, 219, 1);
     cursor: pointer;
     font-size: 12px;
 }
+
 .remove p {
     font-size: 10px;
     color: rgba(52, 152, 219, 1);
     cursor: pointer;
     font-size: 12px;
 }
+
 .whishlist-empty {
     text-align: center;
     margin-bottom: 100px;
     margin-top: 100px;
     color: #4b5858;
 }
+
 span.spinner {
-    bottom:0;
+    bottom: 0;
     height: 50px;
     left: 50%;
     position: absolute;
@@ -132,23 +153,28 @@ span.spinner {
     top: 30%;
     width: 50px;
 }
+
 app-fulfilling-square-spinner#spinner {
     display: block;
 }
+
 app-fulfilling-square-spinner#spinnerMobile {
     display: none;
 }
+
 .not-empty-whishlist {
     display: inline-block;
     padding-bottom: 6%;
 }
+
 .spinner-height {
     margin-bottom: 18%;
 }
-@media (max-width: 576px) {  
+
+@media (max-width: 576px) {
     .card-title {
-       font-size: 12px;
-    }  
+        font-size: 12px;
+    }
     .card-text {
         margin-top: -12px;
         margin-bottom: 40px;
@@ -163,12 +189,10 @@ app-fulfilling-square-spinner#spinnerMobile {
     }
     .save-for-later p {
         font-size: 10px;
-       
     }
     .card-body {
         padding: 10px;
         margin-bottom: -17px;
-        
     }
     .whishlist-empty {
         font-size: 26px;
@@ -182,4 +206,3 @@ app-fulfilling-square-spinner#spinnerMobile {
         display: block;
     }
 }
-

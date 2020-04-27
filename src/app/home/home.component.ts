@@ -310,7 +310,7 @@ export class HomeComponent implements OnInit {
       });
     } else if (type == "Popular") {
       this.popularScroll.nativeElement.scrollTo({
-        left: this.popularScroll.nativeElement.scrollLeft + 1200,
+        left: this.popularScroll.nativeElement.scrollLeft + 1000,
         behavior: "smooth"
       });
     } else if (type == "TV") {
@@ -344,7 +344,7 @@ export class HomeComponent implements OnInit {
       });
     } else if (type == "Popular") {
       this.popularScroll.nativeElement.scrollTo({
-        left: this.popularScroll.nativeElement.scrollLeft - 1200,
+        left: this.popularScroll.nativeElement.scrollLeft - 1000,
         behavior: "smooth"
       });
     } else if (type == "TV") {
