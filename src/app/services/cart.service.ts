@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Subject, BehaviorSubject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CartService {
   url: any;
@@ -13,48 +13,50 @@ export class CartService {
   public cartNotifAdd = new Subject<boolean>();
   public cartNotifRemove = new Subject<boolean>();
   public outOfStock = new Subject<boolean>();
-  public checkout = new BehaviorSubject('');
+  public checkout = new BehaviorSubject("");
 
   constructor(private http: HttpClient) {
-    this.url = 'http://elogail.bit68.com/api/';
+    this.url = "http://elogail.bit68.com/api/";
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       })
     };
   }
 
   get(cartID: any) {
-    return this.http.get(this.url + 'cart/me/' + cartID, this.httpOptions);
+    return this.http.get(this.url + "cart/me/" + cartID, this.httpOptions);
   }
 
   put(id: any, quantity: any) {
-    var data = { 'product': id, 'quantity': quantity }
+    var data = { product: id, quantity: quantity };
     //make cart active in header
     this.active.next(true);
-    return this.http.post(this.url + 'cart/me/', data, this.httpOptions);
-
+    return this.http.post(this.url + "cart/me/", data, this.httpOptions);
   }
   patch(id: any, quantity: any, cartID: any) {
-    var data = { 'product': id, 'quantity': quantity, 'cart': cartID };
+    var data = { product: id, quantity: quantity, cart: cartID };
     //make cart active in header
     this.active.next(true);
-    return this.http.post(this.url + 'cart/me/', data, this.httpOptions);
+    return this.http.post(this.url + "cart/me/", data, this.httpOptions);
   }
 
   delete(id: any, cartID: any) {
-    return this.http.delete(this.url + 'cart/me/' + cartID + '/?cart_product=' + id, this.httpOptions);
+    return this.http.delete(
+      this.url + "cart/me/" + cartID + "/?cart_product=" + id,
+      this.httpOptions
+    );
   }
 
   //show modal Product Added to cart from radwan-cart-modal component
   showAdd() {
     this.cartNotifAdd.next(true);
     setInterval(() => {
-      this.hideAdd()
-    }, 5000)
+      this.hideAdd();
+    }, 5000);
   }
-  //hide modal product Added to cart .. ... ... ... ... ... 
+  //hide modal product Added to cart .. ... ... ... ... ...
   hideAdd() {
     this.cartNotifAdd.next(false);
   }
@@ -63,10 +65,10 @@ export class CartService {
   showRemove() {
     this.cartNotifRemove.next(true);
     setInterval(() => {
-      this.hideRemove()
-    }, 5000)
+      this.hideRemove();
+    }, 5000);
   }
-  //hide modal removed from cart 
+  //hide modal removed from cart
   hideRemove() {
     this.cartNotifRemove.next(false);
   }
@@ -74,9 +76,8 @@ export class CartService {
   showOutStock() {
     this.outOfStock.next(true);
     setInterval(() => {
-      this.hideOutStock()
-    }, 5000)
-
+      this.hideOutStock();
+    }, 5000);
   }
   //hide modal prodcut out of stock ..................
   hideOutStock() {
@@ -85,9 +86,39 @@ export class CartService {
 
   //emit event go ot checkout page
   toCheckout() {
-    this.checkout.next('true');
+    this.checkout.next("true");
   }
 
+  createOrder(form, paymentType, cartID) {
+    let flag;
+    if (paymentType) {
+      flag = "True";
+    } else {
+      flag = "False";
+    }
+    return this.http.post(
+      this.url + "orders/",
+      {
+        phone: form.phone,
+        address: form.address,
+        first_name: form.first_name,
+        last_name: form.last_name,
+        email: form.email,
+        country: form.country,
+        city: form.city,
+        currency: "EGP",
+        cash_on_delivery: flag,
+        cart: cartID,
+        code: null
+      },
+      this.httpOptions
+    );
+  }
+
+  createAcceptIframe(orderID) {
+    return this.http.get(
+      this.url + "payments/iframe/" + orderID,
+      this.httpOptions
+    );
+  }
 }
-
-

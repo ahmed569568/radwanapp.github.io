@@ -3,7 +3,7 @@
 <!-- <div class="container-fluid wrapper" style="background-color: white;">
 
         <div class="row content"> -->
-<!-- 
+<!--
     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 sorting">
         <div class="sort first">
             <p>Sort By</p>
@@ -152,140 +152,233 @@
 <!---->
 <!---->
 <div class="product-sort">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                <div class="products-sorts">
-
-                    <div class="sort first">
-                        <p>Sort By</p>
-                        <i class="fa fa-angle-down"></i>
-                        <select (change)="sort($event)" [(ngModel)]="sortSelect">
-                    <option value=""></option>
-                    <option value="-price">Price : High To Low</option>
-                    <option value="price">Price : Low To High</option>
-                    <option value="name">Alphabetical </option>
-                </select>
-                    </div>
-                    <div class="header-cate">
-                        <p>Categories</p>
-                        <div class="images">
-                            <img src="assets/icons/close.png" alt="" *ngIf="!showCateg" (click)="toggleCateg()" />
-                            <img src="assets/icons/open.png" alt="" *ngIf="showCateg" (click)="toggleCateg()" />
-                        </div>
-                    </div>
-                    <div class="categories" *ngIf="showCateg">
-                        <div class="form-check" *ngFor="let cate of categories; let i = index">
-                            <input class="form-check-input" type="checkbox" [value]="cate.id" (change)="category($event)" [checked]="cate.id === activeCategory" />
-                            <label class="form-check-label" for="defaultCheck1">
-                        {{ cate.name }}
-                    </label>
-                        </div>
-                    </div>
-                    <hr />
-
-                    <div class="header-cate">
-                        <p>Brand</p>
-                        <div class="images">
-                            <img src="assets/icons/close.png" alt="" *ngIf="!showBrand" (click)="toggleBrand()" />
-                            <img src="assets/icons/open.png" alt="" *ngIf="showBrand" (click)="toggleBrand()" />
-                        </div>
-                    </div>
-
-                    <div class="brands" *ngIf="showBrand">
-                        <div class="form-check" *ngFor="let brand of brands; let i = index">
-                            <input class="form-check-input" type="checkbox" [value]="brand.id" id="defaultCheck2" (change)="brandSelect($event)" [(ngModel)]="brandCheck[i + id]" />
-                            <label class="form-check-label" for="defaultCheck2">
-                        {{ brand.name }}
-                    </label>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="header-cate">
-                        <p>Price</p>
-                        <div class="images">
-                            <img src="assets/icons/close.png" alt="" *ngIf="!showPrice" (click)="togglePrice()" />
-                            <img src="assets/icons/open.png" alt="" *ngIf="showPrice" (click)="togglePrice()" />
-                        </div>
-                    </div>
-                    <span *ngIf="showPrice">
-                <div class="price-slider">
-                    <div class="from">From</div>
-                    <div class="to">To</div>
-                </div>
-                <div class="price-range">
-                    <!-- ng5-slider to component for range slider -->
-                    <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
-                        (userChangeEnd)="price($event)">
-                    </ng5-slider>
-                </div>
-                <div class="price-value">
-                    <div class="min">{{ value }}.00<span>EGP</span></div>
-                <div class="high">{{ highValue }}.00<span>EGP</span></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <div class="products-sorts">
+          <div class="sort first">
+            <p>Sort By</p>
+            <i class="fa fa-angle-down"></i>
+            <select (change)="sort($event)" [(ngModel)]="sortSelect">
+              <option value=""></option>
+              <option value="-price">Price : High To Low</option>
+              <option value="price">Price : Low To High</option>
+              <option value="name">Alphabetical </option>
+            </select>
+          </div>
+          <div class="header-cate">
+            <p>Categories</p>
+            <div class="images">
+              <img
+                src="assets/icons/close.png"
+                alt=""
+                *ngIf="!showCateg"
+                (click)="toggleCateg()"
+              />
+              <img
+                src="assets/icons/open.png"
+                alt=""
+                *ngIf="showCateg"
+                (click)="toggleCateg()"
+              />
             </div>
-            </span>
-            <!-- </div> -->
+          </div>
+          <div class="categories" *ngIf="showCateg">
+            <div
+              class="form-check"
+              *ngFor="let cate of categories; let i = index"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [value]="cate.id"
+                (change)="category($event)"
+                [checked]="cate.id === activeCategory"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                {{ cate.name }}
+              </label>
+            </div>
+          </div>
+          <hr />
 
-            <button type="button" class="btn btn-primary btn-lg btn-block clear" (click)="clearSearch()">
-                Clear
-            </button>
+          <div class="header-cate">
+            <p>Brand</p>
+            <div class="images">
+              <img
+                src="assets/icons/close.png"
+                alt=""
+                *ngIf="!showBrand"
+                (click)="toggleBrand()"
+              />
+              <img
+                src="assets/icons/open.png"
+                alt=""
+                *ngIf="showBrand"
+                (click)="toggleBrand()"
+              />
+            </div>
+          </div>
+
+          <div class="brands" *ngIf="showBrand">
+            <div class="form-check" *ngFor="let brand of brands; let i = index">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [value]="brand.id"
+                id="defaultCheck2"
+                (change)="brandSelect($event)"
+                [(ngModel)]="brandCheck[i]"
+              />
+              <!-- + id Tayeb removed this part from ngModel because there isn't any id  -->
+              <label class="form-check-label" for="defaultCheck2">
+                {{ brand.name }}
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="header-cate">
+            <p>Price</p>
+            <div class="images">
+              <img
+                src="assets/icons/close.png"
+                alt=""
+                *ngIf="!showPrice"
+                (click)="togglePrice()"
+              />
+              <img
+                src="assets/icons/open.png"
+                alt=""
+                *ngIf="showPrice"
+                (click)="togglePrice()"
+              />
+            </div>
+          </div>
+          <span *ngIf="showPrice">
+            <div class="price-slider">
+              <div class="from">From</div>
+              <div class="to">To</div>
+            </div>
+            <div class="price-range">
+              <!-- ng5-slider to component for range slider -->
+              <ng5-slider
+                [(value)]="value"
+                [(highValue)]="highValue"
+                [options]="options"
+                (userChangeEnd)="price($event)"
+              >
+              </ng5-slider>
+            </div>
+            <div class="price-value">
+              <div class="min">{{ value }}.00<span>EGP</span></div>
+              <div class="high">{{ highValue }}.00<span>EGP</span></div>
+            </div>
+          </span>
+          <!-- </div> -->
+
+          <button
+            type="button"
+            class="btn btn-primary btn-lg btn-block clear"
+            (click)="clearSearch()"
+          >
+            Clear
+          </button>
         </div>
-    </div>
-    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+      </div>
+      <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
         <div class="products-cards">
-            <span class="filter" *ngIf="filterSpinner">
-                <!-- spinner for waitting response from filter API -->
-                <app-fulfilling-square-spinner id="filter" [animationDuration]="4000" [size]="50" [color]="'#E30B13'">
-                </app-fulfilling-square-spinner>
-                <app-fulfilling-square-spinner id="filterMobile" [animationDuration]="4000" [size]="40"
-                    [color]="'#E30B13'">
-                </app-fulfilling-square-spinner>
-            </span>
-            <!---->
-            <div class="card-deck card-deck2" *ngIf="!filterSpinner">
-                <div class="card card2" *ngFor="let product of result; let i = index">
-                    <div class="my-wrapper">
-                        <img src="{{ (product?.productimage)[0]?.image_url }}" class="card-img-top" (click)="navigateProduct(product?.id)" alt="..." />
-                        <div class="middle">
-                            <div class="text" (click)="navigateProduct(product?.id)">
-                                learn More
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text" (click)="navigateProduct(product?.id)">
-                            {{ product?.name }}
-                            <small class="text-muted-search">{{ product?.brand?.name }}</small>
-
-                        </p>
-                        <p class="card-text" (click)="navigateProduct(product?.id)">
-                        </p>
-                        <div class="card-price-like">
-                            <h5 class="price">{{ product.price | currency:'EGP':'symbol':'2.0'}}<small></small></h5>
-                            <a (click)="compare(product.id)">
-                                <fa-icon size="1x" [icon]="sync"></fa-icon>
-                            </a>
-                            <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love.svg" alt="" /></a>
-                            <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"><img src="assets/logo/love Active@1x.png" alt="" /></a>
-
-                            <a *ngIf="!carts[i] && product?.availability == 'In Stock'" (click)="addToCart(product.id, i)"><img src="assets/logo/cart.svg" alt="" /></a>
-
-                            <a *ngIf="carts[i]" (click)="addToCart(product.id, i)"><img src="assets/icons/Cart-actv.svg" alt="" /></a>
-                        </div>
-                    </div>
-                    <div (click)="buy(product) " style="background-color: #298f1d;color: white ;text-align: center; " class="card-footer " *ngIf="!carts[i] && product?.availability=='In Stock' ">
-                        <a role="button ">Buy Now</a>
-                    </div>
-                    <div style="background-color: grey;color: white ;text-align: center; " class="card-footer" *ngIf="carts[i] || !(product?.availability=='In Stock' ) ">
-                        <a role="button ">Buy Now</a>
-                    </div>
+          <span class="filter" *ngIf="filterSpinner">
+            <!-- spinner for waitting response from filter API -->
+            <app-fulfilling-square-spinner
+              id="filter"
+              [animationDuration]="4000"
+              [size]="50"
+              [color]="'#E30B13'"
+            >
+            </app-fulfilling-square-spinner>
+            <app-fulfilling-square-spinner
+              id="filterMobile"
+              [animationDuration]="4000"
+              [size]="40"
+              [color]="'#E30B13'"
+            >
+            </app-fulfilling-square-spinner>
+          </span>
+          <!---->
+          <div class="card-deck card-deck2" *ngIf="!filterSpinner">
+            <div
+              class="card card2"
+              *ngFor="let product of result; let i = index"
+            >
+              <div class="my-wrapper">
+                <img
+                  src="{{ (product?.productimage)[0]?.image_url }}"
+                  class="card-img-top"
+                  (click)="navigateProduct(product?.id)"
+                  alt="..."
+                />
+                <div class="middle">
+                  <div class="text" (click)="navigateProduct(product?.id)">
+                    learn More
+                  </div>
                 </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text" (click)="navigateProduct(product?.id)">
+                  {{ product?.name }}
+                  <small class="text-muted-search">{{
+                    product?.brand?.name
+                  }}</small>
+                </p>
+                <p class="card-text" (click)="navigateProduct(product?.id)"></p>
+                <div class="card-price-like">
+                  <h5 class="price">
+                    {{ product.price | currency: "EGP":"symbol":"2.0"
+                    }}<small></small>
+                  </h5>
+                  <a (click)="compare(product.id)">
+                    <fa-icon size="1x" [icon]="sync"></fa-icon>
+                  </a>
+                  <a *ngIf="!likes[i]" (click)="addToWhishlist(product?.id, i)"
+                    ><img src="assets/logo/love.svg" alt=""
+                  /></a>
+                  <a *ngIf="likes[i]" (click)="addToWhishlist(product?.id, i)"
+                    ><img src="assets/logo/love Active@1x.png" alt=""
+                  /></a>
+
+                  <a
+                    *ngIf="!carts[i] && product?.availability == 'In Stock'"
+                    (click)="addToCart(product.id, i)"
+                    ><img src="assets/logo/cart.svg" alt=""
+                  /></a>
+
+                  <a *ngIf="carts[i]" (click)="addToCart(product.id, i)"
+                    ><img src="assets/icons/Cart-actv.svg" alt=""
+                  /></a>
+                </div>
+              </div>
+              <div
+                (click)="buy(product)"
+                style="background-color: #298f1d;color: white ;text-align: center; "
+                class="card-footer "
+                *ngIf="!carts[i] && product?.availability == 'In Stock'"
+              >
+                <a role="button ">Buy Now</a>
+              </div>
+              <div
+                style="background-color: grey;color: white ;text-align: center; "
+                class="card-footer"
+                *ngIf="carts[i] || !(product?.availability == 'In Stock')"
+              >
+                <a role="button ">Buy Now</a>
+              </div>
             </div>
-            <div *ngIf="result?.length == 0" class="empty">
-                <h5>No products found for this category</h5>
-            </div>
+          </div>
+          <div *ngIf="result?.length == 0" class="empty">
+            <h5>No products found for this category</h5>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 </div>

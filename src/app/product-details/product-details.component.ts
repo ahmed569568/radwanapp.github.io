@@ -31,8 +31,8 @@ export class ProductDetailsComponent implements OnInit {
   recommandedCarts: any[];
   relatedProducts: any[];
   sync = faSync;
-   ////
-   isOpen=false;
+  ////
+  isOpen = false;
 
   @ViewChild("recommendedScroll", { static: true, read: ElementRef })
   public recommendedScroll: ElementRef<any>;
@@ -70,7 +70,6 @@ export class ProductDetailsComponent implements OnInit {
       this.product = data;
       // adding related products to a list to use it in the slider by tayeb
       this.relatedProducts = data.related_products;
-      // console.log("omar", this.relatedProducts);
       this.checkCart();
       this.checkWhishlist();
       this.detailedDescription = data.detaileddescription;
@@ -89,7 +88,6 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productsService.getRecommendedProducts().subscribe((data: any) => {
       this.recProducts = data;
-      console.log("omar", this.recProducts);
       this.recommandedCarts = [...this.recProducts];
       this.recommandedCarts.fill(false);
       this.recommandedLikes = [...this.recommandedCarts];
@@ -401,7 +399,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  scrollRecomRight(type:any) {
+  scrollRecomRight() {
     if (this.isOpen) {
       return;
     }
@@ -410,7 +408,7 @@ export class ProductDetailsComponent implements OnInit {
       left: this.recommendedScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
     });
-    this.isOpen = !this.isOpen
+    this.isOpen = !this.isOpen;
   }
 
   scrollRecomLeft() {
@@ -421,10 +419,8 @@ export class ProductDetailsComponent implements OnInit {
     this.recommendedScroll.nativeElement.scrollTo({
       left: this.recommendedScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
-
     });
-  this.isOpen = !this.isOpen
-
+    this.isOpen = !this.isOpen;
   }
 
   scrollPopularRight() {
@@ -434,7 +430,6 @@ export class ProductDetailsComponent implements OnInit {
       left: this.popularScroll.nativeElement.scrollLeft + 1000,
       behavior: "smooth"
     });
-
   }
 
   scrollPopularLeft() {
@@ -444,9 +439,7 @@ export class ProductDetailsComponent implements OnInit {
       left: this.popularScroll.nativeElement.scrollLeft - 1000,
       behavior: "smooth"
     });
-
   }
-
 }
 
 // accessibilityConfig: AccessibilityConfig = {
