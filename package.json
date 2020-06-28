@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --repo=git@gitlab.com:shokry_suleiman/radwn.git --name=ahmed569568 --email=ahmed569568@gmail.com --base-href=https://ahmed569568.github.io/radwn/"
+    "deploy": "ng deploy --repo=https://github.com/ahmed569568/Radwan-project.git --name=ahmed569568 --email=ahmed569568@gmail.com --base-href=https://ahmed569568.github.io/Radwan-project/"
   },
   "private": true,
   "dependencies": {
