@@ -9,7 +9,7 @@ import { WhishlistService } from "../services/whishlist.service";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { RadwanSpinnerService } from "../services/radwan-spinner.service";
 
-declare var $: any;
+declare var $: any;   
 
 @Component({
   selector: "app-product-details",

@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng deploy --repo=git@gitlab.com:shokry_suleiman/radwn.git --name=ahmed569568 --email=ahmed569568@gmail.com --base-href=https://ahmed569568.github.io/radwn/"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@ks89/angular-modal-gallery": "^7.2.4",
     "@types/googlemaps": "^3.37.3",
+    "angular-cli-ghpages": "^0.6.2",
     "angular-epic-spinners": "^2.0.0",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.3.1",
